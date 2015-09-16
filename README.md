@@ -30,5 +30,28 @@ My disseration will be on the g-2 Field Shimming and initial Field Measurement.
   - final results (2-4 pages)
   - resulting errors (1-2 pages)
 * Appendices
-  - traveler-db (?)
+  - fid-analysis code design
   - gm2-nmr-daq
+
+
+## Work Roadmap
+
+* NMR-DAQ
+  - ongoing polish and maintenance
+  - add midas-to-art layer for data
+  - flesh out online displays
+* Full tracking study
+  - choose a framework
+  - think about validating with simple model (julia, whatever)
+  - investigate effects of
+    * different field interpolations
+    * individual multi-poles
+    * realistic muon distributions
+    * realistic data from e821/shimming runs
+    * closed orbit distortions
+* Errors from 2d multi-pole approximation
+  - piggyback on the work Martin started
+  - figure out worst cases
+* Continue study of the effect of field gradients
+  - effect on frequency extraction
+  - extract information about gradient
