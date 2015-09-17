@@ -36,11 +36,16 @@ My disseration will be on the g-2 Field Shimming and initial Field Measurement.
 
 ## Work Roadmap
 
-* NMR-DAQ
-  - ongoing polish and maintenance
+* Field shimming[3-4 months]
+  - collect data
+  - analyze
+  - iterate shim positions
+  - repeat
+* NMR-DAQ [ongoing]
+  - polish and maintenance
   - add midas-to-art layer for data
   - flesh out online displays
-* Full tracking study
+* Full tracking study [4-6 weeks]
   - choose a framework
   - think about validating with simple model (julia, whatever)
   - investigate effects of
@@ -49,9 +54,22 @@ My disseration will be on the g-2 Field Shimming and initial Field Measurement.
     * realistic muon distributions
     * realistic data from e821/shimming runs
     * closed orbit distortions
-* Errors from 2d multi-pole approximation
+* Errors from 2d multi-pole approximation [2-4 weeks]
   - piggyback on the work Martin started
   - figure out worst cases
-* Continue study of the effect of field gradients
+* Continue study of the effect of field gradients[1-2 weeks]
   - effect on frequency extraction
   - extract information about gradient
+
+## Potential Studies
+
+* Simulation of trolley perturbations
+  - map field induced on trolley
+  - apply gradients to simulated FIDs
+  - extract error
+* Time dependent field changes
+  - model small changes present at beginning of fill
+  - extract error, muon losses
+* Simulate other field perturbations
+  - SiPMs, other hardware in proper position
+  - extract effect on field
