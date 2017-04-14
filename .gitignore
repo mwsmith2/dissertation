@@ -1,0 +1,7 @@
+# Ignore external binary documents.
+doc/*
+ref/*
+tmp/*
+
+# Ignore for now, maybe add later.
+*.pdf
