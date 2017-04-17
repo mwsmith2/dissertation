@@ -5,3 +5,8 @@ tmp/*
 
 # Ignore for now, maybe add later.
 *.pdf
+
+# Tex files specifically
+*.aux
+*.log
+*.toc
