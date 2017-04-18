@@ -1,11 +1,18 @@
 \documentclass[11pt, proquest] {uwthesis} [2017/04/14]
 
+\usepackage{color}
+\usepackage{xspace}
+
 \begin{document}
+
+\newcommand{\todo}[1]{\textbf{\color{red}{TODO: #1}}}
+\newcommand{\tsm}{The Standard Model\xspace}
+\newcommand{\tsmopp}{The Standard Model of particle physics\xspace}
+\newcommand{\uw}{The University of Washington\xspace}
 
 \setcounter{tocdepth}{1}  % Print the chapter and sections to the toc
 
 \prelimpages
- 
 
 \Title{Developing the Precision Magnetic Field \\
 for the E989 g-2 Experiment}
@@ -18,7 +25,7 @@ for the E989 g-2 Experiment}
 \Signature{Steven Sharpe}
 \Signature{Blayne Heckel}
 \Signature{Boris Blinov}
-
+\Signature{Hariharan Narayanan}
 
 % \copyrightpage
 
@@ -26,7 +33,7 @@ for the E989 g-2 Experiment}
 
 \setcounter{page}{-1}
 \abstract{%
-About pNMR signal anlysis and shimming the g-2 magnetic field.
+The Muon g-2 is a historically and contemporarily important probe into \tsm and its proposed extensions.  The Fermilab Muon g-2 experiment aims to increase the precision over previous experiments and continue pushing the envelope.  One undeniably important aspect of the experiment is magnetic field measurement precision and overall uniformity in the muon storage region.  This thesis details the methods employed to achieve magnetic field goals and results of the effort.
 }
 
 
@@ -37,7 +44,7 @@ About pNMR signal anlysis and shimming the g-2 magnetic field.
 
 \acknowledgments{% \vskip2pc
   % {\narrower\noindent
-  My family, friends, and professors.
+  My family, friends, and professors. \todo{extend this}
   % \par}
 }
 
