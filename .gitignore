@@ -1,7 +1,8 @@
 # Ignore external binary documents.
 doc/*
-ref/*
 tmp/*
+gm2-figures
+ref
 
 # Ignore for now, maybe add later.
 *.pdf
