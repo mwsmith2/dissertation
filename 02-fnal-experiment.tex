@@ -1,6 +1,34 @@
 % Chapter details the methods and hardware used to create
 % and measure the g-2 Magnetic Field.
-\chapter {The Muon \gmtwo Experiment, E989}
+\chapter {E989: The Muon \gmtwo Experiment}
+
+\section{Muon Production}
+
+The stage in an experiment that measures the property of muons stored in a magnetic cyclotron ring is of course producing muons.  The beamline facilities and expertise at Fermilab compounds years of experience working with protons, so that is the starting point in explaining muon production for \gmtwo.  The full chain to muon production goes from protons to pions to muons.  Pions are produced when a beam of \gev{8} protons collides with a nickel target.  The collision produces $\mathcal{O}(10^6)$ pions which continue downstream where three things happen: the pions are filtered to select a more refined momentum spread, $0.005\approx\delta p / p$ \todo{check number}, multiple batches are bunched together to boost intensity, and the pions undergo in-flight weak decay into muons.
+
+\todo{add image of beamline}
+
+The experiment has another requirement to impose on the muon beam; the beam must have a net spin polarization.  The experiment strives to measure precession of the spin vector afer all, and with an incoherent source of muons that would be impossible.  Fortunately, the parity violation of weak interactions provides exactly that essentially for free.  The forward decay muons that match the momentum expectation of the beamline are around 95\% polarized \todo{check the validity of this}.  The bunch of muons produced in the beamline is refered to as a "fill", and these fills will arrive at the storage ring at a rate of $12\;Hz$.
+
+\todo{add image of pion decay}
+
+\section{Muon Storage}
+
+Storing muons is not as easy as simply steering the muon fills up to the ring.  The muons are stored in a strong vertical magnetic field with fringe effects reaching meters away from the storage region.  The natural path of muons through the fringe field is a non-linear tunnel which is not simple predict or manufacture in the steel storage ring.  The solution for simpler injection is to create a volume of magnetic field to cancel the storage and fringe fields; the hardware is called the inflector.  The inflector is a cleverly designed double-truncated cosine magnet which is able to achieve a strong, nearly uniform vertical field over a small volume, and contain much of the flux from leaking and perturbing surrounding fields.  The flux capture was later improved by adding a superconducting shield to the outside \todo{fact check}.  The inflector was designed to be adjustable over small angles which allowed the apparatus to optimize the nearly straight injection of muons.
+
+\todo{add image of inflector + plot of trajector or b-field}
+
+The second problem with injecting muons comes from orbital mismatch of muon trajectory.  The muons are injected into a nearly uniform vertical magnetic field which forces charged particles to take nearly circular trajectories in the field volume.  The problem arises when the muons complete their orbit around the storage ring and return to the same point they started at, the downstream end of the inflector.  Muon injection necessitates a fast kicker to impart a momentum shift on the all the muons in the fill.  
+
+Optimizing the design of the \gmtwo fast magnetic kicker was no trivial task.  The kicker ideally would produce a moderate magnetic field around $275\;Guass$ with very sharp edges, $\mathcal{O}(10\;ns)$. The reality is messier as it usually is, but the production of a new Blumlein \todo{add ref} design will deliver a kicker that works to store muons.
+
+\todo{add image of kicker field}
+
+The muons are now inside the storage volume and on 
+
+\section{Precession Measurement}
+
+\section{The Magnetic Field}
 
 The magnetic field is of critical importance to the muon \gmtwo experiment. To zero order, the experiment would not store muons with a magnetic field.  The magnetic field of \bmagic puts the muons of \rmagic into uniform circular motion at a radius of \pmagic.  The prescribed parameters lock a fraction of the injected muons in cyclotron motion until they decay.  To first order the value of the magnetic field directly affects the rate of spin precession, eqn. \ref{eqn:spin-precession}, and cyclotron frequency, eqn. \ref{eqn:cyclotron-freq}.  In this light, the average magnetic field must be well measured, since it folds into the final determination of \wa.  To second order the magnetic field couples to the symmetries in the muon beam influencing the beam dynamics of the stored muons.  These deviations in beam dynamics can cause the muons to experience a field that does not represent the average field and therefore alter the determination of the expectation value for \wa.
 
@@ -14,7 +42,7 @@ The magnetic field is of critical importance to the muon \gmtwo experiment. To z
 \label{eqn:cyclotron-freq}
 \end{equation}
 
-\section{The Storage Ring}
+\subsection{The Storage Ring}
 
 The magnetic storage ring is the core hardware for creating the magnetic storage field.  The major components include three superconducting NbTi/Cu coils, a dozen "C"-shaped flux return yokes in the form of steel blocks and plates, 72 high purity steel poles, and nearly 1000 tunable shims.  The full assembly is quite impressive standing around three meter tall, fifteen meters wide, and weighing in at around 200 tons.  The storage ring was designed with the objective of creating a magnetic field of \bmagic that is uniform as possible over a toroidal muon storage volume with a major radius of \rmagic and a minor radius of $4.5\;mm$.
 
@@ -27,15 +55,17 @@ The magnetic storage ring is the core hardware for creating the magnetic storage
 The storage ring in its entirety laces all the components listed above together and more.  The largest division is the yoke section
 \todo{finish ring assembly description + figures}
 
-The field itself is produced by the superconducting coils.  A current of $5176\;A$ is driven through all three coils.  Two of the coils reside at a smaller radius than \rmagic and one of the coils resides at a larger radius (see figure \ref{fig:magnet-cross-section}).  The outer coil packs twice as much superconductor as the two inner coils to give balance.  The inner and outer coils run with opposing currents to create a mostly vertical B-field in the space between them.  By design, the return yoke pulls in magnetic flux to increase the strength of field.  The precision machined, high purity pole pieces provide an extremely flat surface to hone the field uniformity.  To first approximation the magnetic field uniformity depends on the uniformity of the gap between the two pole surfaces.  With some care to recreate the  conditions of the magnet assembly at the end of E821, the storage ring was assembled at Fermilab and powered to a field with variations of around $1400\; ppm$ as show in figure \ref{fig:initial-field}.
+The field itself is produced by the superconducting coils.  A current of $5176\;A$ is driven through all three coils.  Two of the coils reside at a smaller radius than \rmagic and one of the coils resides at a larger radius (see figure \ref{fig:magnet-cross-section}).  The outer coil packs twice as much superconductor as the two inner coils to give balance.  The inner and outer coils run with opposing currents to create a mostly vertical B-field in the space between them.  By design, the return yoke pulls in magnetic flux to increase the strength of field.  The precision machined, high purity pole pieces provide an extremely flat surface to hone the field uniformity.  To first approximation the magnetic field uniformity depends on the uniformity of the gap between the two pole surfaces.  With some care to recreate the  conditions of the magnet assembly at the end of E821, the storage ring was assembled at Fermilab and powered to a field with variations of around \ppm{1400} as show in figure \ref{fig:initial-field}.
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{fig/initial-dipole-field.png}
-\caption{The initial dipole(mean) magnetic field when the storage field was first fully measured at Fermilab.  The peak-to-peak variation was around $1400\;ppm$.  The umbrella-like sub-structure occurs every 10 degrees and corresponds to the gaps between the pole pieces.}
+\caption{The initial dipole(mean) magnetic field when the storage field was first fully measured at Fermilab.  The peak-to-peak variation was around \ppm{1400}.  The umbrella-like sub-structure occurs every 10 degrees and corresponds to the gaps between the pole pieces.}
 \label{fig:initial-field}
 \end{figure}
 
-\section{The Field Expansion}
+The last essential piece of the magnetic storage
+
+\subsection{The Field Expansion}
 
 The ideal magnetic field for the experiment is perfectly vertical at \bmagic with no other components.  However, Maxwell and his renowned equations inform the researchers that this ideal field is not possible within a finite space.  Reality requires that the researchers consider the quality of the central field and the effects of perturbations to the field.  First, let's define the expansion to develop a common vocabulary for speaking about field perturbations, eqn. \ref{eqn:field-expansion}.
 
