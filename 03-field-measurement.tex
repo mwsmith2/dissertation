@@ -34,11 +34,56 @@ The pNMR probes signal requires a parallel system of controlled electronics equi
 
 \subsection{Absolute Calibration}
 
-The frequencies measured by the pNMR probe system in the ring allows the construction of a 3D map of proton frequencies in the muon storage volume.  The frequency is directly relatable to the field, but not an absolute value.  To get back to an absolute frequency of proton precession in the field and turn that value into the final field value, there must be a correction.  The size of that correction is produced by the absoluate calibration device.  Then, the value is transferred 
+The frequencies measured by the pNMR probe systems in the ring are used to construct a 3D map of proton frequencies in the muon storage volume.  The frequency is a direct proxy for the field, but not an absolute value.  To bring the measurement back to an absolute proton precession precession, the absolute field value, there must be a correction applied.  The size of that correction is determined by the absoluate calibration system.
+
+Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 probe, a newly design water probe from UMass, and a $\mathrm{^3He}$ probe with very different systematics. The probes are designed to minimized systematic effects that shift the free proton frequency.  
+
+\todo{add free proton + systematic effects eqn}
+
+The model for free proton frequency includes corrections for geometric effects of the probe structure.  These geometric effects couple into the overall capacitance of the probe which can shift the resonance frequency.  They are minimized by using shapes with known ideal factors, cylinders and spheres.  The overall probe design must also minimize the magnetic perturbations from ferromagnetic and paramagnetic materials.  As such each component is vetted independently before becoming a part of the absolute probe.  The measurement also needs to control the environment of the probe and make a temperature correction.
+
+\todo{ask d-flay and midhat if this is general or should split into he3/water probes}
+
+The relative relationship between the absolute probe proton frequency and the pNMR probe frequency is done the so-called plunging probe system.  The plunging probes are brought into the same volume of field measured and corrected by the absolute probe to establish a transfer calibration from the absolute probe, which does not enter the storage ring, to a system which has a ring entry point.  The plunging probes are inserted into an azimuthal slice of the storage volume, plunged if you will.  The plunging probe is moved by a motor stage to be as near to each trolley probe as possible.  In this way, the free proton resonance from the absolute probe can propagate to the pNMR monitor probes used to measure the \gmtwo magnetic field.
 
 \section{NMR Analysis}
+
+The signal generated in the pNMR probes contains frequency information that represents the effective field seen by the probe's protonated \note{might be wrong word} volume.  A fraction of the polarized protons rotate into orthogonal plane, then precess at a frequency proportional to the dominant field that had previously polarized the particles.  The average frequency of the the precessing protons immediately after the $\pi/2$ pulse is target of analysis.  That value represents the magnetic field in the volume.  The digitize precession signal recorded as the protons slowly rotate back into the original polarization and decohere is called the Free Induction Decay (FID).
+
+\todo{insert equation for macro frequency of protons}
+
 \subsection{Free Induction Decays}
-\todo{section on Bloch equations}
+
+The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that couples magnetization and field in different dimensions.
+
+\begin{equation}
+\label{eqn:bloch-x}
+\frac{dM_x(t)}{dt} = 
+\gamma (\mathbf{M}(t) \times \mathbf{B}(t))_x - \frac{M_x(t)}{T_2}
+\end{equation}
+
+\begin{equation}
+\label{eqn:bloch-y}
+\frac{dM_y(t)}{dt} = 
+\gamma (\mathbf{M}(t)\times \mathbf{B}(t))_y - \frac{M_y(t)}{T_2}
+\end{equation}
+
+\begin{equation}
+\label{eqn:bloch-z}
+\frac{dM_z(t)}{dt} = 
+\gamma (\mathbf{M}(t) \times \mathbf{B}(t))_z - \frac{M_z(t) - M_0}{T_2}
+\end{equation}
+
+The ideal FID waveform from a pure field value and perfect $\pi/2$ pulse can be solved exactly from the differential equations.  The resulting equation, \ref{eqn:ideal-fid}, exhibits the primary characteristics of an FID, a sinusoid term representing the proton precession and an exponential decay envelope representing the $T_2$ relaxation.  Figure \ref{fig:ideal-fid} exhibits the waveform of an ideal FID.
+
+\begin{equation}
+\label{eqn:ideal-fid}
+FID(t) = e^{-t/T_2} \sin(\omega t - \phi_0)
+\end{equation}
+
+\todo{insert image}
+
+In a more realistic, circumstance
 
 \subsection{Frequency Extraction Methods}
 
