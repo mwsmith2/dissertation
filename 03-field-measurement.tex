@@ -1,10 +1,32 @@
 \chapter{Field Measurement}
 
-\section{Measurement Apparatus}
+\section{Measurement Technique}
 
-The \gmtwo experiment has stringent requirements on the measurement uncertainty of the magnetic field value.  
+The \gmtwo experiment has stringent requirements on the measurement uncertainty of the magnetic field value.  Stringent enough to aim for an entire error budget on the field uncertainty which is systematic.  Each individual measurement needs to be precise enough that the statistical error of the combined field value is negligible.  This puts an uncertainty limit of around \ppb{10}.  The field measurement technique was custom pulsed proton nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  The probes were designed to have a very high Q-value resonance at the expected resonance frequency of \SI{61.79}{\MHz}.
 
+\subsection{Proton NMR Signal}
+
+The essence of a pNMR measurement is frequency measurement of another type of precession, proton precession.  The source of the pNMR signal is a volume of material with a population of quasi-free protons.  The active volume is polarized in the direction of a large field, in the case of \gmtwo a \bmagic field in the vertical direction.  A secondary field rotating in the orthogonal plane at a frequency approximately equal to the expected precession frequency of B-magic.  The intended effect of the secondary field is intuitively understood in the rotating reference frame.  In the rotating frame the vertically (z-direction) polarized protons experience an orthogonal (y-direction) field which rotates them into the orthogonal plane (x-y plane).  In the lab frame the polarized protons continue to precess at a rate proportional to the strong vertical field.  Precession in the orthogonal plane produces an induction signal in a nearby pickup coil which is subsequently digitized and analyzed.  A result of robust frequency analysis on the pNMR signal serves as high precision field proxy for \gmtwo experiment.
+
+\subsection{Probe Design}
+\todo{finish on hw design}
+The core design of the pNMR probes was based on the design from the previous experiment. Each probe consists of two pickup coils, a teflon backbone, a tunable capacitor, an alimunimum shell, and a \SI{5}{\meter} BNC cable.  One coil is used to inject the $\pi/2$ pulse which rotates the protons into the orthogonal plane, and the other is the induction coil used to produce the pNMR precession signal.  The capacitor allows the probe resonance to be tuned finely.  The aluminum shell allots some capacitance to the probe and shields against external effects.
+
+\todo{add schematic of pNMR probes}
+
+The field team at \uw iterated on the probe design making several improvements.  One of the improvements is 
+
+\subsection{\todo{Electronics Design}}
+
+\subsection{\todo{Absolute Calibration}}
 
 \section{NMR Analysis}
 \subsection{Free Induction Decays}
+\todo{section on Bloch equations}
+
+\subsection{Frequency Extraction Methods}
+
+\subsection{FID Simulations}
+
+\subsection{FID Measurements}
 
