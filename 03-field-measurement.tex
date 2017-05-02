@@ -57,37 +57,102 @@ The signal generated in the pNMR probes contains frequency information that repr
 The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that couples magnetization and field in different dimensions.
 
 \begin{equation}
-\label{eqn:bloch-x}
 \frac{dM_x(t)}{dt} = 
 \gamma (\mathbf{M}(t) \times \mathbf{B}(t))_x - \frac{M_x(t)}{T_2}
+\label{eqn:bloch-x}
 \end{equation}
 
 \begin{equation}
-\label{eqn:bloch-y}
 \frac{dM_y(t)}{dt} = 
 \gamma (\mathbf{M}(t)\times \mathbf{B}(t))_y - \frac{M_y(t)}{T_2}
+\label{eqn:bloch-y}
 \end{equation}
 
 \begin{equation}
-\label{eqn:bloch-z}
 \frac{dM_z(t)}{dt} = 
 \gamma (\mathbf{M}(t) \times \mathbf{B}(t))_z - \frac{M_z(t) - M_0}{T_2}
+\label{eqn:bloch-z}
 \end{equation}
 
 The ideal FID waveform from a pure field value and perfect $\pi/2$ pulse can be solved exactly from the differential equations.  The resulting equation, \ref{eqn:ideal-fid}, exhibits the primary characteristics of an FID, a sinusoid term representing the proton precession and an exponential decay envelope representing the $T_2$ relaxation.  Figure \ref{fig:ideal-fid} exhibits the waveform of an ideal FID.
 
 \begin{equation}
-\label{eqn:ideal-fid}
 FID(t) = e^{-t/T_2} \sin(\omega t - \phi_0)
+\label{eqn:ideal-fid}
 \end{equation}
 
-\todo{insert image}
+\begin{figure}
+\todo{insert ideal FID figure}
+\label{fig:ideal-fid}
+\end{figure}
 
 In a realistic situation, the FID signal is a summation over varying field values, and the signal bears strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing bed for frequency extraction algorithms.
 
 \subsection{Frequency Extraction Methods}
 
-\subsection{FID Simulations}
+As in most data analysis, the first step is cleaning and characterizing the data.  In the case of FIDs, the process involves removing the baseline \note{and possibly trend} and determining the start time and stop time of useful FID signal within the frame of the entire recorded waveform.  The baseline value is calculated using initial segment of the waveform.  The signal range is computed using the maximum amplitude around the signal baseline and applying a threshold on to find the first and last sections of the waveform with an envelope above that threshold.
 
-\subsection{FID Measurements}
+\subsubsection{Zero Crossing}
+The simplest method for determining the FID frequency involves counting zero crossings of the signal.  
+\todo{error analysis}
+
+\subsubsection{Spectral Centroid}
+Another straightforward technique employed to extract the FID frequency relies on the spectral density of the signal. 
+
+\begin{equation}
+FFT(\omega_k) = \sum_{n=0}^{n=N} e^\frac{-i \omega_0}{2\pi k} f(x_n)
+\label{eqn:fid-fft}
+\end{equation}
+
+\begin{equation}
+PSD(\omega_k) = |FFT(\omega_k)|^2
+\label{eqn:fid-psd}
+\end{equation}
+
+In the power spectral density (PSD), the FID frequency manifests as a peak energy.  The frequency is computed as a frequency weighted  sum of bins symmetrically around the peak value.
+
+\begin{equation}
+\omega_{CN} = \sum_{i=i_{max} - N/2}^{i=i_{max} + N/2} PSD(\omega_i)
+\label{eqn:freq-cn}
+\end{equation}
+
+\todo{error analysis}
+
+\subsubsection{Lorentzian Peak}
+Peak fitting routines can improve precision upon the centroid technique.  Peak fitting works well using a Lorentzian Distribution, eqn. \ref{eqn:lorentzian} around the maximum frequency bin.
+
+\begin{equation}
+F(\omega) = \frac{1}{\pi}\frac{\frac{1}{2} \Gamma}{(\omega - \omega_0)^2 + (\frac{1}{2} \Gamma)^2}
+\label{eqn:lorentzian}
+\end{equation}
+
+\subsubsection{Analytical Form Fit}
+The full analytical form of the idea FID PSD peak is trickier to implement
+
+\todo{maybe cut this section}
+
+\subsubsection{Polynomial Phase Fit}
+The most intricate frequency determination technique is involves calculating the complementary phase of the original signal.  Given the knowledge that the original signal is harmonic \note{need to validate this}, the Hilbert Transform (Eqn. \ref{eqn:hilbert}) gives the imaginary phase of a signal.
+
+\begin{equation}
+H(t) = IFFT(-i \mathrm{sgn}(\omega) \cdot FFT(F(t)))
+\label{eqn:hilbert}
+\end{equation}
+
+\begin{equation}
+\phi(t) = \arctan(H(t) / F(t))
+\label{eqn:phase}
+\end{equation}
+
+With the phase as a function of time, the FID frequency manifests as the linear slope of the data.  In fact, the phase information yields frequency as a function of time.  The frequency of interest is the frequency immediately after the $\pi/2$ pulse.
+
+\todo{error analysis}
+
+\subsection{Frequency Extraction Efficacy}
+
+\subsubsection{FID Simulations}
+
+\subsubsection{Gradient FID Simulations}
+
+\subsubsection{FID Measurements}
 
