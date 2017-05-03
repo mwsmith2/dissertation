@@ -119,7 +119,7 @@ In the power spectral density (PSD), the FID frequency manifests as a peak energ
 \todo{error analysis}
 
 \subsubsection{Lorentzian Peak}
-Peak fitting routines can improve precision upon the centroid technique.  Peak fitting works well using a Lorentzian Distribution, eqn. \ref{eqn:lorentzian} around the maximum frequency bin.
+Peak fitting routines can improve precision upon the centroid technique.  Peak fitting works well using a Lorentzian Distribution, Eqn. \ref{eqn:lorentzian} around the maximum frequency bin.
 
 \begin{equation}
 F(\omega) = \frac{1}{\pi}\frac{\frac{1}{2} \Gamma}{(\omega - \omega_0)^2 + (\frac{1}{2} \Gamma)^2}
@@ -150,9 +150,30 @@ With the phase as a function of time, the FID frequency manifests as the linear 
 
 \subsection{Frequency Extraction Efficacy}
 
-\subsubsection{FID Simulations}
+Each FID frequency extraction technique needs to be tested and validated.  A whole slew of data options can be used: ideal functional FIDs, simulated FID, E821 waveforms, E821 probes in a local \uw magnetic.  Each dataset presents a test bed for determining the precision, accuracy and failure modes of each frequency extraction technique.
 
-\subsubsection{Gradient FID Simulations}
+\subsubsection{Ideal FIDs}
+The simplest case, the frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it will not be worth using to analyze the E989 data.
+
+\todo{dig up or redo results}
+
+\subsubsection{Simulated FIDs}
+Integrating the Bloch Equations is a clear path to simulate FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible effects from a deviation of the secondary field frequency from the Larmor frequency.  
+
+\todo{dig up or redo results}
+
+\subsubsection{Simulated Gradient FIDs}
+An expected problem complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which can distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The simulations aim to tests the effects of small gradients on the FID frequency extraction precision and accuracy.
+
+\todo{insert sample gradient FIDs, linear and quadratic}
+
+\todo{dig up or redo}
 
 \subsubsection{FID Measurements}
+A small set of fully digitized waveforms from E821 was also available to cut the FID algorithms' teeth on.  Testing against this dataset had a real different in that the true precession frequency was not known.  
 
+\todo{dig up or redo}
+
+\subsection{FID Frequency Results}
+
+\todo{really depends on results that I insert above}
