@@ -28,12 +28,55 @@ The shimming cart was equipped with four reflective corner cube mirrors which co
 A custom tilt sensor built by \uw was another important tool.  The tilt sensor consisted of a \SI{29}{\cm} by \SI{12}{\cm} aluminum base plate with two mounted electrolytic bubble levels.  It had three spherical feet both top and bottom to define a consistent plane.  The tilt sensors were able to read out at a precision of about \SI{2}{\micro\radian}.  The sensors take more than 30 minutes to fully settle though, so most measurements were made with lower precision to reduce measurement time.
 
 \todo{add calibration images}
+\section{Adjustments}
+
+Though it was clear from the start that there was much work to be done in order to shim the field, the path forward was not as obvious.  After gauging the measurement devices and subsequently the state of the storage field, it was decided that several stages of adjustments were necessary.  The first stage was leveling the ring with respect to gravity.  The second was a full iteration of adjusting the feet on each pole piece.  The third was a survey of whether or not high order multipole adjustments via edge shims were needed.  The fourth was optimization of the field using the built-in shimming kit.  And, the final round of adjustments was thhe implementation of a surface of measured iron segments which really pushed us into new territory from the E821 experiment.
+
+\subsection{Ring Leveling}
+At an intermediate point in the shimming process, it became clear that the plane of the storage ring and the plane defined by gravity were not aligned.  Furthermore measurements indicated that that plane of the ring was different from the plane that had been measured upon construction of the ring.  It would seem that the floor had settled a millimeter or two.  In addition to correcting the ring alignment, the adjustment procedure also afforded an opportunity to see the effect that future floot settling might have on the magnetic field.
+
+The laser data clearly shows the tilt plane of storage ring (see figure \ref{fig:ring-leveling-plan}).  The deviations of the ring plane were about \SI{1}{\milli\meter} from the average value.  The tilt plane was also visible in the radial tilts of the poles around the ring.  An adjustment plan was crafted to fix the height and radial tilts of each yoke.  The plan to to level the ring used only adjustments on the legs of each yoke. With yoke leg adjustments the interface between each yoke remains fixed, so the adjustment plan locked yokes together on the boundaries.  The plan used linear fits of the laser in small angular windows on each side of the yoke boundaries to determine the target height for the inside of the yoke.  The radial tilt measurements were used to calculate differential adjustments between the inner and outer legs of a yoke while of course minding the fixed interface. 
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/ring-leveling-plan.png}
+\caption{The figure}
+\label{fig:ring-leveling-plan}
+\end{figure}
+
+A team of mechanical engineers led by Eric Voirin performed the yoke adjustments.  Adjustments were made incrementally in steps of approximately \SI{100}{\micro\meter}, the reason being an effort to minimize differential stress between the yokes.  During the process, the shimming laser tracker was replaced with the alignment team Hamar laser.  Progress was measured periodically using a floating corner cube placed at three specific pole positions around the ring.  The measurements with a sine fit overlay are depicted in figure \ref{fig:ring-leveling-steps}.  They give a strong sense of the success of the procedure.  The whole process took two days to affect the initial plan and one more day of minor adjustements.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/ring-leveling-steps.png}
+\caption{The figure}
+\label{fig:ring-leveling-steps}
+\end{figure}
+
+The ring leveling was very successful.  Yoke leg adjustments managed to remove the tilt plane from the ring and help flatten the radial tilt of the poles (\ref{fig:ring-leveling-final}.  After ring leveling the ring plane was flat to about \SI{300}{\micro\meter}.  While flattening the ring simplified general \gmtwo detector alignment and made future adjustments simpler for the field team, one of the most important results was the effect on the field.  In theory, the field should not depend on the ring plane or the relative yoke orientations, but the ring leveling provided an opportunity to symbiotically measure the effect.  Figure \ref{fig:ring-leveling-field-effect} contains a plot of the difference between the azimuthally averaged field before and after leveling.  There is a small change in the average dipole field which is hard to ascribe a cause with certainty (field drift, adjusted hysteresis from moving yokes, etc.).  The higher order symmetries remain essentially unchanged though, and that is the important result.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/ring-leveling-final.png}
+\caption{The figure}
+\label{fig:ring-leveling-final}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/ring-leveling-field-effects.png}
+\label{fig:ring-leveling-field-effects}
+\end{figure}
+
+\todo{spend time piecing together ring leveling images and story}
 
 \subsection{Pole Moves}
 
+\todo{spend time piecing together ring leveling images and story}
+
 \subsection{Edge Shim Study}
 
+\todo{spend time piecing together ring leveling images and story}
+
 \subsection{Shim Optimization}
+
+\todo{spend time piecing together ring leveling images and story}
 
 \subsection{Lamination Audible}
 
