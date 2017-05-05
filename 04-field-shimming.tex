@@ -43,7 +43,7 @@ The laser data clearly shows the tilt plane of storage ring (see figure \ref{fig
 \label{fig:ring-leveling-plan}
 \end{figure}
 
-A team of mechanical engineers led by Eric Voirin performed the yoke adjustments.  Adjustments were made incrementally in steps of approximately \SI{100}{\micro\meter}, the reason being an effort to minimize differential stress between the yokes.  During the process, the shimming laser tracker was replaced with the alignment team Hamar laser.  Progress was measured periodically using a floating corner cube placed at three specific pole positions around the ring.  The measurements with a sine fit overlay are depicted in figure \ref{fig:ring-leveling-steps}.  They give a strong sense of the success of the procedure.  The whole process took two days to affect the initial plan and one more day of minor adjustements.
+A team of mechanical engineers led by Eric Voirin performed the yoke adjustments.  Adjustments were made incrementally in steps of approximately \SI{100}{\micro\meter}, the reason being an effort to minimize differential stress between the yokes.  During the process, the shimming laser tracker was replaced with the alignment team Hamar laser.  Progress was measured periodically using a floating corner cube placed at three specific pole positions around the ring.  The measurements with a sine fit overlay are depicted in figure \ref{fig:ring-leveling-steps}.  They give a strong sense of the success of the procedure.  The whole process took two days to affect the initial plan and one more day of minor adjustments.
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{fig/ring-leveling-steps.png}
@@ -72,10 +72,10 @@ Adjusting the orientation and shape of the pole pieces was the first substantial
 
 Building an accurate global model of the pole surfaces was not a simple task.  We had four possible measurements to use: the laser tracker, the tilt sensor, the capacitec sensors, and the field measurements.  The team elected to ignore field data as it was difficult to decouple the effect of current shim positions, impurities, and perturbations from hardware that broke the azimuthal symmetry.  In the right combination, the sensor data is just enough to build a complete model of the pole surfaces.  Let's build the model from the bottom poles up.
 
-The bottom poles were characterized using a synergistic combination of tilt sensor data and laser measurements.  The shimming cart rode on the bottom poles along the edge shims at the inner radius of the pole \note{reference shimming cart figure}. The height value reported by the laser then directly represented the the inner radius of the bottom pole surface.  From the inner radius of the bottom pole, the outer radius can be extrapolated from tilt sensor measurements.  Each pole was broadly characterized with a radial and azimuthal tilt measurement taken from the center defining a rough plane for the pole.  The pole interfaces were characterized with a set of three tilt measurements near the gap: one on the upstream pole, one straddling both poles, and one on the downstream pole.  The pole step measurement is very sensitive to average elevation changes and rotation mismatches between poles.  The pole model folds the laser height data in with a radial tilt model that smoothly varies across the pole, and then, restricts the pole interfaces with the pole step tilt measurements.  An entire global plan for the bottom pole moves was made from this model, see figure \ref{fig:bottom-pole-adjustment-plan}.
+The bottom poles were characterized using a synergistic combination of tilt sensor data and laser measurements.  The shimming cart rode on the bottom poles along the edge shims at the inner radius of the pole \note{reference shimming cart figure}. The height value reported by the laser then directly represented the the inner radius of the bottom pole surface.  From the inner radius of the bottom pole, the outer radius can be extrapolated from tilt sensor measurements.  Each pole was broadly characterized with a radial and azimuthal tilt measurement taken from the center defining a rough plane for the pole.  The pole interfaces were characterized with a set of three tilt measurements near the gap: one on the upstream pole, one straddling both poles, and one on the downstream pole.  The pole step measurement is very sensitive to average elevation changes and rotation mismatches between poles.  The pole model folds the laser height data in with a radial tilt model that smoothly varies across the pole, and then, restricts the pole interfaces with the pole step tilt measurements.  An entire global plan for the bottom pole moves was made from this model, see figure \ref{fig:pole-moves-bottom-plan}
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{fig/bottom-pole-adjustment-plan}
+\includegraphics[width=0.9\linewidth]{fig/pole-moves-bottom-plan}
 \caption{The figure}
 \label{fig:bottom-pole-adjustment-plan}
 \end{figure}
@@ -96,16 +96,17 @@ Implementing pole adjustments proved to be an involved procedure.  A typical day
 
 \subsubsection{Round Two}
 
-The model was not perfect and nor was the predictability of adjusting pole feet.  The results from the first pass at pole adjustments were good, but a second round of tweaks really completed the picture.
+The model was not perfect and nor was the predictability of adjusting pole feet.  The results from the first pass at pole adjustments were good, but a second round of tweaks really completed the picture.  The primary goal of the second pass at pole adjustments was to elminate large extant deviations and close remaining pole steps in the center of each pole interface to within \SI{0.5}{mil} (\SI{12.5}{\micro\meter}.  Many of the adjustments were done without removal of the poles, since the front pole feet were accessible after untorquing the super bolts and propping the weight of the bottom poles up on a jackstand of sorts.  The jackstand was an adjustable pole foot prototype developed duing the E821 era.  The top poles did not require a jackstand, since gravity assisted displacing the poles from the yoke in that case.  In each specific case, the field team weighed the value of retrying a full pole adjustment against small tweaks on the inner feet.  
+
+\subsubsection{Final Results}
+
+While still making pole adjustments, the field team began to implement shim adjustments, so the entirety of the field improvements show in figure \ref{fig:pole-moves-field-comparison} is not due to the pole moves.  The main improvements from the pole moves is the elminations of sharp spikes in the average field that were caused by large elevation changes in the pole surface due to pole interface mismatches, along with the elimination of the the average normal quadruopole moment by adjusting the radial tilts top and bottom.
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{fig/pole-moves-field-comparison}
 \caption{the figure}
 \label{fig:pole-moves-field-comparison}
 \end{figure}
-
-
-
 
 
 \subsection{Edge Shim Study}
