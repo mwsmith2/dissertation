@@ -97,7 +97,7 @@ Implementing pole adjustments proved to be an involved procedure.  A typical day
 
 \subsubsection{Round Two}
 
-The model was not perfect and nor was the predictability of adjusting pole feet.  The results from the first pass at pole adjustments were good, but a second round of tweaks really completed the picture.  The primary goal of the second pass at pole adjustments was to elminate large extant deviations and close remaining pole steps in the center of each pole interface to within \SI{0.5}{mil} (\SI{12.5}{\micro\meter}.  Many of the adjustments were done without removal of the poles, since the front pole feet were accessible after untorquing the super bolts and propping the weight of the bottom poles up on a jackstand of sorts.  The jackstand was an adjustable pole foot prototype developed duing the E821 era.  The top poles did not require a jackstand, since gravity assisted displacing the poles from the yoke in that case.  In each specific case, the field team weighed the value of retrying a full pole adjustment against small tweaks on the inner feet.  
+The model was not perfect and nor was the predictability of adjusting pole feet.  The results from the first pass at pole adjustments were good, but a second round of tweaks really completed the picture.  The primary goal of the second pass at pole adjustments was to elminate large extant deviations and close remaining pole steps in the center of each pole interface to within \SI{0.5}{mil} (\SI{12.5}{\micro\meter}.  Many of the adjustments were done without removal of the poles, since the front pole feet were accessible after untorquing the super bolts and propping the weight of the bottom poles up on a jackstand of sorts.  The jackstand was an adjustable pole foot prototype developed duing the E821 era.  The top poles did not require a jackstand, since gravity assisted in spacing the poles from the yoke in that case.  In each specific case, the field team weighed the value of retrying a full pole adjustment against small tweaks on the inner feet.
 
 \subsubsection{Final Results}
 
@@ -109,14 +109,55 @@ While still making pole adjustments, the field team began to implement shim adju
 \label{fig:pole-moves-field-comparison}
 \end{figure}
 
-
 \subsection{Edge Shim Study}
 
-\todo{spend time piecing together edge shim images and story}
+The edge shims are the strongest lever available to the field team for controlling multipoles higher than quadrupoles.  However, the edge shims are not easy to adjust.  The full process involves ordering shims that are thicker than needed, calibrating the effects of sanding down the edge shims, determinining the desired thicknesses, sending the edge shims in to be refined, and repeated as many times are needed.  The process is costly and time consuming, and the E989 field team wanted to avoid it.  They needed to determine that the benefits were not necessary though.
+
+\subsubsection{Calibration}
+
+Several prototype steel shims were ordered for calibration and proof of principle testing of edge shim adjustments.  One prototype edge shim of each type (inner lower, outer lower, inner upper, and outer upper) was installed in the place of the current edge shim one different poles around the ring.  The different in thickness was measured and used to calibrate the multipole effects of the edge shims.  The results are shown figure \ref{fig:edge-shim-model}. In addition to E821 style legwork, the E989 team set up some tests using capton as spacer under edge shims in lieu of grinding down shims and some tests using steel shimstock in lieu of implementing thicker edge shims.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/edge-shim-model}
+\caption{The models for edge shims derived from calibration data.  Each type of edge shim induced different higher order multipole effects.  The effect shown is for a \SI{1}{\milli\meter} change. \note{remake if needed}}
+\label{fig:edge-shim-model}
+\end{figure}
+
+\todo{add figure for spacer/shim effects}
+
+\subsubsection{Edgelets}
+
+An idea that arose duing edge shim calibration was to implement edge shims in a more localized form.  The atomic size was chosen to be one degree segments and steel could only be added, but the approach seemed promising.  The model was based on the full edge shim model with edge effects being compartmentalized into one degree segments.  The edgelet shim model went forward to attempt to fix the most aberrant, localized regions of multipoles.  The implementation did not live up to earlier promise shown by the approach though which signifies a need for more model complexity than originally expected. In the end the edglet patching model was abandoned.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/edge-shim-edgelets}
+\caption{The figure shows predicted effects of the edgelet model in green and measured results of implemenation in red.  The model proved to be qualitatively correct, but was in need of more accurate calibration or increased complexity to be precise on the part-per-million level.}
+\label{fig:edge-shim-edgelets}
+\end{figure}
+
+\subsubsection{Implementation}
+
+The final footprint of the edge shims remained nearly identical to the initial footprint of the edge shims.  Additional steel shims of a few mils were added in a few sections, but for the most part no adjustments to the edge shims were deemed necessary.  One of the major drivers for acting with a light touch on edge was promise of optimization using steel lamination modeling.
 
 \subsection{Shim Optimization}
 
-\todo{spend time piecing together shim optimization images and story}
+For the purpose of this section, shim optimization refers to optimizing the easily tunable shimming knobs, the top hats and the wedge shims. The top hats affect solely the average field and the wedge shims have an effect on the dipole and the quadrupole fields making these knobs a natural last stage in shimming the storage magnetic by design.
+
+\subsubsection{Calibration}
+
+The top hats were nailed down fairly early.  The data taken in figure \ref{shim-optimization-top-hat-cal} was actually taken using the Metrolab and not the shimming cart \note{verify this}.  The wedge shim calibration proved more difficult to pin down exactly.  One of the confounding factors came from the constraint that the field must be powered down, the wedge shim adjusted and then the field re-powered to measure the effect.  Field drift on the order of a few ppm was normal, but this made the calibrations looking for changes on the order of 10s of ppm difficult, especially when the range was narrow such as single wedge calibrations.  With these difficulties, it was necessary to calibrate, model, implement and validate the wedge shim a few iterations before the model reached acceptable precision.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/shim-optimization-top-hat-cal}
+\caption{The calibration for the top hat shims.  Between the two days that data was collected a \SI{0.5}{\milli\meter} spacer was placed under one of the top hats.  Normalized by size and adding a factor two for changes that would be done on both top and bottom hats, the calibration comes out to \SI{338}{ppm\per\centi\meter} with an RMS width of \SI{20.74}{\degree}.}
+\label{fig:shim-optimization-top-hat-cal}
+\end{figure}
+
+\todo{add figure for wedge shim calibration}
+
+\subsubsection{Implementation}
+
+\subsubsection{Results}
 
 \subsection{Lamination Audible}
 
