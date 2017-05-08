@@ -155,9 +155,95 @@ The top hats were nailed down fairly early.  The data taken in figure \ref{shim-
 
 \todo{add figure for wedge shim calibration}
 
-\subsubsection{Implementation}
+\subsubsection{Field Model}
+
+The field optimization routine took the problem and cast it into a standard it into a standard linear framework.  If we want the problem to be linear, then each knob needs to have a single dependent variable.  Fortunately, the field shimming problem lends itself to the linear framework nicely if we cast it in terms of multipoles
+
+\[
+\mathbf{y} = \mathbf{M} \mathbf{x} + \mathbf{b}
+\]
+
+where $\mathbf{y}$ is the stack of residual field multipoles, 
+
+\[
+\mathbf{y} = \begin{bmatrix}
+\vec{\delta B}_{dipole}    \\
+\vec{\delta B}_{nquad} \\
+\vec{\delta B}_{squad} \\
+\vec{\delta B}_{nsext} \\ 
+\vec{\delta B}_{ssext} \\
+\vdots
+\end{bmatrix}
+\]
+
+$\mathbf{M}$ contains the shim models, 
+
+\[
+\mathbf{M} = \begin{bmatrix}
+\vec{B}_{top-hat-01,dipole} & \hdots & \vec{B}_{wedge-01,dipole} & \hdots \\
+\vec{B}_{top-hat-01,nquad}  & \hdots & \vec{B}_{wedge-01,nquad} & \hdots \\
+\vec{B}_{top-hat-01,squad}  & \hdots & \vec{B}_{wedge-01,squad} & \hdots \\
+\vec{B}_{top-hat-01,nsext}  & \hdots & \vec{B}_{wedge-01,nsext} & \hdots \\ 
+\vec{B}_{top-hat-01,ssext}  & \hdots & \vec{B}_{wedge-01,ssext} & \ddots \\
+\vdots & \vdots & \vdots & \vdots
+\end{bmatrix}
+\]
+
+$\mathbf{x}$ is the dependent variable, shim position, 
+
+\[
+\mathbf{x} = \begin{bmatrix}
+\vec{x}_{top-hat-01} \\
+\vdots \\
+\vec{x}_{wedge-01} \\
+\vdots \\
+\vec{x}_{edge-01} \\
+\vdots
+\end{bmatrix}
+\]
+
+and b is most recently measured field values.
+
+\[
+\mathbf{b} = \begin{bmatrix}
+\vec{B}_{dipole} \\
+\vec{B}_{nquad}  \\
+\vec{B}_{squad}  \\
+\vec{B}_{nsext}  \\ 
+\vec{B}_{ssext}  \\
+\vdots
+\end{bmatrix}
+\]
+
+Solving the linear optimization problem is really quite simple, so the harder part is defining calibrated shim models and plugging into the linear format.
+
+Each shimming knob underwent calibration measurements, simulations, and had a precedent from E821.  The top hat calibration was used to create a gaussian model of the field effect with
+
+\todo{insert table of model parameters}
+
+The model was run through a linear least squares optimization scheme.  Each knob was restricted to be within a finite range, and each multipole receieved a weight used to tune the optimization.  The current setting of each shim had to be known beforehand also, and these were measured by hand.  The resulting model was useful in deciding the necessity of adjusting edge shims (figure \ref{fig:field-model-edge-adjustments}) and iterating on the easily tunable shims to optimize the storage field (figure \ref{fig:field-model-example-plan}).
+
+\begin{figure}
+\label{fig:field-model-edge-adjustments}
+%\includegraphics[width=0.9\linewidth]{fig/field-model-edge-adjustments}
+\caption{\todo{generate this}}
+\end{figure}
+
+\begin{figure}
+\label{fig:field-model-example-plan}
+\includegraphics[width=0.9\linewidth]{fig/field-model-example-plan}
+\caption{An example of one of the later rounds of shim adjustments.  The wedge calibration had been tuned in properly, and as one can see, the optimization predicted strong improvements in the dipole uniformity with the standard deviation going from \SI{90}{ppm} to \SI{40}{ppm} and the normal quadrupole central value and uniformity improving to \SI{-0.3}{ppm} and \SI{7.6}{ppm} respectively. \todo{check these results}}
+\end{figure}
 
 \subsubsection{Results}
+
+The end result of lots of hardwork from the field team was impressive.  The average field uniformity had gone from a standard deviation of \SI{1000}{ppm} \note{this is a guess, calculate actual} to \SI{40}{ppm}.  Similarly most of the higher order multipoles had been shrunk to values below \SI{1}{ppm}.  At the end of optimizing the field using the built-in shimming knobs, the field state was similar to that of E821.  Depending on which year and when you looked at the field data, the E989 looked better in some respects, but not enough.
+
+\begin{figure}
+\label{fig:field-model-results}
+\includegraphics[width=0.9\linewidth]{fig/field-model-results}
+\caption{The final rough shimming dipole field result for E989 in red, compare with the PRD field standard deviation of \SI{30}{ppm}.  The horizontal bands indicated \{SI}{\pm 25}{ppm} around the central value which was target for E989.  And, below the azimuthally average multipole content of the field.  The results are on par with the running field from E821.}
+\end{figure}
 
 \subsection{Lamination Audible}
 
