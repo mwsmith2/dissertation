@@ -242,11 +242,77 @@ The end result of lots of hardwork from the field team was impressive.  The aver
 \begin{figure}
 \label{fig:field-model-results}
 \includegraphics[width=0.9\linewidth]{fig/field-model-results}
-\caption{The final rough shimming dipole field result for E989 in red, compare with the PRD field standard deviation of \SI{30}{ppm}.  The horizontal bands indicated \{SI}{\pm 25}{ppm} around the central value which was target for E989.  And, below the azimuthally average multipole content of the field.  The results are on par with the running field from E821.}
+\caption{The final rough shimming dipole field result for E989 in red, compare with the PRD field standard deviation of \SI{30}{ppm}.  The horizontal bands indicated \SI{\pm 25}{ppm} around the central value which was target for E989.  And, below the azimuthally average multipole content of the field.  The results are on par with the running field from E821.}
 \end{figure}
 
-\subsection{Lamination Audible}
+\subsection{Laminations}
 
-\todo{spend time piecing together lamination images and story}
+The design flexibility of the storage magnet fell short of the uniformity goals of E989, so the field team had to expand the shimming infrastructure.  The next stage of shimming alterations placed thin, \SIrange{25}{50}{\micro\meter}, strips of iron onto the pole surfaces.  In all over 8,000 strips of iron were placed to adjust the field uniformity to an unprecedented level.  The process was arduous and involved a large cast of characters to come to fruition.  8 high school students, 2 undergrad, 4 graduate students, 2 post-docs, 1 high school teacher, 1 professor, 2 research scientists, 2 technical engineers, and one project manager lent their efforts to make the lamination procedure successful \note{confirm numbers with others}.
 
-\section{Results}
+\subsubsection{Model}
+
+David Kawall, a Professor at UMass Amherst, concieved the model for optimization using iron laminations.  The model treated the metal strips as thin, fully magnetized iron dipoles with several orders of magnetic images appearing inside the pole piece.  The model split each pole into 41 azimuthal sections and 3 radial sections to give a lever on both higher order multipoles and variations of the field local in azimuth.  Another concern about strong gradients from the large lamination edges being a detriment to the FID signal in the fixed probe system was alleviated by designing an azimuthal grated pattern denoted as a "picket fence" region.  The final design was akin to the simple diagram in figure \ref{fig:laminations-simple-design}.
+
+\begin{figure}
+\label{fig:laminations-simple-design}
+\includegraphics[width=0.9\linewidth]{fig/laminations-simple-design}
+\caption{A simplified version of the lamination patterns laid down on pole pieces.  The real laminations had 41 azimuthal regions and two picket fences per pole piece.}
+\end{figure}
+
+\subsubsection{Calibration}
+
+The lamination model had a few parameters that were intentionally undetermined.  The parameters could be characterized by calibrating with pNMR measurements.  Cutting a strip from the iron shimstock was the first step.  The strips were typically the full width of the sheet, 12", and a few \si{\centi\meter} wide.  The dimensions were well all measured and the sample was massed.  Once the sample had been physically characterized, it was taped to a G10 sheet and affixed to a pole surface.  After the sample was stabilized the shimming platform ran over the sample while measuring the field perturbations with its pNMR probes as shown in figure \ref{fig:laminations-calibration}.  The result was compared to predictions made by the foil model with adjustments allowed for the magnetic saturation and order of image dipoles to improve the model.  The calibration process was performed for many batches of shimstock to ensure uniformity.
+
+\begin{figure}
+\label{fig:laminations-calibration}
+\includegraphics[width=0.9\linewidth]{fig/laminations-calibration}
+\caption{The calibration results with the raw measurements before adding the calibration strip in red and after in blue.  The difference is compared to the model prediction in the lower plot which shows excellent agreement.  All values are field perturbation at the location of the central pNMR probe in the shimming cart.}
+\end{figure}
+
+\subsubsection{Implementation}
+
+The procedure between modeling the laminations, and fastening them onto the pole surface was not so simple.  First, some of the high spikes in the field were lowered with the wedge shims, because the laminations could only add to the current field value.  Then, outputs from the lamination simulation were examined to create a target distribution of foils to fabricate with a laser cutter.  The individual foils and picket fences needed to be cleaned, massed, sorted and drafted into the lamination plan.  Each lamination board, made from g10 plastic, was cut, outfitted with the proper laminations and picket fences, and affixed to the pole pieces using epoxy.
+
+\todo{paragraph on wedge adjustments to lower field}
+
+Foil production was a multi-stage process.  The initial set of foils were cut by hand using a paper trimmer at FNAL.  The process was slow and inaccurate in producing the desired foil masses.  At the University of Washington, a laser cutting machine accelerated process by printing hundreds of strips per hour.  The patterns printed by the laser cutter were designed in Mathematica by Martin Fertl to produce a distribution that largely overlapped with the foil distribution needed to appease the lamination optimization.  The laser cutter was used once again to cut the picket fence designs.  
+
+\note{maybe add examples of the templates used in the laser cutter}
+
+The laser cut foils were then shipped onward to the next stage of lamination production.  At FNAL, the foils were cleaned in alcohol to removed as much plastic residue from the laser cutting process.  During laser cutting the shimstock was lain flat on a substrate of plastic and thick paper of which the laser melted and spattered some onto the metal.  The cleaning was important, because the most important aspect of the strips was the total mass of the strip and residue would disturb the mass measurement.  After cleaning each strip was massed to the nearest \SI{0.1}{\milli\gram} and manually histogrammed into a set of cups.
+
+\note{maybe add image of foil cups}
+
+The next stage involved actually placing the foils onto G10 laminations shaped like pole pieces.  The foils were inventoried using a shared spreadsheet, and another team of workers tracked the inventory matching the prescriptions for each individual pole lamination.  When a full prescription was available, the strips were affixed to the lamination using very strong and thin double sided tape (3M-9485PC).  The finished pieces were then stored until completed tops and bottoms were paired and the relevant area of the ring was ready for installation.
+
+The last stage of the lamination process was installation onto the pole surface.  Testing found that double sided tape was insufficient to affix the laminations stably onto the pole surfaces, so stycast epoxy was employed instead.  The epoxy was mixed in a controlled area, applied generously to the laminations. Then, the laminations were azimuthally aligned with the ring clocking.  And finally a makeshift rig was assembled to keep both top and bottom laminations under even pressure while the epoxy cured.  Figure \ref{fig:laminations-epoxy-rig} depicts the final stage in progress and post completion.
+
+\begin{figure}
+\label{fig:laminations-epoxy-rig}
+\includegraphics[width=0.9\linewidth]{fig/laminations-epoxy-rig}
+\caption{The left image shows the full rig used to apply pressure and stabilize the laminations while the epoxy cured over \SIrange{4}{6}{\hour}.  The right image shows the finalized laminations affixed to the pole surfaces.}
+\end{figure}
+
+\subsubsection{Results}
+
+The results from the laminations really speak for themselves.  In figure \ref{fig:laminations-yoke-e-dipole}, the improvement in the Yoke E region is clear compared to the other regions in the current iteration, and the E821 PRD field.  A similar improvement is seen in figure \ref{fig:laminations-yoke-e-multipoles} which stacks the multipoles weighted by their E821 beam presence.  The effect of the laminations is quite impressive once again.
+
+\begin{figure}
+\label{fig:laminations-yoke-e-dipole}
+\includegraphics[width=0.9\linewidth]{fig/laminations-yoke-e-dipole}
+\caption{The E989 dipole field after installing laminations over part of the ring is show in red, and the E821 PRD dipole field is shown in blue for reference.  The azimuthally localized improvement from the laminations is substantial.}
+\end{figure}
+
+\begin{figure}
+\label{fig:laminations-yoke-e-multipoles}
+\includegraphics[width=0.9\linewidth]{fig/laminations-yoke-e-multipoles}
+\caption{The E989 field multipoles after installing laminations over part of the ring are weighted by their E821 beam contributions and stacked as a proxy for the total error contribution from higher order multipoles in each azimuthal section of the ring.}
+\end{figure}
+
+\section{Final Results}
+
+\begin{figure}
+\label{fig:laminations-dip-final-result}
+\includegraphics[width=0.9\linewidth]{fig/laminations-dip-final-result}
+\caption{The final rough shimming result for E989 in red compared with the PRD field plot for E821.  The horizontal bands indicate \SI{\pm 25}{ppm} around the central value which was target for E989.  The result field beat the target by a factor of two and E821 field results by a factor of three \note{check values}.}
+\end{figure}
