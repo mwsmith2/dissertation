@@ -293,7 +293,7 @@ The last stage of the lamination process was installation onto the pole surface.
 \caption{The left image shows the full rig used to apply pressure and stabilize the laminations while the epoxy cured over \SIrange{4}{6}{\hour}.  The right image shows the finalized laminations affixed to the pole surfaces.}
 \end{figure}
 
-\subsubsection{Results}
+\subsubsection{Effects}
 
 The results from the laminations really speak for themselves.  In figure \ref{fig:laminations-yoke-e-dipole}, the improvement in the Yoke E region is clear compared to the other regions in the current iteration, and the E821 PRD field.  A similar improvement is seen in figure \ref{fig:laminations-yoke-e-multipoles} which stacks the multipoles weighted by their E821 beam presence.  The effect of the laminations is quite impressive once again.
 
@@ -309,10 +309,40 @@ The results from the laminations really speak for themselves.  In figure \ref{fi
 \caption{The E989 field multipoles after installing laminations over part of the ring are weighted by their E821 beam contributions and stacked as a proxy for the total error contribution from higher order multipoles in each azimuthal section of the ring.}
 \end{figure}
 
-\section{Final Results}
+\section{Results}
+
+The field team started the shimming journey with the goal of a two-fold improvement over the E821.  In the dipole field, that target is a peak-to-peak variation of \SI{50}{ppm}. And in the field multipoles, that target is an azimuthal average under \SI{1}{ppm} \note{probably revise for rough shimming phase}.
+
+\subsection{Design Shimming}
+
+The first stage of progress comes from the set of built-in shimming knobs.  The average field is shown in figure \ref{fig:results-shims-dipole-final} as a comparison with the E821 PRD dipole field.  The field at this point was not a large improvment over the efforts of the E821 team.  The peak-to-peak variation after this stage is \SI{100}{ppm} \note{check}.  The 
 
 \begin{figure}
-\label{fig:laminations-dip-final-result}
-\includegraphics[width=0.9\linewidth]{fig/laminations-dip-final-result}
+\label{fig:results-shims-dipole-final}
+\includegraphics[width=0.9\linewidth]{fig/results-shims-dipole-final}
 \caption{The final rough shimming result for E989 in red compared with the PRD field plot for E821.  The horizontal bands indicate \SI{\pm 25}{ppm} around the central value which was target for E989.  The result field beat the target by a factor of two and E821 field results by a factor of three \note{check values}.}
+\end{figure}
+
+\begin{figure}
+\label{fig:results-shims-multipoles-final}
+\includegraphics[width=0.9\linewidth]{fig/results-shims-multipoles-final}
+\caption{The final rough shimming result for E989 in red compared with the PRD field plot for E821.  The horizontal bands indicate \SI{\pm 25}{ppm} around the central value which was target for E989.  The result field beat the target by a factor of two and E821 field results by a factor of three \note{check values}.}
+\end{figure}
+
+\subsection{Additional Shimming}
+
+The built-in knobs were not effective enough to reach the goals set forth for E989.  To push beyond the design limits of the \gmtwo storage ring, the field team implemented an intricate set of laminations to cover the pole surfaces and shim the field with more local precision in azimuth.  The implementation of the laminations pushed the dipole field uniformity to \SI{30}{ppm}, well below the target range.  The results are depicted in figure \ref{fig:results-laminations-dipole-final}.
+
+\begin{figure}
+\label{fig:results-laminations-dipole-final}
+\includegraphics[width=0.9\linewidth]{fig/results-laminations-dipole-final}
+\caption{The final rough shimming result for E989 in red compared with the PRD field plot for E821.  The horizontal bands indicate \SI{\pm 25}{ppm} around the central value which was target for E989.  The result field beat the target by a factor of two and E821 field results by a factor of three \note{check values}.}
+\end{figure}
+
+The results for higher order field multipoles were similarly impressive.  The azimuthal variation is largely suppressed.  The plot in figure \ref{ig:results-laminations-multipoles-final} shows each multipole weighted by the E821 beam composition for that particular multipole.  A few of the multipoles have means that remain relatively large (a few ppm), but these do not appear in the figure.  The reason for this is that those multipoles, mostly skew sextupole, were supressed in the distribution of muons in E821 and are expected to be similarly suppressed in E989.  The average value can still be adjusted by the active shimming mechanisms, the surface current coils.  The surface current coil system was not commissioned at the time rough shimming ended.
+
+\begin{figure}
+\label{fig:results-laminations-multipoles-final}
+\includegraphics[width=0.9\linewidth]{fig/results-laminations-multipoles-final}
+\caption{The plot shows each multipole weighted by the E821 beam composition for that particular multipole.  A few of the multipoles have mean values that remain relatively large (a few ppm), but these do not appear in the figure.  The reason for this is that those multipoles, mostly skew sextupole, were supressed in the distribution of muons in E821 and are expected to be similarly suppressed in E989.}
 \end{figure}
