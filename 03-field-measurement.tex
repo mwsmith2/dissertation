@@ -153,24 +153,74 @@ With the phase as a function of time, the FID frequency manifests as the linear 
 Each FID frequency extraction technique needs to be tested and validated.  A whole slew of data options can be used: ideal functional FIDs, simulated FID, E821 waveforms, E821 probes in a local \uw magnetic.  Each dataset presents a test bed for determining the precision, accuracy and failure modes of each frequency extraction technique.
 
 \subsubsection{Ideal FIDs}
-The simplest case, the frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it will not be worth using to analyze the E989 data.
+The simplest case, the frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it will not be worth using to analyze the E989 data.  The effectiveness was testing on 10000 FIDs using a seed frequency of 47 kHz, near the expected nominal pNMR frequency of 50 kHz.  
 
-\todo{dig up or redo results}
+\begin{figure}
+    \label{fig:ideal-fid-spectral}
+    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-cn}
+    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-lz}
+    \caption{Centroid Method and Lorentzian Method}
+\end{figure}
+
+\begin{figure}
+    \label{fig:ideal-fid-time-domain}
+    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-ph1}
+    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-sn}
+    \caption{Linear Phase Method and Sinusoid Method}
+\end{figure}
+
+\note{verify results, combine results into single image}
 
 \subsubsection{Simulated FIDs}
-Integrating the Bloch Equations is a clear path to simulate FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible effects from a deviation of the secondary field frequency from the Larmor frequency.  
+Integrating the Bloch Equations is a clear path to simulate FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible effects from a deviation from non-ideal, finite $\pi/2$ pulses frequency from the Larmor frequency.  The simulation uses a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more efficient to simulate at lower frequencies, because the integration step can be much larger.  Additionally, the entire system runs through a lowpass filter at \SI{200}{\kHz}, so all the higher frequency content is culled from the final FID signal.
 
-\todo{dig up or redo results}
+\begin{figure}
+    \label{fig:sim-fid-spectral}
+    \includegraphics[width=0.45\linewidth]{fig/sim-fid-cn}
+    \includegraphics[width=0.45\linewidth]{fig/sim-fid-lz}
+    \caption{Centroid Method and Lorentzian Method}
+\end{figure}
+
+\begin{figure}
+    \label{fig:sim-fid-time-domain}
+    \includegraphics[width=0.45\linewidth]{fig/sim-fid-zc}
+    \includegraphics[width=0.45\linewidth]{fig/sim-fid-ph1}
+    \caption{Linear Phase Method and Sinusoid Method}
+\end{figure}
+
+\todo{summary table}
 
 \subsubsection{Simulated Gradient FIDs}
 An expected problem complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which can distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The simulations aim to tests the effects of small gradients on the FID frequency extraction precision and accuracy.
 
-\todo{insert sample gradient FIDs, linear and quadratic}
+The range of magnetic field gradient over the pNMR probes anticipated in the \gmtwo storage field are on the order of SIrange{10}{100}{ppb} \note{check if ppb or ppm}. A collection of simulated FIDs was created using the Bloch Equation integrator with a range chosen to be \SI{47}{\kHz} \SI{\pm 1000}{ppb}. To implement a gradient, FIDs from the simulation collection were put into a weighted sum in a way that did not change the average frequency just the variation of over the probe.
 
-\todo{dig up or redo}
+\begin{figure}
+\label{fig:sim-gradient-all-fids}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-all-fids}
+\caption{A collection of FID waveforms simulated by integrating the Bloch Equations.  The step size between frequencies was chosen to be \SI{0.1}{ppb}, so that the variation between FIDs was smooth and a sum of waveforms could be used to approximate an integral.}
+\end{figure}
+
+\begin{figure}
+\label{fig:sim-gradient-lin-grad}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-lin-grad-0ppm}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-lin-grad-100ppm}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-lin-grad-200ppm}
+\caption{Example simulation waveforms made using a linear gradient sum over frequencies.  The beat frequencies emplace nearly total nodes onto the waveform envelope.}
+\end{figure}
+
+\begin{figure}
+\label{fig:sim-gradient-quad-grad}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-quad-grad-0ppm}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-quad-grad-100ppm}
+\includegraphics[width=0.9\linewidth]{fig/sim-gradient-quad-grad-200ppm}
+\caption{Example simulation waveforms made using a quadratic gradient sum over frequencies.  The beat frequencies impart softer waists onto the waveform envelope compared to the purely linear gradient.}
+\end{figure}
+
+\todo{redo gradient analysis effects.}
 
 \subsubsection{FID Measurements}
-A small set of fully digitized waveforms from E821 was also available to cut the FID algorithms' teeth on.  Testing against this dataset had a real different in that the true precession frequency was not known.  
+A small set of fully digitized waveforms from E821 was also available to cut the FID algorithms' teeth on.  Testing against this dataset had a real difference in that the true precession frequency was not known.  One can still build distributions to get a sense for the precision and stability of a analysis method.
 
 \todo{dig up or redo}
 
