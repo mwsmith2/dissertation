@@ -1,4 +1,4 @@
-all: outline thesis
+all: thesis
 
 outline:
 	python bin/update_outline.py
