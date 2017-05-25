@@ -1,0 +1,69 @@
+{
+    "expt": [
+        {
+            "year": 1961,
+            "expt": "CERN I",
+            "type": "mu+",
+            "value": 114500000e-11,
+            "error": 220000e-11
+        },
+        {
+            "year": 1968,
+            "expt": "CERN II",
+            "type:": "mu+",
+            "value": 116616000e-11,
+            "error": 31000e-11
+        },
+        {
+            "year": 1975,
+            "expt": "CERN III",
+            "type": "mu+",
+            "value": 116591000e-11,
+            "error": 1100e-11
+        },
+        {
+            "year": 1976,
+            "expt": "CERN III",
+            "type": "mu-",
+            "value": 116593360e-11,
+            "error": 1200e-11
+        },
+        {
+            "year": 1997,
+            "expt": "BNL",
+            "type:": "mu+",
+            "value": 116592510e-11,
+            "error": 1500e-11
+        },
+        {
+            "year": 1998,
+            "expt": "BNL",
+            "type:": "mu+",
+            "value": 116591910e-11,
+            "error": 590e-11
+        },
+        {
+            "year": 1999,
+            "expt": "BNL",
+            "type:": "mu+",
+            "value": 116592020e-11,
+            "error": 150e-11
+        },
+        {
+            "year": 2000,
+            "expt": "BNL",
+            "type:": "mu+",
+            "value": 116592040e-11,
+            "error": 90e-11
+        },
+        {
+            "year": 2001,
+            "expt": "BNL",
+            "type:": "mu-",
+            "value": 116592140e-11,
+            "error": 90e-11
+        }
+    ],
+    "theory": [
+    ]
+}
