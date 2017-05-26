@@ -2,21 +2,68 @@
 % and measure the g-2 Magnetic Field.
 \chapter {E989: The Muon \gmtwo Experiment}
 
+\section{The Big Picture}
+
+The results from the \gmtwo experiment can be reduced to a single expression, eqution \ref{eqn:gm2-results}.
+
+\begin{equation}
+\label{eqn:gm2-results}
+a_\mu = \frac{\omega_a - \tilde{\omega}_p}{\omega_a}
+\end{equation}
+
+That's it.  Just two numbers. Two very precisely measured number.  Reducing the experiment to that takes some explanation though.  Let's start with the equation for the anomalous precession frequency:
+
+\begin{equation}
+\label{eqn:a-mu-precession-0}
+\vec{\omega}_a = -a_\mu \frac{q \vec{B}}{m}.
+\end{equation}
+
+\noindent
+With a little mathematical masseusery, an expression for $a_\mu$ in terms of two frequencies.
+
+\begin{equation}
+\label{eqn:a-mu-precession-1}
+a_\mu = \frac{\omega_a}{\omega_s - \omega_a}
+\end{equation}
+
+\noindent
+Multiplying the rhs through by $\frac{\frac{1}{\tilde{\omega}_p}}{\frac{1}{\tilde{\omega}_p}}$ and one of the ratios turns into only externally measured parameters while the other two become the ratio of the two primary values measured in the muon \gmtwo experiment.
+
+\begin{equation}
+\label{eqn:a-mu-precession-2}
+a_\mu = \frac{\omega_a/\tilde{\omega}_p}{\omega_s/\tilde{\omega}_p - \omega_a/\tilde{\omega}_p} = \frac{R}{\lambda - R}
+\end{equation}
+
+\noindent
+In the previous equation, the parameter $\lambda$ represents the ratio of the Larmor precession frequency of muon to the proton.  Both of which parameters are measured externally.  The Larmor frequency of the muon has been measured in a muonium hyperfine splitting experiment, \todo{find experiment}, and the the proton is measured is an ancilliary measurement of the \gmtwo experiment using the absolute calibration NMR probes.
+
+What then, one might ask, are the bare necessitites to perform the \gmtwo experiment?  Number one is reliable source of polarized muon, the more polarized the better.  Next the there must be a method to store the muons while they precess which is achieved through the \gmtwo storage ring, an enormous ring magnet.  The third necessesity is is a method by which to measure the direction of the muon spin vector over time.  The last requirement is precise knowledge of the magnetic field experienced by the muons as they propogate.  These issues are discussed in more detail in the following sections.
+
+The precision goals for the measurement round out the essential of the experimental.  The overall, final precision goal on $a_\mu$ is \SI{140}{ppb}.  The statistical uncertainty in the error budget is allotted \SI{100}{ppb} and achieved through recording $10^21$ muon events.  The systematics limit on $\omega_a$ is an uncertainty of \SI{70}{ppb}.  And, the systematics limit on $\tilde{\omega}_p$ is allowed an uncertainty \SI{70}{ppb}.  All together, the stringent terms summed in quadrature represent the entire error budget for the muon \gmtwo experiment.  The uncertainty will be an improvement of nearly four-fold over the previous experiment at BNL.
+
 \section{Muon Production}
 
 The stage in an experiment that measures the property of muons stored in a magnetic cyclotron ring is of course producing muons.  The beamline facilities and expertise at Fermilab compounds years of experience working with protons, so that is the starting point in explaining muon production for \gmtwo.  The full chain to muon production goes from protons to pions to muons.  Pions are produced when a beam of \SI{8}{\GeV/c} protons collides with a nickel target.  The collision produces $\mathcal{O}(10^6)$ pions which continue downstream where three things happen: the pions are filtered to select a more refined momentum spread, $0.005\approx\delta p / p$ \todo{check number}, multiple batches are bunched together to boost intensity, and the pions undergo in-flight weak decay into muons.
 
-\todo{add image of beamline}
+\begin{figure}
+\label{fig:muon-production-beamline}
+\includegraphics[width=0.9\linewidth]{fig/muon-production-beamline}
+\caption{The accelerator beamline that produces and delivers muons for \gmtwo. \todo{expand}}
+\end{figure}
 
 The experiment has another requirement to impose on the muon beam; the beam must have a net spin polarization.  The experiment strives to measure precession of the spin vector afer all, and with an incoherent source of muons that would be impossible.  Fortunately, the parity violation of weak interactions provides exactly that essentially for free.  The forward decay muons that match the momentum expectation of the beamline are around 95\% polarized \todo{check the validity of this}.  The bunch of muons produced in the beamline is refered to as a "fill", and these fills will arrive at the storage ring at a rate of \SI{12}{\Hz}.
 
-\todo{add image of pion decay}
+\begin{figure}
+\label{fig:muon-production-pion-decay}
+\includegraphics[width=0.9\linewidth]{fig/muon-production-pion-decay}
+\caption{The pion decays in flight, and via maximal parity violation of the weak interaction produces a polarized beam of muons. \todo{expand}}
+\end{figure}
 
 \section{Muon Storage}
 
 Storing muons is not as easy as simply steering the muon fills up to the ring.  The muons are stored in a strong vertical magnetic field with fringe effects reaching meters away from the storage region.  The natural path of muons through the fringe field is a non-linear tunnel which is not simple predict or manufacture in the steel storage ring.  The solution for simpler injection is to create a volume of magnetic field to cancel the storage and fringe fields; the hardware is called the inflector.  The inflector is a cleverly designed double-truncated cosine magnet which is able to achieve a strong, nearly uniform vertical field over a small volume, and contain much of the flux from leaking and perturbing surrounding fields.  The flux capture was later improved by adding a superconducting shield to the outside \todo{fact check}.  The inflector was designed to be adjustable over small angles which allowed the apparatus to optimize the nearly straight injection of muons.
 
-\todo{add image of inflector + plot of trajector or b-field}
+\todo{add image of inflector + plot of trajectory or b-field}
 
 The second problem with injecting muons comes from orbital mismatch of muon trajectory.  The muons are injected into a nearly uniform vertical magnetic field which forces charged particles to take nearly circular trajectories in the field volume.  The problem arises when the muons complete their orbit around the storage ring and return to the same point they started at, the downstream end of the inflector.  Muon injection necessitates a fast kicker to impart a momentum shift on the all the muons in the fill.  
 
@@ -26,9 +73,55 @@ Optimizing the design of the \gmtwo fast magnetic kicker was no trivial task.  T
 
 The muons are now inside the storage volume and on 
 
-\section{Precession Measurement}
+\section{Spin Precession Measurement}
 
-\section{The Magnetic Field}
+The muons that store stably in the ring until decaying into electrons are essential to the experiment.  These muons come in polarized in the injection direction due to polarized incident muon beam.  While propagating around the storage ring, the muons under standard Larmor precession and spin precession (with some systematic caveats not discussed here).  Eventually the muons decay into electrons and neutrinos as depicted in figure \ref{fig:omega-a-muon-decay-diagrams}.  By good grace of Weak decays, the spin direction is correlated to the energy and direction of the decay electrons.
+
+\begin{figure}
+\label{fig:omega-a-muon-decay-diagrams}
+\includegraphics[width=0.9\linewidth]{fig/omega-a-muon-decay-diagrams}
+\caption{Diagrams depicting the decay, $\mu \rightarrow e \bar{\nu}_e \nu_\mu$, which occurs in the \gmtwo storage ring.}
+\end{figure}
+
+\subsection{Decay Characteristics}
+
+The characteristics of the muon decay spectrum are best understood in the muon's rest frame, then, they can be boosted to the lab frame.  In the muon's rest frame, the muon decays with an energy ranging from 0 to effectively the rest mass of the muon depending on the orientation of the decay neutrinos.  The distribution of decays is well described by the so-called Michel spectrum depicted in figure \ref{fig:omega-a-muon-decay-spectra}.  The figure also depicts the asymmetry of the of decay electrons which is to say the fraction of electrons which decay with a momentum vector in the same direction as that of the muon spin vector.  In the rest frame it can be seen that accumulation of events solely with less than half the total energy or solely with energy greater than half the total possible energy results in a signal correlated with the spin direction.
+
+\begin{figure}
+\label{fig:omega-a-decay-rest-spectra}
+\includegraphics[width=0.9\linewidth]{fig/omega-a-decay-rest-spectra}
+\caption{The plot depicts an unnormalized probability distribution for the number of decay electrons in the rest frame and likewise the fractional asymmetry as a function of the energy where the energy is represented as a fraction of the muon rest mass.}
+\end{figure}
+
+Applying similar logistics to boosted spectrum informs of the way the \gmtwo can function.  The key point is still to choose a domain which has an integral maximizing the spin-momentum correlation for the events.  The exact statistical figure of merit is $N^2A$ for an event counting analysis.  The energy threshold in this case is $0.4\times$\pmagic$ = $ \SI{1.24}{\GeV}.  The connection of muon spin to the decay electron is now established, so the last step in measuring the spin precession requires a technique which measures the energy and the decay time of emitted electons.
+
+\begin{figure}
+\label{fig:omega-a-decay-boosted-spectra}
+\includegraphics[width=0.9\linewidth]{fig/omega-a-decay-boosted-spectra}
+\caption{The plot depicts an unnormalized probability distribution for the number of decay electrons in the boosted lab frame, and similarly the fractional asymmetry as a function of the energy where the energy is represented as a fraction of the magic muon momentum, \pmagic. Alongside the distributions, there is also a plot of $N^2A$ which is the statistical figure of merit for measuring decay events and maximizing the signal from the spin correlation.}
+\end{figure}
+
+\subsection{Electron Calorimetry}
+
+The solution is a suite of calorimeters arranged around the inner radius of the storage ring.  When the muons decay, the electrons always have less energy than the magic momentum, and so must curl inward where they establish a crash course with a calorimeter, at least the higher energy ones anyway. The trajectory of a typical decay electron is show in figure \ref{fig:}
+
+\begin{figure}
+\label{fig:omega-a-decay-electron-trajectory}
+\includegraphics[width=0.9\linewidth]{fig/omega-a-decay-electron-trajectory}
+\caption{A typical decay electron trajectory.  The muon decays into an electron with lower momentum which by necessity takes a path with a smaller radius of curvature.  The electron curls inward into one of 24 calorimeter blocks around the inner radius of the storage ring.}
+\end{figure}
+
+The calorimeters establish a time and energy for each detected electron.  The device consists of an array of $PbF_2$ crystals each with an attached SiPM device.  The incoming electron produces copious \v{C}erenkov photons.  The photons collect at the opposite end of the crystal where they activate SiPM channels.  The subsequent pulse undergoes pulse fitting analysis routine to determine the energy and the time of the electron decay event.  The decay times for electrons with energy above the desired threshold are then histogrammed to produce the so-called "wiggle" plot.  The plot exhibits clear oscillations at \wa which through careful systematic analysis produces a number for the precession frequency.
+
+\todo{maybe add sipm pulse}
+
+\begin{figure}
+\label{fig:omega-a-wiggle-plot}
+\includegraphics[width=0.9\linewidth]{fig/omega-a-wiggle-plot}
+\caption{The histogram shows the number of electron decay events above threshold as a function of time.  The oscillations seen on top of the exponential decay correlate to the spin precession of the muons as they propagate around the storage ring.  The number of high energy decays is enhanced as the spin aligns with the momentum and decreased when the spin anti-aligns with the momentum vector \note{this may be the opposite actually}.}
+\end{figure}
+
+\section{Magnetic Field Measurement}
 
 The magnetic field is of critical importance to the muon \gmtwo experiment. To zero order, the experiment would not store muons with a magnetic field.  The magnetic field of \bmagic puts the muons of \rmagic into uniform circular motion at a radius of \pmagic.  The prescribed parameters lock a fraction of the injected muons in cyclotron motion until they decay.  To first order the value of the magnetic field directly affects the rate of spin precession, eqn. \ref{eqn:spin-precession}, and cyclotron frequency, eqn. \ref{eqn:cyclotron-freq}.  In this light, the average magnetic field must be well measured, since it folds into the final determination of \wa.  To second order the magnetic field couples to the symmetries in the muon beam influencing the beam dynamics of the stored muons.  These deviations in beam dynamics can cause the muons to experience a field that does not represent the average field and therefore alter the determination of the expectation value for \wa.
 
