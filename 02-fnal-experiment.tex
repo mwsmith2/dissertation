@@ -73,7 +73,7 @@ Optimizing the design of the \gmtwo fast magnetic kicker was no trivial task.  T
 
 The muons are now inside the storage volume and on 
 
-\section{Spin Precession Measurement}
+\section{Spin Precession}
 
 The muons that store stably in the ring until decaying into electrons are essential to the experiment.  These muons come in polarized in the injection direction due to polarized incident muon beam.  While propagating around the storage ring, the muons under standard Larmor precession and spin precession (with some systematic caveats not discussed here).  Eventually the muons decay into electrons and neutrinos as depicted in figure \ref{fig:omega-a-muon-decay-diagrams}.  By good grace of Weak decays, the spin direction is correlated to the energy and direction of the decay electrons.
 
@@ -121,7 +121,7 @@ The calorimeters establish a time and energy for each detected electron.  The de
 \caption{The histogram shows the number of electron decay events above threshold as a function of time.  The oscillations seen on top of the exponential decay correlate to the spin precession of the muons as they propagate around the storage ring.  The number of high energy decays is enhanced as the spin aligns with the momentum and decreased when the spin anti-aligns with the momentum vector \note{this may be the opposite actually}.}
 \end{figure}
 
-\section{Magnetic Field Measurement}
+\section{Magnetic Field}
 
 The magnetic field is of critical importance to the muon \gmtwo experiment. To zero order, the experiment would not store muons with a magnetic field.  The magnetic field of \bmagic puts the muons of \rmagic into uniform circular motion at a radius of \pmagic.  The prescribed parameters lock a fraction of the injected muons in cyclotron motion until they decay.  To first order the value of the magnetic field directly affects the rate of spin precession, eqn. \ref{eqn:spin-precession}, and cyclotron frequency, eqn. \ref{eqn:cyclotron-freq}.  In this light, the average magnetic field must be well measured, since it folds into the final determination of \wa.  To second order the magnetic field couples to the symmetries in the muon beam influencing the beam dynamics of the stored muons.  These deviations in beam dynamics can cause the muons to experience a field that does not represent the average field and therefore alter the determination of the expectation value for \wa.
 
@@ -135,12 +135,31 @@ The magnetic field is of critical importance to the muon \gmtwo experiment. To z
 \label{eqn:cyclotron-freq}
 \end{equation}
 
+\subsection{The Field Expansion}
+
+The ideal magnetic field for the experiment is perfectly vertical at \bmagic with no other components.  However, Maxwell and his renowned equations inform the researchers that this ideal field is not possible within a finite space.  Reality requires that the researchers consider the quality of the central field and the effects of perturbations to the field.  First, let's define the expansion to develop a common vocabulary for speaking about field perturbations, eqn. \ref{eqn:field-expansion}.
+
+\begin{equation}
+B_z = B_0 + \sum_{n=1}^{\infty} \rho^n[a_n \sin{\phi} + b_n \cos{\phi}]
+B_r = \sum_{n=1}^{\infty} \rho^n[c_n \sin{\phi} + d_n \cos{\phi}]
+\label{eqn:field-expansion}
+\end{equation}
+
+\noindent
+A visualization of the terms in the multipole expansion is given in figure \ref{fig:field-example-multipoles}.  Each multipole highlights a possible symmetry of the field over the 2D azimuthal slice of the storage region. The main field is characterized in terms of multipoles where the dipole should average to \bmagic and all other terms should be minimized.
+
+\begin{figure}
+\label{fig:field-example-multipoles}
+\includegraphics[width=0.9\linewidth]{fig/field-example-multipoles}
+\caption{The first seven multipoles in the the field expansion.  The first on the left is the dipole term which simply averages each point equally over the domain.  The next two are the normal and skew quadrupole which represent an inner to outer or top to bottom asymmetry in the field respectively.  The next four terms similarly represent symmetries of the field.  They are termed: normal sextupole, skew sextupole, normal octupole, and skew octupole.}
+\end{figure}
+
 \subsection{The Storage Ring}
 
 The magnetic storage ring is the core hardware for creating the magnetic storage field.  The major components include three superconducting NbTi/Cu coils, a dozen "C"-shaped flux return yokes in the form of steel blocks and plates, 72 high purity steel poles, and nearly 1000 tunable shims.  The full assembly is quite impressive standing around three meter tall, fifteen meters wide, and weighing in at around 200 tons.  The storage ring was designed with the objective of creating a magnetic field of \bmagic that is uniform as possible over a toroidal muon storage volume with a major radius of \rmagic and a minor radius of \SI{4.5}{\mm}.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{fig/magnet-cross-section.png}
+\includegraphics[width=0.9\linewidth]{fig/magnet-cross-section}
 \caption{\todo{fill out}}
 \label{fig:magnet-cross-section}
 \end{figure}
@@ -156,22 +175,4 @@ The field itself is produced by the superconducting coils.  A current of $5176\;
 \label{fig:initial-field}
 \end{figure}
 
-The last essential piece of the magnetic storage
-
-\subsection{The Field Expansion}
-
-The ideal magnetic field for the experiment is perfectly vertical at \bmagic with no other components.  However, Maxwell and his renowned equations inform the researchers that this ideal field is not possible within a finite space.  Reality requires that the researchers consider the quality of the central field and the effects of perturbations to the field.  First, let's define the expansion to develop a common vocabulary for speaking about field perturbations, eqn. \ref{eqn:field-expansion}.
-
-\begin{equation}
-B_z = B_0 + \sum_{n=1}^{\infty} \rho^n[a_n \sin{\phi} + b_n \cos{\phi}]
-B_r = \sum_{n=1}^{\infty} \rho^n[c_n \sin{\phi} + d_n \cos{\phi}]
-\label{eqn:field-expansion}
-\end{equation}
-
-The main field
-
-
-
-
-
-
+The last essential piece of the magnetic storage ring is the intrinsic shim kit.  There are over one thousand knobs built into the ring hardware to make azimuthally localized changes to the field.  The collection of edge shims, wedge shims, and top hats can adjust multipoles up to octupoles in concert.  The shims are discussed in further detail in chapter \ref{ch:shimming}.
