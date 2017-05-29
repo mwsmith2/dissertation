@@ -4,7 +4,7 @@ The signal generated in the pNMR probes contains frequency information that repr
 
 \todo{insert equation for macro frequency of protons}
 
-\subsection{Free Induction Decays}
+\section{Free Induction Decays}
 
 The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that couples magnetization and field in different dimensions.
 
@@ -40,15 +40,15 @@ FID(t) = e^{-t/T_2} \sin(\omega t - \phi_0)
 
 In a realistic situation, the FID signal is a summation over varying field values, and the signal bears strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing bed for frequency extraction algorithms.
 
-\subsection{Frequency Extraction Methods}
+\section{Frequency Extraction Methods}
 
 As in most data analysis, the first step is cleaning and characterizing the data.  In the case of FIDs, the process involves removing the baseline \note{and possibly trend} and determining the start time and stop time of useful FID signal within the frame of the entire recorded waveform.  The baseline value is calculated using initial segment of the waveform.  The signal range is computed using the maximum amplitude around the signal baseline and applying a threshold on to find the first and last sections of the waveform with an envelope above that threshold.
 
-\subsubsection{Zero Crossing}
+\subsection{Zero Crossing}
 The simplest method for determining the FID frequency involves counting zero crossings of the signal.  
 \todo{error analysis}
 
-\subsubsection{Spectral Centroid}
+\subsection{Spectral Centroid}
 Another straightforward technique employed to extract the FID frequency relies on the spectral density of the signal. 
 
 \begin{equation}
@@ -70,7 +70,7 @@ In the power spectral density (PSD), the FID frequency manifests as a peak energ
 
 \todo{error analysis}
 
-\subsubsection{Lorentzian Peak}
+\subsection{Lorentzian Peak}
 Peak fitting routines can improve precision upon the centroid technique.  Peak fitting works well using a Lorentzian Distribution, Eqn. \ref{eqn:lorentzian} around the maximum frequency bin.
 
 \begin{equation}
@@ -78,12 +78,12 @@ F(\omega) = \frac{1}{\pi}\frac{\frac{1}{2} \Gamma}{(\omega - \omega_0)^2 + (\fra
 \label{eqn:lorentzian}
 \end{equation}
 
-\subsubsection{Analytical Form Fit}
+\subsection{Analytical Form Fit}
 The full analytical form of the idea FID PSD peak is trickier to implement
 
 \todo{maybe cut this section}
 
-\subsubsection{Polynomial Phase Fit}
+\subsection{Polynomial Phase Fit}
 The most intricate frequency determination technique is involves calculating the complementary phase of the original signal.  Given the knowledge that the original signal is harmonic \note{need to validate this}, the Hilbert Transform (Eqn. \ref{eqn:hilbert}) gives the imaginary phase of a signal.
 
 \begin{equation}
@@ -100,11 +100,11 @@ With the phase as a function of time, the FID frequency manifests as the linear 
 
 \todo{error analysis}
 
-\subsection{Frequency Extraction Efficacy}
+\section{Frequency Extraction Efficacy}
 
 Each FID frequency extraction technique needs to be tested and validated.  A whole slew of data options can be used: ideal functional FIDs, simulated FID, E821 waveforms, E821 probes in a local \uw magnetic.  Each dataset presents a test bed for determining the precision, accuracy and failure modes of each frequency extraction technique.
 
-\subsubsection{Ideal FIDs}
+\subsection{Ideal FIDs}
 The simplest case, the frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it will not be worth using to analyze the E989 data.  The effectiveness was testing on 10000 FIDs using a seed frequency of 47 kHz, near the expected nominal pNMR frequency of 50 kHz.  
 
 \begin{figure}
@@ -123,7 +123,7 @@ The simplest case, the frequency is static in time and all techniques should per
 
 \note{verify results, combine results into single image}
 
-\subsubsection{Simulated FIDs}
+\subsection{Simulated FIDs}
 Integrating the Bloch Equations is a clear path to simulate FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible effects from a deviation from non-ideal, finite $\pi/2$ pulses frequency from the Larmor frequency.  The simulation uses a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more efficient to simulate at lower frequencies, because the integration step can be much larger.  Additionally, the entire system runs through a lowpass filter at \SI{200}{\kHz}, so all the higher frequency content is culled from the final FID signal.
 
 \begin{figure}
@@ -142,7 +142,7 @@ Integrating the Bloch Equations is a clear path to simulate FID waveforms.  The 
 
 \todo{summary table}
 
-\subsubsection{Simulated Gradient FIDs}
+\subsection{Simulated Gradient FIDs}
 An expected problem complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which can distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The simulations aim to tests the effects of small gradients on the FID frequency extraction precision and accuracy.
 
 The range of magnetic field gradient over the pNMR probes anticipated in the \gmtwo storage field are on the order of SIrange{10}{100}{ppb} \note{check if ppb or ppm}. A collection of simulated FIDs was created using the Bloch Equation integrator with a range chosen to be \SI{47}{\kHz} \SI{\pm 1000}{ppb}. To implement a gradient, FIDs from the simulation collection were put into a weighted sum in a way that did not change the average frequency just the variation of over the probe.
@@ -171,11 +171,11 @@ The range of magnetic field gradient over the pNMR probes anticipated in the \gm
 
 \todo{redo gradient analysis effects.}
 
-\subsubsection{FID Measurements}
+\subsection{FID Measurements}
 A small set of fully digitized waveforms from E821 was also available to cut the FID algorithms' teeth on.  Testing against this dataset had a real difference in that the true precession frequency was not known.  One can still build distributions to get a sense for the precision and stability of a analysis method.
 
 \todo{dig up or redo}
 
-\subsection{FID Frequency Results}
+\section{FID Frequency Results}
 
 \todo{really depends on results that I insert above}
