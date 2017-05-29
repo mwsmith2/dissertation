@@ -44,7 +44,7 @@ There are two major questions that need answers to motivate the muon \gmtwo expe
 
 To the first charge, there are many appropriate replies.  One answer is that it is a simple measurement in principle.  The experimenters need a polarized volume of particles, an external vertical magnetic field, and a technique to determine the spin direction. Another, more phenomenological answer is that \gmtwo serves as a multi-faceted probe into quantum field theories in general and the Standard Model in particular.  Calculating the value for \gmtwo requires careful consideration of effects arising in Quantum Electrodynamics, Electro-Weak Theory, and Quantum Chromodynamics.  It nearly traverses the entirety of the Standard Model.
 
-And, to the second question, there are physics considerations and practical considerations.  The physics consideration weighs in with the desire for sensitivity to the intricacies of the Standard Model.  The more intricate, higher order interactions general come into the playing field with mass suppression terms, $\propto (\frac{m}{M})^2$, or possibly an a higher power than 2.  The relative mass ratio between the electron and the muon enhance these terms by a factor of $(\frac{105.66}{0.511})^2 \approx 43,000$ \cite{the-muon-g-2}!  The preceding argument begs the question though: "Why not use the $\tau$?".  The answer is really a practical consideration; the ephemeral $\tau$ has a lifetime of only \SI{0.29}{\femto\second} compared to \SI{2.2}{\micro\second} for $\mu$ \cite{codata}.  While the $\tau$ particle is appealing if a significant enough Lorenz boost could be achieved, an experiment using $\tau$ particles is simply not practical with current technology.
+And, to the second question, there are physics considerations and practical considerations.  The physics consideration weighs in with the desire for sensitivity to the intricacies of the Standard Model.  The more intricate, higher order interactions general come into the playing field with mass suppression terms, $\propto (\frac{m}{M})^2$, or possibly an a higher power than 2.  The relative mass ratio between the electron and the muon enhance these terms by a factor of $(\frac{105.66}{0.511})^2 \approx 43,000$ \cite{the-muon-g-2}!  The preceding argument begs the question though: "Why not use the $\tau$?".  The answer is really a practical consideration; the ephemeral $\tau$ has a lifetime of only \SI{0.29}{\femto\second} compared to \SI{2.2}{\micro\second} for $\mu$ \cite{codata}.  While the $\tau$ particle is appealing if a significant enough Lorentz boost could be achieved, an experiment using $\tau$ particles is simply not practical with current technology.
 
 \subsection{Statistical Tension}
 
@@ -111,7 +111,7 @@ The theoretical contributions to muon \gmtwo come from all corners of particle p
 
 \begin{equation}
 \label{eqn:sm-contributions}
-a_\mu = \delta a_{_{QED}} + \delta a_{_{EW}} + \delta a_{_{QCD-HVP}} + \delta a_{_{QCD-LBL}}
+a_\mu = a_{_{QED}} + a_{_{EW}} + a_{_{QCD-HVP}} + a_{_{QCD-LBL}}
 \end{equation}
 
 \subsection{QED Effects} \label{s-sec:theory-qed}
@@ -137,14 +137,14 @@ The first term in the series is solely the leptonically universal Schwinger term
 \begin{align*}
 a_{e}   & = 115 965 218.091(26) \times 10^{-11} \\
 a_{\mu} & = 116 592 080(63) \times 10^{-11} \\
-\delta a_{_{Schwinger}} & = 116 120 635.555(27) \times 10^{-11}
+a_{_{Schwinger}} & = 116 120 635.555(27) \times 10^{-11}
 \end{align*}
 
 Investigation of the limits for an expression of the vertex is another useful window in the next order of QED effects which includes radiative corrections and vacuum polarization effects.  First, consider the case in which the radiated particles are light compared to the muon, $m_p \ll m$.
 
 \begin{equation}
 \label{eqn:qed-2nd-order-small-m}
-\delta_\mu^p ~ \big(\frac{\alpha}{\pi} \big)^{n_p} \ln{\frac{m}{m_p}^{k_p}}
+\delta_\mu^p \sim \big(\frac{\alpha}{\pi} \big)^{n_p} \ln^{k_p}\frac{m}{m_p}
 \end{equation}
 
 \noindent
@@ -152,8 +152,8 @@ And, now consider the opposite case where $m_p \gg m$.
 
 \begin{equation}
 \label{eqn:qed-2nd-order-large-m}
-\delta_\mu^p ~ \big(\frac{\alpha}{\pi} \big)^{n_p} \\
-\frac{m_p^2}{m^2} \ln{\frac{m}{m_p}^{k_p}}
+\delta_\mu^p \sim \big(\frac{\alpha}{\pi} \big)^{n_p} \\
+\frac{m_p^2}{m^2} \ln^{k_p}\frac{m}{m_p}
 \end{equation}
 
 \noindent
