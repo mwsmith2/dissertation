@@ -1,47 +1,180 @@
 \chapter{Field Measurement}
 
-\section{Measurement Technique}
+\section{Measurement Requirements}
 
-The \gmtwo experiment has stringent requirements on the measurement uncertainty of the magnetic field value.  Stringent enough to aim for an entire error budget on the field uncertainty which is systematic.  Each individual measurement needs to be precise enough that the statistical error of the combined field value is negligible.  This puts an uncertainty limit of around \ppb{10}.  The field measurement technique was custom pulsed proton nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  The probes were designed to have a very high Q-value resonance at the expected resonance frequency of \SI{61.79}{\MHz}.
+The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the the field measurement.  The uncertainty comes in many flavors that are enumerated in source \cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  The uncertainty constraints help paint the picture for the next section which walks through the overall field measurement technique.
+
+\begin{table}[h]
+\label{tab:field-uncertainties}
+\caption{Magnetic Field Uncertainty Budget}
+\centering
+\begin{tabular}{l c}
+    \hline
+    \multicolumn{1}{c}{Source} & Uncertainty [ppb] \\
+    \hline
+    Calibration of fixed probes   & 35 \\
+    Calibration of trolley probes    & 30 \\
+    Trolley measurements of $B_0$    & 30 \\
+    Interpolation with fixed probes  & 30 \\
+    Muon distribution                & 10 \\
+    Inflector fringe field           & -  \\
+    Time dependent external B fields & 5  \\
+    Other sources                    & 30 \\
+    \hline
+    Total $\delta \omega_p$          & 70 \\
+    \hline
+\end{tabular}
+\end{table}
+
+\section{Hardware Design} \label{sec:field-measurement-technique}
+
+The \gmtwo experiment has stringent requirements on the measurement uncertainty of the magnetic field value.  Stringent enough to aim for an entire error budget on the field uncertainty which is systematic.  Each individual measurement needs to be precise enough that the statistical error of the combined field value is negligible.  This puts an uncertainty limit of around \ppb{10} \note{where is this listed?}.  The field measurement technique is custom pulsed proton nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  The probes were designed to have a very high Q-value resonance at the expected resonance frequency of \SI{61.79}{\MHz}.
 
 \subsection{Proton NMR Signal}
 
 The essence of a pNMR measurement is frequency measurement of another type of precession, proton precession.  The source of the pNMR signal is a volume of material with a population of quasi-free protons.  The active volume is polarized in the direction of a large field, in the case of \gmtwo a \bmagic field in the vertical direction.  A secondary field rotating in the orthogonal plane at a frequency approximately equal to the expected precession frequency of B-magic.  The intended effect of the secondary field is intuitively understood in the rotating reference frame.  In the rotating frame the vertically (z-direction) polarized protons experience an orthogonal (y-direction) field which rotates them into the orthogonal plane (x-y plane).  In the lab frame the polarized protons continue to precess at a rate proportional to the strong vertical field.  Precession in the orthogonal plane produces an induction signal in a nearby pickup coil which is subsequently digitized and analyzed.  A result of robust frequency analysis on the pNMR signal serves as high precision field proxy for \gmtwo experiment.
 
 \subsection{Probe Design}
-\todo{finish on hw design}
+
 The core design of the pNMR probes was based on the design from the previous experiment. Each probe consists of two pickup coils, a teflon backbone, a tunable capacitor, an alimunimum shell, and a \SI{5}{\meter} BNC cable.  One coil is used to inject the $\pi/2$ pulse which rotates the protons into the orthogonal plane, and the other is the induction coil used to produce the pNMR precession signal.  The capacitor allows the probe resonance to be tuned finely.  The aluminum shell allots some capacitance to the probe and shields against external effects.
 
-\todo{add schematic of pNMR probes}
+\begin{figure}
+\label{fig:field-nmr-design}
+\includegraphics[width=0.9\linewidth]{fig/field-nmr-design}
+\caption{\todo{caption}}
+\end{figure}
 
 The field team at \uw iterated on the probe design making several improvements.  One of the improvements was in the robustness of the connection to the BNC cable.  The new design used a crimp connection to secure the cable to provide a more robust connection.  Another improvement was the design of the tuning capacitor.  With the new design, the tuning of the probe can be done without removing the outer shell.  Removing the shell the has the chance of damaging the innards of the probe, and minimizing removals makes tuning easier, faster and safer overall.  Another major improvement is the material used as protonated, polarized volume.  The new design replaced the water and copper sulfate volume with a petroleum jelly.  The water design was seen to cause corrosion in many of the E821 probes, so the new design should alleviate those concerns and allot the provide a longer, stable lifetime.
 
 \todo{Get resources from Martin, have him proofread}
 
-\todo{Maybe add a paragraph on the nuances of petroleum jelly}
-
 The pNMR probes are used in two fairly different systems to measure the field.  The \fps comprises 378 probes located all around the storage ring to achieve thorough field coverage.  The actual volumes occupied by the fixed probes are outside of the muon storage volume.  The purpose of the \fps is to monitor the drift of the field at different locales around the ring.  The other system to use the pNMR probes is the Trolley System. The Trolley contains an array of 17 probes which carve out an azimuthal plane in the muon storage volume.  The trolley runs on rails all around the ring and uses the pNMR probes to measure the magnetic field in the muon storage region.  
 
-\subsection{Fixed Probe System Design}
+\subsection{Fixed Probe System (FPS)}
 
 The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprised the NMR pulser design from the E821 experiments.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency source.  The resulting signal feeds through a lowpass filter with $f_0$ of around \SI{200}{\kHz} \todo{check value}.  The filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and samplingt depth of $16\;bits$.  The digitized waveform contains frequency information that represents the magnetic field.
 
 \todo{signal diagram of the fixed probe system}
 
-\subsection{Trolley System Design}
+\subsection{Trolley System (TS)}
 
-\todo{get resources on this if needed}
+The trolley measures the magnetic field in the muon storage volume.  It cannot measure while muons are injected though, so there is a naturally trade-off between measuring the 3D storage field with the trolley and interpolating the field with the fixed probe system while the muon beam is being delivered.  The trolley uses an array of 17 of the standard pNMR probes as shown in figure \ref{fig:field-trolley-probe-array}.
 
-\subsection{Absolute Calibration}
+\begin{figure}
+\label{fig:field-trolley-probe-array}
+\includegraphics[width=0.6\linewidth]{fig/field-trolley-probe-array}
+\caption{An image of the trolley module itself is shown on the left.  The trolley rides along a rail system inside the vacuum chambers.  It traverses the muon storage volume.  The probes are arranged at three different radii as shown in the figure on the right.  The probe arrangement facilitates the multipole analysis used on the field data.}
+\end{figure}
+
+\subsection{Fluxgate Magnetomete (FM))}
+
+\todo{add short section on fluxgates}
+
+\subsection{Absolute Calibration Probes}
 
 The frequencies measured by the pNMR probe systems in the ring are used to construct a 3D map of proton frequencies in the muon storage volume.  The frequency is a direct proxy for the field, but not an absolute value.  To bring the measurement back to an absolute proton precession precession, the absolute field value, there must be a correction applied.  The size of that correction is determined by the absoluate calibration system.
 
-Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 probe, a newly design water probe from UMass, and a $\mathrm{^3He}$ probe with very different systematics. The probes are designed to minimized systematic effects that shift the free proton frequency.  
+Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 probe, a newly design water probe from UMass, and a $\mathrm{^3He}$ probe with very different systematics. The probes are designed to minimized systematic effects that shift the free proton frequency.
 
-\todo{add free proton + systematic effects eqn}
+\begin{equation}
+\label{eqn:nmr-effects-model}
+\omega_{probe} = (1 - \sigma(H_2 O, T) - \delta_b - \delta_p - \delta_s) \omega_p
+\end{equation}
 
 The model for free proton frequency includes corrections for geometric effects of the probe structure.  These geometric effects couple into the overall capacitance of the probe which can shift the resonance frequency.  They are minimized by using shapes with known ideal factors, cylinders and spheres.  The overall probe design must also minimize the magnetic perturbations from ferromagnetic and paramagnetic materials.  As such each component is vetted independently before becoming a part of the absolute probe.  The measurement also needs to control the environment of the probe and make a temperature correction.
 
 \todo{ask d-flay and midhat if this is general or should split into he3/water probes}
 
 The relative relationship between the absolute probe proton frequency and the pNMR probe frequency is done the so-called plunging probe system.  The plunging probes are brought into the same volume of field measured and corrected by the absolute probe to establish a transfer calibration from the absolute probe, which does not enter the storage ring, to a system which has a ring entry point.  The plunging probes are inserted into an azimuthal slice of the storage volume, plunged if you will.  The plunging probe is moved by a motor stage to be as near to each trolley probe as possible.  In this way, the free proton resonance from the absolute probe can propagate to the pNMR monitor probes used to measure the \gmtwo magnetic field.
+
+\section{Field Reconstruction Technique}
+
+The algorithms for field construction are not manifest, and they must be designed and refined by the field team over the coming months and years.  In this light, the contributions cannot be talked about in more than general terms.  The 3D field is re-measured periodically, and only the most recent one contributes to the field definition. The most general form for the field is then
+
+\begin{equation}
+\label{eqn:field-construction}
+\vec{\omega}(\vec{r}, t) = \sum_n \Theta(t - t_n) \\
+\Big[ \vec{\omega}_{n}(\vec{r}) + \delta\vec{\omega}(t) \Big]
+\end{equation}
+
+where we have a 3D field term, $\vec{\omega}_{n}(\vec{r})$, to serve as the base, and an interpolation term, $\delta \vec{\omega}(\vec{r}, t)$, to improve precision between runs. The last step in the field deliverable is calibrating the field determined by the trolley using the plunging probes and the absolute probes.
+
+\begin{equation}
+\label{eqn:field-calibration}
+\omega_0(\vec{r}, t) = \alpha (\omega(\vec{r}, t) + \delta \omega_{cal})
+\end{equation}
+
+The process of defining the \gmtwo storage field begins with the trolley system.  The trolley system takes a run and uses the data to define the 3-dimensional magnetic field at the time of the run, $\vec{\omega}(\vec{r}, t_i)$.  Between trolley runs, measurements from the fixed probes and the fluxgates are used to interpolate the field changes.  The field changes affected from the fixed probes should be a function of time only, $\delta \vec{\omega}_{fps}(t)$.  And, likewise the contributions to interpolation from the fluxgates should be a function of time only, $\delta \vec{\omega}_{fm}$.  Stitching all the pieces together we arrive at equation \ref{eqn:field-construction}.
+
+\subsection{3D Field}
+
+The latest data from a full trolley run, a set of measurements encompassing all azimuthal locations in the storage ring, serves as a fundamental definition of the field.  The trolley continuously cycles through the 17 probe array while taking measurements at \SI{34}{\Hz}, two full cycles per second.  The full run process takes over an hour which yields at least 7,200 measurements with the full array.  Define the measurements as a 17xN matrix, $\vec{\Omega}_{tp}$. Each field measurement is accompanied by multiple complimentary location measurements.  The full suite of trolley measurements is then used to define a three dimensional magnetic field.
+
+\begin{equation}
+\label{eqn:field-base}
+\vec{\omega}_{n}(\vec{r}) = g(\sum_{i}f_i(\vec{\omega}, \theta))
+\end{equation}
+
+The allotted uncertainty for constructing $\vec{B}_0$ is \SI{30}{ppb}.  Using the assumption of $\sim 7200$ measurements per trolley run, the accuracy of the field map can be estimated.  In this case, the average spacing between trolley measurements is about \SI{1}{mm}.  The accuracy of the position determination is similar in magnitude, \SI{\sim 1}{mm}, a little better.  Under these assumptions, the necessary accuracy at each point is 
+
+\todo{finish error write up}
+
+\subsection{Interpolation}
+
+Between trolley runs, the field still needs to be well known.  The uncertainty budget on the interpolation of the 3D field is \SI{30}{ppb}.  There are two potential contributions to the field interpolation
+
+\begin{equation}
+\label{eqn:field-interpolation}
+\delta \vec{\omega}(t) = \delta \vec{\omega}_{fps}(\vec{f}, t_i) \\
++ \delta \vec{\omega}_{fm}(\vec{x}, \vec{b}, t_i)
+\end{equation}
+
+The fixed probes provide one data source used for interpolation.  There are 378 fixed probes around the ring which measure the field at \SI{\sim 1}{\Hz}.  An pNMR frequency is extracted from each probe, and the data it timestamped.  A algorithm for field interpolation will be designed using all fixed probe measurements since the last trolley run, such as
+
+\begin{equation}
+\label{eqn:field-interpolation-fps}
+\delta \vec{\omega}_{fps}(t) = \sum_{t_i = t_n}^{t_i < t} \delta f(\vec{f}, t_i)
+\end{equation}
+
+The second arm of field interpolation is the fluxgate magnetometers.  The fluxgates measure the transient field at high rates, \SI{\sim 1}{\kHz}.  There are three fluxgate sensors in the array which can be moved around the ring to monitor local field transients at multiple locations.  The transient fields measured in the fluxgates need to be well correlated and calibrated with the fields measured in the fixed probes, but they are a potentially powerful tool for discerning moderate frequency transients in the field, such as \SI{15}{\Hz} or \SI{60}{\Hz}.  Each sensor needs a human defined probe position vector, and provides a vector magnetic field value and time.  If they transient fields are small, as they are expected to be, the fluxgate could be used to simply place a limit on the effect of transient fields.
+
+\begin{equation}
+\label{eqn:field-interpolation-fm}
+\delta \vec{\omega}_{fm}(t) \\
+= \sum_{t_j = t_n}^{t_j < t} \delta f(\vec{x}, \vec{b}, t_j)
+\end{equation}
+
+\subsection{Calibration}
+
+Calibration is the the final step in producing an absolute field map.  The calibration flows down from the absolute probe in two stages.  The absolute calibration probe and the plunging probe both measure the field in a certain location of a monitored and understood field.  The relationship is parameterized by a model.  One possible model is the linear model given in equation \ref{eqn:field-calibration-abs-pp}.
+
+\begin{equation}
+\label{eqn:field-calibration-abs-pp}
+\omega_{absolute} = \alpha(\omega_{plunging} + \delta \omega_{absolute})
+\end{equation}
+
+The second stage of calibration is similar to the first.  The plunging probe measures the field in approximately the same volume as the trolley probes.  The calibration relationship can then be transferred in a similar way.  The linear model, equation \ref{eqn:field-calibration-pp-fp}, is given as an example.
+
+\begin{equation}
+\label{eqn:field-calibration-pp-fp}
+\omega_{plunging} = \beta(\omega_{trolley} + \delta \omega_{plunging})
+\end{equation}
+
+Bringing the field map and the calibration together, one arrives at an expression for the field map as a function of time, the field team deliverable quantity.
+
+\begin{equation}
+\label{eqn:field-omega-p}
+\omega_p(\vec{r}, t) = \alpha 
+\Big [ 
+\beta (\omega_0(\vec{r}, t) + \delta \omega_0) + \delta \omega_{pp}
+\Big ]
+\end{equation}
+
+\subsection{Beam Convolution}
+
+There is one final step in turning all of the pNMR probe measurements from the field into the value that feeds into the function for $a_\mu$.  The field function itself is not important.  The field value needs to be converted into the average field experience by the stored muons.  The muon distribution is measured by Fiber Harp Detectors and the reconstructed using the Tracker Detectors \cite{e989-tdr}.  The muon-weighted raw proton precession frequency can be determined by convolving the field team and beam team deliverables.
+
+\begin{equation}
+\label{eqn:field-omega-p-tilde}
+\tilde{\omega}_p = \int M(\vec{r}, t) \times \omega_p(\vec{r}, t) dV
+\end{equation}
