@@ -2,41 +2,6 @@
 
 The signal generated in the pNMR probes contains frequency information that represents the effective field seen by the probe's protonated volume.  A fraction of the polarized protons rotate into orthogonal plane, then precess at the Larmor frequency.  The average frequency of the the precessing protons immediately after the $\pi/2$ pulse is target of analysis.  That value represents the magnetic field in the volume.  The digitized precession signal recorded as the protons slowly rotate back into the original polarization and decohere is called the Free Induction Decay (FID).
 
-\section{Free Induction Decays}
-
-The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that couples magnetization and field in different dimensions.
-
-\begin{align} 
-\begin{split}
-\label{eqn:fid-bloch}
-\frac{dM_x(t)}{dt} & = \gamma (\mathbf{M}(t) \times \mathbf{B}(t))_x - \frac{M_x(t)}{T_2} \\
-\frac{dM_y(t)}{dt} & = \gamma (\mathbf{M}(t)\times \mathbf{B}(t))_y - \frac{M_y(t)}{T_2} \\
-\frac{dM_z(t)}{dt} & = \gamma (\mathbf{M}(t) \times \mathbf{B}(t))_z - \frac{M_z(t) - M_0}{T_1}
-\end{split} 
-\end{align}
-
-The ideal FID waveform from a pure field value and perfect $\pi/2$ pulse can be solved exactly from the differential equations.  The resulting equation, \ref{eqn:ideal-fid}, exhibits the primary characteristics of an FID, a sinusoid term representing the proton precession and an exponential decay envelope representing the $T_1$ relaxation.  Figure \ref{fig:fid-ideal-waveform} exhibits the waveform of an ideal FID.
-
-\begin{equation}
-f(t) = e^{-t/T_1} \sin(\omega t - \phi_0)
-\label{eqn:ideal-fid}
-\end{equation}
-
-\begin{figure}
-\label{fig:fid-ideal-waveform}
-\centering
-\includegraphics[width=0.5\linewidth]{fig/fid-ideal-waveform}
-\caption{The figure shows an idealized FID waveform. Functionally, the waveform is a sinusoid muliplied with an exponential decay between at some initial time.  It represents the signal from a perfect $\pi/2$ to a perfect pNMR probe.}
-\end{figure}
-
-In a realistic situation, the FID signal is a summation over varying field values, and the signal bears strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing bed for frequency extraction algorithms.  Examples of measured FIDs are shown in figure \ref{fig:fid-measured-waveforms}.
-
-\begin{figure}
-\label{fig:fid-measured-waveforms}
-\includegraphics[width=0.9\linewidth]{fig/fid-measured-waveforms}
-\caption{Two examples of measured FIDs are shown above. The image on left was measured with a test setup at CENPA (University of Washington), and the waveform on the right is an example from the E821 experiment fixed probe system.}
-\end{figure}
-
 \section{Frequency Extraction Methods}
 
 As in most data analysis, the first step is cleaning and characterizing the data.  In the case of FIDs, the process involves removing the baseline (and trend in some cases) and determining the start time and stop time of useful FID signal within the frame of the entire recorded waveform.  The baseline value is calculated using initial segment of the waveform.  The signal range is computed using the maximum amplitude around the signal baseline and applying a threshold on to find the first and last sections of the waveform with an envelope above that threshold.

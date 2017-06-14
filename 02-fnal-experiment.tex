@@ -85,6 +85,26 @@ The experiment has another requirement to impose on the muon beam; the beam must
 \caption{The pion decays in flight, and via maximal parity violation of the weak interaction produces a polarized beam of muons. \todo{expand}}
 \end{figure}
 
+\subsection{The Storage Ring} \label{sec:storage-ring}
+
+The magnetic storage ring is the principal hardware for creating the magnetic storage field.  The major components include three superconducting NbTi/Cu coils, a dozen "C"-shaped flux return yokes in the form of steel blocks and plates, 72 high-purity steel poles, and a built-in shim kit with more than 1000 tunable knobs.  The full assembly is quite impressive standing around three meter tall, fifteen meters wide, and weighing in at around 200 tons.  The storage ring was designed with the objective of creating a magnetic field of \bmagic that is uniform as possible over a toroidal muon storage volume with a major radius of \rmagic and a minor radius of \SI{4.5}{\mm}.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/magnet-cross-section}
+\caption{The cross-sectional view of the storage ring.  The magnetic field is produced by currents in the three superconducting coils.  The field strength is primarily determined by the engineering design for the flux capture in the "C" yoke, top hat shim, wedge shim, and pole surface.}
+\label{fig:magnet-cross-section}
+\end{figure}
+
+The field itself is produced by the superconducting coils.  A current of $5176\;A$ is driven through all three coils.  Two of the coils reside at a smaller radius than \rmagic and one of the coils resides at a larger radius (see figure \ref{fig:magnet-cross-section}).  The outer coil packs twice as much superconductor as the two inner coils to give balance.  The inner and outer coils run with opposing currents to create a mostly vertical B-field in the space between them.  By design, the return yoke pulls in magnetic flux to increase the strength of field.  The precision machined, high purity pole pieces provide an extremely flat surface to hone the field uniformity.  To first approximation the magnetic field uniformity depends on the uniformity of the gap between the two pole surfaces.  With some care to recreate the  conditions of the magnet assembly at the end of E821, the storage ring was assembled at Fermilab and powered to a field with variations of around \ppm{1400} as show in figure \ref{fig:initial-field}.
+
+\begin{figure}
+\includegraphics[width=0.9\linewidth]{fig/initial-dipole-field.png}
+\caption{The initial dipole(mean) magnetic field when the storage field was first fully measured at Fermilab.  The peak-to-peak variation was around \ppm{1400}.  The umbrella-like sub-structure occurs every 10 degrees and corresponds to the changing gap between the slightly curved pole pieces.}
+\label{fig:initial-field}
+\end{figure}
+
+The last essential piece of the magnetic storage ring is the intrinsic shim kit.  There are over one thousand knobs built into the ring hardware to make azimuthally localized changes to the field.  The collection of edge shims, wedge shims, and top hats can adjust multipoles up to octupoles in concert.  The shims are discussed in further detail in chapter \ref{ch:shimming}.
+
 \section{Muon Injection} \label{sec:muon-storage}
 
 Storing muons is not as simple as delivering the muon fill to the ring.  The muons are stored in a strong vertical magnetic field with fringe effects reaching meters away from the storage region.  The natural path of muons through the fringe field is a non-linear tunnel which is not simple predict or manufacture in the steel storage ring.  The solution for simpler injection is to create a volume of magnetic field to cancel the storage and fringe fields; the hardware is called the inflector.  The inflector is a cleverly designed double-truncated cosine magnet which is able to achieve a strong, nearly uniform vertical field over a small volume, and contain much of the flux from leaking and perturbing surrounding fields.  The flux capture was later improved by adding a superconducting shield to the outside.  The inflector was designed to be adjustable over small angles which allowed the apparatus to optimize the nearly straight injection of muons. \cite{e821-prd}
@@ -127,26 +147,6 @@ A visualization of the terms in the multipole expansion is given in figure \ref{
 \includegraphics[width=\linewidth]{fig/field-example-multipoles}
 \caption{The first seven multipoles in the the field expansion.  The first on the left is the dipole term which simply averages each point equally over the domain.  The next two are the normal and skew quadrupole which represent an inner to outer or top to bottom asymmetry in the field respectively.  The next four terms similarly represent symmetries of the field.  They are termed: normal sextupole, skew sextupole, normal octupole, and skew octupole.}
 \end{figure}
-
-\subsection{The Storage Ring}
-
-The magnetic storage ring is the principal hardware for creating the magnetic storage field.  The major components include three superconducting NbTi/Cu coils, a dozen "C"-shaped flux return yokes in the form of steel blocks and plates, 72 high-purity steel poles, and a built-in shim kit with more than 1000 tunable knobs.  The full assembly is quite impressive standing around three meter tall, fifteen meters wide, and weighing in at around 200 tons.  The storage ring was designed with the objective of creating a magnetic field of \bmagic that is uniform as possible over a toroidal muon storage volume with a major radius of \rmagic and a minor radius of \SI{4.5}{\mm}.
-
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{fig/magnet-cross-section}
-\caption{The cross-sectional view of the storage ring.  The magnetic field is produced by currents in the three superconducting coils.  The field strength is primarily determined by the engineering design for the flux capture in the "C" yoke, top hat shim, wedge shim, and pole surface.}
-\label{fig:magnet-cross-section}
-\end{figure}
-
-The field itself is produced by the superconducting coils.  A current of $5176\;A$ is driven through all three coils.  Two of the coils reside at a smaller radius than \rmagic and one of the coils resides at a larger radius (see figure \ref{fig:magnet-cross-section}).  The outer coil packs twice as much superconductor as the two inner coils to give balance.  The inner and outer coils run with opposing currents to create a mostly vertical B-field in the space between them.  By design, the return yoke pulls in magnetic flux to increase the strength of field.  The precision machined, high purity pole pieces provide an extremely flat surface to hone the field uniformity.  To first approximation the magnetic field uniformity depends on the uniformity of the gap between the two pole surfaces.  With some care to recreate the  conditions of the magnet assembly at the end of E821, the storage ring was assembled at Fermilab and powered to a field with variations of around \ppm{1400} as show in figure \ref{fig:initial-field}.
-
-\begin{figure}
-\includegraphics[width=0.9\linewidth]{fig/initial-dipole-field.png}
-\caption{The initial dipole(mean) magnetic field when the storage field was first fully measured at Fermilab.  The peak-to-peak variation was around \ppm{1400}.  The umbrella-like sub-structure occurs every 10 degrees and corresponds to the changing gap between the slightly curved pole pieces.}
-\label{fig:initial-field}
-\end{figure}
-
-The last essential piece of the magnetic storage ring is the intrinsic shim kit.  There are over one thousand knobs built into the ring hardware to make azimuthally localized changes to the field.  The collection of edge shims, wedge shims, and top hats can adjust multipoles up to octupoles in concert.  The shims are discussed in further detail in chapter \ref{ch:shimming}.
 
 \section{Spin Precession}
 

@@ -34,6 +34,42 @@ The \gmtwo experiment has stringent requirements on the measurement uncertainty 
 
 The essence of a pNMR measurement is frequency measurement of another type of precession, proton precession.  The source of the pNMR signal is a volume of material with a population of quasi-free protons.  The active volume is polarized in the direction of a large field, in the case of \gmtwo a \bmagic field in the vertical direction.  A secondary field rotating in the orthogonal plane at a frequency approximately equal to the expected precession frequency of B-magic.  The intended effect of the secondary field is intuitively understood in the rotating reference frame.  In the rotating frame the vertically (z-direction) polarized protons experience an orthogonal (y-direction) field which rotates them into the orthogonal plane (x-y plane).  In the lab frame the polarized protons continue to precess at a rate proportional to the strong vertical field.  Precession in the orthogonal plane produces an induction signal in a nearby pickup coil which is subsequently digitized and analyzed.  A result of robust frequency analysis on the pNMR signal serves as high precision field proxy for \gmtwo experiment.
 
+\subsection{Free Induction Decays}
+
+The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that couples magnetization and field in different dimensions.
+
+\begin{align} 
+\begin{split}
+\label{eqn:fid-bloch}
+\frac{dM_x(t)}{dt} & = \gamma (\mathbf{M}(t) \times \mathbf{B}(t))_x - \frac{M_x(t)}{T_2} \\
+\frac{dM_y(t)}{dt} & = \gamma (\mathbf{M}(t)\times \mathbf{B}(t))_y - \frac{M_y(t)}{T_2} \\
+\frac{dM_z(t)}{dt} & = \gamma (\mathbf{M}(t) \times \mathbf{B}(t))_z - \frac{M_z(t) - M_0}{T_1}
+\end{split} 
+\end{align}
+
+The ideal FID waveform from a pure field value and perfect $\pi/2$ pulse can be solved exactly from the differential equations.  The resulting equation, \ref{eqn:ideal-fid}, exhibits the primary characteristics of an FID, a sinusoid term representing the proton precession and an exponential decay envelope representing the $T_1$ relaxation.  Figure \ref{fig:fid-ideal-waveform} exhibits the waveform of an ideal FID.
+
+\begin{equation}
+f(t) = e^{-t/T_1} \sin(\omega t - \phi_0)
+\label{eqn:ideal-fid}
+\end{equation}
+
+\begin{figure}
+\label{fig:fid-ideal-waveform}
+\centering
+\includegraphics[width=0.5\linewidth]{fig/fid-ideal-waveform}
+\caption{The figure shows an idealized FID waveform. Functionally, the waveform is a sinusoid muliplied with an exponential decay between at some initial time.  It represents the signal from a perfect $\pi/2$ to a perfect pNMR probe.}
+\end{figure}
+
+In a realistic situation, the FID signal is a summation over varying field values, and the signal bears strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing bed for frequency extraction algorithms.  Examples of measured FIDs are shown in figure \ref{fig:fid-measured-waveforms}.
+
+\begin{figure}
+\label{fig:fid-measured-waveforms}
+\includegraphics[width=0.9\linewidth]{fig/fid-measured-waveforms}
+\caption{Two examples of measured FIDs are shown above. The image on left was measured with a test setup at CENPA (University of Washington), and the waveform on the right is an example from the E821 experiment fixed probe system.}
+\end{figure}
+
+
 \subsection{Probe Design}
 
 The core design of the pNMR probes was based on the design from the previous experiment. Each probe consists of two pickup coils, a teflon backbone, a tunable capacitor, an alimunimum shell, and a \SI{5}{\meter} BNC cable.  One coil is used to inject the $\pi/2$ pulse which rotates the protons into the orthogonal plane, and the other is the induction coil used to produce the pNMR precession signal.  The capacitor allows the probe resonance to be tuned finely.  The aluminum shell allots some capacitance to the probe and shields against external effects.
