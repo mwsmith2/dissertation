@@ -12,6 +12,13 @@ def main():
     mpl.rcParams['figure.figsize'] = (9, 4)
     mpl.rcParams['figure.dpi'] = 220
 
+    mpl.rcParams['lines.linewidth'] = 1.0
+    mpl.rcParams['lines.markersize'] = 2.0
+    
+    mpl.rcParams['grid.color'] = '#b0b0b0'
+    mpl.rcParams['axes.facecolor'] = 'white'
+    mpl.rcParams['axes.edgecolor'] = '#b0b0b0'
+
     with open('historical_values.json') as f:
         data = json.loads(f.read())
 
@@ -39,13 +46,14 @@ def main():
             c_idx += 1
             label = 'Expt - ' + d['expt']
 
-        plt.scatter(x, y, color=c, alpha=0.8, label=label)
-        plt.errorbar(x, y, yerr=yerr, ecolor=c, alpha=0.4, fmt='none')
+        plt.scatter(x, y, color=c, alpha=1.0, label=label)
+        plt.errorbar(x, y, yerr=yerr, ecolor=c, alpha=0.7, fmt='none')
 
     plt.title(r'Historical Values of Muon $a_\mu$')
     plt.xlabel(r'year')
     plt.ylabel(r'$a_\mu \times 10^{11}$')
-    plt.legend()
+    plt.legend(facecolor='white', frameon=True, framealpha=0.7)
+    plt.grid(c='#a0a0a0', alpha=0.4)
 
     # plt.ylim([])
     plt.savefig('../fig/intro-historical-values.png')

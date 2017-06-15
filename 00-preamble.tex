@@ -1,4 +1,4 @@
-\documentclass[11pt, proquest, draft] {uwthesis} [2017/04/14]
+\documentclass[11pt, proquest] {uwthesis} [2017/04/14]
 
 \usepackage{color}
 \usepackage{xspace}
@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 
 \DeclareMathOperator*{\argmin}{argmin}
+\DeclareSIUnit\gauss{G}
 
 \begin{document}
 
@@ -15,9 +16,13 @@
 \newcommand{\note}[1]{\textbf{\color{yellow}{(#1)}}}
 
 % Places
-\newcommand{\tsm}{The Standard Model\xspace}
-%\newcommand{\tsmopp}{The Standard Model of particle physics\xspace}
+\newcommand{\tsm}{the Standard Model\xspace}
+\newcommand{\smpp}{the Standard Model of Particle Physics\xspace}
 \newcommand{\uw}{The University of Washington\xspace}
+
+% Lengths
+\newdimen\fdh
+\fdh=8em % Height of a single Feynman Diagram
 
 % g-2 helpers
 \newcommand{\gmtwo}{$g\hbox{--}2$\xspace}
