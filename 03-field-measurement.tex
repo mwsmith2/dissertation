@@ -2,7 +2,7 @@
 
 \section{Measurement Requirements}
 
-The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the the field measurement.  The uncertainty comes in many flavors that are enumerated in source \cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  The uncertainty constraints help paint the picture for the next section which walks through the overall field measurement technique.
+The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the the field measurement.  The uncertainty comes in many flavors that are enumerated in source\cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  The uncertainty constraints help paint the picture for the next section which walks through the overall field measurement technique.
 
 \begin{table}[h]
 \label{tab:field-uncertainties}
@@ -75,8 +75,8 @@ In a realistic situation, the FID signal is a summation over varying field value
 The core design of the pNMR probes was based on the design from the previous experiment. Each probe consists of two pickup coils, a teflon backbone, a tunable capacitor, an alimunimum shell, and a \SI{5}{\meter} BNC cable.  One coil is used to inject the $\pi/2$ pulse which rotates the protons into the orthogonal plane, and the other is the induction coil used to produce the pNMR precession signal.  The capacitor allows the probe resonance to be tuned finely.  The aluminum shell allots some capacitance to the probe and shields against external effects.
 
 \begin{figure}
-\label{fig:field-nmr-design}
-\includegraphics[width=0.9\linewidth]{fig/field-nmr-design}
+\label{fig:field-pnmr-probe-design}
+\includegraphics[width=0.9\linewidth]{fig/field-pnmr-probe-design}
 \caption{\todo{caption}}
 \end{figure}
 
@@ -208,7 +208,7 @@ Bringing the field map and the calibration together, one arrives at an expressio
 
 \subsection{Beam Convolution}
 
-There is one final step in turning all of the pNMR probe measurements from the field into the value that feeds into the function for $a_\mu$.  The field function itself is not important.  The field value needs to be converted into the average field experience by the stored muons.  The muon distribution is measured by Fiber Harp Detectors and the reconstructed using the Tracker Detectors \cite{e989-tdr}.  The muon-weighted raw proton precession frequency can be determined by convolving the field team and beam team deliverables.
+There is one final step in turning all of the pNMR probe measurements from the field into the value that feeds into the function for $a_\mu$.  The field function itself is not important.  The field value needs to be converted into the average field experience by the stored muons.  The muon distribution is measured by Fiber Harp Detectors and the reconstructed using the Tracker Detectors\cite{e989-tdr}.  The muon-weighted raw proton precession frequency can be determined by convolving the field team and beam team deliverables.
 
 \begin{equation}
 \label{eqn:field-omega-p-tilde}
