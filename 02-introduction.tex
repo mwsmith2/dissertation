@@ -189,7 +189,9 @@ The final CERN muon \gmtwo experiment ran from 1969 to 1976.  A major innovation
 
 \begin{equation}
 \label{eqn:full-omega-a}
-\omega^\prime_a = \omega_a[1 + (1 - 1 / a \beta^2 \gamma^2)(\beta E_r / B)]
+\vec{\omega}_a = \frac{e}{m} \left[ a_\mu \vec{B} - \\
+\left(a_\mu - \frac{1}{\gamma^2 - 1} \right) \\
+\frac{\vec{\beta} \times \vec{E}}{c} \right]
 \end{equation}
 
 \noindent A muon beam at a very specific momentum, \pmagic, cancels the effects of radial electric fields which allows electrostatic focusing to be used on the muon beam instead of magnetic gradient focusing.  The perturbations from magnetic focusing was a large source of uncertainty in the previous experiment.  Another major innovation for the third CERN experiment was the use of pion injection instead of proton injection.  The measurement techniques of CERN-III were similar to CERN-II.  With the achieved improvements, the CERN team was able to drive down the uncertainty on $a_\mu$ to \ppm{7}\cite{47y-muon-g-2}, nearly a 40-fold improvement!
@@ -249,7 +251,8 @@ For higher order terms in the QED correction, one can garner some intuition by i
 
 \begin{equation}
 \label{eqn:qed-2nd-order-small-m}
-\delta a_\mu^p \sim \big(\frac{\alpha}{\pi} \big)^{n_p} \ln^{k_p}\frac{m}{m_p}
+\delta a_\mu^p \sim \left(\frac{\alpha}{\pi} \right)^{n_p} \\
+\ln^{k_p} \left( \frac{m_\mu}{m_p} \right)
 \end{equation}
 
 \noindent
@@ -257,8 +260,9 @@ And, now consider the opposite case where $m_p \gg m$.  The expression changes t
 
 \begin{equation}
 \label{eqn:qed-2nd-order-large-m}
-\delta_\mu^p \sim \big(\frac{\alpha}{\pi} \big)^{n_p} \\
-\frac{m_p^2}{m^2} \ln^{k_p}\frac{m}{m_p}
+\delta_\mu^p \sim \left( \frac{\alpha}{\pi} \right)^{n_p} \\
+\left( \frac{m_\mu}{m_p} \right)^2 \\
+\ln^{k_p} \left( \frac{m_\mu}{m_p} \right)
 \end{equation}
 
 \noindent
@@ -266,11 +270,11 @@ The mass supression term can be understood as a result of the fact that these ty
 
 The two equations, \ref{eqn:qed-2nd-order-large-m} and \ref{eqn:qed-2nd-order-small-m}, offer insight into the difference between muon and elecron \gmtwo.  The electron mass is much smaller than the muon, so these are the type of higher order interactions that are enhanced in the muon \gmtwo.  Another insight following from the first is the fact that since the electron effects are heavily suppressed, the electron \gmtwo can be used to calculate a very precise value of $\alphaQED$ \cite{amm-of-muon}.
 
-The contribution of QED effects have been calculated out to 5 loops\cite{5-loop-qed}.  That includes more than 10,000 diagrams!  The resulting contribution to \mugmtwo in total is given below.
+The contribution of QED effects have been calculated out to 5 loops\cite{5-loop-qed}.  That includes more than 10,000 diagrams!  The correction from QED is well known and does not limit the certainty on the theoretical value.  The resulting contribution to \mugmtwo in total is
 
 \begin{equation}
 \label{eqn:qed-total}
-a_\mu^{^{QED}} = 116\;584\;718.845(0.037) \times 10^{-11}
+a_\mu^{^{QED}} = 116\;584\;718.845(0.037) \times 10^{-11}.
 \end{equation}
 
 \subsection{EW Effects} \label{s-sec:theory-ew}
