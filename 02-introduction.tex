@@ -3,9 +3,9 @@
 
 In particle physics, \gmtwo of the muon, and \gmtwo in general, is an important and deep probe into \tsm (SM). In order to properly introduce the concept of \gmtwo, it is important to first discuss some background fundamentals.  After covering the basics, an argument as to the benefits of measuring \mugmtwo solidifies the scientific context. Then, a brief history of \mugmtwo experiments establishes the context for current \mugmtwo experiments and highlight the gradual rise of statistical tension between measured and calculated results.  And, finally, the state of theory illuminates the types of contributions that affect \mugmtwo and models may resolve the experimental results. 
 
-\section{Magnetic Moment Background}
+\section{Magnetic Moments}
 
-\subsection{Definitions}
+\subsection{Definition}
 A thorough understanding of \gmtwo begins with classical model for a magnetic moment.  An entity attains a magnetic moment, $\vec{\mu}$, when the object has a certain correlation between the motion of electric charges which it possesses and the physical space it occupies.  Equation \ref{eqn:magnetic-moment-integral} shows the way to calculate such a correlation in a single continuous body or particle \cite{jackson}.  The macro-scale quantity uses the term spin polarization or magnetization, $\vec{M}$, defined in equation \ref{eqn:polarization-sum}.
 
 \begin{equation}
@@ -95,6 +95,43 @@ a_{\ell} \equiv \Big(\frac{g\hbox{--}2}{2} \Big)_\ell
 \noindent
 Note that the two labels, $a$ and \gmtwo, are used somewhat interchangeably to denote the anomalous magnetic moment even though they technically differ by a factor of two.
 
+\section{Muon Characteristics}
+
+\subsection{Decay Chain}
+
+The pion decay chain is commonly used in the production of spin polarized muons.  The pion and muon decay formulas are given in equation \ref{eqn:pion-decay-chain}.  The principle branching from pion decay produces muons with very high probability, more than \SI{99.9}{\percent} \cite{pdg-2016}.  Similarly, the muon decays into an electron and two neutrinos with nearly \SI{100}{\percent} probability.  The decay formulas are shown in equation \ref{eqn:pion-decay-chain}.
+
+\begin{align}
+\label{eqn:pion-decay-chain}
+\pi^+ & \rightarrow \mu^+ \bar{\nu}_\mu  & \pi^- & \rightarrow \mu^- \nu_\mu \\
+\mu^+ & \rightarrow e^+ \bar{\nu_e} \nu_\mu  & \mu^- & \rightarrow e^- \nu_e \bar{\nu}_\mu 
+\end{align}
+
+\subsubsection{Pion Decay}
+
+The two-body decay is isotropic in the pion rest frame and imparts half of the pion mass to both the muon and (anti-)neutrino produced.  In the SM, neutrinos are always produced with left-handed chirality meaning that the direction of the spin direction and the momentum direction are anti-aligned.  Conservation of angular momentum then forces the muon produced via pion decay to have the same chirality as the neutrino.  The decay lends itself to production of a spin polarized muon beam.  When the isotropic decay is boosted into the lab frame for a pion beam, both the highest energy or lowest muons exhibit strong spin polarization, so momentum selection can be used to achieve a polarized muon beam. 
+
+\subsubsection{Muon Decay}
+
+The muon decay is a bit more complicated than pion decay.  The process is a three body decay.  A common framing when talking about muon decay uses a probability distribution and asymmetry function over the range of possible muon energies.  The asymmetry function is a proxy for the likelihood of the decay electron momentum to be in the direction of the muon spin.  It is instructive to examine the extreme cases where both neutrinos are emitted in the same direction and the case where they have opposing momentum directions.  
+
+The first case is the highest energy decay electron, the two neutrinos receive half the decay energy and the electron receieves the other half.  The neutrino/anti-neutrino pair carry away no angular momentum, because the neutrino must have left-handed chirality and the anti-neutrino must have right-handed chirality, opposing spins.  The decay electron then must carry the spin of the parent muon.
+
+The second case is the lowest energy decay electron, the neutrino and the anti-neutrino each receive half the rest mass of the muon.  The electron is produced nearly at rest in that case.  The angular momentum carried by the neutrinos in this case is no longer zero, but rather one.  The electron then will be produced with spin in the opposite direction as the parent muon.
+
+\begin{align}
+\label{eqn:muon-decay-distributions}
+n_{rest}(y) & = y^2(3 - 2 y) & a_{rest}(y) & = \frac{2 y - 1}{3 - 2y} \\
+n_{lab}(y) & = \frac{-8 y^2 + y + 1}{4 y^2 - 5y - 5} & a_{lab}(y) & = \tfrac{1}{5}(y - 1) (4 y^2 - 5y - 5)
+\end{align}
+
+\begin{figure}
+\label{fig:muon-decay-distributions}
+\centering
+\includegraphics[width=1.0\linewidth]{fig/muon-decay-distributions}
+\caption{Characteristics of the muon decay.  Each plot shows the decay probably as a function of fractional energy, and the decay asymmetry which is a proxy for the probability that the electron emission occurs in the direction of the muon spin.  The left plot shows the distributions for the rest frame of the muon, and the right plot shows the same for the lab frame after boosting to \pmagic.}
+\end{figure}
+
 \section{Motivation}
 There are two major questions that need answers to specifically motivate the muon \gmtwo experiment.  The first question is: ``Why measure the anomalous magnetic moment?'', and the second question is: ``Why use muons?''.
 
@@ -118,8 +155,6 @@ The muon \gmtwo has been measured many times over the years, and throughout it h
 \subsubsection{Implementations}
 
 What then, one might ask, are the bare necessitites to perform the \gmtwo experiment?  Number one is reliable source of spin polarized muon, the higher the net polarization the better.  Next, the there must be a method to store the muons in an external magnetic field while they precess which can be achieved through a penning trap setup as in older experiments or a cyclotron storage ring as in many newer experiments.  The third necessesity is is a method by which to measure the direction of the muon spin vector over time.  Measuring the spin direction relies on on the fact that spin informations is transfered to the momentum of the decay electron.  The detector could be as simple as a forward/backward electron sensitive detector that catches decay electrons.  The last requirement is a measuremenent of the magnetic field experienced by the muons as they precess.  Keep these issues in mind as the historical experiments are discussed in the following sections.
-
-\todo{I think I want to talk about $\pi \rightarrow \mu \rightarrow e$ here instead of chapter 2}
 
 \section{History of Experiment} \label{sec:history-expt}
 
