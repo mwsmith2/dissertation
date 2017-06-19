@@ -1,8 +1,8 @@
 \chapter{Field Measurement} \label{ch:field-meaurement}
 
-\section{Uncertainty Requirements}
+\section{Uncertainty Budget}
 
-The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the beam convoluted average magnetic field.  The uncertainty comes in many flavors that are enumerated in source \cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  The uncertainty constraints help paint the picture for the next section which walks through the field measurement methodology.
+The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the beam convoluted average magnetic field.  The uncertainty comes from many different aspects which are enumerated in source \cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  The uncertainty constraints help paint the picture for the next section which walks through the field measurement methodology.
 
 \begin{table}[h]
 \label{tab:field-uncertainties}
@@ -12,7 +12,7 @@ The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the beam convo
     \hline
     \multicolumn{1}{c}{Source} & Uncertainty [ppb] \\
     \hline
-    Calibration of fixed probes   & 35 \\
+    Calibration of fixed probes      & 35 \\
     Calibration of trolley probes    & 30 \\
     Trolley measurements of $B_0$    & 30 \\
     Interpolation with fixed probes  & 30 \\
@@ -26,15 +26,13 @@ The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the beam convo
 \end{tabular}
 \end{table}
 
-\section{Technique} \label{sec:field-measurement-technique}
+\section{Measurement Technique} \label{sec:field-measurement-technique}
 
-The \gmtwo experiment has stringent requirements on the measurement uncertainty of the magnetic field value.  Stringent enough to aim for an entire error budget on the field uncertainty which is systematic.  Each individual measurement needs to be precise enough that the statistical error of the combined field value is negligible.  This led to an uncertainty goal of \ppb{10} for each probe measurement \todo{find reference}.  The experiment deploys a custom magnetometer system to measure the field.  The custom magnetometers use pulsed proton nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  The probes were designed to have a very high Q-value resonance at the expected resonance frequency of protons in the magnetic field.
+The measurement of the magnetic field for the \mugmtwo experiment is subject to stringent requirements.  The entire error budget on the field uncertainty is due to systematic effects, so each individual measurement needs to be precise enough that the statistical error of the combined field value is negligible.  This motivated a stated uncertainty goal of \ppb{10} for each field measurement \cite{e989-tdr}.  The experiment deploys a set of custom magnetometers to make measurements of the field.  The custom magnetometers use pulsed proton nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  The pNMR probes produce a signal with Larmor frequency information that directly correlates to the value of the magnetic field.  Using pNMR with a sharp resonance around the expected Larmor frequency in the \gmtwo magnetic field, the magnetometers are able to reach the aforementioned precision goals.
 
-\subsection{Proton NMR Signal}
+\subsection{pNMR Basics}
 
 The essence of a pNMR measurement is frequency measurement of another type of precession, proton precession.  The source of the pNMR signal is a volume of material with a population of quasi-free protons.  The proton spins in the active volume are polarized to a small degree in the direction of a large field, in the case of \gmtwo a \bmagic field in the vertical direction.  A secondary field rotating in the orthogonal plane at a frequency approximately equal to the expected precession frequency of B-magic.  The intended effect of the secondary field is intuitively understood in the rotating reference frame.  In the rotating frame the vertically (z-direction) polarized protons experience an orthogonal (y-direction) field which rotates them into the orthogonal plane (x-y plane).  In the lab frame the polarized protons continue to precess at a rate proportional to the strong vertical field.  Precession in the orthogonal plane produces an induction signal in a nearby pickup coil which is subsequently digitized and analyzed.  A result of robust frequency analysis on the pNMR signal serves as high precision field proxy for \gmtwo experiment.
-
-\subsection{Free Induction Decay}
 
 The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that couples magnetization and field in different dimensions.
 
@@ -72,6 +70,10 @@ In a realistic situation, the FID signal is a summation over varying field value
 
 \subsection{Probe Design}
 
+The custom pNMR probes come in three different builds.  The standard probes which are used in fixed probe system and trolley system for in situ measurements of the storage field.  The absolute calibration probes are deployed in external measurements to transfer the plunging probes which are the third type of probes.
+
+\subsubsection{Standard Probes}
+
 The core design of the pNMR probes was based on the design from the previous experiment. Figure \ref{fig:field-pnmr-probe-design} depicts the design and components of the probe.  Each probe consists of one pickup coils, a teflon backbone, a tunable capacitor, an alimunimum shell, and a \SI{5}{\meter} BNC cable.  The induction coil is used to inject the $\pi/2$ pulse which rotates the protons into the orthogonal plane, and again to pick up the pNMR precession signal.  The capacitor allows the probe resonance to be tuned finely.  The aluminum shell allots some capacitance to the probe and shields against external effects.
 
 \begin{figure}
@@ -84,13 +86,26 @@ The field team at \uw iterated on the probe design making several improvements. 
 
 The pNMR probes are used in two fairly different systems to measure the field.  The \fps comprises 378 probes located all around the storage ring to achieve thorough field coverage.  The actual volumes occupied by the fixed probes are outside of the muon storage volume.  The purpose of the \fps is to monitor the drift of the field at different locales around the ring.  The other system to use the pNMR probes is the Trolley System. The Trolley contains an array of 17 probes which carve out an azimuthal plane in the muon storage volume.  The trolley runs on rails all around the ring and uses the pNMR probes to measure the magnetic field in the muon storage region.  
 
+\subsubsection{Absolute Calibration Probes}
+
+\todo{add content}
+
+\subsubsection{Plunging Probes}
+
+\todo{add content}
+
 \section{Field Subsystems}
 
 \subsection{Fixed Probe System (FPS)}
 
 The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprised the NMR pulser design from the E821 experiments.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency standard.  The resulting signal feeds through a lowpass filter with $f_0$ of around \SI{200}{\kHz} \todo{check value}.  The filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and sampling depth of $16\;bits$.  The digitized waveform contains frequency information that represents the magnetic field.
 
-\todo{block diagram of the fixed probe system}
+\begin{figure}
+\label{fig:fixed-probe-block-diagram}
+\centering
+\includegraphics[width=0.9\linewidth]{fig/fixed-probe-block-diagram}
+\caption{\todo{fill out caption}}
+\end{figure}
 
 \subsection{Trolley System (TS)}
 
