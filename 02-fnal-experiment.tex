@@ -4,7 +4,7 @@
 
 \section{The Big Picture} \label{sec:expt-big-picture}
 
-\subsection{Deliverables}
+\subsection{Final Deliverable}
 
 The principal result from the muon \gmtwo experiment can be represented in a single expression in which there are two quantities measured very precisely by the experiment.
 
@@ -15,9 +15,7 @@ a_\mu = \frac{\omega_a}{\omega_p} \frac{\mu_p}{\mu_e} \\
 \end{equation}
 
 \noindent
-In equation \ref{eqn:g-2-results}, the two frequencies in the first fraction are measured in the experiment.  The spin precession frequency, $\omega_a$, is extracted with data from the calorimetry system described in more detail in section \ref{sec:spin-precession}.  The other frequency is represents the magnetic field strength as measured by the pNMR magnetometer system from the experiment which is discussed further in section \ref{sec:magnetic-field}.
-
-All other values in equation \ref{eqn:g-2-results} have already been measured in other experiments. Using CODATA values \cite{codata} for the magnetic moment and mass ratio and reference \cite{g-e-measurement} for the g-factor of the electron.
+In equation \ref{eqn:g-2-results}, the two frequencies in the first fraction are measured in the experiment.  The spin precession frequency, $\omega_a$, is extracted with data from the calorimetry system described in more detail in section \ref{sec:spin-precession}.  The other frequency is represents the magnetic field strength as measured by the pulsed nuclear magnetic resonance (pNMR) magnetometer system from the experiment which is discussed further in section \ref{sec:magnetic-field}.  All other values in equation \ref{eqn:g-2-results} have already been measured in other experiments. The CODATA values \cite{codata} for the magnetic moment and mass ratio and reference \cite{g-e-measurement} for the g-factor of the electron are given below.
 
 \begin{align}
 \mu_p/\mu_e & = -658.210\;6848(54) \\
@@ -32,64 +30,28 @@ Another common expression of the \mugmtwo results derives from the frequencies i
 \frac{\mathcal{R}}{\lambda^+ - \mathcal{R}}
 \end{equation}
 
-$\mathcal{R}$ is the ratio of $\omega_a$, the spin precession frequency, and $\tilde{\omega}_p$, the muon weighted magnetic field measurement which are both measured by the experiment. And, $\lambda^+$ is the ratio of the magnetic moment of the muon to that of the proton which is measured in muonium a hyperfine splitting experiment \cite{muonium-hyperfine}.  Using the CODATA values \cite{codata}, the ratio computes to
+$\mathcal{R}$ is the ratio of $\omega_a$, the spin precession frequency, and $<\omega_p>$, the muon weighted magnetic field measurement which are both measured by the experiment. And, $\lambda^+$ is the ratio of the magnetic moment of the muon to that of the proton which is measured in muonium a hyperfine splitting experiment \cite{muonium-hyperfine}.  Using the CODATA values \cite{codata}, the ratio computes to
 
 \begin{equation}
 \label{eqn:muon-to-proton-mu-ratio}
 \lambda^+ = \mu_{\mu^+} / \mu_p = 3.183\;345\;139(10).
 \end{equation}
 
-\noindent
-This reductive representation requires some explanation, so a light traversal through the main stages of the experiment is in order.
+\subsection{Uncertainty Goals}
+
+The precision goals for the measurement round out the essential of the experimental.  The overall, final precision goal on $a_\mu$ is \SI{140}{ppb}.  The statistical uncertainty in the error budget is allotted \SI{100}{ppb} and achieved through recording $1.5\times10^{11}$ muon events.  The systematics limit on $\omega_a$ is an uncertainty of \SI{70}{ppb}.  And, the systematics limit on $<\omega_p>$ is allowed an uncertainty \SI{70}{ppb}.  The individual terms summed in quadrature represent the entire error budget for the muon \gmtwo experiment.  The uncertainty goal improves nearly four-fold over the precision of the previous experiment at BNL.
 
 \subsection{Experiment Logistics}
-The experiment begins with the creation of a spin polarized muon beam.  The beam is produced with spin vectors aligned in the momentum direction with \SI{95}{\percent} spin polarization.  The beam is transported to the storage ring where it drifts through carefully designed magnetic fields to bring some muons onto stable orbits.
 
-\begin{figure}
-\label{fig:beamline-ring-injection}
-\centering
-\includegraphics[width=0.6\linewidth]{fig/beamline-ring-injection}
-\caption{The last leg of the beamline which brings muons into the storage ring.  The Fermilab Accelerator Division delivers muons into the inflector where it winds its way into the storage ring which is also shown.}
-\end{figure}
+The \mugmtwo experiment can be broken into several stages.  In the subsequent sections the following stages are discussed:
 
-Inside the storage ring, the muons experience a strong vertical magnetic field designed to maintain perfect cyclotron motion for a muon momentum of \pmagic.  The cyclotron frequency is defined in equation \ref{eqn:omega-cyclotron} \cite{e821-prd}.  The muons also undergo Thomas precession, relativistic spin precession.  The expression for Thomas precession is given in equation \ref{eqn:omega-spin} \cite{e821-prd}.
-
-\begin{equation}
-\label{eqn:omega-cyclotron}
-\omega_c = -\frac{q B}{\gamma m}
-\end{equation}
-
-\begin{equation}
-\label{eqn:omega-spin}
-\omega_s = -g\frac{q B}{2 m} - (1 - \gamma) \frac{q B}{\gamma m}
-\end{equation}
-
-Taking the difference between the two frequencies, yields equation \ref{eqn:omega-a} which reveals that the experiment can truly measure the anomalous precession.  The experiment precession measures precession advance with respect to the cyclotron rotation of the momentum and spin vectors which is exactly $a_\mu$.  A diagram of the spin vector and the momentum vector progression is shown in figure \ref{fig:momentum-spin-vectors-ring}.  Note that the phase advance is exaggerated for effect in the diagram.  In reality the phase advance reaches $2\pi$ every 29.3 periods around the ring.
-
-\begin{equation}
-\label{eqn:omega-a}
-\omega_a = -\frac{g - 2}{2} \frac{q B}{m} \\
-= a_\mu \frac{q B}{m}
-\end{equation}
-
-\begin{figure}
-\label{fig:momentum-spin-vectors-ring}
-\centering
-\includegraphics[width=0.5\linewidth]{fig/momentum-spin-vectors-ring}
-\caption{An illustration of the spin vector phase advance as the muons propagate around the storage ring.  The momentum vector undergoes perfect cyclotron motion and the spin vector edges forward due specifically to the anomalous magnetic moment.  The effect is exaggerated in the diagram.  In reality, the phase advance laps the momentum vector every 29.3 times around the ring.}
-\end{figure}
-
-Equation \ref{eqn:a-lepton}, the definition of $a_\mu$, can now be defined in terms of the relevant frequencies then back to equation \ref{eqn:g-2-results-2}.
-
-\begin{equation}
-\label{eqn:a-mu-precession-1}
-a_\mu = \frac{g - 2}{2} \\
-\Rightarrow \frac{\omega_a}{\omega_s - \omega_a} \cdot \\
-\frac{\frac{1}{\tilde{\omega}_p}}{\frac{1}{\tilde{\omega}_p}} \\
-\Rightarrow \frac{\mathcal{R}}{\lambda^+ - \mathcal{R}}.
-\end{equation}
-
-The precision goals for the measurement round out the essential of the experimental.  The overall, final precision goal on $a_\mu$ is \SI{140}{ppb}.  The statistical uncertainty in the error budget is allotted \SI{100}{ppb} and achieved through recording $1.5\times10^{11}$ muon events.  The systematics limit on $\omega_a$ is an uncertainty of \SI{70}{ppb}.  And, the systematics limit on $\tilde{\omega}_p$ is allowed an uncertainty \SI{70}{ppb}.  The individual terms summed in quadrature represent the entire error budget for the muon \gmtwo experiment.  The uncertainty goal improves nearly four-fold over the precision of the previous experiment at BNL.
+\begin{itemize}[noitemsep]
+\item{Muon Production}
+\item{The Storage Ring}
+\item{Muon Injection}
+\item{The Magnetic Field}
+\item{Spin Precession}
+\end{itemize}
 
 \section{Muon Production} \label{sec:muon-production}
 
@@ -98,10 +60,10 @@ The first stage in an experiment that measures a property of muons is of course 
 \begin{figure}
 \label{fig:muon-production-beamline}
 \includegraphics[width=0.9\linewidth]{fig/muon-production-beamline}
-\caption{The accelerator beamline that produces and delivers muons for \gmtwo. \todo{expand}}
+\caption{The accelerator beamline that delivers muons for E989.  Protons are accelerated to \SI{8}{\GeV/c} and bunched in the Recycler Ring.  Then the protons hit the pion production target and lithium focusing lens.  The pions propagate down the P1-P2-P3 line to the Delivery Ring where muons are bunched and delivered to MC-1, the \mugmtwo experimental hall, at \SI{12}{\second^-1} \cite{e989-tdr}. \todo{double check}}
 \end{figure}
 
-The pion beam is given adequate time for nearly all of the pions to undergo decay into muons.  Through the pion decay process the high and low energy muons have a net spin polarization (as discussed in section \ref{sec:muon-attributes}), so the beamline selects the appropriate muon energy and achieves polarization essentially for free. With momentum selection techniques, a spin polarization of around \SI{95}{\percent} can be achieved.  A bunch of muons produced in the beamline is referred to as a ``fill'', and these fills will arrive at the storage ring at an average rate of \SI{12}{\second^{-1}}\cite{e989-tdr}.
+The pion beam traverses a \SI{296}{\meter} path to the storage ring \cite{e989-tdr}.  The length gives adequate time for nearly all of the pions to decay into muons.  Through the pion decay process the high and low energy muons have a net spin polarization (as discussed in section \ref{sec:muon-attributes}), so the beamline design selects for the appropriate muon energy and achieves strong polarization. With this technique, a spin polarization of around \SI{95}{\percent} can be achieved.  A bunch of muons produced in the beamline is referred to as a ``fill'', and these fills will arrive at the storage ring at an average rate of \SI{12}{\second^{-1}}\cite{e989-tdr}.
 
 \section{The Storage Ring} \label{sec:storage-ring}
 
@@ -120,7 +82,7 @@ The field itself is produced by the superconducting coils.  A current of $5176\;
 \label{fig:initial-field}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/initial-dipole-field.png}
-\caption{The initial dipole(mean) magnetic field when the storage field was first fully measured at Fermilab.  The peak-to-peak variation was around \ppm{1400}.  The umbrella-like sub-structure occurs every 10 degrees and corresponds to the changing gap between the slightly curved pole pieces.  The horizontal bands represent the average field value and the uniformity goals set forth by the experiment.  The band formed by the two dotted lines around the average value indicates the experimental goal of \SI{\pm 25}{ppm}.}
+\caption{The initial dipole (average at azimuthal point) magnetic field when the storage field was first fully measured at Fermilab.  The peak-to-peak variation was around \ppm{1400}.  The umbrella-like sub-structure occurs every 10 degrees and corresponds to the changing gap between the slightly curved pole pieces.  The horizontal bands represent the average field value and the uniformity goals set forth by the experiment.  The band formed by the two dotted lines around the average value indicates the experimental goal of \SI{\pm 25}{ppm}.}
 \end{figure}
 
 The last essential piece of the magnetic storage ring is the intrinsic shim kit.  There are over 1,000 knobs built into the ring hardware to make azimuthally localized changes to the field. The collection of edge shims, wedge shims, and top hats are designed to adjust specific symmetries in the magnetic field.  The shims are discussed in further detail in chapter \ref{ch:shimming}.
@@ -144,7 +106,7 @@ The second problem with injecting muons comes from orbital mismatch of muon traj
 \caption{The figure illustrates the orbital mismatch problem with muon injection.  The red track illustrates the problem where the muons collide with the injection point, and the blue track illustrates the good orbit achieved after a perfect kick.}
 \end{figure}
 
-Muon injection requires a fast kicker to impart an angular shift on all muons in the fill. In figure \ref{fig:expt-kicker-correction}, the red track illustrates the problem and the blue track illustrates the good orbit achieved after a perfect kick. Optimizing the design of the \gmtwo fast magnetic kicker was no trivial task.  The kicker ideally would produce a moderate magnetic field around \SI{275}{\gauss} with very sharp edges, $\mathcal{O}(10\;ns)$. The reality is messier, but the completion of a new design will deliver a kicker that improves muon storage \cite{e989-tdr}.  
+Muon injection requires a fast kicker to impart an angular shift on all muons in the fill. In figure \ref{fig:expt-kicker-correction}, the red track illustrates the problem and the blue track illustrates the good orbit achieved after a perfect kick. Optimizing the design of the \gmtwo fast magnetic kicker was no trivial task.  The kicker ideally would produce a moderate magnetic field around \SI{275}{\gauss} with very sharp edges, $\mathcal{O}(10\;ns)$. The reality is messier, but the completion of a newly designed kicker will improves muon storage \cite{e989-tdr}.  
 
 \section{Magnetic Field} \label{sec:magnetic-field}
 
@@ -169,17 +131,17 @@ A visualization of the terms in the multipole expansion is given in figure \ref{
 \caption{The first seven multipoles in the the field expansion, eqn. \ref{eqn:field-expansion}.  The first on the left is the dipole term which simply averages each point equally over the domain.  The next two are the normal and skew quadrupole which represent an inner to outer or top to bottom asymmetry in the field respectively.  The next four terms similarly represent symmetries of the field.  They are termed: normal sextupole, skew sextupole, normal octupole, and skew octupole.}
 \end{figure}
 
-\subsection{Determining $\tilde{\omega}_p$}
+\subsection{Determining $<\omega_p>$}
 
 The magnetic field is measured and monitored with a suite of magnetometers, pNMR probes.  The probes are pulsed, and the signal is analyzed to produce a frequency value. The following chapter, \ref{ch:field-measurement} discusses the analysis in depth, but a cursory overview is still provided here for completeness.  
 
 The field analysis combines pNMR measurements from three different major subsystems.  The trolley system carries a 2D array of probes to measure the field in the storage volume.  The trolley cannot run while the ring is accepting muons though.  The fixed probe system is a set of 378 stationary pNMR devices to measure field drift between trolley runs.  The final subsystem is the absolute calibration probes which are essentially independent devices from the rest of the pNMR probes.  The absolute calibration probes are used to correct for systematic effects that shift the proton precession frequency in the main probes.  
 
-All the field measurements are combined to produce a storage field map.  The final deliverable for the field, $\tilde{\omega}_p$, must denote the average field experienced by muons though.  The muon distribution and the field values need to be integrating over the all the muons that produce usable events.  The final deliverable value from the field analysis in then given in equation \ref{eqn:field-omega-p-tilde}.
+All the field measurements are combined to produce a storage field map.  The final deliverable for the field, $<\omega_p>$, must denote the average field experienced by muons though.  The muon distribution and the field values need to be integrating over the all the muons that produce usable events.  The final deliverable value from the field analysis in then given in equation \ref{eqn:field-omega-p-tilde}.
 
 \begin{equation}
 \label{eqn:field-omega-p-tilde}
-\tilde{\omega}_p = \int M(\vec{r}, t) \cdot \omega_p(\vec{r}, t)\; dt\;dV
+<\omega_p> = \int M(\vec{r}, t) \cdot \omega_p(\vec{r}, t)\; dt\;dV
 \end{equation}
 
 
