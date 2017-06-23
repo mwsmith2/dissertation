@@ -1,77 +1,134 @@
 \chapter{FID Analysis}
 
-The signal generated in the pNMR probes contains frequency information that represents the effective field seen by the probe's protonated volume.  A fraction of the polarized protons rotate into orthogonal plane, then precess at the Larmor frequency.  The average frequency of the the precessing protons immediately after the $\pi/2$ pulse is target of analysis.  That value represents the magnetic field in the volume.  The digitized precession signal recorded as the protons slowly rotate back into the original polarization and decohere is called the Free Induction Decay (FID).
+The FID signals generated in the pNMR probes contain frequency information that represents the effective field seen by protons in the probe's active volume.  During a measurement the net polarization vector of the protons rotates into the plane orthogonal to the magnetic field, then the protons undergo Larmor precession due to the field.  The average precession frequency of the the protons immediately after the $\pi/2$ pulse is the target of FID analysis.
 
 \section{Frequency Extraction Methods}
 
-As in most data analysis, the first step is cleaning and characterizing the data.  In the case of FIDs, the process involves removing the baseline (and trend in some cases) and determining the start time and stop time of useful FID signal within the frame of the entire recorded waveform.  The baseline value is calculated using initial segment of the waveform.  The signal range is computed using the maximum amplitude around the signal baseline and applying a threshold on to find the first and last sections of the waveform with an envelope above that threshold.
+As in most data analysis, the first step is cleaning and characterizing the data.  In the case of FIDs, the process begins with removing the baseline (and trend in some cases).  The next step in data preprocessing is determination of the start time and stop time of useful FID signal within the frame of the entire recorded waveform.  The baseline value is calculated using an initial segment of the waveform which is free of signal.  The signal range is computed using the maximum amplitude around the signal baseline and applying a amplitude threshold to find the first and last sections of the waveform with an envelope above that threshold.  After the FID has been characterized, it is ready for frequency extraction.
 
-\subsection{Zero Crossing}
-The simplest method for determining the FID frequency involves counting zero crossings of the signal.  The technique was used in the previous \mugmtwo experiment in hardware, and has been re-implemented in software for E989.  The crux of the technique is to count all zero crossings in the signal, then, determine the time of the first and last zero crossing using a polynomial fit.  The method prevents double counting of zeros by requiring the signal go above a threshold before allowing another countable zero crossing.  The hysteresis constraint is illustrated in figure \ref{fig:fid-freq-zc-hysteresis}.  The frequency of the FID is then given by
+\note{if time, add flow images for data pre-processing}
+
+\subsection{Zero Crossing Method (ZC)}
+The simplest method for determining the FID frequency involves counting zero crossings of the signal.  The technique was used in the previous \mugmtwo experiment in a hardware implementation, and has been re-implemented in software for E989.  The zero crossing method is a time domain algorithm which counts all zero crossings in the signal ($N$), then determines the time of the first and last zero crossing using a polynomial fit ($t_i$ and $t_f$).  The FID frequency is then given by equation \ref{eqn:fid-freq-zc}.
 
 \begin{equation}
-\label{eqn:fig-freq-zc}
-\omega_{zc} = \frac{N_{zc}}{2\pi(t_f - t_i)}
+\label{eqn:fid-freq-zc}
+\omega_{zc} = \frac{N - 1}{2 \pi(t_f - t_i)}
 \end{equation}
 
-\noindent 
-where $N_{zc}$ is the number of zero crossings counted by the algorithm.
+\noindent
+The method prevents double counting of zeros by requiring the signal cross an amplitude threshold before allowing another countable zero crossing.  The threshold is referred to as the hysteresis threshold, and the concept is illustrated in figure \ref{fig:fid-freq-zc-hysteresis}.
 
 \begin{figure}
 \label{fig:fid-freq-zc-hysteresis}
 \includegraphics[width=0.9\linewidth]{fig/fid-freq-zc-hysteresis}
+\caption{The figure illustrates aspects of the zero crossing frequency determination technique.  The timing of first and last zero crossings are determined using a local polynomial fit which is represented by the blue lines.  The number of zeros is incremented at a sign change, then frozen until the signal amplitude goes outside of the dotted green lines.  Using such a threshold is essential to the method as it supresses erroneous zero counts.}
 \end{figure}
 
-An uncertainty analysis can be examined using a variance analysis given in equation \ref{eqn:uncertainty-analysis} \todo{need reference}.
+The uncertainty associated with the zero crossing technique can be examined with a standard error analysis formulation given in equation \ref{eqn:uncertainty-analysis} \cite{error-taylor}.
 
 \begin{equation}
 \label{eqn:uncertainty-analysis}
-\frac{\delta f}{f} \approx \frac{1}{f} \sum_{i = 1} \frac{\partial f}{\partial x_i} \delta x_i
+\frac{\delta f}{f} = \frac{1}{f} \sum_{i} \\
+\sqrt{\left| \frac{\partial f}{\partial x_i} \right|^2 (\delta x_i)^2}
 \end{equation}
 
 \noindent
-In the case of the zero crossing algorithm, the uncertainty analysis yields
+In the case of the zero crossing algorithm, equation \ref{eqn:uncertainty-analysis} yields:
 
 \begin{equation}
 \label{eqn:fid-ferr-zc}
-\frac{\delta \omega}{\omega} = \frac{\delta N}{N} \\
-+ \frac{\delta \Delta T}{\Delta T}.
+\frac{\delta \omega}{\omega} = \\
+\sqrt{
+    \left( \frac{\delta N}{N} \right)^2 +
+    \left( \frac{\delta t_i}{t_f - t_i} \right)^2 + 
+    \left( \frac{\delta t_f}{t_f - t_i} \right)^2
+    }.
 \end{equation}
 
 \noindent
-For the first term in \ref{eqn:fid-ferr-zc}, larger values of N lower the uncertainty, and for the second term longer FID waveforms suppress the uncertainty.  By using a proper hysteresis threshold, $\delta N$ can be suppressed to be essentially zero. It is informative to examine the uncertainty within typical limit values for the pNMR probe frequency.  For limits on acceptable signals, an FID can be defined to have a length of \SI{100}{\micro \second} and a frequency of \SI{20}{\kHz}.  In this case, the signal is expected to exhibit $\delta \omega / \omega \approx 5 \times 10^{-6}$. 
-
-\todo{maybe write up more thorough error analysis appendix}
-
-\subsection{Spectral Centroid}
-Another straightforward technique employed to extract the FID frequency relies on the spectral density of the signal. 
+For the first term in eqn. \ref{eqn:fid-ferr-zc}, larger values of $N$ lower the uncertainty, and for the next two terms longer FID durations, $t_f - t_i = \Delta t$, lower the uncertainty.  By using a proper hysteresis threshold, $\delta N$ is suppressed to effectively zero. The start and stop times for the FID are determined by using a cubic fit around the first and last zero found in the algorithm.  By assuming the waveform is an ideal FID and expanding around the zero points, one finds that 
 
 \begin{equation}
-\label{eqn:fid-fft}
-FFT(\omega_k) = \sum_{n=0}^{n=N} e^\frac{-i \omega_0}{2\pi k} f(x_n)
+\label{eqn:error-on-ti-tf}
+\delta t = \frac{\delta y}{A \omega} = \frac{1}{S \omega}
+\end{equation}
+
+\noindent
+where $\delta y$ is the noise on the signal and $A$ is the signal amplitude.  A substitution is then made to represent $\delta t$ in terms of $S$ the signal-to-noise in terms of amplitudes.  With the ideal FID assumption, $\delta t_f$ can be expressed in terms of $\delta t_i$, $A_f = A_i e^{-(\Delta t) / \tau}$. Now combining eqn. \ref{eqn:error-on-ti-tf}, \ref{eqn:fid-ferr-zc}, and the preceding discussion, the uncertainty expression becomes
+
+\begin{equation}
+\label{eqn:fid-ferr-zc-2}
+\frac{\delta \omega}{\omega} = \\
+\frac{1}{\omega}\frac{1}{S}
+\frac{\sqrt{1 + e^{2 \Delta t / \tau}}}{\Delta t}
+\end{equation}
+
+It is informative to examine the uncertainty within typical limit values for the pNMR probe frequency.  For a ``bad'' FID, the waveform might have a duration and decay constant of \SI{100}{\micro \second}, a frequency of \SI{20}{\kHz}, and a signal-to-noise of $100$.  In this case, the signal is expected to exhibit $\delta \omega / \omega \approx$ \SI{3}{ppm}.  A ``good'' FID might have a duration and decay constant of \SI{4}{\milli \second}, a frequency of \SI{50}{\kHz}, and a signal-to-noise of $1000$. In the good FID case, the frequency extraction is expected to exhibit $\delta \omega / \omega \approx$ \SI{8}{ppb}.
+
+The zero counting technique is a robust and effective analysis method for FIDs.  It was used in the the previous \mugmtwo experiment, and will be used as a frequency standard in E989.
+
+\subsection{Centroid Method (CN)}
+The simplest frequency domain analysis technique to extract the FID frequency.  Before discussing the method, a few definitions are in order: the standard Fourier Transform and the discrete analogue of the Fourier Transform will be used to bring the signal into the frequency domain, and they are defined in eqn. \ref{fid-fft-def} and \ref{fid-dfft-def} respectively.  Also important, the power spectral density (PSD) is the modulus squared of the Fourier Components which is useful, because it combines the real and imaginary frequency information into a single vector.
+
+\begin{equation}
+\label{eqn:fid-fft-def}
+\hat{f}(\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-i \omega t}\, f(t) \;dt
+\end{equation}
+
+\begin{equation}
+\label{eqn:fid-dfft-def}
+X_k = \frac{1}{\sqrt{N}} \sum_{n=0}^{n=N} e^{-i 2\pi k n / N} x_n
 \end{equation}
 
 \begin{equation}
 \label{eqn:fid-psd}
-PSD(\omega_k) = |FFT(\omega_k)|^2
+PSD(\omega) = |FFT(\omega)|^2
 \end{equation}
 
-In the power spectral density (PSD), the FID frequency manifests as a peak energy.  The frequency is computed as a frequency weighted sum of bins symmetrically around the peak value.
+In the PSD, defined in eqn. \ref{fid-psd}, the FID frequency manifests as the peak amplitude.  In the centroid method the frequency is computed as a frequency weighted sum of bins around the peak PSD value.
 
 \begin{equation}
 \label{eqn:freq-cn}
-\omega_{cn} = \sum_{i=i_{max} - N/2}^{i=i_{max} + N/2} PSD(\omega_i)
+\omega_{cn} = 
+\frac{\sum \omega_i |X_i|^2}{\sum |X_i|^2}
 \end{equation}
 
-\todo{error analysis}
+The peak in the PSD from FIDs is slightly asymmetric and fairly narrow, and the centroid method does not accomodate such deviations very well.  It will not be a primary method in E989.
 
-\subsection{Analytical Form Fit}
-The full analytical form of the idea FID PSD peak is trickier to implement
+\subsection{Analytical Peak Fit (AN)} \label{s-sec:fid-analytical}
+For the idealized FID defined in \ref{eqn:ideal-fid}, an analytical solution for the spectral peak is calculable.  The integral, eqn. \ref{eqn:fid-analytical-integral}, is fairly straightforward, since all the components can be converted into exponentials.  Note that the $\Omega$ in eqn. \ref{eqn:fid-analytical-integral} is the Heaviside step function.
 
-\todo{maybe cut this section}
+\begin{equation}
+\label{eqn:fid-analytical-integral}
+\hat{f}(\omega) = \frac{1}{2\pi} \int_{-\infty}^{\infty} 
+e^{-i \omega t} \left[ \Theta(t) \left(A \sin(\omega_0 t - \phi_0) e^{-t / \tau} \right) \right] \;dt
+\end{equation}
 
-\subsection{Lorentzian Peak}
-Peak fitting routines can improve precision upon the centroid technique.  Peak fitting works well using a Lorentzian Distribution, equation \ref{eqn:lorentzian}, in the domain around the maximum frequency bin.  The Lorentzian is an approximation of the analytical solution.
+\begin{equation}
+\label{eqn:fid-analytical-peak}
+\left| \hat{f}(\omega) \right|^2 = 
+\left( \frac{A}{2\pi} \right)^2
+\left[\frac{(\gamma^2 + \omega^2) \sin^2{\phi_0} 
++ 2 \gamma \omega_0 \sin{\phi_0} \cos{\phi_0} + \omega_0^2 \cos^2{\phi_0}}{(\gamma^2 + \omega^2)^2 + 2(\gamma^2 - \omega^2) \omega_0^2 + \omega_0^4}
+\right]
+\end{equation}
+
+The analytical solution did not prove to be a robust basis for peak fitting with narrow width of the spectral peaks and the many variable nature of the solution.  Still, it is a useful step into the next method.  If one expands the solution in \ref{eqn:fid-analytical-peak} around $\omega \rightarrow \omega_0 + \delta \omega$ and employs the assumptions: $\delta \omega \ll \omega_0$ and $\gamma^2 \ll \omega_0^2$, then the expression simplifies to eqn. \ref{eqn:fid-analytical-expansion}.
+
+\begin{equation}
+\label{eqn:fid-analytical-expansion}
+\left| \hat{f}(\omega) \right|^2 \approx
+\left(\frac{A}{4\pi}\right)^2 
+\frac{1}{(\omega - \omega_0)^2 + \gamma^2}
+\end{equation}
+
+\noindent
+The simplified expression is an improperly normalized Lorentzian Distribution (or Cauchy Distribution as it is also called).
+
+\subsection{Lorentzian Peak Fit (LZ)}
+
+Peak fitting routines can improve in precision upon the centroid and more complex analytical techniques.  Peak fitting works well using a Lorentzian Distribution, equation \ref{eqn:lorentzian}, in the domain around the maximum frequency bin. As shown in \ref{s-sec:fid-analytical}, the Lorentzian is an approximation of the analytical solution.
 
 \begin{equation}
 \label{eqn:lorentzian}
@@ -79,37 +136,44 @@ F(\omega) = \frac{1}{\pi} \\
 \frac{\Gamma / 2}{(\omega - \omega_0)^2 + (\Gamma / 2)^2}
 \end{equation}
 
-\subsection{Polynomial Phase Fit}
-The most intricate frequency determination technique is involves calculating the complementary phase of the original signal.  Given the knowledge that the original signal is harmonic \note{need to validate this}, the Hilbert Transform (Eqn. \ref{eqn:hilbert-transform}) gives the imaginary phase of a signal.
+The Lorentzian peak fitting method is more stable and effective than other frequency domain methods, but not the most effective method.  The expansion assumptions and ideal waveform approximations are not always valid in FID signals, and those signals are handled worse by the Lorentzian method.
+
+\subsection{Polynomial Phase Fit (PH)}
+The most precise frequency determination technique involves calculating the phase of the FID waveform.  Given the assumption that the original signal is harmonic, the Hilbert Transform (eqn. \ref{eqn:hilbert-transform}) gives the imaginary complement of a signal.  Using the original signal and the Hilbert transform together, the phase of the FID is given by eqn. \ref{eqn:fid-phase}.
 
 \begin{equation}
 \label{eqn:hilbert-transform}
-H(t) = IFFT[-i \cdot \mathrm{sgn}(\omega) \cdot FFT(F(t))]
+h(t) = IFFT[-i \cdot \mathrm{sgn}(\omega) \hat{f}(\omega)]
 \end{equation}
 
 \begin{equation}
 \label{eqn:fid-phase}
-\phi(t) = \arctan(H(t) / F(t))
+\phi(t) = \arctan(h(t) / f(t))
 \end{equation}
 
-With an equation defined for the phase propagation of the signal, a polynomial fit is effective at extracting the frequency of the FID, $\frac{\partial \phi}{\partial t}|_{t=0}$.
+\begin{figure}
+\label{fig:fid-hilbert-env}
+\includegraphics[width=0.9\linewidth]{fig/fid-hilbert-env}
+\caption{The plot shows the power of the Hilbert Transform.  The original FID is depicted alongside its phase complement, the Hilbert Transform.  And the magntidue of the two vectors together yield the third vector in the plot, the envelope function.}
+\end{figure}
+
+\noindent
+The phase calculation using eqn. \ref{eqn:fid-phase} has the caveat that the domain is always $[-\pi, \pi]$.  Unfolding the phase into the full domain is straightforward using thresholds on the allowing jump in phase between adjacent points.  With a phase robustly determined for the signal, the FID frequency manifests as the linear slope of the phase at time zero, $\frac{\partial \phi}{\partial t}|_{t=0}$.
 
 \begin{equation}
 \label{eqn:freq-ph}
-\omega_{ph} = a_1 = \argmin_{a_0, a_1, a_2, a_3} \;
-|\phi - (a_0 + a_1 t + a_2 t^2 + a_3 t^3)|
+\omega_{ph} = a_1 \in \argmin_{a_0, a_1, a_2, a_3} \;
+\left| \phi - (a_0 + a_1 t + a_2 t^2 + a_3 t^3) \right|
 \end{equation}
 
-With the phase as a function of time, the FID frequency manifests as the linear slope of the data.  In fact, the phase information yields frequency as a function of time.  The frequency of interest is the frequency immediately after the $\pi/2$ pulse.
-
-\todo{error analysis}
+A polynomial fit such as eqn. \ref{eqn:freq-ph} is effective at extracting the frequency, because the frequency is just the linear coefficient.  In fact, the phase information yields frequency as a function of time which is interesting for systematic checks.  The phase fit method is the most precise method in simulated FIDs.
 
 \subsection{Sinusoid Fit}
 Normalizing the signal into a sinusoid is another approach for frequency extraction utilizing the hilbert transform.  The envelope is calculable as the norm of the origina signal and the hilbert transform
 
 \begin{equation}
 \label{eqn:fid-envelope}
-F_{env} = \sqrt{|F(t)|^2 + |H(t)|^2}.
+f_{env}(t) = \sqrt{|f(t)|^2 + |h(t)|^2}.
 \end{equation}
 
 \noindent 
@@ -118,71 +182,66 @@ With the envelope in hand, the original signal can be normalized into an amplitu
 \begin{equation}
 \label{eqn:freq-sn}
 \omega_{sn} = \argmin_\omega \; \\
-|F(t) / F_{env}(t) - \sin(\omega t - \phi_0))|
+\left| f(t) / f_{env}(t) - \sin(\omega t - \phi_0)) \right|
 \end{equation}
 
-\todo{uncertainty analysis}
+\section{Frequency Extraction Studies}
 
-\section{Frequency Extraction Efficacy}
-
-Each FID frequency extraction technique needs to be tested and validated.  A whole slew of data options can be used: ideal functional FIDs, simulated FID, E821 waveforms, E821 probes in a local \uw magnetic.  Each dataset presents a test bed for determining the precision, accuracy and failure modes of each frequency extraction technique.
+Each FID frequency extraction technique must be tested and validated.  The tests are performed with several different sources of data: ideal functional FIDs, simulated FIDs, and measured FIDs.  Each dataset presents a test bed for determining the precision, accuracy and failure modes of each frequency extraction technique.
 
 \subsection{Ideal FIDs}
-The simplest case, the frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it will not be worth using to analyze the E989 data.  The effectiveness was testing on 10000 FIDs using a seed frequency of 47 kHz, near the expected nominal pNMR frequency of 50 kHz.  
+The simplest case is idealized FIDs. The frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it cannot be trusted to analyze the E989 data.  The effectiveness was tested on thousands of FIDs using a flat random distribution of frequencies from \SIrange{46.8}{47.2}{\kHz}.  The test results are shown in \ref{fig:fid-ideal-freq-extraction}.
 
 \begin{figure}
-    \label{fig:fid-ideal-freq-extraction}
-    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-cn}
-    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-lz}
-
-    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-ph1}
-    \includegraphics[width=0.45\linewidth]{fig/ideal-fid-sn}
-    \caption{Centroid Method, Lorentzian Method, Linear Phase Method and Sinusoid Method. \note{verify results}}
+\label{fig:fid-ideal-freq-extraction}
+\centering
+\includegraphics[width=1.0\linewidth]{fig/ideal-fid-test}
+\caption{The plots depict precision tests of different FID frequency extraction on ideal FIDs.  The methods are separated into frequency domain on the left, and time domain on the right.  The time domain methods all outperform the frequency domain methods in this study, and in particular the sinusoidal fit and linear phase fit perform exceptionally.}
 \end{figure}
 
 \subsection{Simulated FIDs}
-Integrating the Bloch Equations is a clear path to simulate FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible effects from a deviation from non-ideal, finite $\pi/2$ pulses frequency from the Larmor frequency.  The simulation uses a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more efficient to simulate at lower frequencies, because the integration step can be much larger.  Additionally, the entire system runs through a lowpass filter at \SI{200}{\kHz}, so all the higher frequency content is culled from the final FID signal.
+Integrating the Bloch Equations (eqn. \ref{eqn:bloch}) is a straightforward and yields accurate, simulated FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible deviations from the non-perfect, finite $\pi/2$ pulses.  The simulation used a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more practical to simulate at lower frequencies, because the integration step can be much larger.  In the end, the entire system runs through a lowpass filter at \SI{200}{\kHz}, so all the higher frequency content is removed from the final FID signal.  In that light simulations at \SI{1}{\MHz} are perfectly adequate.  Example results are shown in \ref{fig:fid-sim-freq-extraction}.
 
 \begin{figure}
-    \label{fig:fid-sim-freq-extraction}
-    \includegraphics[width=0.45\linewidth]{fig/sim-fid-cn}
-    \includegraphics[width=0.45\linewidth]{fig/sim-fid-lz}
+\label{fig:fid-sim-freq-extraction}
+\centering
+\includegraphics[width=0.45\linewidth]{fig/sim-fid-cn}
+\includegraphics[width=0.45\linewidth]{fig/sim-fid-lz}
 
-    \includegraphics[width=0.45\linewidth]{fig/sim-fid-zc}
-    \includegraphics[width=0.45\linewidth]{fig/sim-fid-ph1}
-    \caption{Centroid Method, Lorentzian Method, Linear Phase Method and Sinusoid Method}
+\includegraphics[width=0.45\linewidth]{fig/sim-fid-zc}
+\includegraphics[width=0.45\linewidth]{fig/sim-fid-ph1}
+
+\caption{Plots showing the results of FID frequency extraction tests on simulated FID waveforms.  The methods are Centroid Method (top left), Lorentzian Method (top right), Linear Phase Method (bottom left) and Sinusoid Method (bottom right).  
+\todo{remake image}}
 \end{figure}
 
 \subsection{Simulated Gradient FIDs}
-An expected problem complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which can distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The simulations aim to tests the effects of small gradients on the FID frequency extraction precision and accuracy.
+An anticipated complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which will distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The simulations aim to test the effects of small gradients on the FID frequency extraction precision and accuracy.
 
-The range of magnetic field gradient over the pNMR probes anticipated in the \gmtwo storage field are on the order of \SIrange{10}{100}{ppb} \note{check if ppb or ppm}. A collection of simulated FIDs was created using the Bloch Equation integrator with a range chosen to be \SI{47}{\kHz} \SI{\pm 1000}{ppb}. To implement a gradient, FIDs from the simulation collection were put into a weighted sum in a way that did not change the average frequency just the variation of over the probe.
-
-\begin{figure}
-\label{fig:sim-gradient-all-fids}
-\includegraphics[width=0.9\linewidth]{fig/sim-gradient-all-fids}
-\caption{A collection of FID waveforms simulated by integrating the Bloch Equations.  The step size between frequencies was chosen to be \SI{0.1}{ppb}, so that the variation between FIDs was smooth and a sum of waveforms could be used to approximate an integral.}
-\end{figure}
+The range of magnetic field gradient over the pNMR probes anticipated in the \gmtwo storage field are on the order of \SIrange{10}{100}{ppb}. A collection of simulated FIDs was created using a Bloch Equation integrator with a range chosen to be \SI{47}{\kHz} \SI{\pm 1000}{ppb}. To implement a gradient, FIDs from the simulation collection were put into a weighted sum in a way that did not change the average frequency just the variation of over the probe.
 
 \begin{figure}
 \label{fig:fid-sim-grad}
-\includegraphics[width=0.9\linewidth]{fig/fid-sim-grad-none}
-\includegraphics[width=0.9\linewidth]{fig/fid-sim-grad-lin-1000ppb}
-\includegraphics[width=0.9\linewidth]{fig/fid-sim-grad-quad-1000ppb}
-\caption{Example simulation waveforms made using a gradient superpositions.  The top waveform has no applied gradient.  The middle has a linear gradient of \SI{1000}{ppb}.  Note that the beat frequencies emplace near complete nodes onto the waveform envelope.  The bottom waveform has a quadratic gradient of \SI{1000}{ppb}.  Note the softer waveform distortions.}
+\centering
+\includegraphics[width=0.3\linewidth]{fig/fid-sim-grad-none}
+\includegraphics[width=0.3\linewidth]{fig/fid-sim-grad-lin-1000ppb}
+\includegraphics[width=0.3\linewidth]{fig/fid-sim-grad-quad-1000ppb}
+\caption{Example simulation waveforms made using a gradient superpositions.  The left waveform has no applied gradient.  The middle has a linear gradient of \SI{1000}{ppb}.  Note that the beat frequencies emplace near complete nodes onto the waveform envelope.  The right waveform has a quadratic gradient of \SI{1000}{ppb}.  Note the softer waveform distortions.}
 \end{figure}
 
-The resulting frequency extraction from the gradient FIDs are presented in figures \ref{fig:fid-sim-grad-lin-results} \& \ref{fig:fid-sim-grad-quad-results}.  In the linear case, the phase fit is essentially unperturbed while the zero crossing method gains uncertainty and a small bias over the \SI{1000}{ppb} gradient applied.  The effect in the expected gradient range of \SI{\sim100}{ppb} is neglible.  In the quadratic case, much more dramatic deviations from the true frequency are present, but again the effects are small in the expected FID gradient domain.  The effect at \SI{200}{ppb} in all cases is less than \SI{10}{ppb}. \note{is this actually okay?}
+The frequency extraction results from the gradient FIDs are presented in figures \ref{fig:fid-sim-grad-lin-results} \& \ref{fig:fid-sim-grad-quad-results}.  In the linear case, the phase fit is essentially unperturbed while the zero crossing method gains uncertainty and a small bias over the \SI{1000}{ppb} gradient applied.  The effect in the expected gradient range of \SI{\sim100}{ppb} is neglible.  In the quadratic case, much more dramatic deviations from the true frequency are present, but again the effects are small in the expected FID gradient domain.  The effect at \SI{200}{ppb} in all cases is less than \SI{10}{ppb}.
 
 \begin{figure}
 \label{fig:fid-sim-grad-lin-results}
+\centering
 \includegraphics[width=0.45\linewidth]{fig/fid-sim-grad-lin-zc}
 \includegraphics[width=0.45\linewidth]{fig/fid-sim-grad-lin-ph1}
-\caption{The plot depicts the deviation from the true input frequency in linear gradient FIDs.  The deviations are negligible for the phase fit method, and small for the zero crossing method but not negligible at 1000ppb.} 
+\caption{The plot depicts the deviation from the true input frequency in linear gradient FIDs.  The deviations are negligible for the phase fit method, and small for the zero crossing method but not negligible at \SI{1000}{ppb}.} 
 \end{figure}
 
 \begin{figure}
 \label{fig:fid-sim-grad-quad-results}
+\centering
 \includegraphics[width=0.45\linewidth]{fig/fid-sim-grad-quad-zc}
 \includegraphics[width=0.45\linewidth]{fig/fid-sim-grad-quad-ph1}
 \caption{The plots show the the deviation from the true input frequency for in quadratic gradient FIDs.  The deviations are much larger than the linear case, but still negligible at the expected gradients of a few hundred ppb.}
@@ -191,18 +250,19 @@ The resulting frequency extraction from the gradient FIDs are presented in figur
 \subsection{FID Measurements}
 A stability dataset of waveforms from the field shimming per was also available to cut the FID algorithms' teeth on.  Testing against this dataset had a real difference in that the true precession frequency was not known.  One can still build distributions to get a sense for the precision and stability of a analysis method.
 
-Figures \label{fig:fid-real-trend} \& \label{fig:fid-real-freq} show the analysis results for real FIDs.  Zero crossing and phase appear similarly effective in the context of real data.  Both methods have a precision of \SI{\sim 10}{ppb} in the study.  The phase fit central value has a shift of \SI{\sim 15}{ppb}.  \note{need to investigate this more}
+Figures \ref{fig:fid-real-trend} \& \ref{fig:fid-real-hists} show the analysis results for real FIDs.  Zero crossing and phase appear similarly effective in the context of real data.  Both methods have a precision of \SI{\sim 10}{ppb} in the study.  The phase fit central value has a shift of \SI{\sim 15}{ppb}.
 
 \begin{figure}
 \label{fig:fid-real-trend}
-\includegraphics[width=\linewidth]{fig/fid-real-trend}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/fid-real-trend}
 \caption{The detrended plot was produced by averaging all 25 probes in the shimming platform.  Then, subtracting off the average from the central probe value.  Lastly, fitting the difference to a quadratic and subtracting off the quadtratic trend.  The result shows a small difference between the zero crossing and phase fit methods, but the distributions are within agreement.}
 \end{figure}
 
 \begin{figure}
-\label{fig:fid-real-freq}
-\includegraphics[width=0.45\linewidth]{fig/fid-real-zc}
-\includegraphics[width=0.45\linewidth]{fig/fid-real-ph1}
+\label{fig:fid-real-hists}
+\centering
+\includegraphics[width=0.6\linewidth]{fig/fid-real-hists}
 \caption{The histogrammed results of two different frequency extraction methods after detrending the signal.  The two distributions nearly agree with a small shift in the central value.  Interestingly, the phase fit method and zero crossign show similar precision on real data.}
 \end{figure}
 
@@ -216,11 +276,11 @@ Figures \label{fig:fid-real-trend} \& \label{fig:fid-real-freq} show the analysi
     \hline
     \multicolumn{1}{c}{Data Type} & Zero Crossing & Phase Fit \\
     \hline
-    Ideal                & na & na \\
-    Simulated            & na & na \\
-    Linear Gradient      & na & na \\
-    Quadratic Gradient   & na & na \\
-    Real                 & na & na \\
+    Ideal                & \SI{1.4}{ppb} & \SI{0.1}{ppb} \\
+    Simulated            & \SI{10.2}{ppb} & \SI{0.1}{ppb} \\
+    Linear Gradient      & \SI{10.0}{ppb} & \SI{0.7}{ppb} \\
+    Quadratic Gradient   & \SI{141.7}{ppb} & \SI{116.3}{ppb} \\
+    Real                 & \SI{9.5}{ppb} & \SI{9.1}{ppb} \\
     \hline
 \end{tabular}
 \end{table}
