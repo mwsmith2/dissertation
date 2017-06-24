@@ -2,27 +2,26 @@
 
 \section{The Process}
 
-The \gmtwo magnetic field, undergoes two stages of improvements before settling into the best possible uniformity.  The first stage is called ``passive'' shimming or ``rough'' shimming at times.  It occurs after the storage ring is reassembled and before the installation of the vacuum chambers in the magnet gap and other subsystems has occurred. The rough shimming is done with physical, static shims. The second stage is the ``active'' or ``fine'' shimming.  Active shimming is ongoing throughout the experiment.  It uses dynamically controllable sources of magnetism such as electric currents.
+The \gmtwo magnetic field, undergoes two stages of improvements to achieve the best possible uniformity.  The first stage is called ``passive'' or ``rough'' shimming.  It occurs after the storage ring is reassembled and before the installation of the vacuum chambers in the magnet gap and other subsystems has occurred. The rough shimming entails precise adjustments of physical, static shims. The second stage is the ``active'' or ``fine'' shimming.  Active shimming is ongoing throughout the experiment.  It uses dynamically controllable sources of magnetism such as electric currents for further adjustments to the magnetic field uniformity.
 
 \subsection{Passive Shimming}
-The passive shimming process makes large, static changes to the storage field.  It uses the intrinsic shim kit built into the storage ring. Each different component of the shim kit must be well understood.  The procedure is to calibrate the magnetic field effects from a certain type of shim by making large adjustments.  Then, build a model out of the calibration data for each shim type.  With a working model for each type of shim complete, an optimization plan for the entire can be calculated. 
+The passive shimming process makes large, static changes to the storage field.  It uses the intrinsic shim kit built into the storage ring. Each different component of the shim kit must be well understood, so the operating procedure is to calibrate the magnetic field effects from a certain type of shim by examining large adjustments.  Then, the researchers build a model out of the calibration data for each shim type.  With a working model for each type of shim complete, an optimization plan for the entire storage field can be calculated. 
 
-The implementation of optimization routine occurs in multiple stages as well.  The first stage needs to be physical adjustments of the largest pieces of the storage ring, the yokes and the pole pieces.  Next, the shims designed for higher order multipoles need to be adjusted properly.  And, finally the lowest order multipoles including the dipole and normal quadrupole receive shim compensation.  That was the planned procedure, but as discussed later, the rough shimming plan had to include some audibles.
+The implementation of optimization routine occurs in multiple stages as well.  The first stage is physical adjustments of the largest pieces of the storage ring, the yokes and the pole pieces.  Next, the shims designed to affect higher order multipoles need to be adjusted properly.  And, finally the lowest order multipoles including the dipole and normal quadrupole receive shim compensation.  That was the planned procedure, but the rough shimming procedure had to add one more stage to reach the uniformity goals.  The steel laminations were added in this final stage.
 
 \subsection{Active Shimming}
-The active shimming stage makes dynamic changes to the azimuthally averaged field.  This phase of the experiment is ongoing as long as the experiment is running.  The active shimming has two essential tools.  The first component is a set of currents which can adjust the average multipole content of the magnetic field within several ppm.  The second component is active feedback to the magnetic field power supply to minimize field drift.  The active shimming will not be discussed in this document as it is not completed work like the rough shimming.
+The active shimming stage makes dynamic changes to the azimuthally averaged field.  This phase of the experiment will continue as long as the experiment is running.  The active shimming has two essential tools.  The first component is a set of currents which can adjust the azimuthally averaged multipole content of the magnetic field within several ppm.  The second component is active feedback to the magnetic field power supply to minimize field drift.  The active shimming will not be discussed in this document as it is not yet completed work like the rough shimming.
 
 \subsection{Shimming Goals}
-The uniformity goals for field shimming are layed out in more detail in the TDR \cite{e989-tdr} and summarized here.  The overall uniformity goal on the azimuthally averaged storage magnetic field is less than \SI{1}{ppm}.  For each higher order multipole, the uniformity goal is \SI{100}{ppb}.  For reference, the field from the previous experiment is shown in figure \ref{fig:shim-e821-final-field}.
+The uniformity goals for field shimming are layed out in more detail in the TDR \cite{e989-tdr} and summarized here.  The overall uniformity goal on the azimuthally averaged storage magnetic field restricts deviations from the mean to less than \SI{1}{ppm}.  For each higher order multipole, the amplitude goal is \SI{100}{ppb} when averaged.  For reference, the field from the previous experiment is shown in figure \ref{fig:shim-e821-final-field}.  The E989 magnetic field goals are essentially a factor of two more uniform than E821.
 
 \begin{figure}
-\label{fig:shim-e821-final-field}
 \centering
 \includegraphics[width=0.5\linewidth]{fig/shim-e821-final-field}
-\caption{The plot depicts the final magnetic field for the E821 \gmtwo experiment averaged over azimuth.  The uniformity goals for E989 push the entire field to have deviations smaller than \SI{1}{ppm} in the azimtuthal average.}
+\caption{The plot depicts the final magnetic field for the E821 \gmtwo experiment averaged over azimuth.  The \SI{4.5}{\cm} circle shown is the cross-section of the muon storage volume.  The uniformity goals for E989 push the entire field to have deviations smaller than \SI{1}{ppm} in the azimtuthal average. \label{fig:shim-e821-final-field}}
 \end{figure}
 
-The uniformity goals for rough shimming are a little more lax than the overall shimming goals.  The focuses for rough shimming are twofold. One is on minimizing gradients and deviations around the ring in all multipoles but especially the dipole.  The general limit for the first goal is a peak-to-peak variation of \SI{50}{ppm} for the dipole field and \SI{10}{ppm} for the higher order multipoles.  The other goal is to bring the higher order moments within range of the active shimming hardware.  This goal aims for the azimtuthally averaged value of each higher order multipole be less than \SI{5}{ppm}.
+The uniformity goals for rough shimming are more lax than the overall shimming goals.  The focuses for rough shimming are twofold. One is on minimizing gradients and deviations around the ring in all multipoles but especially the dipole.  The general limit for the first goal is a peak-to-peak variation of \SI{50}{ppm} for the dipole field and \SI{10}{ppm} for the higher order multipoles.  The other goal is to bring the higher order moments within range of the active shimming hardware.  This goal aims for the azimuthally averaged value of each higher order multipole be less than \SI{5}{ppm}.
 
 \section{The Field Hardware}
 
@@ -30,94 +29,88 @@ Now that the goals of rough field shimming have been outlined, the shimming disc
 
 \subsection{The Storage Ring}
 
-The \gmtwo storage ring was designed with the lofty goal of \SI{1}{ppm} peak-to-peak magnetic field uniformity in the entire muon storage volume \cite{morse-talk}.  That is a near impossibility, but the design of the magnet did achieve a range of about \SI{1}{ppm} on the azimuthally averaged storage volume field.  An overview of the storage ring hardware is shown in figure \ref{fig:ring-hardware-cross-section}.
+The \gmtwo storage ring was designed with the lofty goal of \SI{1}{ppm} peak-to-peak magnetic field uniformity over the entire muon storage volume \cite{morse-talk}.  That is a near impossibility, but the design of the magnet did achieve a range of about \SI{1}{ppm} on the azimuthally averaged storage volume field.  An overview of the storage ring hardware is shown in figure \ref{fig:ring-hardware-cross-section}.
 
 \begin{figure}
-\label{fig:ring-hardware-cross-section}
 \centering
-\includegraphics[width=0.7\linewidth]{fig/shim-cross-section-view}
-\caption{The cross-sectional view displays the major components of the storage ring.  The large yoke section spans \SI{30}{\deg} of the ring, and houses smaller components as shown.  One upper and one lower pole piece are shown in the image fixed to the inside opening in the yoke.  The super conducting coils which produce the field are also drawn along with the shimming kit.}
+\includegraphics[width=0.6\linewidth]{fig/shim-cross-section-view}
+\caption{The cross-sectional view displays the major components of the storage ring.  The large yoke section spans \SI{30}{\deg} of the ring, and houses smaller components as shown.  One upper and one lower pole piece are shown in the image fixed to the inside opening in the yoke.  The super conducting coils which produce the field are also drawn along with the shimming kit. \label{fig:ring-hardware-cross-section}}
 \end{figure}
 
-The largest pieces of the storage ring are the 12 yoke segments.  They provide the housing for the other components and set the baseline strength of the magnetic field by the sheer amount of ferric material they contain.  As far as rough shimming is concerned, the yoke segments need to be aligned well enough that the pole pieces affixed to them are within \SI{0.5}{\milli \meter} or so of flat alignement.
+The largest pieces of the storage ring are the 12 yoke segments.  They provide the housing for the other components and set the baseline strength of the magnetic field by the sheer amount of ferric material they contain.  As far as rough shimming is concerned, the yoke segments need to be aligned well enough that the pole pieces resting on them are within \SI{0.5}{\milli \meter} or so of flat alignement.  That way the pole alignment can be done with pole specific adjustments.
 
-The next largest component of the storage ring is the 72 pole pieces.  The pole surface was crafted with low-carbon steel (\SI{0.004}{\percent} \cite{danby-magnet}) and high precision flatness. The quality of the steel improves field uniformity by normalizing magnetic saturation effects across the pole surface.  The surface flatness directly improves the gap uniformity which is a first order proxy for the magnetic field strength between two poles. The pole pieces interface with the yoke on adjustable mounts dubbed ``pole feet''.  The pole feet offer a small amount of leverage to minutely reshape the pole surface.
+The next largest component of the storage ring is the 72 pole pieces.  The pole surface was crafted with low-carbon steel (\SI{0.004}{\percent} \cite{danby-magnet}) and high precision flatness (\SI{25}{\micro\meter}. The quality of the steel improves field uniformity by normalizing general susceptibility and magnetic saturation effects across the pole surface.  The surface flatness directly improves the uniformity of the gap, the spacing between the top and bottom pole pieces.  The gap uniformity determines the magnetic field strength between two poles to first order. The pole pieces interface with the yoke on adjustable mounts dubbed ``pole feet''.  The pole feet offer some leverage to minutely reshape the pole surface.
 
-After being transported from Brookhaven National Lab to Fermi National Accelerator Lab, the storage ring was reassembled with some care to bring it into the same state it was in before disassembly.  The hope was that the magnetic field would retain its previous uniformity and rough shimming time could be reduced.  Even so, the magnetic field produced when the ring was repowered at Fermilab was similar to the initial field at Brookhaven.  The initial field had peak-to-peak variation of \SI{1400}{ppm}.
+After being transported from Brookhaven National Lab to Fermi National Accelerator Lab, the storage ring was reassembled with some care to bring it into the same state it was in before disassembly.  The hope was that the magnetic field would retain its previous uniformity and rough shimming time could be reduced.  Even so, the magnetic field produced when the ring was repowered at Fermilab was similar to the initial field at Brookhaven.  The initial field had peak-to-peak variation of \SI{1400}{ppm} as seen in figure \ref{fig:field-initial-dipole}.
 
-\note{maybe include an image of the initial field here too}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{fig/initial-dipole-field.png}
+\caption{The average magnetic field after reassembly and powering of the storage ring.  The field shows peak-to-peak variations of around \SI{1400}{ppm} which is similar to the initial field in E821. \label{fig:field-initial-dipole}}
+\end{figure}
 
 \subsection{The Shims}
 
 The storage ring was also engineered with several built-in knobs to the tune the field locally in azimuth.  Each of the shims was tailored to have leverage on different complementary aspects of the field.
 
 \begin{figure}
-\label{fig:shim-cross-section-view}
 \centering
 \includegraphics[height=20em]{fig/shim-cross-section-view}
 \includegraphics[height=20em]{fig/shim-azimuthal-rings}
-\caption{The cross-sectional view on the left exposes the location of all the shimming hardware.  The top hat, edge shims, and wedge shims are shown in context with the pole and yoke hardware.  The ring diagrams on the right exhibit the azimuthal frequency of each piece of hardware: \SI{30}{\degree} yoke sections, \SI{15}{\degree} degree top hats, \SI{10}{\degree} degree pole pieces, \SI{10}{\degree} edge shims, \SI{0.833}{\degree} wedge shims, and \SI{0.244}{\degree} spacing on the iron laminations.  Note that the laminations are not part of the built-in shimming kit.}
+\caption{The cross-sectional view on the left exposes the location of all the shimming hardware.  The top hat, edge shims, and wedge shims are shown in context with the pole and yoke hardware.  The ring diagrams on the right exhibit the azimuthal frequency of each piece of hardware: \SI{30}{\degree} yoke sections, \SI{15}{\degree} degree top hats, \SI{10}{\degree} degree pole pieces, \SI{10}{\degree} edge shims, \SI{0.833}{\degree} wedge shims, and \SI{0.244}{\degree} spacing on the iron laminations.  Note that the laminations are not part of the built-in shimming kit. \label{fig:shim-cross-section-view}}
 \end{figure}
 
 \subsubsection{Top Hat Shims}
-The simplest shimming knob are the steel plates dubbed the top hats.  The top hats run in 15 degree segments, two per yoke, top and bottom.  Adjusting the top hats can induce a large effect on the average field in its respective region.  Adjustments are made by adding plastic spacer shims between the yoke and the top hats.  Adding material increased leaking of magnetic flux and decreased the magnetic field.  The size of the spacer shim stack was limited to \SI{2}{\mm}.
+The simplest shimming knob are the steel plates called the top hats.  The top hats run in 15 degree segments, two per yoke, top and bottom.  Adjusting the top hats can induce a large effect on the average field in its respective region without affecting the higher order multipoles.  Adjustments are made by adding plastic spacer shims between the yoke and the top hats.  Adding material increased leaking of magnetic flux and decreased the magnetic field.  The size of the spacer shim stack was limited to \SI{2}{\mm}.
 
 \subsubsection{Edge Shims}
-Each pole piece has two steel runners on the outside of the uniform, flat surface.  With top and bottom sets of so-called edge shims, the design imparted a complex handle on higher order, more than quadrupole, multipoles.  Adjustments to the edge shims were initially done by grinding down the oversized original edge shims.  Two other avenues exist for edge shim adjustments. The effect of the edge shim could be augmented by addition of thin (\SI{25}{\micro \meter}) steel shimstock cut to the same shape as the edge shim, or the effect could be diminished by similar addition of a plastic shim layer.  All options were evaluated for E989.
+Each pole piece has two steel runners on the outside of the uniform, flat surface.  With top and bottom sets of so-called edge shims, the design imparted a complex handle on many different higher order multipoles.  Adjustments to the edge shims were initially done by grinding the oversized original edge shims down to a custom size.  Two other avenues exist for edge shim adjustments. The effect of the edge shim could be augmented by addition of thin (\SI{25}{\micro \meter}) steel shimstock cut to the same shape as the edge shim, or the effect could be diminished by similar addition of a plastic shim layer.  All options were evaluated for E989.
 
 \begin{figure}[h]
-\label{fig:shim-edge-image}
 \centering
 \includegraphics[height=12em]{fig/shim-edge-image}
-\caption{The image depicts four edge shim at the edges of an upper and lower pole piece.  It was rendered using an OPERA2D model of the storage ring.}
+\caption{The image depicts four edge shim at the edges of an upper and lower pole piece.  It was rendered using an OPERA2D model of the storage ring. \label{fig:shim-edge-image}}
 \end{figure}
 
 \subsubsection{Wedge Shims}
 The storage ring contains 864 wedge shims, i.e. 12 per pole piece, which occupy the space between the pole pieces and the main yoke.  They have an angled design in order to have an effect on both the normal quadrupole and dipole field.  The edge shims were designed to be \SI{50}{\mm} thick at their inner radius, \SI{165}{\mm} thick at their outer radius, and \SI{530}{\mm} in length giving an inclination of \SI{1.24}{\deg} \cite{danby-magnet}.
 
 \begin{figure}[h]
-\label{fig:shim-wedge-image}
 \centering
 \includegraphics[height=12em]{fig/shim-wedge-image}
-\caption{The image depicts a wedge shim between the yoke in the pole piece in a 3D magnetic field modeling software, OPERA2D.}
+\caption{The image depicts a wedge shim between the yoke in the pole piece in a 3D magnetic field modeling software, OPERA2D. \label{fig:shim-wedge-image}}
 \end{figure}
 
 \subsubsection{Laminations}
 The final rough shimming adjustments were beyond the scope of the initial design of the magnet.  To achieve the rough shimming uniformity goals, a set of small, thin steel strips were affixed to a thin sheet of plastic which was then attached the pole surface.  The laminations were massed, and placed at \SI{0.244}{\deg} intervals at three different radii all around the storage ring.  In regions where fixed probes were known to be, the central lamination strips were aligned in the azimuthal direction rather than the radial direction to lessen gradients detimental to the fixed probe FID signal.  A mock up of a single pole's worth of laminations is depicted in figure \ref{fig:laminations-simple-design}.
 
 \begin{figure}[h]
-\label{fig:laminations-simple-design}
 \centering
 \includegraphics[width=0.8\linewidth]{fig/laminations-simple-design}
-\caption{A simplified diagram of the lamination patterns laid down on pole pieces.  The real laminations had 41 azimuthal regions and two picket fences per pole piece.}
+\caption{A simplified diagram of the lamination patterns laid down on pole pieces.  The real laminations had 41 azimuthal regions and two picket fences per pole piece. \label{fig:laminations-simple-design}}
 \end{figure}
 
 \subsection{Measurement Devices}
 
 \subsubsection{Shimming Cart}
-The primary tool used in the rough shimming process was a platform full of equipment that fits between the pole surfaces all around the ring.  The tool was called the ``shimming cart'' and a model of the shimming cart is shown in figure \ref{fig:shimming-cart}.  The shimming cart measured the magnetic field, the pole gap and the local temperature.  
+The primary tool used in the rough shimming process was a platform full of equipment that fits between the pole surfaces all around the ring.  The tool was called the ``shimming cart'' and a rendered model of the shimming cart is shown in figure \ref{fig:shimming-cart}.  The shimming cart measured the magnetic field, the pole gap and the local temperature.
 
-The magnetic field was measured through a matrix of 25 pNMR probes secured in a frame which is aligned in the azimuthal plane of storage volume and aligned at radii which correspond to the full cross-section of the muon storage volume.  The active volume of the pNMR probes extends \SI{10}{\mm} in the azimuthal direction and \SI{2}{\mm} in the radial direction.  The 25 probes are aligned within \SI{1}{\mm} in azimuth and much better within the azimuthal plane.  The chose arrangement of probes yields sensitivity to the first 17 field multipoles (dipole plus 8 normal and 8 skew multipoles).  
+The magnetic field was measured through a matrix of 25 pNMR probes secured in a frame which is aligned in the azimuthal plane of storage volume and aligned at radii which correspond to the full cross-section of the muon storage volume.  The active volume of the pNMR probes extends \SI{10}{\mm} in the azimuthal direction and \SI{2}{\mm} in the radial direction.  The 25 probes are aligned within \SI{1}{\mm} in azimuth and much better within the azimuthal plane.  The chosen arrangement of probes yields sensitivity to the first 17 field multipoles (dipole plus 8 normal and 8 skew multipoles).
 
-The cart also possessed four capacitive distance sensors which measured the distance from the sensor to the pole surface.  The devices were model 4100 SL Capacitec Sensors, and they were sensitive to distances as small as \SI{5}{\micro \meter}.   The sensors were on a ribbon cable which was fixed to the top and bottom of each quartz plate giving readings for the inner and outer radius.  By summing the readout from each sensor and calibrating the size of the quartz, the capacitec system produced data to define the pole gap, the distance between each pole surface.
+The cart also possessed four capacitive distance sensors which measured the spacing from the sensor to the pole surface.  The devices were model 4100 SL Capacitec Sensors, and they were sensitive to distances as small as \SI{5}{\micro \meter}.   The sensors were on a ribbon cable which was fixed to the top and bottom of each quartz plate giving readings for the inner and outer radius.  By summing the readout from each sensor and calibrating the size of the quartz, the capacitec system produced data to define the pole gap, the distance between each pole surface.
 
 A temperature probe was placed on the cart near the pNMR probes. The device had potential to correlate signal distortions of the pNMR frequencies, and drift in the magnetic field due to temperature changes.  The probe could have also be compared against several other temperature probes operating around the experimental hall.  The temperature data was used minimally as it had minimal utility.
-
-\todo{get model number for temperature probe}
 
 All materials were chosen to make as small of a magnetic perturbation as possible.  The cart traversed the ring with the help of a stepper motor and flexible cabling to make steps forward.  A typical step size was \SI{3}{\mm}, and the probes and capacitec performed measurements at each location before the cart moved on.  A full scan of the ring with the standard step size took about 3 hours.
 
 \begin{figure}
-\label{fig:shimming-cart}
 \centering
 \includegraphics[width=0.6\linewidth]{fig/shimming-cart}
-\caption{The image is a rendered model of the shimming cart. In the center of the image, the pNMR matrix which holds 25 probes at three different radii is shown.  On each side of the probe matrix, there are two quartz plates with a copper colored strip on the top.  That strip is the capacitec sensor and sensors are also present on the underside of the quartz.  The wheels and the base plate were fabricated out of PEEK to minimize magnetic perturbations. On the each corner of the inside quartz plate, a cornercube reflector was fasted to the real shimming cart to use as lock points with the laser tracker. A temperature sensor was mounted onto the base plate behind the pNMR probes.}
+\caption{The image is a rendered model of the shimming cart. In the center of the image, the pNMR matrix which holds 25 probes at three different radii is shown.  On each side of the probe matrix, there are two quartz plates with a copper colored strip on the top.  That strip is the capacitec sensor and sensors are also present on the underside of the quartz.  The wheels and the base plate were fabricated out of PEEK to minimize magnetic perturbations. On the each corner of the inside quartz plate, a cornercube reflector was fasted to the real shimming cart to use as lock points with the laser tracker. A temperature sensor was mounted onto the base plate behind the pNMR probes. \label{fig:shimming-cart}}
 \end{figure}
 
 \subsection{Laser Tracker}
-The shimming cart was equipped with four reflective corner cube mirrors which could be tracked with a laser tracker, see figure \ref{fig:shimming-cart} for context.  A commercial, API laser tracker was installed in the center of the ring and used to establish the position of the measurements taken by the shimming cart.  The most important value from the laser tracker was the azimuthal angle, $\phi$, but the device also reported height, $z$, and radius, $r$.  The laser tracker measured with precision, $\delta\phi \approx \SI{0.1}{\deg}$, $\delta r \approx \SI{0.1}{\milli\meter}$, and $\delta z \approx \SI{25}{\micro\meter}$ \note{verify these}.
-
-\todo{add image}
+The shimming cart was equipped with four reflective corner cube mirrors which could be tracked with a laser tracker.  The corner cubes were fixed near the four corners of one of the quartz plates, see figure \ref{fig:shimming-cart} for context.  A commercial, API laser tracker was installed in the center of the ring and used to establish the position of the measurements taken by the shimming cart.  The most important value from the laser tracker was the azimuthal angle, $\phi$, but the device also reported height, $z$, and radius, $r$.  On location inside the storage ring, the laser tracker measured with intrinsic precision, $\delta\phi \approx \SI{0.001}{\deg}$, $\delta r \approx \SI{3.5}{\micro\meter}$, and $\delta z \approx \SI{15}{\micro\meter}$.  With imperfect alignment though, the tilt of the laser tracker made these uncertainties into $\delta\phi \approx \SI{0.1}{\deg}$, $\delta r \approx \SI{25.0}{\micro\meter}$, and $\delta z \approx \SI{25}{\micro\meter}$
 
 \subsection{Metrolab}
 The Metrolab PT 2025 is a wide-range commercial NMR system which complements the shimming cart probe measurements.  The ``metrolab'' as it was called had an absolute accuracy of \SI{5}{ppm} and a precision of \SI{0.1}{ppm}.  A probe carrier structure was fabricated to stably and reliable align the probe inside the magnet gap. The commercial NMR device was used to verify that the magnetic field was near \bmagic.  And, it was also used to monitor field drift.
@@ -125,19 +118,22 @@ The Metrolab PT 2025 is a wide-range commercial NMR system which complements the
 \subsection{Tilt Sensor}
 A heavily utilized comprised two commercial tilt sensors in a custom structure.  Engineers at \uw designed the setup and compiled two mounted commercial, electrolytic bubble levels onto a \SI{29}{\cm} by \SI{12}{\cm} aluminum base plate. The aluminum plate had three spherical feet both top and bottom to define a consistent plane.  The tilt sensors were able to read out at a precision of about \SI{2}{\micro\radian}, but the sensors took more than 30 minutes to fully settle into the highest accuracy reading.  The majority of measurements were made with a lower precision of \SI{15}{\micro\radian} as a compromise to reduce measurement time down to a more manageable 3 to 5 minutes.
 
-\todo{add image}
+\begin{figure}
+\centering
+\includegraphics[width=0.8\linewidth]{fig/shim-tilt-sensor-image}
+\caption{The image shows the tilt sensor apparatus used in rough shimming.  The device had two tilt sensors on orthogonal axes.  The tilt sensors are the small, long boxes in the center of the aluminum base plate.  The three spherical feet define a consistent plane for the apparatus to rest on any surface.  They are located with one at each long end and one in the center. \label{fig:shim-tilt-sensor-image}}
+\end{figure}
 
 \begin{figure}
-\label{fig:tilt-calibration}
 \centering
-\includegraphics[height=20em]{fig/tilt-calibration-rad}
-\includegraphics[height=20em]{fig/tilt-noise-level}
-\caption{The first plot shows the response of the tilt sensor to controlled addtion of thin shims on one side of the device to induce tilt.  The calibration data yields a calibration of about 1.5 bits per \si{\micro \radian}.  The stabilized tilt sensors show the noise of the system on the right plot, a few bits.  The tilt sensors are capable of measuring tilt to \SI{\sim 2}{\micro \radian}.}
+\includegraphics[height=12em]{fig/tilt-calibration-rad}
+\includegraphics[height=11.2em]{fig/tilt-noise-level}
+\caption{The first plot shows the response of the tilt sensor to controlled addition of thin shims on one side of the device to induce tilt.  The calibration data yields a calibration of about 1.5 bits per \si{\micro \radian}.  The stabilized tilt sensors show the noise of the system on the right plot, a few bits.  The tilt sensors are capable of measuring tilt to \SI{\sim 2}{\micro \radian}. \label{fig:tilt-calibration}}
 \end{figure}
 
 \section{Adjustments}
 
-From the start, each step in the plan for rough shimming was well defined, though the necessity of each step was not as clear.  After calibrating the measurement devices and subsequently the state of the storage ring and storage field, it was decided which stages of adjustments were necessary.  The first stage involved leveling the ring with respect to gravity.  The second was a full iteration of adjusting the feet on each pole piece.  The third was a survey of whether or not high order multipole adjustments via edge shims were needed.  The fourth was full optimization of the field using the built-in shimming kit.  And, the final round of adjustments implemented a new system of shims, a set of over 8,000 specifically massed iron foils, which really pushed the field uniformity to a new level compared to the E821 experiment.
+From the start, each step in the plan for rough shimming was well defined, though the necessity of each step was not as clear.  After calibrating the measurement devices and subsequently the state of the storage ring and storage field, it was decided which stages of adjustments were necessary.  The first stage involved leveling the ring with respect to gravity.  The second was a full iteration of adjusting the feet on each pole piece.  The third was a survey of the necessity of high order multipole adjustments via edge shims.  The fourth was full optimization of the field using the built-in shimming kit.  And, the final round of adjustments implemented a new system of shims, a set of over 8,000 specifically massed iron foils, which really pushed the field uniformity to a new level compared to the E821 experiment.
 
 \subsection{Ring Leveling}
 At an intermediate point in the shimming process, it became clear that the plane of the storage ring and the plane defined by gravity were not aligned.  Furthermore measurements indicated that that plane of the ring was different from the plane that had been measured upon construction of the ring.  It would seem that the concrete floor of the experimental hall had settled a millimeter or two.  In addition to improving the ring alignment, the adjustment procedure also afforded an opportunity to see the effect that future floor settling might have on the magnetic field.
@@ -180,8 +176,6 @@ Building an accurate global model of the pole surfaces was not a simple task wit
 
 The bottom poles were characterized using a combination of tilt sensor data and laser measurements.  The shimming cart rides directly on the bottom poles along the edge shims at the inner radius of the pole (see figure \ref{fig:shimming-cart}). The height value reported by the laser then directly represents the the inner radius of the bottom pole surface.  From the inner radius of the bottom pole, the outer radius can be extrapolated from tilt sensor measurements.  Each pole was broadly characterized with a radial and azimuthal tilt measurement taken from the center defining a rough plane for the pole.  The pole interfaces were characterized with a set of three tilt measurements near the gap: one on the upstream pole, one straddling both poles, and one on the downstream pole.  The pole step measurement is very sensitive to average elevation changes and rotation mismatches between poles.  The pole model folds the laser height data in with a radial tilt model that smoothly varies across the pole, and then, restricts the pole interfaces with the pole step tilt measurements.  An entire global plan for the bottom pole moves was made from this model, see figure \ref{fig:pole-moves-bottom-plan}
 
-\note{maybe produce a nice graphic to correlate the measurements}
-
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{fig/pole-moves-bottom-plan}
 \caption{The plot visually represents the plan for adjusting pole feet using circles for the inner feet, triangles for the outer feet against their azimuth location.  The laser data which anchored the pole surface model is also plotted in scatter form.  Notice that the inner feet changes are minor adjustments on the laser data, and the outer feet changes fold in the radial tilt measurements on the poles.}
@@ -192,8 +186,7 @@ The bottom poles were characterized using a combination of tilt sensor data and 
 
 The model for the top pole surfaces had to be constructed on the foundation of the bottom pole model.  This situation was not ideal, since the top model compounds on errors in the bottom model.  Starting from the model for the bottom poles, the sum of the two inner capacitec measurements acted as a proxy for the gap between the upper and lower poles, so the sum of the bottom pole model inner radius and the two inner capacitec values represented the inner band of the top pole model.  With an established value for the inner band of the top poles, the same extrapolation to the outer band and pole interfaces was employed as with the bottom poles.  The top and bottom outer bands could then be used to validate the pole model overall by comparing the predicted gap in the outer bands to the gap measured by the outer capacitec sensors.  The model was complete even if not perfect.  The adjustment plan was ready for a full sweep of pole moves, top and bottom.
 
-\note{maybe produce a nice graphic to correlate the model}
-\todo{maybe add validation plot for top pole model}
+\note{time permitting, produce a nice graphic to visualize the model}
 
 \subsubsection{First Round}
 
@@ -214,8 +207,7 @@ While still making pole adjustments, the field team began to implement shim adju
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{fig/pole-moves-field-comparison}
-\caption{The azimuthally average field plots are shown with field prior to pole moves on the left and field after on the right.  A little care is necessary in interpreting attributions for the improvements though, because some shim adjustments were made before the pole movements had completed.  The major improvement shown in the plot is the elimination of the \SI{-18}{ppm} normal quadrupole moment.  A smaller improvement in the average skew quadropole is also evident.}
-\label{fig:pole-moves-field-comparison}
+\caption{The azimuthally average field plots are shown with field prior to pole moves on the left and field after on the right.  A little care is necessary in interpreting attributions for the improvements though, because some shim adjustments were made before the pole movements had completed.  The major improvement shown in the plot is the elimination of the \SI{-18}{ppm} normal quadrupole moment.  A smaller improvement in the average skew quadropole is also evident. \label{fig:pole-moves-field-comparison}}
 \end{figure}
 
 \subsection{Edge Shim Study}
@@ -227,8 +219,9 @@ The edge shims are the strongest tool available to the field team for controllin
 Several prototype steel shims were ordered for calibration and proof of principle testing of edge shim adjustments.  One prototype edge shim of each type (inner lower, outer lower, inner upper, and outer upper) was installed in the place of the current edge shim one different poles around the ring.  The different in thickness was measured and used to calibrate the multipole effects of the edge shims.  The results are shown figure \ref{fig:edge-shim-model}. In addition to E821 style legwork, the E989 team set up some tests using capton as spacer under edge shims in lieu of grinding down shims and some tests using steel shimstock in lieu of implementing thicker edge shims.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{fig/edge-shim-model}
-\caption{The models for edge shims derived from calibration data.  Each type of edge shim induced different higher order multipole effects.  The effect shown is for a \SI{1}{\milli\meter} change. \todo{remake} \label{fig:edge-shim-model}}
+\centering
+\includegraphics[width=1.0\linewidth]{fig/edge-shim-model}
+\caption{The models for edge shims derived from edge shim calibration data and edgelet shim tests.  Each type of edge shim induced different higher order multipole effects.  The effect shown is for a \SI{1}{\milli\meter} change. \label{fig:edge-shim-model}}
 \end{figure}
 
 \subsubsection{Edgelets}
@@ -236,14 +229,14 @@ Several prototype steel shims were ordered for calibration and proof of principl
 An idea that arose duing edge shim calibration was to implement edge shims in a more localized form.  The atomic size was chosen to be one degree segments and steel could only be added not removed, but the approach seemed promising.  The model was based on the full edge shim model with edge effects being compartmentalized into one degree segments.  The edgelet shim model went forward to a validation test.  The test attempted to fix one of the most aberrant, localized regions of multipoles.  The implementation did not achieve the success predicted by the model which signifies a need for more model complexity than originally expected. In the end the edglet patching model was abandoned.
 
 \begin{figure}
+\centering
 \includegraphics[width=0.9\linewidth]{fig/edge-shim-edgelets}
-\caption{The figure shows predicted effects of the edgelet model in green and measured results of implemenation in red.  The model proved to be qualitatively correct, but was in need of more accurate calibration or increased complexity to be precise on the part-per-million level.}
-\label{fig:edge-shim-edgelets}
+\caption{The top plot shows a calibration test for a one degree segment of edgelet shims.  The measurement is in red, and the model is in green. The edgelet model agreed similarly well with other multipoles, a bit worse for some.  The bottom plot shows predicted effects of the edgelet model in green and measured results of  implemenation across a full pole piece in red.  The model was qualitatively correct, but was in need of more accurate calibration or increased complexity to be precise on the part-per-million level. \label{fig:edge-shim-edgelets}}
 \end{figure}
 
 \subsubsection{Implementation}
 
-The final footprint of the edge shims remained nearly identical to the initial footprint of the edge shims.  Additional steel shims of a few mils were added in a few sections, but for the most part no adjustments to the edge shims were deemed necessary.  One of the major drivers for acting with a light touch on edge was promise of optimization model using steel laminations.
+The final footprint of the edge shims remained nearly identical to the initial footprint of the edge shims.  Additional steel shims of a few \SI{0.001}{"} were added in a few sections, but for the most part no adjustments to the edge shims were deemed necessary.  One of the major drivers for acting with a light touch on edge shims was the promise of the optimization model using steel laminations.
 
 % \begin{table}[h]
 % \label{tab:edge-shim-model-params}
@@ -376,12 +369,11 @@ The model was run through a linear least squares optimization scheme.  Each knob
 
 \subsubsection{Results}
 
-The end result of lots of hardwork from the field team was impressive.  The average field uniformity had gone from a standard deviation of \SI{280}{ppm} to \SI{40}{ppm}.  Similarly most of the higher order multipoles had been shrunk to values below \SI{1}{ppm}.  At the end of optimizing the field using the built-in shimming knobs, the field state was similar to that of E821.  Depending on which year and when you looked at the field data, the E989 looked better in some respects, but the field was still not down to the target uniformity.
+The end result of lots of hardwork from the field team was impressive.  The average field uniformity had gone from a standard deviation of \SI{280}{ppm} to \SI{40}{ppm}.  Similarly most of the higher order multipoles had been shrunk to values below \SI{1}{ppm}.  At the end of optimizing the field using the built-in shimming knobs, the field state was similar to that of E821.  Depending on which E821 field dataset was compared with, the E989 field sometimes looked better, but the field was still not down to the target uniformity.
 
 \begin{figure}
-\label{fig:field-model-results}
 \includegraphics[width=0.9\linewidth]{fig/field-model-results}
-\caption{The final rough shimming dipole field result for E989 in red, compare with the PRD field standard deviation of \SI{30}{ppm}.  The horizontal bands indicated \SI{\pm 25}{ppm} around the central value which was target for E989.  And, below the azimuthally average multipole content of the field.  The results are on par with the running field from E821.}
+\caption{The final rough shimming dipole field result for E989 in red, compare with the PRD field standard deviation of \SI{30}{ppm}.  The horizontal bands indicated \SI{\pm 25}{ppm} around the central value which was target for E989.  And, below the azimuthally average multipole content of the field.  The results are on par with the running field from E821. \label{fig:field-model-results}}
 \end{figure}
 
 \subsection{Laminations}
@@ -390,33 +382,41 @@ The design flexibility of the storage magnet fell short of the uniformity goals 
 
 \subsubsection{Model}
 
-David Kawall, a Professor at UMass Amherst, concieved the model for optimization using iron laminations.  The model treated the metal strips as thin, fully magnetized iron dipoles with several orders of magnetic images appearing inside the pole piece.  The model split each pole into 41 azimuthal sections and 3 radial sections to give a lever on both higher field asymmetries and variations of the average field localized in azimuth.  
+David Kawall, a Professor at UMass Amherst, concieved the model for optimization using iron laminations.  The model treated the metal strips as thin, fully magnetized iron dipoles with several orders of magnetic images manifesting inside the pole piece.  The model split each pole into 41 azimuthal sections and 3 radial sections to give a lever on both higher field asymmetries and variations of the average field localized in azimuth.  
 
-Another concern arose about strong gradients from the lamination edges being a detriment to the fixed probe signals.  The solution was to design an azimuthal grated pattern denoted as a ``picket fence'' region.  Using azimuthal strips cut down on the size of gradients in the azimuthal direction which shorted the fixed probe FIDs. The final design was akin to the simple diagram in figure \ref{fig:laminations-simple-design}.
+Another concern arose about strong gradients from the lamination edges, since strong gradients could be a detriment to the fixed probe signals.  The solution was to design an azimuthal grated pattern denoted as a ``picket fence'' region.  Using azimuthal strips cut down on the size of gradients in the azimuthal direction which shorted the fixed probe FIDs. The final design was akin to the simple diagram in figure \ref{fig:laminations-simple-design}.
 
 \subsubsection{Calibration}
 
 The lamination model had a few parameters that were intentionally undetermined.  The parameters could be characterized by calibrating with pNMR measurements.  Cutting a strip from the iron shimstock was the first step.  The strips were typically the full width of the sheet, 12", and a few \si{\centi\meter} wide.  The dimensions were all well measured and the sample was massed.  Once the sample had been physically characterized, it was taped to a G10 sheet and affixed to a pole surface.  After the sample was stabilized the shimming cart ran over the sample while measuring the field perturbations with its pNMR probes as shown in figure \ref{fig:laminations-calibration}.  The result was compared to predictions made by the foil model with adjustments allowed for the magnetic saturation and order of image dipoles to improve the model.  The calibration process was performed for many batches of shimstock to ensure uniformity.
 
 \begin{figure}
-\label{fig:laminations-calibration}
 \includegraphics[width=0.9\linewidth]{fig/laminations-calibration}
-\caption{The calibration results with the raw measurements before adding the calibration strip in red and after in blue.  The difference is compared to the model prediction in the lower plot which shows excellent agreement.  All values are field perturbation at the location of the central pNMR probe in the shimming cart.}
+\caption{The calibration results with the raw measurements before adding the calibration strip in red and after in blue.  The difference is compared to the model prediction in the lower plot which shows excellent agreement.  All values are field perturbation at the location of the central pNMR probe in the shimming cart. \label{fig:laminations-calibration}}
 \end{figure}
 
 \subsubsection{Implementation}
 
-The procedure between modeling the laminations, and fastening them onto the pole surface was rather involved.  First, some of the high spikes in the field were lowered with the wedge shims, because the laminations could only add to the current field value.  Then, outputs from the lamination simulation were examined to create a target distribution of foils to fabricate with a laser cutter.  The individual foils and picket fences needed to be cleaned, massed, sorted and drafted into the lamination plan.  Each lamination board, made from g10 plastic, was cut, outfitted with the proper laminations and picket fences, and affixed to the pole pieces using epoxy.
+The procedure between modeling the laminations, and fastening them onto the pole surface was rather involved.  First, some of the high spikes in the field were lowered with the wedge shims, because the laminations could only add to the current field value.  Then, outputs from the lamination simulation were examined to create a target distribution of foils to fabricate with a laser cutter.  The individual foils and picket fences needed to be cleaned, massed, sorted and drafted into the lamination plan.  Each lamination board, made from g10 plastic, was cut, outfitted with the proper laminations and picket fences, and affixed to the pole surfaces using epoxy.
 
 With the realization that the foils could only add field, it was decided to lower the highest regions of the magnetic field.  The the foils then allowed for another shot at improving the uniformity of those regions.  Adjustments were made at a few places around the ring to lower the field by around \SIrange{50}{100}{ppm} using the wedge shims.
 
-Foil production was a multi-stage process.  The initial set of foils were cut by hand using a paper trimmer at FNAL.  The process was slow and inaccurate in producing the desired foil masses.  At the University of Washington, a laser cutting machine accelerated process by printing hundreds of strips per hour.  The patterns printed by the laser cutter were designed in Mathematica by Martin Fertl to produce a distribution that largely overlapped with the foil distribution requested by the lamination optimization.  The laser cutter was used once again to cut the picket fence designs.
+Foil production was a multi-stage process.  The initial test batch of foils were cut by hand using a paper trimmer at FNAL.  The process was slow and inaccurate in producing the desired foil masses.  At the University of Washington, a laser cutting machine accelerated process by printing hundreds of strips per hour.  The patterns printed by the laser cutter were designed in Mathematica by Martin Fertl to produce a distribution that largely overlapped with the foil distribution requested by the lamination optimization.  The laser cutter was used once again to cut the picket fence designs.
 
-\todo{add examples of the templates used in the laser cutter}
+\begin{figure}
+\centering
+\includegraphics[height=20em]{fig/iron-strip-drawing}
+\includegraphics[height=20em]{fig/picket-fence-drawing}
+\caption{The left image depicts a typical distribution of foils cut by the laser cut to be sorted into mass bins.  The right image shows a typical picket fence pattern sent to be laser cut and fit into the laminations. \label{fig:laser-cutter-drawings}}
+\end{figure}
 
 The laser cut foils were then shipped onward to the next stage of lamination production.  At FNAL, the foils were cleaned in alcohol to removed as much plastic residue from the laser cutting process.  During laser cutting the shimstock was laid flat on a substrate of plastic and thick paper of which the laser melted and spattered a bit onto the metal.  The cleaning was important, because the most important aspect of the strips was the total mass of the strip and residue would disturb the mass measurement.  After cleaning each strip was massed to the nearest \SI{0.1}{\milli\gram} and manually histogrammed into a set of cups.
 
-\todo{maybe add image of foil cups}
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{fig/shim-foil-histogram}
+\caption{The image shows the manual histogram resulting from over 10,000 steel foils sorted by mass.  The array of sorted foils facilitated matching the set of foil prescribed by the lamination optimization quickly. \label{fig:shim-foil-histogram}}
+\end{figure}
 
 The next stage involved actually placing the foils onto G10 laminations shaped like pole pieces.  The foils were inventoried using a shared spreadsheet, and another team of workers tracked the inventory matching the prescriptions for each individual pole lamination.  When a full prescription was available, the strips were affixed to the lamination using very strong and thin double sided tape (3M-9485PC).  The finished pieces were then stored until completed tops and bottoms were paired and the relevant area of the ring was ready for installation.
 
@@ -461,7 +461,7 @@ The first stage of progress comes from the set of built-in shimming knobs.  The 
 \caption{The plot shows the rough shimming multipoles after full optimization with the built-in shim kit.  The dominant sources of uncertainty appear as the colors with the most area in the plot, i.e., the normal and skew quadruopole terms. \label{fig:results-shims-multipoles-final}}
 \end{figure}
 
-\subsection{Additional Shimming}
+\subsection{Further Shimming}
 
 The built-in knobs were not effective enough to reach the goals set forth for E989.  To push beyond the design limits of the \gmtwo storage ring, the field team implemented an intricate set of laminations to cover the pole surfaces and shim the field with more local precision in azimuth.  The implementation of the laminations pushed the dipole field uniformity to \SI{30}{ppm}, well below the target range.  The results are depicted in figure \ref{fig:results-laminations-dipole-final}.
 
