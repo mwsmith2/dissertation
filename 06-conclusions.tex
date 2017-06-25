@@ -1,7 +1,66 @@
 \chapter{Conclusions}
 
-\section{Field Measurement}
+The FNAL muon \gmtwo experiment continues to progress toward the \SI{140}{ppb} measurement of the anomalous magnetic moment of the muon.  Progress is constantly happening all over the \mugmtwo subdomains.  The analysis techniques for magnetic field measurements were extensively studied for precision levels and systematic effects.  The magnetic storage field has undergone the full passive shimming stage to achieve a new level of field uniformity for the \gmtwo storage ring.
 
-\section{Field Shimming}
+\section{FID Analysis}
+
+Magnetic field measurements in the \mugmtwo experiment are subject to strong uncertainty goals.  The technique employed to measure the magnetic field is a set of custom pNMR magnetometers.  Each measurement pulsed the pNMR probe to initiate an FID signal where the frequency content represents the magnetic field.  The soft uncertainty goal for each individual pNMR measurement is stated by \SI{10}{ppb}.  Within this domain, the measurement uncertainty is small enough that the statistics are neglible in the overall magnetic field uncertainty.
+
+Several FID analysis methods were tested in detail.  Three frequency domain and three time domain techniques were studied on FID data.  Each technique was tested again idealized functional FIDs, simulated FIDs based on the Bloch equations, gradient FIDs based on superpositions of simulated FIDs, and real signals from manufactured FIDs in real magnetic fields.  
+
+The tests highlighted one method which showed the highest overall of precision level.  The most precise technique in the studies uses the complex signal information given by a Hilbert Transform in conjunction with the original signal.  The phase information is extracted from the combinations of the signals, and the frequency can be found as the slope of a polynomial fit.  The conclusion of the study is the use the phase fit method and the zero crossing method as a standard basis for comparison.  The summary table is given first in table \ref{tab:fid-analysis-summary} of chapter \ref{ch:fid-analysis}, and included again here.
+
+\begin{table}[h]
+\label{tab:conclusion-fid-summary}
+\caption{FID Analysis Summary}
+\centering
+\begin{tabular}{l c c c c c c}
+    \hline
+    \multicolumn{1}{c}{Data Type} & Zero Crossing & Phase Fit \\
+    \hline
+    Ideal                & \SI{1.4}{ppb}  & \SI{0.1}{ppb} \\
+    Simulated            & \SI{10.2}{ppb} & \SI{0.1}{ppb} \\
+    Linear Gradient      & \SI{7.2}{ppb}  & \SI{0.5}{ppb} \\
+    Quadratic Gradient   & \SI{7.8}{ppb}  & \SI{2.9}{ppb} \\
+    Measured             & \SI{9.5}{ppb}  & \SI{9.1}{ppb} \\
+    \hline
+\end{tabular}
+\end{table}
+
+\section{Magnetic Field Shimming}
+
+Uniformity of the magnetic storage field is an undeniably important aspect of the FNAL \mugmtwo experiment.  The magnetic field uniformity contributes to the the \SI{30}{ppb} uncertainty allotted to magnetic field maps over the muon storage volume, the \SI{30}{ppb} uncertainty placed on interpolating the magnetic field between full field mappings, and the \SI{10}{ppb} uncertainty allowed for convolution of the muon distribution with higher order symmetries of the magnetic field. It is not the only contributor to these uncertainties, but maximizing uniformity lessens pressure for achieving the aforementioned goals.
+
+The initial stage of magnetic field uniformity optimizations has completed.  The passive shimming stage took place over 11 months from September 2015 to August 2016.  The process involves the careful adjustment of physics shims.  Shims material is sometimes ferric to pull field with the shim and sometimes minimally magnetic to lessen flux capture.  In all around 10,000 shim made of iron, steel, aluminum and G10 were precisely placed to adjust the physical geometry and magnetic characteristics of the magnetic field.  The results were spectacular.
+
+The first uniformity goal was to reduce the peak-to-peak variation of the average magnetic field to \SI{\pm 25}{ppm} and a standard deviation of \SI{25}{ppm}.  The passive shimming stage achieved a peak-to-peak variation of \SI{\pm 25}{ppm} and a standard deviation of \SI{15}{ppm}.  The result is given first in Chapter \ref{ch:shimming}, and again here in figure \ref{fig:conclusions-dipole-final}.  
+
+The uniformity goal for the higher order multipoles (symmetries of the field) was an average value less than \SI{5}{ppm} with a peak-to-peak value of less than \SI{10}{ppm}.  The multipoles couple to multipoles in the muon distribution which are not measured as of yet, but are most likely to manifest as normal multipoles.  The passive shimming adjustments pushed the peak-to-peak of all normal multipoles within the target range, and the skew multipoles close to the target range.  The average value of all multipoles are below the target of \SI{5}{ppm} which puts them within range of the active shimming hardware.  The plot of the azimuthal average was first shown in Chapter \ref{ch:shimming} and reprised here in figure \ref{fig:conclusion-azi-avg}.  The active shimming apparatus can control currents on the surface of the pole pieces to cancel small remaining multipole in the magnetic field.
+
+The field uniformity still has a few possible routes for improvement.  The active shimming stage has yet make field adjustments.  Additionally one set of shims are still accessible for minor adjustments even with other hardware populating the inside of the storage ring. In all the passive shimming stage met and exceeded all uniformity goals.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{fig/results-laminations-dipole-final}
+\caption{The final rough shimming result for E989 in red compared with the PRD field plot for E821.  The horizontal bands indicate \SI{\pm 25}{ppm} around the central value which was target for E989.  The result field beat the target by a factor of two and E821 field results by a factor of three. \label{fig:conclusions-dipole-final}}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[height=20em]{fig/shim-final-field-azi-avg}
+\caption{
+    The left plot plot shows the azimuthally averaged magnetic field values after rough shimming was completed for E821 and the right plot shows the same for E989.  The magnitude of the E989 field ranges over \SI{\pm 6}{ppm}, but that is predominantly the skew sextupole term which the surface coils will nullify.
+    \label{fig:conclusion-azi-avg}
+}
+\end{figure}
 
 \section{Outlook}
+
+The FNAL \mugmtwo experiment continues installation and commissioning of all subsystems.  In the summer of 2017, muons reached the storage ring for the first time during a hardware commissioning run.  The commission run will end midsummer, and muons will not return for several months.  All subsystems will have a respite to fix unforeseen problems and improve robustness.  The next time muons return to the \mugmtwo ring, the data will start the process of making an unprecedent precision measurement of the anomalous magnetic moment of the muon.
+
+
+
+
+
+
+
