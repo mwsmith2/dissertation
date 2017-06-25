@@ -6,6 +6,7 @@
 \usepackage{graphicx}
 \usepackage{siunitx}
 \usepackage{amsmath}
+\usepackage{enumitem}
 
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareSIUnit\gauss{G}
@@ -14,7 +15,7 @@
 
 % Functions
 \newcommand{\todo}[1]{\textbf{\color{red}{TODO: #1}}}
-\newcommand{\note}[1]{\textbf{\color{yellow}{(#1)}}}
+\newcommand{\note}[1]{\textbf{\color{blue}{NOTE: #1}}}
 
 % Lengths
 \newdimen\fdh
@@ -23,7 +24,7 @@
 % General aliases
 \newcommand{\tsm}{the Standard Model\xspace}
 \newcommand{\smpp}{the Standard Model of Particle Physics\xspace}
-\newcommand{\uw}{The University of Washington\xspace}
+\newcommand{\uw}{the University of Washington\xspace}
 \newcommand{\alphaQED}{\alpha_{_{QED}}}
 
 % g-2 aliases
@@ -39,16 +40,16 @@
 \newcommand{\ppm}[1]{\SI{#1}{ppm}\xspace}
 \newcommand{\ppb}[1]{\SI{#1}{ppb}\xspace}
 
-% \include{00-preamble}
+\include{00-preamble}
 
 \textpages
 
-% \include{01-introduction}
+\include{01-introduction}
 \include{02-fnal-experiment}
-% \include{03-field-measurement}
-% \include{04-fid-analysis}
-% \include{05-field-shimming}
-% \include{06-conclusions}
+\include{03-field-measurement}
+\include{04-fid-analysis}
+\include{05-field-shimming}
+\include{06-conclusions}
 
 \nocite{*}
 \bibliographystyle{plain}
