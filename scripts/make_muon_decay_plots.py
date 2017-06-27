@@ -7,6 +7,8 @@ import matplotlib.pyplot as plt
 
 def main():
 
+    # mpl.style.use('presentation')
+
     mpl.rcParams['figure.figsize'] = (9, 3)
     mpl.rcParams['figure.dpi'] = 220
 
@@ -45,6 +47,8 @@ def main():
     plt.title('Lab Frame')
     plt.xlabel(r'y [$E/E_{max}$]')
     plt.grid(alpha=0.5)
+
+    plt.tight_layout()
     plt.savefig('fig/muon-decay-distributions.pdf')
 
     # Make similar plots with the FoM included now.
@@ -72,6 +76,7 @@ def main():
     plt.grid(alpha=0.5)
     plt.legend()
 
+    plt.tight_layout()
     plt.savefig('fig/muon-precession-fom.pdf')
 
     return 0
