@@ -32,9 +32,12 @@ The simplest method for determining the FID frequency involves counting zero cro
 The method prevents double counting of zeros due to noise fluctuations by requiring the signal cross an amplitude threshold before allowing another countable zero crossing.  The threshold is referred to as the hysteresis threshold, and the concept is illustrated in figure \ref{fig:fid-freq-zc-hysteresis}.
 
 \begin{figure}
-\label{fig:fid-freq-zc-hysteresis}
+\centering
 \includegraphics[width=0.9\linewidth]{fig/fid-freq-zc-hysteresis}
-\caption{The figure illustrates aspects of the zero crossing frequency determination technique.  The timing of first and last zero crossings are determined using a local polynomial fit which is represented by the blue lines.  The number of zeros is incremented at a sign change, then frozen until the signal amplitude goes outside of the dotted green lines.  Using such a threshold is essential to the method as it supresses erroneous zero counts.}
+\caption{
+    The figure illustrates aspects of the zero crossing frequency determination technique.  The timing of first and last zero crossings are determined using a local polynomial fit which is represented by the blue lines.  The number of zeros is incremented at a sign change, then frozen until the signal amplitude goes outside of the dotted green lines.  Using such a threshold is essential to the method as it supresses erroneous zero counts.
+    \label{fig:fid-freq-zc-hysteresis}
+}
 \end{figure}
 
 The uncertainty associated with the zero crossing technique can be examined with a standard error analysis formulation given in equation \ref{eqn:uncertainty-analysis} \cite{error-taylor}.
@@ -179,9 +182,11 @@ h(t) = IFFT[-i \cdot \mathrm{sgn}(\omega) \hat{f}(\omega)]
 \end{equation}
 
 \begin{figure}
-\label{fig:fid-hilbert-env}
 \includegraphics[width=0.9\linewidth]{fig/fid-hilbert-env}
-\caption{The plot shows the power of the Hilbert Transform.  The original FID is depicted alongside its phase complement, the Hilbert Transform.  And the magntidue of the two vectors together yield the third vector in the plot, the envelope function.}
+\caption{
+    The plot shows the power of the Hilbert Transform.  The original FID is depicted alongside its phase complement, the Hilbert Transform.  And the magntidue of the two vectors together yield the third vector in the plot, the envelope function.
+    \label{fig:fid-hilbert-env}
+}
 \end{figure}
 
 \noindent
@@ -219,18 +224,18 @@ Each FID frequency extraction technique must be tested and validated.  The tests
 \subsection{Ideal FIDs}
 The simplest case is idealized FIDs. The frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it cannot be trusted to analyze the E989 data.  The effectiveness was tested on thousands of FIDs using a flat random distribution of frequencies from \SIrange{46.8}{47.2}{\kHz}.  The test results are shown in \ref{fig:fid-ideal-freq-extraction}.
 
-\begin{figure}
-\label{fig:fid-ideal-freq-extraction}
 \centering
 \includegraphics[width=1.0\linewidth]{fig/ideal-fid-test}
-\caption{The plots depict precision tests of different FID frequency extraction on ideal FIDs.  The methods are separated into frequency domain on the top, and time domain on the bottom.  The time domain methods (zero crossing method (ZC), phase fit (PH), and sinusoid fit (SN)) all outperform the frequency domain methods (centroid method (CN), Lorentzian peak fit (LZ), and analytical fit (AN)) in this study, and in particular the sinusoidal fit and linear phase fit perform exceptionally.}
+\caption{
+    The plots depict precision tests of different FID frequency extraction on ideal FIDs.  The methods are separated into frequency domain on the top, and time domain on the bottom.  The time domain methods (zero crossing method (ZC), phase fit (PH), and sinusoid fit (SN)) all outperform the frequency domain methods (centroid method (CN), Lorentzian peak fit (LZ), and analytical fit (AN)) in this study, and in particular the sinusoidal fit and linear phase fit perform exceptionally.
+    \label{fig:fid-ideal-freq-extraction}
+}
 \end{figure}
 
 \subsection{Simulated FIDs}
 Integrating the Bloch Equations (eqn. \ref{eqn:bloch}) is a straightforward path which yields accurate, simulated FID waveforms.  The waveforms are similar to those to the ideal FIDs with some possible deviations from the non-perfect, finite $\pi/2$ pulses.  The simulation used a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more practical to simulate at lower frequencies, because the integration step can be much larger.  In the end, the entire system runs through a lowpass filter at \SI{200}{\kHz}, so all the higher frequency content is removed from the final FID signal.  In that light simulations at \SI{1}{\MHz} are perfectly adequate.  Noise is added to the simulated waveforms at $1/300$ of the FID signal amplitude for frequency extraction tests.  Example results are shown in figure \ref{fig:fid-sim-freq-extraction}.
 
 \begin{figure}
-\label{fig:fid-sim-freq-extraction}
 \centering
 \includegraphics[width=0.45\linewidth]{fig/sim-fid-cn}
 \includegraphics[width=0.45\linewidth]{fig/sim-fid-lz}
@@ -238,8 +243,11 @@ Integrating the Bloch Equations (eqn. \ref{eqn:bloch}) is a straightforward path
 \includegraphics[width=0.45\linewidth]{fig/sim-fid-zc}
 \includegraphics[width=0.45\linewidth]{fig/sim-fid-ph1}
 
-\caption{Plots showing the results of FID frequency extraction tests on simulated FID waveforms.  The methods are Centroid Method (top left), Lorentzian Method (top right), Linear Phase Method (bottom left) and Sinusoid Method (bottom right).  
-\todo{remake image}}
+\caption{
+    Plots showing the results of FID frequency extraction tests on simulated FID waveforms.  The methods are Centroid Method (top left), Lorentzian Method (top right), Linear Phase Method (bottom left) and Sinusoid Method (bottom right).  
+    \todo{remake image}
+    \label{fig:fid-sim-freq-extraction}
+}
 \end{figure}
 
 \subsection{Simulated Gradient FIDs}
