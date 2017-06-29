@@ -5,6 +5,7 @@ gm2-*
 
 # Ignore for now, maybe add later.
 *.pdf
+!fig/*.pdf
 
 # Tex files specifically
 *.aux
