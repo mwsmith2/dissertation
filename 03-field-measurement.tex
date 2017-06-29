@@ -2,7 +2,7 @@
 
 \section{Magnetic Field Uncertainty Budget}
 
-The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the muon beam convoluted average magnetic field.  The uncertainty budget consists of different contributions which are enumerated in source \cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  The uncertainty constraints help paint the picture for the next section which walks through the field measurement methodology.
+The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for $\omega_p$ which predominantly comes from magnetic field measurements.  The uncertainty budget contributions are enumerated in source \cite{e989-tdr} and summarized in table \ref{tab:field-uncertainties}.  Uncertainty constraints highlight relevant details for the next sections which walk through the logistics of magnetic field measurements.
 
 \begin{table}[h]
 \label{tab:field-uncertainties}
@@ -18,7 +18,7 @@ The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the muon beam 
     Interpolation with fixed probes  & 30 \\
     Muon distribution                & 10 \\
     Inflector fringe field           & -  \\
-    Time dependent external B fields & 5  \\
+    Transient external B-fields      & 5  \\
     Other sources                    & 30 \\
     \hline
     Total $\delta \omega_p$          & 70 \\
@@ -28,15 +28,24 @@ The \mugmtwo experiment allots \SI{70}{ppb} total uncertainty for the muon beam 
 
 \section{Measurement Technique} \label{sec:field-measurement-technique}
 
-The uncertainty budget for magnetic field determination is entirely systematic.  Therefore, a typical measurement needs to be precise enough that the statistical error on the overall magnetic field determination has negligible influence.  This motivates a stated uncertainty goal of \ppb{10} for each field measurement \cite{e989-tdr}.  Commercial magnetometers with the required precision and geometric interface were not available within the E989 financial budget, so researchers at \uw developed a set of custom magnetometers.
-
-The custom magnetometers use pulsed nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  A quality resource on NMR is given as reference \cite{keeler-nmr}.  The pNMR probes use Larmor precession of protons to produce a signal with magnetic field information embedded in a frequency measurement.  Using pNMR with a sharp resonance at the expected Larmor frequency of the \gmtwo magnetic field, the magnetometers are able to reach the aforementioned precision goals.
+The uncertainty allocation for magnetic field determination is entirely systematic.  Therefore, a typical measurement needs to be precise enough that the statistical error on the overall magnetic field determination has negligible influence.  This motivates a stated uncertainty goal of \ppb{10} for each standard field measurement \cite{e989-tdr}.  Commercial magnetometers with the required precision and geometric interface were not available within the E989 financial budget, so researchers at \uw developed a set of custom magnetometers. The magnetometers use pulsed nuclear magnetic resonance (pNMR), a reprise of the measurement technique used in E821.  Using pNMR with a sharp resonance at the expected Larmor frequency of the \gmtwo magnetic field, the magnetometers are able to reach the aforementioned precision goals.
 
 \subsection{Pulsed Nuclear Magnetic Resonance}
+In essence a pNMR measurements exploits Larmor precession of protons to produce a signal with magnetic field information embedded in a frequency measurement.  
 
-In essence a pNMR measurement is a frequency measurement of Larmor precession for protons, $\omega_p$.  The source of the pNMR signal is a volume of material with a population of quasi-free protons.  The proton spins in the active volume are spin polarized in the direction of the external field to a small degree due to the spin-field interaction, $U = \vec{\mu} \cdot \vec{B}$.
+\subsubsection{Spin Polarization}
+Each pNMR device has volume with a population of quasi-free protons which are manipulated to produce the measurement signal.  The protons in the active volume have a small net spin polarization in the direction of the external field due to the spin-field interaction, $U = -\vec{\mu} \cdot \vec{B}$.  An interaction which follows the Boltzmann distribution \cite{landau-stat-mech}, so at room temperature (\SI{300}{\kelvin}) the average difference between the fraction of spin up and spin down protons is given by
 
-A secondary, alternating magnetic field is applied in the orthogonal plane by pushing a current through a solenoid surrounding the proton sample.  The radio frequency (RF) magnetic field alternates at a frequency approximately equal to the expected spin precession frequency given by the external field.  Define the magnetic fields to be
+\begin{equation}
+\label{eqn:pnmr-proton-polarization}
+\frac{e^{-\mu_z B_z/k_B T} - e^{\mu_z B_z/k_B T}}{e^{-\mu_z B_z/k_B T} + e^{\mu_z B_z / k_B T}} = 4.94 \times 10^{-6},
+\end{equation}
+
+\noindent
+a surprisingly small, but still very useful net polarization.
+
+\subsubsection{Radio Frequency Pulse}
+To initiate a pNMR signal, a secondary radio frequency (RF) magnetic field is applied in the orthogonal plane by driving a current through a solenoid surrounding the proton sample.  The RF magnetic field alternates at a frequency approximately equal to the expected spin precession frequency in the given external magnetic field.  Define the magnetic fields to be
 
 \begin{equation}
 \label{eqn:pnmr-field-with-rf}
@@ -44,15 +53,17 @@ A secondary, alternating magnetic field is applied in the orthogonal plane by pu
 \end{equation}
 
 \noindent
-where $B_0$ is the original magnetic field strength, $b_0$ is the RF field strength, and $\Omega$ is the angular frequency of the RF field.  The process is intuitively understandable in the reference frame rotating at $\Omega = \omega_p$.  In the rotating frame, the effective spin precession frequency from $B_z$ is $\omega_p - \Omega = 0$, and therefore the effective magnetic field $B_z = 0$.  On the other axis, $B_x = b_0$ in the rotating frame, so the RF field rotates the spin polarization vector around the x-axis into the x-y plane.  The RF field is turn off at $T = \pi / (2 \Omega)$, so that the the spin polarization vectors ends rotating \SI{\pi/2}{\radian} into the x-y plane, hence, it is often called a $\pi/2$ pulse.  The essential behavior is similar when the RF frequency and the Larmor frequency do not match exactly, but there are side effects.
+where $B_0$ is the original magnetic field strength, $b_0$ is the RF field strength, and $\Omega$ is the angular frequency of the RF field.
 
-In the lab frame the process should be considered in terms of a resonance effect due to the RF frequency matching the spin transition frequency.  After the $\pi/2$ pulse, the polarized protons precess in the x-y plane at a rate proportional to the strong vertical field.  The same solenoid used to produce the $\pi/2$ pulse now acts as a pickup coil, and the proton spin precession in the orthogonal plane produces a changing magnetic flux and thereby an induction current.  
+The process unfolds intuitively in the reference frame rotating at $\Omega = \omega_p$.  In the rotating frame, the effective spin precession frequency from $B'_z$ is $\omega_p - \Omega = 0$, and therefore the effective magnetic field $B'_z = 0$.  On the x-axis, $B_x = b_0$ in the rotating frame, so the RF field rotates the spin polarization vector around the x-axis into the x-y plane.  The RF field is turned off at $T = \pi / (2 \Omega)$, so that the spin polarization vectors only rotates \SI{\pi/2}{\radian} and ends on the y-axis, hence, it is often called a $\pi/2$ pulse.  The essential behavior is similar when the RF frequency and the Larmor frequency do not match exactly.  In the lab frame the process can be considered in terms of a resonance effect due to the RF frequency matching the spin transition frequency.  
 
-The signal attenuates due to two dominant effects.  The first effect is called longitudinal relaxation.  It occurs due spin alignment with $B_z$ which exponentially returns to equilibrium with a time constant usually called the $T_1$ time.  The second effect is called transverse relaxation.  It is essentially decoherence among the collection of proton spins.  Not all spins experience exactly the same magnetic fields, so after the RF pulse they precess at different rates and the net spin vector can decohere.  The rate of decohere  The precession signal and subsequent decay is called the free induction decay, and it is subsequently digitized and analyzed.  The result of frequency analysis on pNMR signal serves as high precision magnetic field proxy.
+\subsubsection{Free Induction Decay (FID)}
+After the $\pi/2$ pulse, the polarized protons precess in the x-y plane at a rate proportional to the original vertical field.  The precession signal and the subsequent decay is known as a free induction decay.  The same solenoid used to produce the $\pi/2$ pulse now acts as a pickup coil, and the net proton spin vector in the orthogonal plane produces a changing magnetic flux and thereby an induction current as it precesses.  
 
-\subsection{Free Induction Decay (FID)}
+The signal attenuates due to two dominant effects.  The first effect is called longitudinal relaxation.  It occurs due spin alignment with $B_z$, the same interaction which imparted a net polarization in the first place.  The net spin vector returns to equilibrium at an exponential rate with a time constant usually called the $T_1$ time.  The second effect is called transverse relaxation.  It is essentially decoherence among the collection of proton spins.  Not all spins experience exactly the same magnetic fields, so after the RF pulse they precess at different rates and the net spin vector can decohere.  The rate of decoherence is also exponential, and it is given the time constant $T_2$.  The precession frequency determined by analyzing the pNMR signal can serve as high precision magnetic field proxy. 
 
-The polarized protons involved in the FID evolve according to the Bloch Equations.  An ordinary differential equation that describes the time evolution of the magnetization vector in external magnetic fields.
+\subsubsection{Bloch Equations}
+The aggregate spins in the proton sample evolves according to the Bloch Equations (equation \ref{eqn:bloch}), an ordinary differential equation that describes the time evolution of the magnetization vector in external magnetic fields.
 
 \begin{align}
 \begin{split}
@@ -63,7 +74,7 @@ The polarized protons involved in the FID evolve according to the Bloch Equation
 \end{split} 
 \end{align}
 
-Consider the case of a perfectly uniform magnetic field, $T_2 \rightarrow \infty$, and a perfect $\pi/2$ pulse. This case is referred to in this document as an "ideal FID" waveform, and it can be solved exactly from the Bloch equations.  The resulting equation, \ref{eqn:ideal-fid}, exhibits the primary characteristics of an FID, a sinusoid term representing the proton precession and an exponential decay envelope representing the $T_1$ relaxation.  Figure \ref{fig:fid-ideal-waveform} exhibits the waveform of an ideal FID.
+Consider the case of a perfectly uniform magnetic field, $T_2 \rightarrow \infty$, and a perfect $\pi/2$ pulse. This case is referred to in this document as an "ideal FID" waveform, and it can be solved exactly from the Bloch equations.  The resulting equation, \ref{eqn:ideal-fid}, exhibits the primary characteristics of an FID, a sinusoid term from proton precession and an exponential decay envelope from the longitudinal relaxation.  Figure \ref{fig:fid-ideal-waveform} exhibits the waveform of an ideal FID.
 
 \begin{equation}
 f(t) = e^{-t/T_1} \sin(\omega t - \phi_0)
@@ -79,7 +90,7 @@ f(t) = e^{-t/T_1} \sin(\omega t - \phi_0)
 }
 \end{figure}
 
-In a realistic situation, the FID signal is a summation of signals produced by protons precessing in varying magnetic field values, and the signal can bear strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing bed for frequency extraction algorithms.  Examples of measured FIDs are shown in figure \ref{fig:fid-measured-waveforms}.  The measured FIDs show distortions from defects in electronics like the asymmetry of the first waveform and the spikes in the second waveform.  They also exhibit the effects of magnetic field gradients on the signal.  For instance, the second FID plot shows node-like behavior on the waveform which is indicative of a gradient of FID frequencies beating against each other.
+In a realistic situation, the FID signal is a summation of signals produced by protons precessing in a different frequencies due to gradients in the magnetic field, and the signal can bear strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing ground for frequency extraction algorithms.  Examples of measured FIDs are shown in figure \ref{fig:fid-measured-waveforms}.  The measured FIDs exhibit distortions from defects in electronics like the asymmetry of the first waveform and the spikes in the second waveform.  They also exhibit the effects of magnetic field gradients on the signal.  For instance, the second FID plot shows node-like behavior on the waveform which is indicative of an FID of a pNMR probe in large magnetic field gradients.
 
 \begin{figure}
 \centering
@@ -89,6 +100,20 @@ In a realistic situation, the FID signal is a summation of signals produced by p
     \label{fig:fid-measured-waveforms}
 }
 \end{figure}
+
+\subsubsection{Systematic Effects}
+
+The typical set of corrections to pNMR frequency is given in the \mugmtwo TDR \cite{e989-tdr} as
+
+\begin{equation}
+\label{eqn:nmr-effects-model}
+\omega_{probe} = (1 - \sigma(\mathrm{H_2 O}, T) - \delta_b(T) - \delta_p - \delta_s) \omega_p.
+\end{equation}
+
+\noindent
+The $\sigma$ function encompasses diagmagnetic shielding effects on the proton sample.  The second term, $\delta_b$, denotes the correction for the bulk susceptibility of the sample.  This includes geometric effects which shift the resonance frequency due to magnetization of the sample.  They are minimized by using ideal shapes with known factors, cylinders and spheres that can also be fabricated with high accuracy. The third term, $\delta_p$, corrects for paramagnetic impurities in the sample. The last term, $\delta_s$, includes the effects of magnetic perturbations incorporated into the material design of the system.  
+
+Reference \cite{keeler-nmr} is a quality resource for more details on NMR fundamentals.
 
 \subsection{Probe Designs}
 
@@ -106,19 +131,20 @@ The core design of the pNMR probes is the same as the design from the previous e
 }
 \end{figure}
 
-The field team at \uw iterated on the probe design making several improvements.  One of the improvements was in the robustness of the connection to the signal cable.  The new design used a crimp connection to secure the cable to provide a more robust connection.  Another improvement was the design of the tuning capacitor.  With the new design, the tuning of the probe can be done without removing the outer shell.  Removing the shell has a chance of damaging the inner structures of the probe, and minimizing removals makes tuning easier, faster and safer overall.  Another improvement is a substitution of the material used as a proton sample.  The E821 design used $\mathrm{H_2O}$ as a proton source with $\mathrm{CuSO_4}$ to decrease the relaxation time consant.  The new design replaces the mixture with petroleum jelly as a proton source.  The water design was seen to cause corrosion in many of the E821 probes, so the new design should alleviate those concerns and provide a longer, stable lifetime for the device.
+The field team at \uw iterated on the probe design making several improvements.  One of the improvements was in the robustness of the connection to the signal cable.  The new design used a crimp connection to secure the cable to provide a more secure connection.  Another improvement was the design of the tuning capacitor.  With the new design, probe tuning can be done without removing the outer shell.  Removing the shell has a chance of damaging structures inside the probe, and minimizing removals makes tuning easier, faster and safer overall.  Another improvement is a substitution of the material used as a proton sample.  The E821 design used $\mathrm{H_2O}$ as a proton source with $\mathrm{CuSO_4}$ to decrease the $T_1$ relaxation time consant.  The new design replaces the mixture with petroleum jelly as a proton source.  The water design was seen to cause corrosion in many of the E821 probes, so the new design should alleviate those concerns and provide a longer, stable lifetime for the device.
 
 The standard pNMR probes are used in two different but complementary systems to measure the magnetic field, the fixed probe system and the trolley system, which are detailed in section \ref{sec-field-subsystems}.
 
 \subsubsection{Absolute Calibration Probes}
 
-The standard pNMR probes can only give a proxy for the magnetic field, not a well calibrated absolute value.  For the absolute magnetic field value, the absolute calibration pNMR probes have to come into the fold.  The absolute calibration probes work on the same pNMR principles, but the design bears more consideration in minimizing and understanding known systematic effects which shift the precession frequency from that of free protons.  For instance, they may use a precisely fabricated spherical proton volume in order to minimize geometric effects.
+The standard pNMR probes can only give a proxy for the magnetic field, not a well calibrated absolute value.  For the absolute magnetic field value, the absolute calibration pNMR probes have to come into the fold.  The absolute calibration probes work on the same pNMR principles, but the design bears more consideration in minimizing and understanding known systematic effects which shift the precession frequency from that of free protons.  For instance, they may use a precisely fabricated spherical proton volume in order to minimize geometric effects.  And, all probe materials and nearby materials are stringently tested for magnetic perturbations.
 
 \begin{figure}
 \label{fig:field-e821-abs-probe}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/field-e821-abs-probe}
-\caption{A design diagram for the E821 absolute calibration probe.  The E821 probe is still in use alongside a new macor probe designed by UMass and an entirely different type of probe using $\mathrm{^3He}$ instead of water as a proton source.}
+\includegraphics[width=0.9\linewidth]{fig/field-abs-probe}
+\caption{The top image is a design diagram for the E821 absolute calibration probe, and the bottom design diagram is for the new E989 calibration probe.  The E821 probe is still in use alongside the new macor probe designed by UMass and an entirely different type of probe using $\mathrm{^3He}$ instead of water as a proton source.}
 \end{figure}
 
 \subsubsection{Plunging Probes}
@@ -129,7 +155,7 @@ The last species of pNMR probe is the so-called plunging probe. The probe is spe
 \label{fig:field-plunging-probe}
 \centering
 \includegraphics[width=0.7\linewidth]{fig/field-plunging-probe}
-\caption{A diagram of a E821 plunging probe which is also deployed in E989.  The probe is design to work with motion system that allows the probe to be align with both the absolute and standard probes to determine the proper shifts needed to bring pNMR measurement from a frequency to an absolute magnetic field value.}
+\caption{A diagram of the plunging probe deployed in E989.  The probe is design to work with motion system that allows the probe to be align with both the absolute and standard probes to determine the proper shifts needed to bring pNMR measurement from a frequency to an absolute magnetic field value.}
 \end{figure}
 
 \begin{figure}
@@ -144,7 +170,7 @@ The last species of pNMR probe is the so-called plunging probe. The probe is spe
 
 \subsection{Fixed Probe System (FPS)}
 
-The Fixed Probe System is a suite of stationary probes located above and below the muon storage volume inside the storage ring.  There are 378 probe in total, and they measure the field continuously while the muon beam is delivered to the storage ring.  In this way, the magnetic field drift is monitored at all times.  The measurement process is detailed in figure \ref{fig:fixed-probe-block-diagram}.
+The fixed probe system is a suite of stationary probes located above and below the muon storage volume.  There are 378 probe in total, and they measure the field continuously while the muon beam is delivered to the storage ring.  In this way, the magnetic field drift is monitored at all times.  The measurement logistics are detailed in figure \ref{fig:fixed-probe-block-diagram}.
 
 \begin{figure}
 \label{fig:fixed-probe-block-diagram}
@@ -152,6 +178,8 @@ The Fixed Probe System is a suite of stationary probes located above and below t
 \includegraphics[width=0.9\linewidth]{fig/fixed-probe-block-diagram}
 \caption{The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprised the NMR pulser design from the E821 experiments. The block diagram illustrates the measurement process and components of the system.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency standard.  The resulting signal feeds through a lowpass filter, and the filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and sampling depth of $16\;bits$.  The digitized waveform contains frequency information that represents the magnetic field.}
 \end{figure}
+
+The fixed probes system arranges probes in a very specific manner.  They are secured inside grooves cut into the walls of the 12 vacuum chambers that reside inside the storage magnet gap.  Each probe resides one of three radii: \SI{7082}{\mm}, \SI{7112}{\mm}, or \SI{7142}. The probe arrangement in azimuth repeats over each vacuum chamber effectively following the yoke sections, so yoke B with vacuum chambers 2 is the same azimuthal pattern as yoke C.  The specific angles over the chambers are: \SI{3.72}{\degree}, \SI{6.64}{\degree}, \SI{12.53}{\degree}, \SI{17.53}{\degree}, \SI{22.53}{\degree}, \SI{26.89}{\degree}.  The one exception is yoke A/vacuum chamber 12 where the grooves for the FPS were not extended.  In that case the probes reside at azimuthal angles of: \SI{2.65}{\degree}, \SI{6.64}{\degree}, \SI{12.53}{\degree}, \SI{17.53}{\degree}, \SI{22.53}{\degree}, \SI{27.68}{\degree}.  The last detail in the probe arrangement is the number of probes.  Most vacuum chambers hold 30 probes numbering 3-2-3-2-3-2 at each azimuthal position (top and bottom), but three chambers have 36 probes opting for a 3-3-3-3-3-3 scheme at each position.  Figure \ref{fig:fixed-probe-arrangement} illustrates the arrangement of fixed probes.  Note that the azimuthal spacing and radial spacing is more symmetric in the figure and not to scale.
 
 \begin{figure}
 \label{fig:fixed-probe-arrangement}
@@ -163,7 +191,7 @@ The Fixed Probe System is a suite of stationary probes located above and below t
 
 \subsection{Trolley Probe System (TPS)}
 
-The trolley measures the magnetic field in the muon storage volume.  It is a cylindrical shell with wheels that interface with rails protruding from the vacuum chambers which reside in the gap between the pole pieces as seen in figure \ref{fig:fixed-probe-arrangement}.  Internally the trolley contains an array of 17 of the standard pNMR probes as shown in figure \ref{fig:fixed-probe-arrangement} and the full set of electronics needed to produce and digitize FID signals.  It cannot measure while muons are injected though, so there is a naturally trade-off between measuring the magnetic storage field with the trolley and interpolating the field with the fixed probe system while the muons are delivered.
+The trolley measures the magnetic field in the muon storage volume.  It is a cylindrical shell with wheels that interface with rails protruding from the vacuum chambers which reside in the gap between the pole pieces as seen in figure \ref{fig:fixed-probe-arrangement}.  Internally the trolley contains an array of 17 of the standard pNMR probes as shown in figure \ref{fig:fixed-probe-arrangement} and the full set of electronics needed to produce and digitize FID signals.  It cannot measure while muons are injected though, so there is a naturally trade-off between measuring the magnetic storage field with the trolley and interpolating the field with the fixed probe system while the muons are delivered. In the trolley system the pNMR probes are arranged with one central device, a ring of 4 devices at a radius of \SI{17.5}{\mm}, and 12 more in an outer ring at \SI{3.5}{\mm}.
 
 \begin{figure}
 \label{fig:field-trolley-probe-array}
@@ -174,7 +202,7 @@ The trolley measures the magnetic field in the muon storage volume.  It is a cyl
 
 \subsection{Fluxgate System (FS))}
 
-The Fluxgate System consists of 4 vector magnetometers.  The devices are capable measuring at readout rates of 8 kHz, but they are limited in range to \SIrange{-10}{+10}{\gauss}.  The limited range prevents the devices from making measurements too close to the storage field, but that is not their intended use anyway.  The fluxgate sensors serve as a monitor to check for fast transient and periodic magnetic fields in the experimental hall.  The FS picks up magnetic field signals that are too fast for the FPS, and enables the experiment to place a limit on the effect of such transient signals.
+The Fluxgate System consists of four vector magnetometers.  The four devices are Bartington Mag690-1000 three-axis magnetic field sensors.  They are capable measuring at readout rates of 8 kHz, but they are limited in range to \SIrange{-10}{+10}{\gauss}.  The limited range prevents the devices from making measurements too close to the storage field, but that is not their intended use anyway.  The fluxgate sensors serve as a monitor to check for fast transient and periodic magnetic fields in the experimental hall.  The FS picks up magnetic field signals that are too fast for the FPS, and enables the experiment to place a limit on the effect of such transient signals.
 
 \begin{figure}
 \label{fig:field-fluxgates}
@@ -185,18 +213,7 @@ The Fluxgate System consists of 4 vector magnetometers.  The devices are capable
 
 \subsection{Absolute Probe System (APS)}
 
-Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 water probe, a newly designed water probe from UMass, and a $\mathrm{^3He}$ probe as a systematic cross-check. The probes are designed to best control for systematic effects that shift the free proton frequency.
-
-\subsubsection{Systematic Effects}
-The typical equation for corrections to the absolute probe pNMR frequency is given in the \mugmtwo TDR \cite{e989-tdr} as
-
-\begin{equation}
-\label{eqn:nmr-effects-model}
-\omega_{probe} = (1 - \sigma(\mathrm{H_2 O}, T) - \delta_b(T) - \delta_p - \delta_s) \omega_p.
-\end{equation}
-
-\noindent
-The $\sigma$ function encompasses the diagmagnetic shielding effects on the proton sample.  The second term, $\delta_b$, denotes the correction for the bulk susceptibility of the sample.  This includes geometric effects which shift the resonance frequency due to magnetization of the sample.  They are minimized by using shapes with known ideal factors, cylinders and spheres that can also be fabricated with high accuracy. The third term, $\delta_p$, corrects for paramagnetic impurities in the sample. The last term, $\delta_s$, includes the effects of magnetic perturbations incorporated into the design of the system.  As such each component is vetted independently before becoming a part of the absolute probe.  See the source \cite{e989-tdr} for more detail.
+Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 water probe, a newly designed water probe from UMass, and a $\mathrm{^3He}$ probe as a systematic cross-check. The probes are designed to best control for systematic effects that shift the free proton frequency.  As such each component is vetted independently before becoming a part of the absolute probe.  See the source \cite{e989-tdr} for more detail.
 
 The principle motivation for the $\mathrm{^3He}$ probes, a second type of absolute calibration probe, is a cross-check with very different systematics.  For instance, the diamagnetic shielding factor on $\mathrm{^3He}$ is larger compared to water probes \cite{e989-tdr}.
 
@@ -210,7 +227,7 @@ The shape of the active volume is also less important for $\mathrm{^3He}$ versus
 
 \subsection{Plunging Probe System (PPS)}
 
-The relative relationship between the absolute calibration probe proton frequency and the probe frequency in the FPS and TPS is done with the plunging probe system.  The plunging probes are brought into the same volume of magnetic field measured and corrected by the absolute probe to establish a transfer calibration from the absolute probe, which does not enter the storage ring, to a system which has a ring entry point.  The plunging probes are inserted into an azimuthal slice of the storage volume, plunged if you will.  The plunging probe is moved by a motor stage to be as near to each trolley probe as possible.  In this way, the free proton resonance from the absolute probe can propagate to the pNMR monitor probes used to measure the \gmtwo magnetic field.
+The relative relationship between the absolute calibration probe proton frequency and the probe frequency in the FPS and TPS is done with the plunging probe system.  The plunging probes are brought into the same volume of magnetic field measured and corrected by the absolute probe to establish a calibration from the absolute probe, which does not enter the storage ring, to a system which has a ring entry point.  The plunging probes are inserted into an azimuthal slice of the storage volume.  The plunging probe is moved by a motor stage to be as near to each trolley probe as possible.  In this way, the free proton resonance calibration from the absolute probe can propagate to the standard pNMR probes used to measure the \gmtwo magnetic field in situ.
 
 \begin{figure}
 \label{fig:field-plunging-probe-diagram}
@@ -218,11 +235,11 @@ The relative relationship between the absolute calibration probe proton frequenc
 \caption{The diagram depicts how the plunging probe correlates pNMR frequencies with the trolley.  The plunging probe is inserted into the calibration volume, and translated to the location of each trolley probe.  The two probes measure the same field and compare frequencies to find the relative calibration correction.}
 \end{figure}
 
-\section{Field Reconstruction}
+\section{Magnetic Field Reconstruction}
 
-The process of defining the \gmtwo magnetic storage field begins with the trolley system.  The trolley system takes a run and uses the data to define the magnetic flux density for all positions in the muon storage volume at the time of the run, $\omega(\vec{r}, t_i)$.  Between trolley runs, measurements from the fixed probes and the fluxgates are used to interpolate change in the flux density distribution.  The changes extracted from the fixed probe data are a function of time only, $\delta \omega_{fps}(t)$.  And, similarly the contributions to the interpolation from the fluxgates can be a function of time only, $\delta \omega_{fs}$.  Stitching all the pieces together results in equation \ref{eqn:field-construction}.
+The procedure of defining the \gmtwo magnetic storage field begins with the trolley system.  The trolley system takes a set of measurements over the whole azimuth of the magnetic storage ring, and that data is used to define the magnetic flux density for any position in the muon storage volume at the time of the run, $\omega(\vec{r}, t_i)$.  Between trolley runs, measurements from the fixed probes and the fluxgates are used to interpolate change in the flux density distribution.  The changes extracted from the fixed probe data are a function of time only, $\delta \omega_{fps}(t)$.  And, similarly the contributions to the interpolation from the fluxgates can be a function of time only, $\delta \omega_{fs}$.  Putting all the individual contributions together results in equation \ref{eqn:field-construction}.
 
-The algorithms for field construction are not manifest, and they must be designed and refined by the field team over the coming months and years.  In this light, the contributions cannot be talked about in more than general terms.  The 3D field is re-measured periodically, and only the most recent one contributes to the field definition. The most general form for the frequency is then
+The algorithms for magnetic field construction are not manifest, and they must be designed and refined by the field team over the duration of the experiment.  In light of the fact that the experiment is currently in the commissioning stage, the contributions cannot be discussed in more than general terms.  The magnetic flux desnity distribution is re-measured periodically, and only the most recent one contributes to the field definition. The most general form for the magnetic flux desnity distribution is then
 
 \begin{equation}
 \label{eqn:field-construction}
@@ -231,7 +248,7 @@ The algorithms for field construction are not manifest, and they must be designe
 \end{equation}
 
 \noindent
-where we have a 3D field term, $\omega_{n}(\vec{r})$, to serve as the base magnetic field at time $t_n$, an interpolation term, $\delta \omega(\vec{r}, t)$, to improve precision between runs, and $\Theta$ is the Heaviside function. The last step is calibrating the magnetic field determined by the trolley using the plunging probes and the absolute probes.
+where $\omega_{n}(\vec{r})$ the a base magnetic field term over the 3D storage volume at time $t_n$, $\delta \omega(\vec{r}, t)$ is an interpolation term to improve precision between runs, and $\Theta$ is the Heaviside function. The magnetic field is expressed as a frequency, $\omega_p$ because of the pNMR nature of the measurements.  The last step is calibrating the magnetic field determined by the trolley using the plunging probes and the absolute probes. Calibration shifts the flux density measured into terms of the free proton spin precession frequency.
 
 \begin{equation}
 \label{eqn:field-calibration}
@@ -240,7 +257,7 @@ where we have a 3D field term, $\omega_{n}(\vec{r})$, to serve as the base magne
 
 \noindent The measurement data and algorithms together define the calibrated magnetic flux density distribution over the muon storage volume.
 
-\subsection{3D Field}
+\subsection{Map of the Muon Storage Volume}
 
 The latest data from a trolley ``full run'', a set of measurements encompassing all azimuthal locations in the storage ring taken over a short period of time, serves as a fundamental definition of the field.  The trolley continuously cycles through the 17 probe array while taking measurements at \SI{34}{\Hz}, two full cycles per second.  The full run process takes over an hour which yields at least 7,200 measurements with the full array. Each field measurement is accompanied by multiple location measurements accurate to about \SI{1}{\mm}.  Data from a full set of trolley measurements, $\vec{\omega}_{tps}$ and $\vec{\theta}$, then feeds into an algorithm, $f$, which returns the magnetic field at a location $\vec{r}$ as in equation \ref{eqn:field-3d-trolley}.  The algorithm represents the 3-dimensional magnetic storage field.  The allotted uncertainty for constructing $\omega_{n}(\vec{r})$ is \SI{30}{ppb}.
 
@@ -259,14 +276,14 @@ Between trolley runs, the magnetic field still needs to be well known.  The unce
 + \delta \omega_{fs}(\vec{x}, \vec{b}, t_i)
 \end{equation}
 
-The FPS provides one data source used for interpolation.  There are 378 fixed probes around the ring which measure the field at \SI{\sim 1}{\Hz}.  An pNMR frequency is extracted from each probe, and the data is timestamped.  Some algorithm, $f$, for field interpolation will be designed using all fixed probe measurements since the last trolley run, such as
+The FPS provides one data source used for interpolation.  There are 378 fixed probes around the ring which measure the field at \SI{\sim 1}{\Hz}.  An pNMR frequency is extracted from each probe, and the data is timestamped.  Some algorithm, $f$, for field interpolation will be designed using all fixed probe measurements taken since the last trolley run, such as
 
 \begin{equation}
 \label{eqn:field-interpolation-fps}
 \delta \omega_{fps}(t) = \sum_{t_i = t_n}^{t_i < t} f(\vec{\omega}_i, t_i)
 \end{equation}
 
-The second arm of field interpolation is the fluxgate magnetometers.  The FS measures the transient field at high rates, \SI{\sim 1}{\kHz}.  There are three fluxgate sensors in the array which can be moved around the ring to monitor local field transients at multiple locations.  The transient fields measured in the fluxgates, $\vec{b}$, need to be well correlated and calibrated with the fields measured in the fixed probes, but they are a potentially powerful tool for discerning moderate frequency transients in the field, such as \SI{15}{\Hz} or \SI{60}{\Hz}.  Each sensor needs a human defined probe position vector denoted by $\vec{x}_i$, and provides a vector magnetic field value, $\vec{b}_i$, and timestamp, $t_i$.  If they transient fields are small, as they are expected to be, the fluxgate could be used to simply place a limit on the effect of transient fields.
+The second arm of magnetic field interpolation is the fluxgate magnetometers.  The FS measures the transient magnetic fields at high rates, \SI{\sim 1}{\kHz}.  There are three fluxgate sensors in the array which can be moved around the ring to monitor local magnetic field transients at multiple locations.  The transient magnetic fields measured in the fluxgates, $\vec{b}$, need to be well correlated and calibrated with the magnetic fields measured in the fixed probes, but they are a potentially powerful tool for discerning transients in the field at moderate, common frequencies, such as \SI{15}{\Hz} or \SI{60}{\Hz}.  Each sensor needs a human defined probe position vector denoted by $\vec{x}_i$, and provides a vector magnetic field value, $\vec{b}_i$, and timestamp, $t_i$.  If they transient fields are small, as they are expected to be, the fluxgate will be used to place a limit on the effect of transient fields.
 
 \begin{equation}
 \label{eqn:field-interpolation-fm}
@@ -276,31 +293,35 @@ The second arm of field interpolation is the fluxgate magnetometers.  The FS mea
 
 \subsection{Calibration}
 
-Calibration is the final step in producing an absolute field map.  The calibration flows down from the absolute probe in two stages.  The absolute calibration probe and the plunging probe both measure the field in a certain location of a monitored and understood field.  The relationship is parameterized by a model scaling model as given in equation \ref{eqn:field-calibration-abs-pp}.
+Calibration is the final step in producing an absolute magnetic field map.  The calibration flows down from the absolute probe in two stages.  The absolute calibration probe and the plunging probe both measure the field in a certain location of a monitored and understood field.  The relationship is parameterized by a chemical shift model as given in equation \ref{eqn:field-calibration-abs-pp}.
 
 \begin{equation}
 \label{eqn:field-calibration-abs-pp}
 \omega_{aps} = (1 - \delta_{pps \rightarrow aps})\omega_{pps}
 \end{equation}
 
-The second stage of calibration is similar to the first.  The plunging probe measures the field in approximately the same volume as the trolley probes.  The calibration relationship can then be transferred in a similar way.  The scaled model, equation \ref{eqn:field-calibration-pp-fp}, is given as an example.
+The second stage of calibration is similar to the first.  The plunging probe measures the field in approximately the same volume as the trolley probes.  The calibration relationship can then be transferred in a similar way.  Equation \ref{eqn:field-calibration-pp-fp} is given as an example.
 
 \begin{equation}
 \label{eqn:field-calibration-pp-fp}
 \omega_{pps} = (1 - \delta_{tps \rightarrow pps})\omega_{tps}
 \end{equation}
 
-Bringing the field map and the calibration together, one arrives at an expression for the field map as a function of time, the field team deliverable quantity.
+Bringing the magnetic field map and the calibration function together, one arrives at an expression for the magnetic field map over time.
 
 \begin{equation}
 \label{eqn:field-omega-p}
 \omega_0(\vec{r}, t) = (1 - \delta_{pps \rightarrow aps}) \\
-(1 - \delta_{tps \rightarrow pps}) \omega_{tps}
+(1 - \delta_{tps \rightarrow pps}) \sum_n \Theta(t - t_n) \\
+\left[\omega_{ts,n}(\vec{r}) + \delta \omega_{fps}(t) + \delta \omega_{fs}(t)\right]
 \end{equation}
+
+\noindent
+This is the culmination of all magnetic field measurements and analysis.  It is referred to as the magnetic field map, but more precisely it is the free proton spin precession distribution as a function of time inside the storage volume. 
 
 \subsection{Beam Convolution}
 
-The final step in turning all of the magnetic field measurements into the quantity that feeds into equation \ref{eqn:muon-g-2} for $a_\mu$ is convoluting the field with the muon beam.  The field function itself is not enough; it really needs to be the average magnetic field experienced by the stored muons.  The muon distribution is measured by Fiber Harp Detectors and reconstructed using the Tracker Detectors (see \cite{e989-tdr} for more detail).  The muon-weighted raw proton precession frequency can be determined by convolving the magnetic flux density distribution from the field team with the muon density distribution from the beam team as shown in equation \ref{eqn:field-omega-p-avg}
+The final step in determining the quantity which goes into the expression for $a_\mu$, equation \ref{eqn:muon-g-2}, convoluting the proton precession distribution with the muon beam distribution.  The quantity really needs to represent the average magnetic field experienced by the stored muons.  The muon distribution is measured by Fiber Harp Detectors and reconstructed using the Tracker Detectors (see \cite{e989-tdr} for more detail).  The muon-weighted free proton precession frequency can be determined by convolving the calibrated magnetic flux density distribution, $\omega_0$, from the field team with the muon density distribution, $M$, from the beam team.
 
 \begin{equation}
 \label{eqn:field-omega-p-avg}
