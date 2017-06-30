@@ -28,8 +28,11 @@ def main():
     plt.title('Example FID')
     plt.ylabel(r'amplitude [a.u.]')
     plt.xlabel(r'time [ms]')
+
+    plt.grid(color='k', alpha=0.4)
+    plt.xlim([x[0], x[-1]])
     plt.tight_layout()
-    plt.savefig('test.pdf')
+    plt.savefig('fig/fid-example-waveform.pdf')
 
     return 0
 
