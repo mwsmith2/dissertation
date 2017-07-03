@@ -199,8 +199,12 @@ The ideal energy threshold in this case is $0.4\times$\pmagic$ = $ \SI{1.24}{\Ge
 A suite of calorimeters arranged around the inner radius of the storage ring measure properties of the decay electrons.  The decay electrons always have less energy than the magic momentum, and so must curl inward on a smaller orbit radius than the storage orbit radius of the initial muon.  The trajectory of a typical decay electron is shown in figure \ref{fig:omega-a-decay-electron-trajectory}.  A smaller orbit that intersects with a calorimeter, at least the higher energy ones anyway. The higher energy electrons have a wider trajectory similar to the parent muon and hit the calorimeters head on.  Lower energy electrons have a sharp trajectory which can curl inward between calorimeter stations.
 
 \begin{figure}
-\includegraphics[width=0.9\linewidth]{fig/omega-a-decay-electron-trajectory}
-\caption{The figure shows a few typical decay electron trajectories.  The muon decays into an electron with lower momentum which by necessity takes a path with a smaller radius of curvature.  The electron curls inward into one of 24 calorimeter blocks around the inner radius of the storage ring. \label{fig:omega-a-decay-electron-trajectory}}
+\centering
+\includegraphics[width=1.0\linewidth]{fig/omega-a-decay-electron-trajectory}
+\caption{
+    The figure shows a few typical decay electron trajectories.  The muon decays into an electron with lower momentum which by necessity takes a path with a smaller radius of curvature.  The electron curls inward into one of 24 calorimeter blocks around the inner radius of the storage ring. 
+    \label{fig:omega-a-decay-electron-trajectory}
+}
 \end{figure}
 
 The calorimeters establish a time and energy for each detected electron.  The device consists of a 4x9 array of $\mathrm{PbF_2}$ crystals each with a physically smaller array of geiger-like photon counting hardware called a silicon photomultiplier (SiPM).  Segmented the detector decreases the likelihood of two decay events occurring simultaneously in the same measurement channel.  These double events are refered to as pileup and were a major source of uncertainty in E821.  The incoming electron produces thousands of \v{C}erenkov photons per \SI{}{\GeV}.  The photons collect at the opposite end of the crystal where they activate SiPM channels.  The subsequent pulse undergoes signal shaping, digitiztation, and pulse fitting analysis routine to determine the energy and the time of the electron decay event.  
@@ -217,6 +221,10 @@ N(t, E) = N_0(E) e^{-t/\tau_\mu} \left[ 1 + A(E) \cos(\omega_a t + \phi_0(E))\ri
 where $N_0$ is the total number of muons above threshold at time zero, $\tau_\mu$ is the effective muon lifetime, $A(E)$ is the total asymmetry of muons above threshold, and $\phi_0(E)$ is the phase of the spin vectors at the chosen start time for the fit.  A five parameter fit using equation \ref{eqn:omega-a-signal} yields the anomalous spin precession for muons.  The distribution and fit is depicted in figure \ref{fig:omega-a-wiggle-plot}.
 
 \begin{figure}
+\centering
 \includegraphics[width=0.9\linewidth]{fig/omega-a-wiggle-plot}
-\caption{The histogram is from the E989 TDR, reference\cite{e989-tdr}.  It shows the number of electron decay events above threshold as a function of time.  The oscillations seen on top of the exponential decay correlate to the spin precession of the muons as they propagate around the storage ring.  The number of high energy decays is enhanced as the spin aligns with the momentum and decreased when the spin anti-aligns with the momentum vector. \label{fig:omega-a-wiggle-plot}}
+\caption{
+    The histogram is from the E989 TDR, reference\cite{e989-tdr}.  It shows the number of electron decay events above threshold as a function of time.  The oscillations seen on top of the exponential decay correlate to the spin precession of the muons as they propagate around the storage ring.  The number of high energy decays is enhanced as the spin aligns with the momentum and decreased when the spin anti-aligns with the momentum vector. 
+    \label{fig:omega-a-wiggle-plot}
+}
 \end{figure}
