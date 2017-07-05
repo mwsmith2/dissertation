@@ -18,7 +18,7 @@ An example FID is given in figure \ref{fig:fid-example-waveform}.  The main char
 \noindent
 As in most data analysis, the first step is cleaning and characterizing the data.  In the case of FIDs, the process begins with removing the baseline (and trend in some cases).  The next step in data preprocessing is determination of the start time and stop time of useful FID signal within the frame of the entire recorded waveform.  The baseline value is calculated using an initial segment of the waveform which is free of signal.  The signal duration is computed using the maximum amplitude around the signal baseline and applying a amplitude threshold to find the first and last sections of the waveform with an envelope above that threshold.  After the FID has been characterized, it is ready for frequency extraction.
 
-\note{if time, add flow images for data pre-processing}
+% \note{if time, add flow images for data pre-processing}
 
 \subsection{Zero Crossing Method (ZC)}
 The simplest method for determining the FID frequency involves counting zero crossings of the signal.  The technique was used in the previous \mugmtwo experiment in a hardware implementation, and has been re-implemented in software for E989.  The zero crossing method is a time domain algorithm which counts all zero crossings in the signal ($N$), then determines the time of the first and last zero crossing using a polynomial fit ($t_i$ and $t_f$).  The FID frequency is then given by equation \ref{eqn:fid-freq-zc}.
@@ -190,18 +190,18 @@ h(t) = IFFT[-i \cdot \mathrm{sgn}(\omega) \hat{f}(\omega)]
 \end{figure}
 
 \noindent
-The phase calculation using equation \ref{eqn:fid-phase} has the caveat that the domain is always $[-\pi, \pi]$.  Unfolding the phase into the full domain is straightforward using thresholds on the allowing jump in phase between adjacent points.  With a phase robustly determined for the signal, the FID frequency manifests as the linear slope of the phase at time zero, $\frac{\partial \phi}{\partial t}|_{t=0}$.
+The phase calculation using equation \ref{eqn:fid-phase} does have the caveat that the domain is always $[-\pi, \pi]$, but unfolding the phase into the full domain is straightforward using thresholds on the allowing jump in phase between adjacent points.  With a phase robustly determined for the signal, the FID frequency manifests as the linear slope of the phase at time zero, $\frac{\partial \phi}{\partial t}|_{t=0}$.
 
 \begin{equation}
 \label{eqn:freq-ph}
 \omega_{ph} = a_1 \in \argmin_{a_0, a_1, a_2, a_3} \;
-\left| \phi - (a_0 + a_1 t + a_2 t^2 + a_3 t^3) \right|
+\lvert \phi - \left(a_0 + a_1 t + a_2 t^2 + a_3 t^3\right) \rvert
 \end{equation}
 
 A polynomial fit such as equation \ref{eqn:freq-ph} is effective at extracting the frequency, because the frequency is just the linear coefficient.  In fact, the phase information yields frequency as a function of time which is interesting for systematic checks.  The phase fit method is the most precise method in simulated FIDs.
 
 \subsection{Sinusoid Fit}
-Normalizing the signal into a sinusoid is another approach for frequency extraction utilizing the hilbert transform.  The envelope is calculable as the norm of the origina signal and the hilbert transform
+Normalizing the signal into a sinusoid is another approach for frequency extraction utilizing the hilbert transform.  The envelope is calculable as the norm of the original signal and the Hilbert Transform
 
 \begin{equation}
 \label{eqn:fid-envelope}
@@ -214,7 +214,7 @@ With the envelope in hand, the original signal can be normalized into an amplitu
 \begin{equation}
 \label{eqn:freq-sn}
 \omega_{sn} = \argmin_\omega \; \\
-\left| f(t) / f_{env}(t) - \sin(\omega t - \phi_0)) \right|
+\lvert f(t) / f_{env}(t) - \sin(\omega t - \phi_0)) \rvert
 \end{equation}
 
 \section{Frequency Extraction Studies}
@@ -222,7 +222,7 @@ With the envelope in hand, the original signal can be normalized into an amplitu
 Each FID frequency extraction technique must be tested and validated.  The tests are performed with several different sources of data: ideal FIDs, simulated FIDs, and measured FIDs.  Each dataset presents a test bed for determining the precision, accuracy and failure modes of each frequency extraction technique.
 
 \subsection{Ideal FIDs}
-The simplest case is idealized FIDs. The frequency is static in time and all techniques should perform well.  If the technique cannot handle the simplest FIDs, then it cannot be trusted to analyze the E989 data.  The effectiveness was tested on thousands of FIDs using a flat random distribution of frequencies from \SIrange{46.8}{47.2}{\kHz}.  The test results are shown in \ref{fig:fid-ideal-freq-extraction}.
+The simplest case is idealized FIDs. The frequency is static in time and all techniques should perform well.  If the technique does not perform with high precision on the simplest FIDs, then it is not viable for analyzing the E989 data.  The effectiveness was tested on thousands of FIDs using a flat random distribution of frequencies from \SIrange{46.8}{47.2}{\kHz}.  The test results are shown in \ref{fig:fid-ideal-freq-extraction}.
 
 \begin{figure}
 \centering
@@ -252,14 +252,17 @@ Integrating the Bloch Equations (equation \ref{eqn:bloch}) is a straightforward 
 \end{figure}
 
 \subsection{Simulated Gradient FIDs}
-An anticipated complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which will distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The reason for node-like behavior is that individual FIDs all begin in phase but as different frequencies evolving they lose phase coherence and cancel each other.  For a purely linear gradient all components can cancel rendering a real zero in the FID amplitude.  The simulations aim to test the effects of small gradients on the FID frequency extraction precision and accuracy.
+An anticipated complication with actual magnetic field measurements arises from the presence of gradients in the field.  Any real magnetic field will have gradients over the volume of the probe which will distort the signal of the probe.  These effects can be mimicked using a superposition of simulated FIDs over a small range.  One notices node-like behavior in the envelope when gradients are present (and E821 waveforms exhibited this behavior).  The reason for node-like behavior is that individual FIDs all begin in phase but as different frequencies evolving they lose phase coherence and cancel each other at one time.  Then, as the phases continue to advance, the collection of spins can re-cohere at another time.  The effect is similar to the amplitude fluctuations that accompany beat frequencies.  For a purely linear gradient all components can cancel rendering a real zero in the FID amplitude.  The simulations aim to test the effects of small gradients on the FID frequency extraction precision and accuracy.
 
-The range of magnetic field gradient over the pNMR probes anticipated in the \gmtwo storage field are on the order of \SIrange{10}{100}{ppb}. A collection of simulated FIDs was created using a Bloch Equation integrator with a range chosen to be \SI{47}{\kHz} \SI{\pm 1000}{ppb}. To create a gradient FID, around 20 waveforms from a collection of simulated FIDs were put into a weighted sum.  The weights were chosen in a way that did not change the average frequency only the variation of over the probe.  For linear gradients this is simple, it is simply the central value and evenly spaced set of frequencies on both sides.  For instance, at \SI{100}{ppb} and 5 waveforms, the gradient FID would be composed of the following frequencies: \SI{-100}{ppb}, \SI{-50}{ppb}, \SI{0}{ppb}, \SI{50}{ppb}, and \SI{100}{ppb} (+ \SI{47}{\kHz}).  For quadratic gradients, the weights are a bit less intuitive, but still simple enough.  The frequencies were chosen to be even spaced around the central frequency again.  As an example, let $x$ be the linear distribution defined previously and the weights for the quadratic gradient will be defined in \ref{eqn:fid-quadratic-grad}.  The following frequencies would make up the quadractic gradient: \SI{100}{ppb}, \SI{-50}{ppb}, \SI{-100}{ppb}, \SI{-50}{ppb}, and \SI{100}{ppb} (+ \SI{47}{\kHz}).
+The range of magnetic field gradient over the pNMR probes anticipated in the \gmtwo storage field are on the order of \SIrange{10}{100}{ppb}. A collection of simulated FIDs was created using a Bloch Equation integrator with a range chosen to be \SI{47}{\kHz} \SI{\pm 1000}{ppb}. To create a gradient FID, around 20 waveforms from a collection of simulated FIDs were put into a weighted sum.  The weights were chosen in a way that did not change the average frequency only the variation of over the probe.  For linear gradients this is simple, it is just the central value and evenly spaced set of frequencies on both sides.  For instance, at \SI{100}{ppb} and 5 waveforms, the gradient FID would be composed of the following frequencies: \SI{-100}{ppb}, \SI{-50}{ppb}, \SI{0}{ppb}, \SI{50}{ppb}, and \SI{100}{ppb} (+ \SI{47}{\kHz}).  For quadratic gradients, the weights are a bit less intuitive, but still simple enough.  The frequencies were chosen to be even spaced around the central frequency again.  As an example, let $x$ be the linear distribution defined previously and the weights for the quadratic gradient will be defined in \ref{eqn:fid-quadratic-grad}.
 
 \begin{align}
 \label{eqn:fid-quadratic-grad}
 y = \frac{x^2 - \langle x^2 \rangle}{\max{(x^2 - \langle x^2 \rangle)}} \times \mathrm{100\; ppb}
 \end{align}
+
+\noindent
+The following frequencies would make up the quadractic gradient: \SI{100}{ppb}, \SI{-50}{ppb}, \SI{-100}{ppb}, \SI{-50}{ppb}, and \SI{100}{ppb} (+ \SI{47}{\kHz}).
 
 \begin{figure}
 \centering
@@ -297,7 +300,7 @@ The frequency extraction results from the gradient FIDs are presented in figures
 \subsection{FID Measurements}
 A stability dataset of waveforms from the field shimming stage was also available to test the FID algorithms.  Testing against this dataset had a real difference in that the true precession frequency was not known.  One can still build distributions to get a sense for the precision and stability of a analysis method.
 
-Figures \ref{fig:fid-real-trend} \& \ref{fig:fid-real-hists} show the analysis results for real FIDs.  The data was first detrending by removing the average behavior over all 25 pNMR probes then removing polynomial drift up to second order.  Zero crossing and phase appear similarly effective in the context of real data.  Both methods have a precision of \SI{\sim 10}{ppb} in the study.  The phase fit central value has a shift of \SI{\sim 15}{ppb}.
+Figures \ref{fig:fid-real-trend} \& \ref{fig:fid-real-hists} show the analysis results for real FIDs.  The data was first detrending by removing the average behavior over all 25 pNMR probes then removing polynomial drift up to third order.  Zero crossing and phase appear similarly effective in the context of real data.  Both methods have a precision of \SI{\sim 10}{ppb} in the study.  The phase fit central value has a shift of \SI{\sim 15}{ppb}.
 
 \begin{figure}
 \centering

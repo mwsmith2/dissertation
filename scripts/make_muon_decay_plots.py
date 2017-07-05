@@ -7,9 +7,7 @@ import matplotlib.pyplot as plt
 
 def main():
 
-    # mpl.style.use('presentation')
-
-    mpl.rcParams['figure.figsize'] = (9, 6)
+    mpl.rcParams['figure.figsize'] = (4.5, 3)
     mpl.rcParams['figure.dpi'] = 220
 
     mpl.rcParams['lines.linewidth'] = 1.0
@@ -34,10 +32,10 @@ def main():
     plt.plot(y, n_rest, label=r'$n(y)$')
     plt.plot(y, a_rest, label=r'$a(y)$')
 
-    plt.title('Rest Frame')
+    plt.title('Rest Frame Muon Decay')
     plt.xlabel(r'y [$E/E_{max}$]')
     plt.grid(alpha=0.5)
-    plt.legend()
+    plt.legend(fontsize='large')
 
     # And, the lab frame.
     # plt.subplot(1, 2, 2)
@@ -56,6 +54,17 @@ def main():
     fom_lo = fom.cumsum()
     fom_hi = fom[::-1].cumsum()[::-1]
 
+    mpl.rcdefaults()
+    mpl.rcParams['figure.figsize'] = (9, 3)
+    mpl.rcParams['figure.dpi'] = 220
+
+    mpl.rcParams['lines.linewidth'] = 1.0
+    mpl.rcParams['lines.markersize'] = 2.0
+    
+    mpl.rcParams['grid.color'] = '#b0b0b0'
+    mpl.rcParams['axes.facecolor'] = 'white'
+    mpl.rcParams['axes.edgecolor'] = '#b0b0b0'
+
     plt.clf()
     plt.figure(figsize = (9, 3))
     plt.subplot(1, 2, 1)
@@ -65,7 +74,7 @@ def main():
     plt.title('Muon Decay Attributes')
     plt.xlabel(r'y [$E/E_{max}$]')
     plt.grid(alpha=0.5)
-    plt.legend()
+    plt.legend(fontsize='large')
 
     plt.subplot(1, 2, 2)
     plt.plot(y, fom_lo / fom_hi.max(), label=r'$\int_0^y n(y)a^2(y) dy$')
@@ -75,7 +84,7 @@ def main():
     plt.xlabel(r'y [$E/E_{max}$]')
     plt.ylim([-1.1, 1.1])
     plt.grid(alpha=0.5)
-    plt.legend()
+    plt.legend(fontsize='large')
 
     plt.tight_layout()
     plt.savefig('fig/muon-precession-fom.pdf')

@@ -34,7 +34,7 @@ The uncertainty allocation for magnetic field determination is entirely systemat
 A pNMR measurement exploits Larmor precession of protons to produce a signal with magnetic field information embedded in a frequency measurement.  
 
 \subsubsection{Spin Polarization}
-Each pNMR device has volume with a population of quasi-free protons which are manipulated to produce the measurement signal.  The protons in the active volume have a small net spin polarization in the direction of the external field due to the spin-field interaction, $U = -\vec{\mu} \cdot \vec{B}$.  The statistical state of the proton spins due to the spin-field interaction follows from the Boltzmann distribution \cite{landau-stat-mech}. At room temperature (\SI{300}{\kelvin}) in the \gmtwo magnetic field (\bmagic), the average difference between the fraction of spin up and spin down protons using CODATA values for $\mu_p$ and $k_B$ is given by
+Each pNMR device has a volume with a population of quasi-free protons which are manipulated to produce the measurement signal.  The protons in the active volume have a small net spin polarization in the direction of the external field due to the spin-field interaction, $U = -\vec{\mu} \cdot \vec{B}$.  The statistical state of the proton spins due to the spin-field interaction follows from the Boltzmann distribution \cite{landau-stat-mech}. At room temperature (\SI{300}{\kelvin}) in the \gmtwo magnetic field (\bmagic), the average difference between the fraction of spin up and spin down protons using CODATA values for $\mu_p$ and $k_B$ is given by
 
 \begin{equation}
 \label{eqn:pnmr-proton-polarization}
@@ -55,12 +55,12 @@ To initiate a pNMR signal, a secondary radio frequency (RF) magnetic field is ap
 \noindent
 where $B_0$ is the original magnetic field strength, $b_0$ is the RF field strength, and $\Omega$ is the angular frequency of the RF field.
 
-The process unfolds intuitively in the reference frame rotating at $\Omega = \omega_p$.  In the rotating frame, the effective spin precession frequency from $B'_z$ is $\omega_p - \Omega = 0$, and therefore the effective magnetic field $B'_z = 0$.  On the x-axis, $B_x = b_0$ in the rotating frame, so the RF field rotates the spin polarization vector around the x-axis into the x-y plane.  The RF field is turned off at $T = \pi / (2 \Omega)$, so that the spin polarization vectors only rotates \SI{\pi/2}{\radian} and ends on the y-axis, hence, it is often called a $\pi/2$ pulse.  The essential behavior is similar when the RF frequency and the Larmor frequency do not match exactly.  In the lab frame the process can be considered in terms of a resonance effect due to the RF frequency matching the spin transition frequency.  
+The process unfolds intuitively in the reference frame rotating at $\Omega = \omega_p$.  In the rotating frame, the effective spin precession frequency from $B'_z$ is $\omega_p - \Omega = 0$, and therefore the effective magnetic field $B'_z = 0$.  On the x-axis, $B_x = b_0$ in the rotating frame, so the RF field rotates the spin polarization vector around the x-axis into the x-y plane.  The RF field is turned off at $T = \pi / (2 \Omega)$, so that the spin polarization vectors only rotates \SI{\pi/2}{\radian} and ends on the y-axis, hence, it is often called a $\pi/2$ pulse.  The essential behavior is similar when the RF frequency and the Larmor frequency do not match exactly.  In the lab frame the process can be understood in terms of a resonance effect due to the RF frequency matching the spin transition frequency.  
 
 \subsubsection{Free Induction Decay (FID)}
 After the $\pi/2$ pulse, the polarized protons precess in the x-y plane at a rate proportional to the original vertical field.  The precession signal and the subsequent decay is known as a free induction decay.  The same solenoid used to produce the $\pi/2$ pulse now acts as a pickup coil, and the net proton spin vector in the orthogonal plane produces a changing magnetic flux and thereby an induction current as it precesses.  
 
-The signal attenuates due to two dominant effects.  The first effect is called longitudinal relaxation.  It occurs due spin alignment with $B_z$, the same spin-field interaction which imparted a net polarization in the first place.  The net spin vector returns to equilibrium at an exponential rate with a time constant usually called $T_1$.  The second effect is called transverse relaxation.  It is essentially decoherence among the collection of proton spins.  Not all spins experience exactly the same magnetic fields, so after the RF pulse they precess at different rates and the net spin vector can decohere.  The rate of decoherence is also exponential, and it is given the time constant $T_2$.  The precession frequency determined by analyzing the pNMR signal can serve as high precision magnetic field proxy. 
+The signal attenuates due to two dominant effects.  The first effect is called longitudinal relaxation.  It occurs due to spin alignment with $B_z$, the same spin-field interaction which imparted a net polarization in the first place.  The net spin vector returns to equilibrium at an exponential rate with a time constant usually called $T_1$.  The second effect is called transverse relaxation.  It is essentially decoherence among the collection of proton spins.  Not all spins experience exactly the same magnetic fields, so after the RF pulse they precess at different rates and the net spin vector can decohere.  The rate of decoherence is also exponential, and it is given the time constant $T_2$.  The precession frequency determined by analyzing the pNMR signal can serve as high precision magnetic field proxy. 
 
 \subsubsection{Bloch Equations}
 The aggregate spins in the proton sample evolves according to the Bloch Equations (equations \ref{eqn:bloch}), an ordinary differential equation that describes the time evolution of the magnetization vector in external magnetic fields.
@@ -107,7 +107,7 @@ The typical set of corrections to pNMR frequency is given in the \mugmtwo TDR \c
 
 \begin{equation}
 \label{eqn:nmr-effects-model}
-\omega_{probe} = (1 - \sigma(\mathrm{H_2 O}, T) - \delta_b(T) - \delta_p - \delta_s) \omega_p.
+\omega_{probe} = (1 - \sigma(T) - \delta_b(T) - \delta_p - \delta_s) \omega_p.
 \end{equation}
 
 \noindent
@@ -203,7 +203,7 @@ The trolley measures the magnetic field in the muon storage volume.  It is a cyl
 \caption{An image of the trolley module itself.  The trolley rides along a rail system inside the vacuum chambers.  It travels through the muon storage volume.}
 \end{figure}
 
-\subsection{Fluxgate System (FS))}
+\subsection{Fluxgate System (FS)}
 
 The Fluxgate System consists of four vector magnetometers.  The four devices are Bartington Mag690-1000 three-axis magnetic field sensors.  They are capable measuring at readout rates of 8 kHz but limited in range to \SIrange{-10}{+10}{\gauss}.  The limited range prevents the devices from making measurements too close to the storage field, but that is not their intended use anyway.  The fluxgate sensors serve as a monitor to check for fast transient and periodic magnetic fields in the experimental hall.  The FS picks up magnetic field signals that are too fast for the FPS, and enables the experiment to place a limit on the effect of such transient signals.
 
@@ -211,12 +211,12 @@ The Fluxgate System consists of four vector magnetometers.  The four devices are
 \label{fig:field-fluxgates}
 \includegraphics[height=15em]{fig/field-fluxgate-image}
 \includegraphics[height=15em]{fig/field-fluxgate-data}
-\caption{The left image is one of the fluxgate sensors.  The right image is one }
+\caption{The left image is one of the fluxgate sensors.  The right image is an average of measurements of the vertical magnetic field over about an hour.  Similar structure was seen in both the fluxgate system and fixed probe system.}
 \end{figure}
 
 \subsection{Absolute Probe System (APS)}
 
-Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 water probe, a newly designed water probe from UMass, and a $\mathrm{^3He}$ probe as a systematic cross-check. The probes are designed to best control for systematic effects that shift the free proton frequency.
+Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 water probe, a newly designed water probe, and a $\mathrm{^3He}$ probe. The probes are designed to best control for systematic effects that shift the free proton frequency.
 
 The principle motivation for the $\mathrm{^3He}$ probes, a second type of absolute calibration probe, is a cross-check with very different systematics.  For instance, the diamagnetic shielding factor on $\mathrm{^3He}$ is larger compared to water probes \cite{e989-tdr}.
 

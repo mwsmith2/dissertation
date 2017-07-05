@@ -11,22 +11,22 @@ a_\ell = \left(\frac{g\hbox{--}2}{2}\right)_\ell.
 \end{equation}
 
 \noindent
-The qualifier ``anomalous'' denotes the deviation from previously established relativistic quantum mechanics theories in which $g \equiv 2$.  The anomaly arises from off-shell interactions with particles in the the quantum vacuum.  These interactions have since been incorporated into modern particle physics with quantum field theory formulations.  The anomaly manifests as a small enhancement between the coupling of a leptons's spin vector to an external magnetic field.  The spin vector of a particle in a magnetic field precesses according to 
+The qualifier ``anomalous'' denotes a deviation from the previously established relativistic quantum mechanics theory in which $g \equiv 2$.  The anomaly arises from off-shell interactions with particles in the the quantum vacuum.  These interactions have since been incorporated into modern particle physics with quantum field theory formulations.  The anomaly manifests as a small enhancement in the coupling of a leptons's spin vector to an external magnetic field.  The spin vector of a particle in a magnetic field precesses according to 
 
 \begin{equation}
 \label{eqn:omega-p}
-\omega_{s} = g \frac{e B}{2 m}.
+\omega_{s} = g \frac{e B}{2 m}
 \end{equation}
 
 \noindent
-The variable $g$ is the g-factor, a particle dependent constant which scales the magnetic dipole moment, $\mu$, derived from the particle's spin angular momentum, 
+where $g$ is the g-factor, $e$ is the magnitude of electron charge, $B$ is the magnetic field strength, and $m$ is the mass of the particle.  The g-factor is a particle dependent constant which scales the magnetic dipole moment, $\mu$, derived from the particle's spin angular momentum, $\vec{S}$, as
 
 \begin{equation}
 \label{eqn:muon-mu}
-\vec{\mu}_\ell = g_\ell \frac{e}{2 m_\ell} \vec{S}.
+\vec{\mu} = g \frac{e}{2 m} \vec{S}.
 \end{equation}
 
-The Fermilab \gmtwo experiment measures $a_\mu$ as the difference between two frequencies, the spin precession frequency and the cyclotron frequency, of muons in a magnetic storage field.  Inside of the dipole storage magnet, muon spin vectors precess in a manner consistent with equation \ref{eqn:omega-p} and muon momentum vectors rotate at the cyclotron frequency of the magnetic field as given by equation \ref{eqn:omega-c}. 
+The Fermilab \gmtwo experiment measures $a_\mu$ as the difference between two frequencies of muons in a magnetic storage field.  Inside of the dipole storage magnet, muon spin vectors precess in a manner consistent with equation \ref{eqn:omega-p} and muon momentum vectors rotate at the cyclotron frequency of the magnetic field as given by equation \ref{eqn:omega-c}. 
 
 \begin{equation}
 \label{eqn:omega-c}
@@ -34,7 +34,7 @@ The Fermilab \gmtwo experiment measures $a_\mu$ as the difference between two fr
 \end{equation}
 
 \noindent
-As muons circle around the storage magnet, the spin vector phase advances relative to the cyclotron frequency at a rate exactly proportional to \gmtwo, a concept illustrated in figure \ref{fig:momentum-spin-vectors-ring}.  And, E989 measures the difference between the precession frequency and the cyclotron frequency, the anomalous spin precession frequency, $\omega_a$.  As stated above and shown in equation \ref{eqn:muon-g-2}, $\omega_a$ is directly proportional to the anomalous magnetic moment of the muon.
+As muons circle around the storage magnet, the spin vector phase advances relative to the momentum vector at a rate exactly proportional to \gmtwo, a concept illustrated in figure \ref{fig:momentum-spin-vectors-ring}.  And, E989 measures the difference between the precession frequency and the cyclotron frequency, the anomalous spin precession frequency, $\omega_a$.  As stated above and shown in equation \ref{eqn:muon-g-2}, $\omega_a$ is directly proportional to the anomalous magnetic moment of the muon.
 
 \begin{equation}
 \label{eqn:muon-g-2}
@@ -58,7 +58,7 @@ As muons circle around the storage magnet, the spin vector phase advances relati
 \section{Magnetic Dipole Moments}
 
 \subsection{Definition}
-Classically, an entity attains a magnetic moment, $\vec{\mu}$, when the object has a certain correlation between the motion of its electric charges and the physical space that it occupies.  Equation \ref{eqn:magnetic-moment-integral} illustrates how to calculate such a correlation for a body \cite{jackson}.  The analogous macro-scale quantity uses the term spin polarization or magnetization, $\vec{M}$, defined in equation \ref{eqn:polarization-sum}.
+Classically, an entity attains a magnetic moment, $\vec{\mu}$, when the object has a specific correlation between the motion of its electric charge and the physical space that it occupies.  Equation \ref{eqn:magnetic-moment-integral} illustrates how to calculate such a correlation for a body \cite{jackson}.  The analogous macro-scale quantity uses the term spin polarization or magnetization, $\vec{M}$, defined in equation \ref{eqn:polarization-sum}.
 
 \begin{equation}
 \label{eqn:magnetic-moment-integral}
@@ -86,12 +86,12 @@ Equation \ref{eqn:magnetic-moment-integral-2} works for classical angular moment
 \end{equation}
 
 \noindent
-The g-factor, $g$, represents the coupling strength of a particle to the type of interactions mediated by magnetic fields.  This quantity can vary extensively between different particles for instance, the proton g-factor is 5.5 \cite{codata}, and the neutron has a g-factor of -3.8 \cite{codata}.  It is worth noting that naively the neutron should not even have a magnetic moment due to a lack of net charge.  For leptons though, the g-factor is only slightly larger than 2.
+The g-factor, $g$, represents the coupling strength of a particle to the type of interactions mediated by magnetic fields.  This quantity can vary extensively between different particles for instance, the proton g-factor is 5.5 \cite{codata}, and the neutron has a g-factor of -3.8 \cite{codata}.  It is worth noting that naively the neutron should not even have a magnetic moment due to a lack of net charge.  For a point-like particle, the g-factor predicted by Dirac Equation is exactly 2.  However, for charged leptons, the g-factor is slightly larger than 2, hence, the anomalous magnetic moment.
 
 \subsection{Properties}
 
 \subsubsection{Alignment with External Fields}
-Intuitively, a magnetic moment is similar to a macro-scale magnet which nearly everyone is familiar with.  The prominent behavior exhibited by magnets is a tendency to align with external magnetic fields.  Magnets align to minimize potential energy in the external field as given by equation \ref{eqn:spin-b-field-potential}. 
+Intuitively, a magnetic moment is similar to a macro-scale magnet which nearly everyone is familiar with.  The most prominent behavior of magnets is a tendency to align with external magnetic fields.  Magnets align to minimize potential energy in the external field as given by equation \ref{eqn:spin-b-field-potential}. 
 
 \begin{equation}
 \label{eqn:spin-b-field-potential}
@@ -99,7 +99,7 @@ U = -\vec{\mu} \cdot \vec{B}
 \end{equation}
 
 \noindent 
-Such behavior is exploited by compasses to align with the Earth's magnetic North Pole and seen with bar magnets where oppositive ends attract.  Though the examples are macro-scale, this behavior persists statistically in the micro-scale as well.
+Such behavior is exploited in compasses to align with the Earth's magnetic North Pole and seen with bar magnets where opposite ends attract.  Though the examples are macro-scale, this behavior persists statistically in the micro-scale as well.
 
 \subsubsection{Spin Precession}
 Precession is another important but lesser known behavior of magnets.  Precession actually arises from the same force which aligns a magnet in an external magnetic field.  A more familiar analogue comes from the spinning top example.  The child's toy recieves a torque when the normal force on the top's tip and the ground is misaligned with the center of mass as illustrated in figure \ref{fig:spinning-top-precession}.
@@ -127,7 +127,7 @@ While the top is stabilized by rotational inertia, the induced torque causes the
 \end{equation}
 
 \noindent
-The induced torque causes the magnetic moment vector to rotate in plane orthogonal as prescribed by equation \ref{eqn:larmor-precession}. The behavior is called Larmor precession.
+The induced torque causes the magnetic moment vector to rotate in plane orthogonal as prescribed by equation \ref{eqn:larmor-precession}. The behavior is known as Larmor precession.
 
 \begin{equation}
 \label{eqn:larmor-precession}
@@ -136,7 +136,7 @@ The induced torque causes the magnetic moment vector to rotate in plane orthogon
 
 \section{Muon Attributes} \label{sec:muon-attributes}
 
-Muons are very much like electrons in most properties.  Both particles are leptons and in fact lepton universality posits that they are identical except for mass and the fact that muons are intrinsically unstable.  Together with the tauon, they complete the charged lepton particle family.  For a bit more context, examine table \ref{tab:leptons} which enumerates lepton properties compiled by the Particle Data Group \cite{pdg-2016}.
+Muons are identical to electrons in most properties.  Both particles are charged leptons and lepton universality posits that they are identical except for mass and the fact that muons are intrinsically unstable.  Together with the tauon, they complete the charged lepton particle family.  For a bit more context, examine table \ref{tab:leptons} which enumerates lepton properties compiled by the Particle Data Group \cite{pdg-2016}.
 
 \begin{table}[h]
 \label{tab:leptons}
@@ -158,23 +158,34 @@ Muons are very much like electrons in most properties.  Both particles are lepto
 
 \subsection{Decay Chain}
 
-The pion decay chain is commonly used in the production of muons.  The principle branching from pion decay produces muons with very high probability, more than \SI{99.9}{\percent} \cite{pdg-2016}.  Similarly, the muon decays into an electron and two neutrinos with nearly \SI{100}{\percent} probability.  The decay formulas are shown in equation \ref{eqn:pion-decay-chain}.
+The pion decay chain is commonly used to produce muons.  The principle branching from pion decay produces muons with very high probability, more than \SI{99.9}{\percent} \cite{pdg-2016}.  Similarly, the muon decays into an electron and two neutrinos with nearly \SI{100}{\percent} probability \cite{pdg-2016}.  The decay formulas are shown in equation \ref{eqn:pion-decay-chain}.
 
-\begin{align}
+\begin{equation}
 \label{eqn:pion-decay-chain}
-\pi^+ & \rightarrow \mu^+ \bar{\nu}_\mu  & \pi^- & \rightarrow \mu^- \nu_\mu \\
-\mu^+ & \rightarrow e^+ \bar{\nu_e} \nu_\mu  & \mu^- & \rightarrow e^- \nu_e \bar{\nu}_\mu 
-\end{align}
+\begin{aligned}
+\pi^+ & \rightarrow \mu^+ \bar{\nu}_\mu  \hspace{5em} & \pi^- & \rightarrow \mu^- \nu_\mu \\
+\mu^+ & \rightarrow e^+ \bar{\nu_e} \nu_\mu  \hspace{5em} & \mu^- & \rightarrow e^- \nu_e \bar{\nu}_\mu\\
+\end{aligned}
+\end{equation}
 
 \subsubsection{Pion Decay}
 
-The two-body decay is isotropic in the pion rest frame and imparts half of the pion mass to both the muon and (anti-)neutrino produced.  In the SM, neutrinos are always produced with left-handed chirality meaning that the direction of the spin vector and the momentum vector are anti-aligned.  Conservation of angular momentum then forces the muon produced via pion decay to have the same chirality as the neutrino in the pion rest frame.  
+The two-body decay is isotropic in the pion rest frame and imparts half of the pion rest energy to both the muon and (anti-)neutrino produced.  In the SM, neutrinos are always produced with left-handed chirality meaning that the direction of the spin vector and the momentum vector are anti-aligned.  Conservation of angular momentum then forces the muon produced via pion decay to have the same chirality as the neutrino in the pion rest frame.  
 
 The decay lends itself to production of spin polarized muons.  Here, polarization means alignment of the spin vector with the lab frame momentum vector rather than with the magnetic field as in the previous section.  When the isotropic decay is boosted into the lab frame for a pion beam, both the highest energy (forward decay) or lowest energy (backward decay) muons exhibit strong spin polarization.  As such momentum selection can be used to achieve a highly polarized muon beam. 
 
+\begin{figure}
+\centering
+\includegraphics[height=\fdh]{fig/pion-decay-diagram}
+\caption{
+    A diagram depicting pion decay in the rest frame.  The spin vectors are shown in white and momentum vectors in color for the decay.  Both the muon and the neutrino recieve half the rest mass of the pion.  The neutrino needs to have left-handed chirality, so both the neutrino and the muon are emitted with spin and momentum vectors anti-aligned.  For the $\pi^+$ decay, the particles are emitted with right-handed chirality.
+    \label{fig:muon-decay-diagram}
+}
+\end{figure}
+
 \subsubsection{Muon Decay}
 
-The muon decay is a bit more complicated than pion decay, since the process is a three-body decay.  A common framing when talking about muon decay uses the differential decay rate, $n(y)$, and asymmetry function, $a(y)$, over the range of possible muon energies, $y=E/E_{max}$ \cite{e989-tdr}.  The differential decay rate, also called the Michel Spectrum, is a proxy for the overall probability of a decay electron with the energy $y$.  The asymmetry function represents the likelihood of the decay electron momentum to be in the direction of the muon spin.  Both functions are normalized to have a maximum value of one.  The decay functions for the muon rest frame in equation \ref{eqn:muon-decay-rest-frame}, and the corresponding plots are shown in figure \ref{fig:muon-decay-rest-frame}.
+The muon decay is a bit more complicated than pion decay, since the process is three-body instead of two-body.  A common framing for discussions of muon decay is the differential decay rate, $n(y)$, and asymmetry function, $a(y)$, over the range of possible muon energies, $y=E/E_{max}$ \cite{e989-tdr}.  The differential decay rate, also called the Michel Spectrum, is a proxy for the overall probability of a decay electron with the energy $y$.  The asymmetry function represents the likelihood of the decay electron momentum to be in the direction of the muon spin.  Both functions are normalized to have a maximum value of one.  The decay functions for the muon rest frame in equation \ref{eqn:muon-decay-rest-frame}, and the corresponding plots are shown in figure \ref{fig:muon-decay-rest-frame}.
 
 \begin{align}
 \label{eqn:muon-decay-rest-frame}
@@ -203,27 +214,32 @@ It is instructive to examine the extreme cases where both neutrinos are emitted 
 
 The first case is the highest energy decay electron, the two neutrinos receive half the decay energy and the electron receieves the other half.  The neutrino/anti-neutrino pair carry away no angular momentum, because the neutrino must have left-handed chirality and the anti-neutrino must have right-handed chirality, opposing spins.  The decay electron then must carry the spin of the parent muon.
 
-The second case is the lowest energy decay electron, the neutrino and the anti-neutrino each receive half the rest mass of the muon.  The electron is produced nearly at rest in that case.  The angular momentum carried by the neutrinos in this case is no longer zero, but rather one.  The electron then will be produced with spin in the opposite direction as the parent muon.
+The second case is the lowest energy decay electron, the neutrino and the anti-neutrino each receive half the rest mass of the muon.  The electron is produced nearly at rest in this case.  The angular momentum carried by the neutrinos in this case is no longer zero, but rather one.  The electron then will be produced with spin in the opposite direction as the parent muon.
 
-\section{Motivation}
+\section{Motivation for \mugmtwo}
 There are two major questions that need answers to specifically motivate the muon \gmtwo experiment.  The first question is: ``Why measure the anomalous magnetic moment?'', and the second question is: ``Why use muons?''.
 
 \subsubsection{Why \gmtwo?}
-To the first charge, there are many appropriate replies.  One answer is that it is a simple measurement in principle.  The experimenters need a spin polarized volume of leptons, an external magnetic field, and a technique to determine the spin direction. Another, more phenomenological answer is that contributions to \gmtwo come from the full gamut of fundamental interactions and constants of the universe in the SM: Quantum Electrodynamics (QED), Electro-Weak Interactions (EW), and Quantum Chromodynamics (QCD) all playing important roles. It traverses the entirety of Standard Model interactions aside from gravity. Precision measurements of \gmtwo are somewhat unique in this regard.  Couple that with the fact that \gmtwo is measurable and calculable to high precision, and it's no wonder that experimentalists and theorists have been fascinated with \gmtwo for so many years.
+To the first charge, there are many appropriate replies.  One answer is that it is a simple measurement in principle.  The experimenters need a spin polarized volume of leptons, an external magnetic field, and a technique to determine the spin direction. Another, more phenomenological answer is that contributions to \gmtwo come from the full gamut of fundamental interactions and constants of the universe in the SM: Quantum Electrodynamics (QED), Electro-Weak Interactions (EW), and Quantum Chromodynamics (QCD) all playing important roles. It traverses the entirety of Standard Model interactions aside from gravity. Precision measurements of \gmtwo are somewhat unique in this regard.  Couple that with the fact that \gmtwo is measurable and calculable to high precision, and it's no wonder that \gmtwo  has fascinated experimentalists and theorists for so many years.
 
 \subsubsection{Why muons?}
-And, to the second question, there are physics considerations and practical considerations.  The physics consideration weighs in with the desire for sensitivity to small effects predicted by the Standard Model.  A more precise measurement enhances the visibility of small effects much like a microscope enhances optically small characteristics.  The electron \gmtwo has already been measured with around 2,000 times more precision \cite{g-e-measurement}, so why not just measure $g_e$ even more precisely?  Well, simply put the physics contributions for $g_e$ and $g_\mu$ are just different.  Higher order interactions with particles of larger masses contribute with mass suppression terms, $\propto (\frac{m_\ell}{M})^2$, or possibly an even higher power!  These interactions mostly manifest in the EW and QCD sector.  The relative mass ratio between the electron and the muon enhance the sensitivity to these terms by a factor of $(\frac{105.66}{0.511})^2 \approx 43,000$ \cite{the-muon-g-2}!  Even though $g_e$ can be measured to much higher precession, $g_\mu$ is still around 2,000 times more sensitive to large mass contributions.  To that end, the electron \gmtwo is a deeper probe of QED and the muon \gmtwo is a more rounded probe of the SM.  
+And, to the second question, there are physics considerations and practical considerations.  The physics considerations weigh in with the desire for sensitivity to small effects predicted by the Standard Model.  A more precise measurement enhances the visibility of small effects much like a microscope enhances optically small characteristics.  The electron \gmtwo has already been measured with around 2,000 times more precision \cite{g-e-measurement}, so why not just measure $g_e$ even more precisely?  Well, simply put the physics contributions for $g_e$ and $g_\mu$ are just different.  Higher order interactions with particles of larger masses contribute with mass suppression terms, $\propto (\frac{m_\ell}{M})^2$, or possibly an even higher power!  These interactions mostly manifest in the EW and QCD sector.  The relative mass ratio between the electron and the muon enhance the sensitivity to these terms by a factor of $(\frac{105.66}{0.511})^2 \approx 43,000$ \cite{the-muon-g-2}!  Even though $g_e$ can be measured to much higher precession, $g_\mu$ is still around 2,000 times more sensitive to large mass contributions.  To that end, the electron \gmtwo is a deeper probe of QED and the muon \gmtwo is a more rounded probe of the SM.  
 
 The preceding argument begs the question though: ``Why not use the $\tau$?''.  The answer is really a practical consideration; the ephemeral $\tau$ has a lifetime of only \SI{0.29}{\femto\second} compared to \SI{2.2}{\micro\second} for $\mu$ \cite{codata}.  The $\tau$ also branches into many decay modes rather than a single dominant one like the muon.  While the $\tau$ particle would be appealing if a significant enough Lorentz boost could be achieved and a clean method to understand the decay modes was presented, an experiment using $\tau$ particles is simply not practical with current technology.
 
 \section{The History of Experiments} \label{sec:history-expt}
 
 \subsection{Basic Principles}
-What then, one might ask, are the bare necessitites to perform the \gmtwo experiment?  Number one is a reliable source of spin polarized muons, the higher the net polarization the better.  Next, the there must be a method to store the muons in an external magnetic field while they precess.  Recall that the experiment measures a frequency, so longer storage time increases the overall precision. Muon storage can be achieved through a cyclotron magnet as in older experiments or a magnetic storage ring as in many newer experiments.  The third necessesity is a method by which to measure the direction of the muon spin vector over time.  Measuring the spin direction relies on on the fact that spin informations is transfered to the momentum of the decay electron.  The detector could be as simple as a forward/backward electron sensitive detector that catches decay electrons.  The last requirement is a method to characterize the magnetic field experienced by the muons as they precess.  Keep these issues in mind as the historical experiments are discussed in the following sections.
+What then, one might ask, are the bare necessitites to perform the \gmtwo experiment?  Number one is a reliable source of spin polarized muons, the higher the net polarization the better.  Next, the there must be a method to store the muons in an external magnetic field while they precess.  Recall that the experiment measures a frequency, so longer storage time increases the overall precision. Muon storage can be achieved through a cyclotron magnet as in older experiments or a magnetic storage ring as in many newer experiments.  The third necessesity is a method by which to measure the direction of the muon spin vector over time.  Measuring the spin direction relies on on the fact that spin information is transfered to the momentum of the decay electron.  The detector could be as simple as a forward/backward electron sensitive detector that measures decay electrons.  The last requirement is a method to characterize the magnetic field experienced by the muons as they precess.  Keep these points in mind as the historical experiments are discussed in the following sections.
 
 \subsection{Anomaly Detection and Parity Violation}
 
 The notion that $g \ne 2$ had to be reconciled with experiment as measurement precision progressed and statistical tensions arose with the values predicted by theory.  Deviations from a pure Dirac particle for leptons were first observed in hyperfine splitting measurements of several different isotopes by Kusch and Foley in 1947 \cite{kusch-foley}.  The theory community quickly resolved the discrepancy when Julian Schwinger released his seminal paper introducing corrections from quantum field fluctuations in 1948 \cite{schwinger}.  The paper describes a now standard QED calculation of the lowest order self-interaction term for leptons emitting and reabsorbing photons, see figure \ref{fig:schwinger-diagram}.  The Schwinger term brought experiment and theory back into good agreement, an early triumph of QED.
+
+\begin{equation}
+\label{eqn:schwinger-correction}
+a_{_{Schwinger}} = \frac{\alpha_{_{QED}}}{2\pi}
+\end{equation}
 
 \begin{figure}
 \centering
@@ -234,7 +250,7 @@ The notion that $g \ne 2$ had to be reconciled with experiment as measurement pr
 The first detection of a magnetic moment anomaly from measurements of free electrons came later, and in muons much later.  The first measurement of $g_e$ happened in 1953 by H. R. Crane, et al. \cite{g-e-crane}.  Subsequent theoretical calculations and supporting experimental measurements established $g_e$ as the most precisely predicted and measured quantity of QED \cite{g-e-measurement}.  As for measuring $g_\mu$, it wasn't clear how to properly control the polarization of the muons, until parity violation of the weak interaction was understood \cite{lee-yang, wu-expt}.  With parity violation inherent in the weak interaction, researchers quickly realized that a pion beam would decay into muons polarized along the beam direction (see section \ref{sec:muon-attributes} for more detail on pion decay).
 
 \subsection{CERN-I}
-Building off the weak parity revelation, researchers quickly measured $g_\mu$ for the first time.  In 1960 Columbia personnel measured the quantity to $5\%$ uncertainty, and not long after a more precise measurement was performed at CERN.  The experiment worked by injecting relatively low energy, \SI{83}{\MeV}, muons into a long, narrow magnetic trap where the polarized muons would undergo both cyclotron motion and lateral drift, see figure \ref{fig:cern-i-diagram}. At the opposite end of the magnet, the muons were ejected, tagged for storage time, and stopped where the momentum direction of the decay electron was recorded as either forward or backward.  Using this technique CERN scientists were able to achieve a precision of $0.4\%$ \cite{cern-i}.  At the achieved precision, a deviation of $1.6\,\sigma$ was present between the measured value and the value predicted by the Schwinger term \cite{47y-muon-g-2}.
+Building off the weak parity revelation, researchers measured $g_\mu$ for the first time.  In 1960 Columbia personnel measured the quantity to $5\%$ uncertainty, and not long after a more precise measurement was performed at CERN.  The experiment worked by injecting relatively low energy, \SI{83}{\MeV}, muons into a long, narrow magnetic trap where the polarized muons would undergo both cyclotron motion and lateral drift, see figure \ref{fig:cern-i-diagram}. At the opposite end of the magnet, the muons were ejected, tagged for storage time, and stopped where the momentum direction of the decay electron was recorded as either forward or backward.  Using this technique CERN scientists were able to achieve a precision of $0.4\%$ \cite{cern-i}.  At the achieved precision, a deviation of $1.6\,\sigma$ was present between the measured value and the value predicted by the Schwinger term \cite{47y-muon-g-2}.
 
 \begin{equation}
 \label{eqn:cern-i-results}
@@ -274,7 +290,7 @@ The final CERN muon \gmtwo experiment ran from 1969 to 1976.  A major innovation
 \frac{\vec{\beta} \times \vec{E}}{c} \right]
 \end{equation}
 
-\noindent A muon beam at a very specific momentum, \pmagic, cancels the effects of radial electric fields which allows electrostatic focusing to be used on the muon beam instead of magnetic gradient focusing.  The perturbations from magnetic focusing was a large source of uncertainty in the previous experiment.  Another major innovation for the third CERN experiment was the use of pion injection instead of proton injection.  The measurement techniques of CERN-III were similar to CERN-II.  The new magnetic storage ring constructed for the experiment is shown in figure \ref{fig:intro-cern-iii-storage-ring}.  With the achieved improvements, the CERN team was able to drive down the uncertainty on $a_\mu$ to \ppm{7} \cite{47y-muon-g-2}, nearly a 40-fold improvement!
+\noindent A muon beam at a very specific momentum, \pmagic, cancels the effects of radial electric fields which allows electrostatic focusing to be used on the muon beam instead of magnetic gradient focusing.  The perturbations from magnetic focusing were a large source of uncertainty in the previous experiment.  Another major innovation for the third CERN experiment was the use of pion injection instead of proton injection.  The measurement techniques of CERN-III were similar to CERN-II.  The new magnetic storage ring constructed for the experiment is shown in figure \ref{fig:intro-cern-iii-storage-ring}.  With the achieved improvements, the CERN team was able to drive down the uncertainty on $a_\mu$ to \ppm{7} \cite{47y-muon-g-2}, nearly a 40-fold improvement!
 
 \begin{equation}
 \label{eqn:cern-iii-results}
@@ -291,7 +307,7 @@ a_\mu = 116\,592\,300 (800) \times 10^{-11}
 \end{figure}
 
 \subsection{E821 at BNL}
-The most precise \mugmtwo experiment to date, took place at Brookhaven National Laboratory (BNL). The experiment, E821 as it is labeled in high energy physics ledgers, pushed precision muon phyics to a new level.  The precision goals for E821 demanded a 400-fold increase in statistics over its predecessor.  The magnetic storage ring was redesigned once again as is shown in figure \ref{fig:intro-e821-storage-ring}.  One critical improvement in the experiment, E821 injected muons rather than pions, or protons.  Muon injection provided a cleaner data earlier in each injection, and with an exponentially decaying number of muons, an early start time could be a huge rate improvement.  The experiment design also focused on improving the homogeneity of the magnetic storage field.  The aperture of the storage region was increased to facilitate a more uniform magnetic field across the muon storage volume.  Field measurement was also improved by implementing both a suite of stationary magnetometers outside of the storage region to continuously monitor magnetic field drift and a trolley outfitted with an array of 17 magnetometers to measure the field in the storage volume periodically.
+The most precise \mugmtwo experiment to date took place at Brookhaven National Laboratory (BNL). The experiment, E821 as it is labeled in high energy physics ledgers, pushed precision muon phyics to a new level.  The precision goals for E821 demanded a 400-fold increase in statistics over its predecessor.  The magnetic storage ring was redesigned once again as is shown in figure \ref{fig:intro-e821-storage-ring}.  One critical improvement in the experiment, E821 injected muons rather than pions, or protons.  Muon injection provided a cleaner data earlier in each injection, and with an exponentially decaying number of muons, an early start time could be a huge rate improvement.  The experiment design also focused on improving the homogeneity of the magnetic storage field.  The aperture of the storage region was increased to facilitate a more uniform magnetic field across the muon storage volume.  Field measurement was also improved by implementing both a suite of stationary magnetometers outside of the storage region to continuously monitor magnetic field drift and a trolley outfitted with an array of 17 magnetometers to measure the field in the storage volume periodically.
 
 In the end, the experiment nearly reached the initial goal of 350 ppb uncertainty on $a_\mu$, actually achieving 540 ppb uncertainty \cite{e821-prd}.  The E821 \gmtwo result was at odds with theoretical calculations.  Depending on which theoretical models were employed, the measurement was somewhere around $3.3\sigma - 3.6\sigma$ away from theoretical prediction, a statistical tension!
 
@@ -320,7 +336,7 @@ a_\mu = a_{_{QED}} + a_{_{EW}} + a_{_{QCD-HVP}} + a_{_{QCD-HLbL}}
 
 \subsection{QED Effects} \label{s-sec:theory-qed}
 
-The correction from QED interactions is the largest contribution to $a_\mu$.  Feynman diagrams provide a convenvient way to intuit some of the relevant effects, and the QED effects can be divided into a few different types of interaction diagrams.  One diagram is of the radiative correction type, shown in figure \ref{fig:qed-feynman-diagrams} (1\hbox{--}4).  These diagrams involve emission and recapture of a photon(s).  Another common type of diagram illustrates vacuum polarization interactions, shown in figure \ref{fig:qed-feynman-diagrams} (5\hbox{--}6), which resemble radiative correction with the offshell photon going through pair production and annihilation along its path.
+The correction from QED interactions is the largest contribution to $a_\mu$.  Feynman diagrams provide a convenvient way to intuit some of the relevant effects.  All diagrams for QED are of the radiative correction type, shown in figure \ref{fig:qed-feynman-diagrams} (1\hbox{--}6).  These diagrams involve emission and recapture of a photon(s).  Another common type of diagram illustrates vacuum polarization interactions, shown in figure \ref{fig:qed-feynman-diagrams} (5\hbox{--}6), with the offshell photon going through pair production and annihilation along its path.
 
 \begin{figure}
 \centering
@@ -406,7 +422,7 @@ The QCD sector is undoubtedly the most difficult domain to calculate accurately 
 
 \subsubsection{Hadronic Vacuum Polarization}
 
-The general form of HVP is quite similar to the QED vacuum polarization described in section \ref{s-sec:theory-qed}.  The muon radiates a photon or emits another boson, and the newly created particle pair produces then annihilates before recapture with the muon, illustrated in figure \ref{fig:qcd-hvp-feynman-diagram}.  The difference being that in this case the pair production pulls from the hadronic sector instead of the lepton sector.  Such possibilities include: $\pi_0$, $\pi^+\pi^-$, $\rho_0$, etc.  The size of the HVP correction is second only to the QED correction coming in at around \SI{7000}{\times 10^{-11}}.
+The general form of HVP is quite similar to the QED vacuum polarization described in section \ref{s-sec:theory-qed}.  The muon radiates a photon or emits another boson, and the newly created particle pair produces then annihilates before recapture with the muon, illustrated in figure \ref{fig:qcd-hvp-feynman-diagram}.  The difference being that in this case the pair production pulls from the hadronic sector instead of the lepton sector.  Such possibilities include: $\pi_0$, $\pi^+, \pi^-$, $\rho_0$, etc.  The size of the HVP correction is second only to the QED correction coming in at around \SI{7000}{\times 10^{-11}}.
 
 \begin{figure}
 \centering
@@ -423,7 +439,7 @@ a_\mu^{hvp} = \frac{\alpha}{3\pi} \int_{s_0}^{\infty} \frac{ds}{s} \\
 \end{equation}
 
 \noindent
-where $a_\mu^{(1)}(s)$ is the 1-loop contribution to $a_\mu$ from a neutral vector boson with mass $\sqrt{s}$, $\sigma_{hadr}$ is the $e^+e^-$ hadronic annihiliation cross-section, and $\sigma_{point}$ and further detail is given in reference \cite{amm-of-muon}.  With the data-driven method employed it is technically possible to get the value exactly.  The reality of the calculation turns out to be difficult, since data from many different experiment needs to be well understood and combined to cover the whole spectrum.  
+where $a_\mu^{(1)}(s)$ is the 1-loop contribution to $a_\mu$ from a neutral vector boson with mass $\sqrt{s}$, $\sigma_{hadr}$ is the $e^+e^-$ hadronic annihiliation cross-section, and $\sigma_{point}$ and further detail is given in reference \cite{amm-of-muon}.  With the data-driven method employed it is technically possible to extract the value exactly.  The reality of the calculation turns out to be difficult, since data from many different experiment needs to be well understood and combined to cover the whole spectrum.  
 
 In a fairly recent theory review by Thomas Blum, et al \cite{muon-g-2-blum}, a recent value for the leading order and next order contributions combine to 
 
@@ -504,7 +520,7 @@ Another proposed theory, radiative mass models can explain both deviations from 
 
 \subsubsection{Other Extensions}
 
-Many other SM extensions have been proposed throughout the years.  See references \cite{a-mu-harbinger, the-muon-g-2, e989-tdr} for a deeper discussions, but a few are listed here.  Dark photons are light, but very weakly coupling particles that could account for \mugmtwo.  Anomalous properties of the W boson, such as anomalous magnetic moment and electric quadrupole, have been proposed as a possible explanation.  Also, new gauge bosons models illustrate a possible avenue for anomalous \gmtwo.
+Many other SM extensions have been proposed throughout the years.  See references \cite{a-mu-harbinger, the-muon-g-2, e989-tdr} for a deeper discussions, but a few are listed here.  Dark photons are light, but very weakly coupling particles that could account for \mugmtwo.  Anomalous properties of the W boson, such as anomalous magnetic moment and electric quadrupole, have been proposed as possible explanations.  Also, new gauge bosons models illustrate a possible avenue for anomalous \gmtwo.
 
 Much of the phase space for the proposed standard model extensions has been ruled out by other measurements.  The LHC for instance has constrained the parameters in many SUSY models and other experiments have strongly restricted the possibility of dark photons.  However, most models are not completely ruled out, and the assay of possible solutions will need to be careful pruned and tuned by the theory community in the coming years.
 
@@ -534,7 +550,7 @@ The difference between the two values is then
 a_{\mu,expt} - a_{\mu,theory} = 280 (74).
 \end{equation}
 
-The discrepancy between theory and experiment given above is \SI{3.8}{\sigma}, and in the majority of models a discrepancy greater than \SI{3}{\sigma} persists.  The next step is to push the precision even further on both fronts, and turn a statistical tension into a \SI{5}{\sigma} discovery (assuming constant central values).  The persistent discrepancy is a possible indication of new physics from beyond \tsm.
+The discrepancy between theory and experiment given above is \SI{3.8}{\sigma}, and in the majority of models a discrepancy greater than \SI{3}{\sigma} persists.  The next step is to push the precision even further on both fronts, and turn a statistical tension into a \SI{>5}{\sigma} discovery (assuming constant central values).  The persistent discrepancy is a possible indication of new physics from beyond \tsm.
 
 \subsection{Improvements in Theory}
 
@@ -545,7 +561,7 @@ The next largest source of uncertainty comes from the QCD-HLbL correction.  Ther
 The theory community aim to reduce the uncertainty on each contribution by a factor of two.  If these precision goals are met, the uncertainy on the theoretical value would be \SI{205}{ppb}.
 
 \subsection{Improvements in Experiment}
-The tension between past experiments and theory inspired a new wave of \mugmtwo measurements.  A new iteration of the \mugmtwo experiment at Fermi National Accelerator Laboratory (FNAL). The experiment, E989, reuses the storage ring, superconducting coils, and various components from the BNL experiment.  The precision goal of E989 is an overall uncertainty of 140 ppb, likely pushing the tension to discovery levels, i.e., \SI{5}{\sigma}. Additionally, a sister experiment has been proposed at J-PARC as a completely independent measurement of \mugmtwo with similar sensitivity as the BNL experiment.
+The tension between past experiments and theory inspired a new wave of \mugmtwo measurements.  A new iteration of the \mugmtwo experiment at Fermi National Accelerator Laboratory (FNAL). The experiment, E989, reuses the storage ring, superconducting coils, and various components from the BNL experiment.  The precision goal of E989 is an overall uncertainty of 140 ppb, likely pushing the tension to discovery levels. Additionally, a sister experiment has been proposed at J-PARC as a completely independent measurement of \mugmtwo with similar sensitivity as the BNL experiment.
 
 \subsection{Summary}
 The major values related to \mugmtwo are brought together for comparison in figure \ref{fig:sm-contributions}.  The three most recent experimental values are shown as vertical bars with the projected value from E989 also included as a dashed vertical line.  The theory contributions are grouped into QCD, EW, and QED sectors and split by order with the value shown in blue and the uncertainty shown in blue.
