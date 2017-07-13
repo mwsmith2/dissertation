@@ -9,13 +9,13 @@ import matplotlib.pyplot as plt
 def main():
 
     # Config
-    datafile = 'gm2-data/fid-analysis/sim/flat-freq/run_total.csv'
+    datafile = 'gm2-data/fid-analysis/sim/flat-freq/run_total_1.csv'
     nbins = 250
 
     # Style setup
     mpl.rcParams['figure.figsize'] = (9, 6)
 
-    # Load sim waveform data
+    # Load ideal waveform data
     d = np.genfromtxt(datafile, delimiter=',')
 
     freq = {}
@@ -44,10 +44,11 @@ def main():
     for key in ['cn', 'lz', 'an']:
         label = r'%s: $(\mu, \sigma)$ = (%i, %i)'
         df_ppb = (freq[key] - d[:, 0]) / 61.79e3 * 1e9
+        print df_ppb[:2000].mean()
         label = label % (key.upper(), df_ppb.mean(), df_ppb.std())
         plt.hist(df_ppb, histtype='step', bins=nbins, label=label)
 
-    plt.title('Sim FID Frequency Extraction - Freq Domain')
+    plt.title('Simulated FID Frequency Extraction - Freq Domain')
     plt.xlabel(r'$f_{calc} - f_{truth}$ [ppb]')
 
     plt.grid()
@@ -60,7 +61,7 @@ def main():
         label = label % (key.upper(), df_ppb.mean(), df_ppb.std())
         plt.hist(df_ppb, histtype='step', bins=nbins, label=label)
 
-    plt.title('Sim FID Frequency Extraction - Time Domain')
+    plt.title('Simulated FID Frequency Extraction - Time Domain')
     plt.xlabel(r'$f_{calc} - f_{truth}$ [ppb]')
 
     plt.grid()

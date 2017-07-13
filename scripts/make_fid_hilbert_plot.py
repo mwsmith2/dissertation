@@ -42,6 +42,27 @@ def main():
     plt.tight_layout()
     plt.savefig('test.pdf')
 
+    # Now plot the phase and fit it
+    plt.clf()
+
+    i = 20
+    n = 200
+    ph = np.unwrap(np.arctan2(np.real(ht), wf))
+    plt.plot(tm[:n], ph[:n], alpha=0.7, linestyle='-', markersize=1.0, marker='o', label='FID Phase')
+
+    par = np.polyfit(tm[i:n], ph[i:n], 3)
+    fit = par[0] * tm[:n]**3 + par[1] * tm[:n]**2
+    fit += par[2] * tm[:n] + par[3]
+    plt.plot(tm[:n], fit, alpha=0.7, linestyle='-', markersize=1.0, marker='o', label='Polynomial Fit')
+
+    plt.title('FID Phase and Polynomial Fit')
+    plt.ylabel(r'$\phi$')
+    plt.xlabel(r'time [ms]')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('test2.pdf')
+
+
     return 0
 
 
