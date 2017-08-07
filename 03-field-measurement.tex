@@ -103,6 +103,7 @@ In a realistic situation, the FID signal is a summation of signals produced by p
 
 \subsubsection{Systematic Effects}
 
+There are several systematic effects that probe designs can mitigate. 
 The typical set of corrections to pNMR frequency is given in the \mugmtwo TDR \cite{e989-tdr} as
 
 \begin{equation}
@@ -110,10 +111,15 @@ The typical set of corrections to pNMR frequency is given in the \mugmtwo TDR \c
 \omega_{probe} = (1 - \sigma(T) - \delta_b(T) - \delta_p - \delta_s) \omega_p.
 \end{equation}
 
-\noindent
-The $\sigma$ function encompasses diamagnetic shielding effects on the proton sample.  The second term, $\delta_b$, denotes the correction for the bulk susceptibility of the sample.  This includes geometric effects which shift the resonance frequency due to magnetization of the sample.  They are minimized by using ideal shapes with known factors, cylinders and spheres that can also be fabricated with high accuracy. The third term, $\delta_p$, corrects for paramagnetic impurities in the sample. The last term, $\delta_s$, includes the effects of magnetic perturbations incorporated into the material design of the system.  
+The first correction is due to diamagnetic shielding effects in the protonated volume.  The correction is represented by the $\sigma$ function.  The electron clouds of nearby molecules act as a local dialectric and shield the proton from the full magnetic field.  This effect is typically on the order of 10s of ppm.  It is typically modeled with temperature dependence and corrected for in the resulting frequency \cite{schenk-med-nmr}.
 
-Reference \cite{keeler-nmr} is a quality resource for more details on NMR fundamentals.
+The second term, $\delta_b$, denotes the correction for the bulk susceptibility of the sample.  It is also sometimes represented in the form $\left(\epsilon - \frac{4\pi}{3}\right) \chi(T)$.  This includes geometric effects which shift the resonance frequency due to magnetization of the sample.  They are minimized and understood by using ideal shapes with known factors for instance, $\delta_{sphere} = \frac{4\pi}{3}$ and $\delta_{cylinder} = 2\pi$ \cite{e989-tdr}.  Additionally, cylinders and spheres can be fabricated with high accuracy making them common design choices.
+
+The third term, $\delta_p$, corrects for paramagnetic impurities in the sample.  impurities are often added to shorten the signal to the desired time scale.  For instance, $\mathrm{H_2O}$ has a natural signal relaxation time on the order of \SI{10}{\second}, but $\mathrm{H_2O}$ doped with $\mathrm{CuSO_4}$ can reduce the relaxation time to around \SI{40}{\milli\second} \cite{e821-prd}.
+
+The last term, $\delta_s$, includes the effects of magnetic perturbations incorporated into the material design of the system.  The obvious solution is to use materials that are "non-magnetic" even though all materials exhibit some magnetic susceptibility.  Another clever solution is the combine materials in a way that cancels paramagnetic and diamagnetic effects such as copper and aluminum \cite{schenk-med-nmr}.
+
+References \cite{keeler-nmr} and \cite{schenk-med-nmr} are quality resources for more details on NMR fundamentals and systematics respectively.
 
 \subsection{Probe Designs}
 
@@ -218,9 +224,13 @@ The Fluxgate System consists of four vector magnetometers.  The four devices are
 
 \subsection{Absolute Probe System (APS)}
 
-Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 water probe, a newly designed water probe, and a $\mathrm{^3He}$ probe. The probes are designed to best control for systematic effects that shift the free proton frequency.
+Several unique probes are used as independent determinations of the free proton resonance frequency.  E989 will make absolute field calibration measurements with the E821 water probe, a newly designed water probe, and a $\mathrm{^3He}$ probe. The probes are engineered to best control for systematic effects that shift the free proton frequency.
 
-The principle motivation for the $\mathrm{^3He}$ probes, a second type of absolute calibration probe, is a cross-check with very different systematics.  For instance, the diamagnetic shielding factor on $\mathrm{^3He}$ is larger compared to water probes \cite{e989-tdr}.
+The original water probe was designed with intent to maximize precision.  It used a highly spherical glass sample volume in order to minimize the bulk susceptibility correction.  Sample impurities were also carefully monitored, and the probe materials were measured for magnetic perturbations.  The measurement achieved an overall precision of \SI{50}{ppb} \cite{e821-abs-probe}.
+
+The redesigned E989 water probe attempts to improve upon some of the systematics of the E821 water probe.  The E989 probe uses more stringent testing of the magnetic susceptibility of probe materials.  The new design also aims to improve machining tolerance for the spherical and cylindrical components of the probe. Stricter monitoring of impurities is also planned by characterizing the $T_1$ and $T_2$ relaxation times of high purity water.  With the improvements, the measurements aims to achieve an uncertainty of \SI{35}{ppb}. \cite{e989-tdr}
+
+The principal motivation for the $\mathrm{^3He}$ probes, a second type of absolute calibration probe, is a cross-check with very different systematics.  For instance, the diamagnetic shielding factor, $\sigma$, on $\mathrm{^3He}$ is larger compared to water probes, but it is known to higher precision.
 
 \begin{alignat}{3}
 \sigma_{_{\mathrm{H_2 O}}} & = 25.680(2.5)  & \times 10^{-6} \\
@@ -228,7 +238,7 @@ The principle motivation for the $\mathrm{^3He}$ probes, a second type of absolu
 \end{alignat}
 
 \noindent
-The shape of the active volume is also less important for $\mathrm{^3He}$ versus water probes, so the systematics from shape aberrations would be smaller \cite{e989-tdr}.
+The diagmagnetic shielding also exhibits smaller temperature dependence.  The bulk susceptibility correction, $\delta_b$, is smaller for a $\mathrm{^3He}$ probe due to the proton volume being gaseous.  This also indicates that the measurement is less sensitive to the shape of the proton volume.  The remainder of the design is similar to the water probe, but the materials are different providing another difference in systematics.  Overall the $\mathrm{^3He}$ absolute calibration probe has potential to reach higher precision than the water probe, and the goal for the measurement is again an uncertainty of \SI{35}{ppb}. \cite{e989-tdr}
 
 \subsection{Plunging Probe System (PPS)}
 
