@@ -35,7 +35,7 @@ The method prevents double counting of zeros due to noise fluctuations by requir
 \centering
 \includegraphics[width=0.7\linewidth]{fig/fid-freq-zc-hysteresis}
 \caption{
-    The figure illustrates aspects of the zero crossing frequency determination technique.  The timing of first and last zero crossings are determined using a local polynomial fit which is represented by the orange and green lines.  The number of zeros is incremented at a sign change, then frozen until the signal amplitude goes outside of the dotted gray lines.  Using such a threshold is essential to the method as it supresses erroneous zero counts.
+    The figure illustrates aspects of the zero crossing frequency determination technique.  The timing of first and last zero crossings are determined using a local polynomial fit which is represented by the orange and green lines.  The number of zeros is incremented at a sign change, then frozen until the signal amplitude goes outside of the dotted gray lines.  Using such a threshold is essential to the method as it suppresses erroneous zero counts.
     \label{fig:fid-freq-zc-hysteresis}
 }
 \end{figure}
@@ -115,7 +115,7 @@ In the PSD, defined in equation \ref{eqn:fid-psd}, the FID frequency manifests a
 \frac{\sum \omega_i |X_i|^2}{\sum |X_i|^2}
 \end{equation}
 
-The peak in the PSD from FIDs is slightly asymmetric and fairly narrow as shown in figure \ref{fig:fid-spectral-density}, and the centroid method does not accomodate such deviations very well.  It will not be a primary method in E989.
+The peak in the PSD from FIDs is slightly asymmetric and fairly narrow as shown in figure \ref{fig:fid-spectral-density}, and the centroid method does not accommodate such deviations very well.  It will not be a primary method in E989.
 
 \begin{figure}
 \centering
@@ -144,7 +144,7 @@ e^{-i \omega t} \left[ \Theta(t) \left(A \sin(\omega_0 t - \phi_0) e^{-t / \tau}
 \right]
 \end{equation}
 
-The analytical solution did not prove to be a robust basis for peak fitting with narrow width of the spectral peaks and the multivariable nature of the expression.  Still, it is a useful step into the next method.  If one expands the solution in \ref{eqn:fid-analytical-peak} around $\omega \rightarrow \omega_0 + \delta \omega$ and employs the assumptions: $\delta \omega \ll \omega_0$ and $\gamma^2 \ll \omega_0^2$, then the expression simplifies to equation \ref{eqn:fid-analytical-expansion}.
+The analytical solution did not prove to be a robust basis for peak fitting with narrow width of the spectral peaks and the multi-variable nature of the expression.  Still, it is a useful step into the next method.  If one expands the solution in \ref{eqn:fid-analytical-peak} around $\omega \rightarrow \omega_0 + \delta \omega$ and employs the assumptions: $\delta \omega \ll \omega_0$ and $\gamma^2 \ll \omega_0^2$, then the expression simplifies to equation \ref{eqn:fid-analytical-expansion}.
 
 \begin{equation}
 \label{eqn:fid-analytical-expansion}
@@ -234,7 +234,7 @@ The simplest case is idealized FIDs. The frequency is static in time and all tec
 \end{figure}
 
 \subsection{Simulated FIDs}
-Integrating the Bloch Equations (equation \ref{eqn:bloch}) is a straightforward path which yields accurate, simulated FID waveforms.  The waveforms are similar to the ideal FIDs with some possible deviations from the non-perfect, finite $\pi/2$ pulses.  The simulation used a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more practical to simulate at lower frequencies, because the integration step can be much larger.  In the end, the entire system runs through a lowpass filter at \SI{200}{\kHz}, so all the higher frequency content is removed from the final FID signal.  In that light simulations at \SI{1}{\MHz} are perfectly adequate.  Noise is added to the simulated waveforms at $1/300$ of the FID signal amplitude for frequency extraction tests.  Example results are shown in figure \ref{fig:fid-sim-freq-extraction}.
+Integrating the Bloch Equations (equation \ref{eqn:bloch}) is a straightforward path which yields accurate, simulated FID waveforms.  The waveforms are similar to the ideal FIDs with some possible deviations from the non-perfect, finite $\pi/2$ pulses.  The simulation used a lower Larmor frequency of around \SI{1}{\MHz} as opposed to the real Larmor frequency of \SI{61.79}{\MHz}.  The reason being that it is more practical to simulate at lower frequencies, because the integration step can be much larger.  In the end, the entire system runs through a low-pass filter at \SI{200}{\kHz}, so all the higher frequency content is removed from the final FID signal.  In that light simulations at \SI{1}{\MHz} are perfectly adequate.  Noise is added to the simulated waveforms at $1/300$ of the FID signal amplitude for frequency extraction tests.  Example results are shown in figure \ref{fig:fid-sim-freq-extraction}.
 
 \begin{figure}
 \centering
@@ -256,7 +256,7 @@ y = \frac{x^2 - \langle x^2 \rangle}{\max{(x^2 - \langle x^2 \rangle)}} \times \
 \end{align}
 
 \noindent
-The following frequencies would make up the quadractic gradient: \SI{100}{ppb}, \SI{-50}{ppb}, \SI{-100}{ppb}, \SI{-50}{ppb}, and \SI{100}{ppb} (+ \SI{47}{\kHz}).
+The following frequencies would make up the quadratic gradient: \SI{100}{ppb}, \SI{-50}{ppb}, \SI{-100}{ppb}, \SI{-50}{ppb}, and \SI{100}{ppb} (+ \SI{47}{\kHz}).
 
 \begin{figure}
 \centering
@@ -309,7 +309,7 @@ Figures \ref{fig:fid-real-trend} \& \ref{fig:fid-real-hists} show the analysis r
 \centering
 \includegraphics[width=0.6\linewidth]{fig/fid-real-hists}
 \caption{
-    The histogrammed results of two different frequency extraction methods after detrending the signal.  The two distributions nearly agree with a small shift in the central value.  Interestingly, the phase fit method and zero crossing show similar precision on real data.
+    The resulting histogram of two different frequency extraction methods after detrending the signal.  The two distributions nearly agree with a small shift in the central value.  Interestingly, the phase fit method and zero crossing show similar precision on real data.
     \label{fig:fid-real-hists}
 }
 \end{figure}
