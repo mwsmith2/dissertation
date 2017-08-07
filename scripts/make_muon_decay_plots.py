@@ -7,7 +7,8 @@ import matplotlib.pyplot as plt
 
 def main():
 
-    mpl.rcParams['figure.figsize'] = (4.5, 3)
+    # mpl.style.use('presentation')
+    mpl.rcParams['figure.figsize'] = (6, 4)
     mpl.rcParams['figure.dpi'] = 220
 
     mpl.rcParams['lines.linewidth'] = 1.0
@@ -16,6 +17,8 @@ def main():
     mpl.rcParams['grid.color'] = '#b0b0b0'
     mpl.rcParams['axes.facecolor'] = 'white'
     mpl.rcParams['axes.edgecolor'] = '#b0b0b0'
+
+    lw=3.0
 
     y = np.linspace(0, 1, 10001)
 
@@ -29,8 +32,8 @@ def main():
 
     # Plot the rest frame.
     plt.subplot(1, 1, 1)
-    plt.plot(y, n_rest, label=r'$n(y)$')
-    plt.plot(y, a_rest, label=r'$a(y)$')
+    plt.plot(y, n_rest, lw=lw, label=r'$n(y)$')
+    plt.plot(y, a_rest, lw=lw, label=r'$a(y)$')
 
     plt.title('Rest Frame Muon Decay')
     plt.xlabel(r'y [$E/E_{max}$]')
@@ -55,7 +58,7 @@ def main():
     fom_hi = fom[::-1].cumsum()[::-1]
 
     mpl.rcdefaults()
-    mpl.rcParams['figure.figsize'] = (9, 3)
+    mpl.rcParams['figure.figsize'] = (6, 4)
     mpl.rcParams['figure.dpi'] = 220
 
     mpl.rcParams['lines.linewidth'] = 1.0
@@ -66,28 +69,53 @@ def main():
     mpl.rcParams['axes.edgecolor'] = '#b0b0b0'
 
     plt.clf()
-    plt.figure(figsize = (9, 3))
-    plt.subplot(1, 2, 1)
-    plt.plot(y, n_lab, label=r'$a(y)$')
-    plt.plot(y, a_lab, label=r'$n(y)$')
+    plt.figure(figsize = (9, 6))
+    plt.subplot(1, 1, 1)
+    plt.plot(y, n_lab, lw=lw, label=r'$n(y)$')
+    plt.plot(y, a_lab, lw=lw, label=r'$a(y)$')
+    z = a_lab * a_lab * n_lab
+    z /= z.max()
+    plt.plot(y, z, lw=lw, label=r'$a^2(y)n(y)$')
 
     plt.title('Muon Decay Attributes')
     plt.xlabel(r'y [$E/E_{max}$]')
+    plt.ylim([-0.8, 1.1])
     plt.grid(alpha=0.5)
     plt.legend(fontsize='large')
 
-    plt.subplot(1, 2, 2)
-    plt.plot(y, fom_lo / fom_hi.max(), label=r'$\int_0^y n(y)a^2(y) dy$')
-    plt.plot(y, fom_hi / fom_hi.max(), label=r'$\int_y^1 n(y)a^2(y) dy$')
+    # plt.subplot(1, 2, 2)
+    # plt.plot(y, fom_lo / fom_hi.max(), label=r'$\int_0^y n(y)a^2(y) dy$')
+    # plt.plot(y, fom_hi / fom_hi.max(), label=r'$\int_y^1 n(y)a^2(y) dy$')
 
-    plt.title('Spin Correlation Figure of Merit')
-    plt.xlabel(r'y [$E/E_{max}$]')
-    plt.ylim([-1.1, 1.1])
-    plt.grid(alpha=0.5)
-    plt.legend(fontsize='large')
+    # plt.title('Spin Correlation Figure of Merit')
+    # plt.xlabel(r'y [$E/E_{max}$]')
+    # plt.ylim([-1.1, 1.1])
+    # plt.grid(alpha=0.5)
+    # plt.legend(fontsize='large')
 
     plt.tight_layout()
     plt.savefig('fig/muon-precession-fom.pdf')
+
+    # Make a plot of the non-integrated values.
+    plt.clf()
+    plt.figure(figsize = (7, 3))
+    plt.subplot(1, 1, 1)
+    plt.plot(y, n_lab, label=r'$n(y)$')
+    plt.plot(y, a_lab, label=r'$a(y)$')
+    z = a_lab * a_lab * n_lab
+    z /= z.max()
+    plt.plot(y, z, label=r'$a^2(y)n(y)$')
+
+    plt.title('Muon Decay Attributes')
+    plt.xlabel(r'y [$E/E_{max}$]')
+    plt.ylim([-0.7, 1.1])
+    plt.grid(alpha=0.5)
+    plt.legend(fontsize='medium')
+
+    plt.tight_layout()
+    plt.savefig('test.pdf')
+    plt.savefig('test.png')
+
 
     return 0
 

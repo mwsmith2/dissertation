@@ -54,7 +54,7 @@ def main():
     plt.legend(fontsize='small')
 
     plt.subplot(2, 1, 2)
-    for key in ['ph', 'zc', 'sn']:
+    for key in ['ph', 'zc']:
         label = r'%s: $(\mu, \sigma)$ = (%.1f, %.1f)'
         df_ppb = (freq[key] - d[:, 0]) / 61.79e3 * 1e9
         label = label % (key.upper(), df_ppb.mean(), df_ppb.std())
