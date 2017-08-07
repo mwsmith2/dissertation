@@ -85,7 +85,7 @@ f(t) = e^{-t/T_1} \sin(\omega t - \phi_0)
 \centering
 \includegraphics[width=0.5\linewidth]{fig/fid-ideal-waveform}
 \caption{
-    The figure shows an idealized FID waveform. Functionally, the waveform is a sinusoid muliplied with an exponential decay between at some initial time.  It represents the signal from a perfect $\pi/2$ to a perfect pNMR probe.
+    The figure shows an idealized FID waveform. Functionally, the waveform is a sinusoid multiplied with an exponential decay between at some initial time.  It represents the signal from a perfect $\pi/2$ to a perfect pNMR probe.
     \label{fig:fid-ideal-waveform}
 }
 \end{figure}
@@ -111,7 +111,7 @@ The typical set of corrections to pNMR frequency is given in the \mugmtwo TDR \c
 \omega_{probe} = (1 - \sigma(T) - \delta_b(T) - \delta_p - \delta_s) \omega_p.
 \end{equation}
 
-The first correction is due to diamagnetic shielding effects in the protonated volume.  The correction is represented by the $\sigma$ function.  The electron clouds of nearby molecules act as a local dialectric and shield the proton from the full magnetic field.  This effect is typically on the order of 10s of ppm.  It is typically modeled with temperature dependence and corrected for in the resulting frequency \cite{schenk-med-nmr}.
+The first correction is due to diamagnetic shielding effects in the protonated volume.  The correction is represented by the $\sigma$ function.  The electron clouds of nearby molecules act as a local dielectric and shield the proton from the full magnetic field.  This effect is typically on the order of tens of ppm.  It is typically modeled with temperature dependence and corrected for in the resulting frequency \cite{schenk-med-nmr}.
 
 The second term, $\delta_b$, denotes the correction for the bulk susceptibility of the sample.  It is also sometimes represented in the form $\left(\epsilon - \frac{4\pi}{3}\right) \chi(T)$.  This includes geometric effects which shift the resonance frequency due to magnetization of the sample.  They are minimized and understood by using ideal shapes with known factors for instance, $\delta_{sphere} = \frac{4\pi}{3}$ and $\delta_{cylinder} = 2\pi$ \cite{e989-tdr}.  Additionally, cylinders and spheres can be fabricated with high accuracy making them common design choices.
 
@@ -127,13 +127,13 @@ The custom pNMR probes come in three different builds.  The standard probes whic
 
 \subsubsection{Standard pNMR Probes}
 
-The core design of the pNMR probes is the same as the design from the previous experiment. Figure \ref{fig:field-pnmr-probe-design} depicts the design and components of the probe.  Each probe consists of two induction coils, a teflon backbone, a tunable capacitor, an aluminum shell, and a \SI{5}{\meter} RF cable with SMA connector.  The main induction coil is used to inject the $\pi/2$ pulse, and again to pick up the pNMR precession signal.  A second induction coil is used to match the \SI{50}{\ohm} impedance of the line.  The capacitor allows the probe resonance frequency to be tuned finely.  The aluminum shell provides the outer conductor of a cylindrical capacitor and shields against external effects.
+The core design of the pNMR probes is the same as the design from the previous experiment. Figure \ref{fig:field-pnmr-probe-design} depicts the design and components of the probe.  Each probe consists of two induction coils, a Teflon backbone, a tunable capacitor, an aluminum shell, and a \SI{5}{\meter} RF cable with SMA connector.  The main induction coil is used to inject the $\pi/2$ pulse, and again to pick up the pNMR precession signal.  A second induction coil is used to match the \SI{50}{\ohm} impedance of the line.  The capacitor allows the probe resonance frequency to be tuned finely.  The aluminum shell provides the outer conductor of a cylindrical capacitor and shields against external effects.
 
 \begin{figure}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/field-pnmr-probe-design}
 \caption{
-    The E989 pNMR probe design.  In the center of the diagram, a cylindrical volume holds the petroleum jelly which contains protons to polarize.  The proton volume is surrounded by the serial inductor coil used to inject a the $\pi/2$ pulse and the pick up the FID signal.  The other inductor matches the impedence of the system, and the end of the probe contains a teflon screw for fine tuning of the resonance.
+    The E989 pNMR probe design.  In the center of the diagram, a cylindrical volume holds the petroleum jelly which contains protons to polarize.  The proton volume is surrounded by the serial inductor coil used to inject a the $\pi/2$ pulse and the pick up the FID signal.  The other inductor matches the impedance of the system, and the end of the probe contains a Teflon screw for fine tuning of the resonance.
     \label{fig:field-pnmr-probe-design}
 }
 \end{figure}
@@ -151,7 +151,7 @@ The standard pNMR probes can only give a proxy for the magnetic field, not a wel
 \centering
 \includegraphics[width=0.9\linewidth]{fig/field-e821-abs-probe}
 \includegraphics[width=0.9\linewidth]{fig/field-abs-probe}
-\caption{The top image is a design diagram for the E821 absolute calibration probe, and the bottom design diagram is for the new E989 calibration probe.  The E821 probe is still in use alongside the new macor probe designed by UMass and an entirely different type of probe using $\mathrm{^3He}$ instead of water as a proton source.}
+\caption{The top image is a design diagram for the E821 absolute calibration probe, and the bottom design diagram is for the new E989 calibration probe.  The E821 probe is still in use alongside the new Macor probe designed by UMass and an entirely different type of probe using $\mathrm{^3He}$ instead of water as a proton source.}
 \end{figure}
 
 \subsubsection{Plunging Probes}
@@ -183,7 +183,7 @@ The fixed probe system is a suite of stationary probes located above and below t
 \label{fig:fixed-probe-block-diagram}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/fixed-probe-block-diagram}
-\caption{The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprised the NMR pulser design from the E821 experiments. The block diagram illustrates the measurement process and components of the system.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by a TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency standard.  The resulting signal feeds through a lowpass filter, and the filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and sampling depth of 16 bits.  The digitized waveform contains frequency information that represents the magnetic field.}
+\caption{The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprises the NMR pulser design from the E821 experiments. The block diagram illustrates the measurement process and components of the system.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by a TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency standard.  The resulting signal feeds through a low-pass filter, and the filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and sampling depth of 16 bits.  The digitized waveform contains frequency information that represents the magnetic field.}
 \end{figure}
 
 The fixed probes are arranged in a very specific manner.  They are secured inside grooves cut into the walls of the 12 vacuum chambers that reside inside the storage magnet gap.  In E821, many of the pNMR probe grooves placed the active volume of the probe near pole and yoke boundaries where the magnetic field gradients were large.  Due to the large gradients, the FID signal from the probe was unusable, and the E989 researchers decided to fix the problem.  The grooves were extended \SI{5}{\cm} to shift the pNMR probes away from the magnetic field gradients and improve the FID signal.
@@ -238,7 +238,7 @@ The principal motivation for the $\mathrm{^3He}$ probes, a second type of absolu
 \end{alignat}
 
 \noindent
-The diagmagnetic shielding also exhibits smaller temperature dependence.  The bulk susceptibility correction, $\delta_b$, is smaller for a $\mathrm{^3He}$ probe due to the proton volume being gaseous.  This also indicates that the measurement is less sensitive to the shape of the proton volume.  The remainder of the design is similar to the water probe, but the materials are different providing another difference in systematics.  Overall the $\mathrm{^3He}$ absolute calibration probe has potential to reach higher precision than the water probe, and the goal for the measurement is again an uncertainty of \SI{35}{ppb}. \cite{e989-tdr}
+The diamagnetic shielding also exhibits smaller temperature dependence.  The bulk susceptibility correction, $\delta_b$, is smaller for a $\mathrm{^3He}$ probe due to the proton volume being gaseous.  This also indicates that the measurement is less sensitive to the shape of the proton volume.  The remainder of the design is similar to the water probe, but the materials are different providing another difference in systematics.  Overall the $\mathrm{^3He}$ absolute calibration probe has potential to reach higher precision than the water probe, and the goal for the measurement is again an uncertainty of \SI{35}{ppb}. \cite{e989-tdr}
 
 \subsection{Plunging Probe System (PPS)}
 
@@ -253,7 +253,7 @@ The relative relationship between the absolute calibration probe proton frequenc
 \section{Magnetic Field Reconstruction}
 The first important aspect of magnetic field reconstruction is understanding that the name itself, magnetic field, is not exactly precise.  The hardware used to make magnetic field measurements mostly consists of pNMR magnetometers.  Measurements using pNMR are proton precession frequencies, not magnetic field measurements.  They act as a proxy for the magnetic field in a specific set of circumstances which are assumed in the \mugmtwo magnetic storage field.  The first assumption is that non-vertical components of the magnetic field are negligible, i.e., $B_r \ll B_z$ and $B_\phi \ll B_z$.  That assumption is validated by radial and azimuthal field measurements, and the nullification of the radial field in the active shimming stage (see chapter \ref{ch:shimming}).  The second assumption is that the pNMR probes are aligned with the magnetic field in such a way that the spin precession frequency that the proton sample experiences is representative of the vertical magnetic field, $B_z$.  This is validated by the same measurements of the radial magnetic field, and by alignment specifications on the probes within their respective device.  The quantity which is truly reconstructed by the magnetic field reconstruction algorithms is the free proton spin precession distribution which acts as a proxy for the magnetic storage field or more precisely the magnetic flux density distribution.
 
-With that caveat, the process of defining the \gmtwo magnetic storage field begins with the trolley system.  The trolley system takes a set of measurements over the whole azimuth of the magnetic storage ring, and that data is used to define the magnetic flux density for any position in the muon storage volume at the specfic time of the run, $\omega(\vec{r}, t_i)$. The magnetic field is expressed as a frequency to reflect the pNMR nature of the measurements.  Between trolley runs, measurements from the fixed probes and the fluxgates are used to interpolate change in the flux density distribution.  The changes extracted from the fixed probe data are a function of time only, $\delta \omega_{fps}(t)$.  And, similarly the contributions to the interpolation from the fluxgates can be a function of time only, $\delta \omega_{fs}(t)$.  Putting all the individual contributions together results in equation \ref{eqn:field-construction}.
+With that caveat, the process of defining the \gmtwo magnetic storage field begins with the trolley system.  The trolley system takes a set of measurements over the whole azimuth of the magnetic storage ring, and that data is used to define the magnetic flux density for any position in the muon storage volume at the specific time of the run, $\omega(\vec{r}, t_i)$. The magnetic field is expressed as a frequency to reflect the pNMR nature of the measurements.  Between trolley runs, measurements from the fixed probes and the fluxgates are used to interpolate change in the flux density distribution.  The changes extracted from the fixed probe data are a function of time only, $\delta \omega_{fps}(t)$.  And, similarly the contributions to the interpolation from the fluxgates can be a function of time only, $\delta \omega_{fs}(t)$.  Putting all the individual contributions together results in equation \ref{eqn:field-construction}.
 
 The algorithms for magnetic field construction are not manifest, and they must be designed and refined by the field team over the duration of the experiment.  In light of the fact that the experiment is currently in the commissioning stage, the contributions cannot be discussed in more than general terms.  The magnetic flux density distribution is re-measured periodically, and only the most recent one contributes to the field definition. The most general form for the magnetic flux density distribution is then
 
