@@ -21,7 +21,7 @@ The uniformity goals for rough shimming are less strict than the overall shimmin
 \subsection{Passive Shimming}
 The passive shimming process makes large, static changes to the magnetic storage field.  It uses the intrinsic shim kit of the storage ring and additional shims as needed. Each different component of the shim kit must be well understood, so the shims undergo a calibration procedure.  The operating procedure is to measure the magnetic field as a reference, adjust the shim of interest, re-measure the magnetic field, subtract the adjusted magnetic field data from the reference magnetic field data, and use the difference in magnetic field to build a model of the shim effects.  The calibration process is repeated for each shim type until a feasible model can be constructed.  With a working model for each type of shim, an optimization plan for the entire storage field can be calculated.
 
-The implementation of optimization routine occurs in multiple stages as well.  The first stage is physical adjustments of the largest pieces of the storage ring, the yokes and the pole pieces.  Next, the shims designed to affect higher order multipoles need to be adjusted properly.  And, finally the lowest order multipoles including the dipole and normal quadrupole receive shim compensation.  That was the planned procedure based on E821 reports and the magnet design, but the field team found that one more stage was needed to reach the uniformity goals.  Steel laminations were added as a final stage.
+The implementation of optimization routine occurs in multiple stages as well.  The first stage is physical adjustments of the largest pieces of the storage ring, the yokes and the pole pieces.  Next, the shims designed to affect higher order multipoles need to be adjusted properly.  And, finally the lowest order multipoles including the dipole and normal quadrupole receive shim compensation.  That was the planned procedure based on E821 reports and the magnet design, but the field team found that one more stage was needed to reach the uniformity goals.  The final stage added laminations of small steel foils all around the magnet.
 
 \subsection{Active Shimming}
 The active shimming stage makes dynamic changes to the azimuthally averaged field.  This phase of the experiment will continue as long as the experiment is running.  The active shimming has two essential tools.  The first component is a set of 100 wires spaced across the surfaces of the top and bottom pole.  Called the surface current coils, these wires drive controllable currents which adjust the azimuthally averaged multipole content of the magnetic field within several ppm.  The second component is active feedback to the magnetic field power supply to minimize field drift.  The power supply feedback influences the set point of the magnet's main current supply which allows it to effectively set the overall strength of the magnetic field.  The active shimming will not be discussed further in this document as it is not yet completed work like the rough shimming.
@@ -73,7 +73,7 @@ The storage ring was engineered with several built-in knobs to tune the field lo
 \end{figure}
 
 \subsubsection{Pole Feet}
-The uniformity of the gap between the upper and lower pole pieces determines the magnetic field strength between two poles to first order. The pole pieces interface with the yoke on adjustable mounts dubbed ``pole feet''.  Adjustments to the pole feet can alter the plane which the pole pieces are fixed by \SI{\sim100}{\micro \meter}.  The pole feet also offer a small amount of leverage to reshape the pole surface itself.  Figure \ref{fig:shim-pole-foot-image} depicts the pole feet and the method for using the pole feet to adjust the pole pieces.
+The uniformity of the gap between the upper and lower pole pieces determines the magnetic field strength between two poles to first order. The pole pieces interface with the yoke on adjustable mounts dubbed ``pole feet''.  Adjustments to the pole feet can alter the plane of the pole pieces by up \SI{\sim200}{\micro \meter} with precision of \SI{\sim5}{\micro \meter}.  The pole feet also offer a small amount of leverage to reshape the pole surface itself.  Figure \ref{fig:shim-pole-foot-image} depicts the pole feet and the method for using the pole feet to adjust the pole pieces.
 
 \begin{figure}
 \centering
@@ -86,7 +86,7 @@ The uniformity of the gap between the upper and lower pole pieces determines the
 
 
 \subsubsection{Top Hat Shims}
-The simplest shims are steel plates called the top hats.  The top hats run in 15 degree segments, two per yoke, top and bottom.  Adjusting the top hats can induce a large effect on the average field in its respective region without affecting the higher order multipoles.  Adjustments are made by adding plastic spacer shims between the yoke and the top hats.  Adding material allows more magnetic flux to leak and decreases the magnetic field.  The size of the spacer stack for top hats was limited to \SI{2}{\mm}.
+The simplest shims are steel plates called the top hats.  See figure \ref{fig:shim-cross-section-view} for a diagrammatic depiction.  The top hats run in 15 degree segments, two per yoke, top and bottom.  Adjusting the top hats can induce a large effect on the average field in its respective region without affecting the higher order multipoles.  Adjustments are made by adding plastic spacer shims between the yoke and the top hats.  Adding material allows more magnetic flux to leak and decreases the magnetic field.  The size of the spacer stack for top hats was limited to \SI{2}{\mm}.
 
 \subsubsection{Edge Shims}
 Each pole piece has two steel runners on the outside of its uniform, flat surface.  With top and bottom sets of so-called edge shims, the design imparted a complex handle on many different higher order multipoles.  Adjustments to the edge shims in E821 were done by grinding the initially over-sized edge shims down to a custom size.  Two other avenues exist for edge shim adjustments. The effect of the edge shim could be augmented by addition of thin (\SI{25}{\micro \meter}) steel shim stock cut to the same shape as the edge shim, or the effect could be diminished by similar addition of a plastic shim layer.  All options were evaluated for E989.  Figure \ref{fig:shim-edge-image} shows the edge shim model from an OPERA2D magnetic field simulation.  
@@ -101,13 +101,13 @@ Each pole piece has two steel runners on the outside of its uniform, flat surfac
 \end{figure}
 
 \subsubsection{Wedge Shims}
-The storage ring contains 864 wedge shims, i.e. 12 per pole piece, which occupy the space between the pole pieces and the main yoke.  They have an angled design in order to have an effect on both the quadrupole and dipole fields.  The wedge shims were designed to be \SI{50}{\mm} thick at their inner radius, \SI{165}{\mm} thick at their outer radius, and \SI{530}{\mm} in length giving an inclination of \SI{1.24}{\degree} \cite{danby-magnet}.  Figure \ref{fig:shim-wedge-image} shows the wedge shim model from the same OPERA2D magnetic field simulation as the wedge shim model.
+The storage ring contains 864 wedge shims, i.e., 12 per pole piece, which occupy the space between the pole pieces and the main yoke.  They have an angled design in order to effect both the quadrupole and dipole fields.  The wedge shims were designed to be \SI{50}{\mm} thick at their inner radius, \SI{165}{\mm} thick at their outer radius, and \SI{530}{\mm} in length giving an inclination of \SI{1.24}{\degree} \cite{danby-magnet}.  Figure \ref{fig:shim-wedge-image} shows an image of a wedge shim in context between the yoke and the pole piece.
 
 \begin{figure}[h]
 \centering
 \includegraphics[height=12em]{fig/shim-wedge-image}
 \caption{
-    The image depicts a wedge shim between the yoke in the pole piece in a 3D magnetic field modeling software, OPERA2D. 
+    The image depicts a real wedge shim between the yoke in the pole piece.  The protruding bolt on the left is used to adjust the edge shim radial position.  The white spacer is used to ensure the wedge shim position is secure through power cycles of the storage magnet.
     \label{fig:shim-wedge-image}
 }
 \end{figure}
@@ -141,7 +141,7 @@ All materials were chosen to make as small of a magnetic perturbation as possibl
 \end{figure}
 
 \subsubsection{pNMR Probes}
-The magnetic field was measured through a matrix of 25 pNMR probes secured in a frame which is aligned in the azimuthal plane of the storage volume.  The probes were arranged with a single probe in the center of the storage region, an 8 probe ring at a radius of \SI{22.5}{\mm} from the center probe at angular increments of \SI{\pi/4}{\radian} starting on the negative y-axis, and a 16 probe ring at a radius of \SI{45}{\mm} from the center probe at angular increments of \SI{\pi/8}.  The active volume of the pNMR probes extends \SI{10}{\mm} in the azimuthal direction and \SI{2}{\mm} in the radial direction.  The 25 probes are aligned within \SI{1}{\mm} in azimuth and much better within the azimuthal plane.  The probe pattern can be viewed in figure \ref{fig:shimming-cart}, and it facilitated measuring the full cross-section of the muon storage volume with sensitivity to the first 17 2D magnetic field multipoles (dipole plus 8 normal and 8 skew multipoles).
+The magnetic field was measured through a matrix of 25 pNMR probes secured in a frame which is aligned in the azimuthal plane of the storage volume.  The probes were arranged with a single probe in the center of the storage region, an 8 probe ring at a radius of \SI{22.5}{\mm} from the center probe at angular increments of \SI{\pi/4} starting on the negative y-axis, and a 16 probe ring at a radius of \SI{45}{\mm} from the center probe at angular increments of \SI{\pi/8}.  The active volume of the pNMR probes extends \SI{10}{\mm} in the azimuthal direction and \SI{2}{\mm} in the radial direction.  The 25 probes are aligned within \SI{1}{\mm} in azimuth and much better within the azimuthal plane.  The probe pattern can be viewed in figure \ref{fig:shimming-cart}, and it facilitated measuring the full cross-section of the muon storage volume with sensitivity to the first 17 2D magnetic field multipoles (dipole plus 8 normal and 8 skew multipoles).
 
 \subsubsection{Capacitec Sensors}
 The cart also possessed four capacitive distance sensors which measured the spacing from the sensor to the pole surface.  The devices were model 4100 SL Capacitec Sensors, and they were sensitive to distances as small as \SI{5}{\micro \meter}.   The sensors were on a ribbon cable which was fixed to the top and bottom of each quartz plate giving readings for relative distance to the pole surface at an inner radius of \SI{7002.5}{\mm} and an outer radius of \SI{7221.5}{\mm}.  By summing the readout from each sensor and calibrating the size of the quartz, the Capacitec system produced data to define the pole gap, the distance between each pole surface.
@@ -295,7 +295,7 @@ While still making pole adjustments, the field team began to implement shim adju
 
 \subsection{Edge Shim Study}
 
-The edge shims are the most powerful tool available for adjusting multipoles higher than quadrupoles.  However, the edge shims are not as simple to adjust as other shims.  The edge shims are originally ordered at a larger thickness than the expected necessary thickness.  Then the effects of changing the thickness are calibrated.  Magnetic field measurements can then be used to determine the optimal thicknesses of the edge shims.  The edge shims are shipped off to be re-finished, and repeating as many times are needed.  The process is costly and time consuming, and therefore would only be performed if truly necessary.
+The edge shims are the most powerful tool available for adjusting multipoles higher than quadrupoles.  However, the edge shims are not as trivial to adjust as other shims.  The edge shims are originally ordered at a larger thickness than the expected necessary thickness.  Then the effects of changing the thickness are calibrated.  Magnetic field measurements can then be used to determine the optimal thicknesses of the edge shims.  The edge shims are shipped off to be re-finished, and repeating as many times are needed.  The process is costly and time consuming, and therefore would only be performed if truly necessary.
 
 \subsubsection{Edge Shim Calibration}
 
@@ -549,6 +549,7 @@ The last stage of the lamination process was installation onto the pole surface.
 The whole process was arduous and involved assistance from a large group of people throughout.  8 high school students, 2 undergrads, 4 graduate students, 2 post-docs, 1 high school teacher, 1 professor, 2 research scientists, 2 technical engineers, and one project manager lent their efforts to make the lamination procedure successful.  The field team has lots of gratitude for all the honorary members that helped implement the laminations.
 
 \begin{figure}
+\centering
 \includegraphics[width=0.9\linewidth]{fig/laminations-epoxy-rig}
 \caption{
     The left image shows the full rig used to apply pressure and stabilize the laminations while the epoxy cured over \SIrange{4}{6}{\hour}.  The rig used a combination of plywood pole covers, curved plastic rails, small metal shims, and wooden wedges to distribute the pressure across all sections of the lamination.  The right image shows the finalized laminations affixed to the pole surfaces.
@@ -586,42 +587,42 @@ The field team started the shimming journey with the goal of a two-fold improvem
 
 The first stage of progress comes from the set of built-in shimming knobs.  The average field is shown in figure \ref{fig:results-shims-dipole-final} as a comparison with the E821 PRD dipole field.  The field at this point was not a large improvement over the efforts of the E821 team.  The peak-to-peak variation after this stage is around \SI{100}{ppm}.
 
-\begin{figure}
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=1.0\linewidth]{fig/results-shims-dipole-final}
 \caption{
     The plot depicts the rough shimming dipole field compared to E821 after full optimization using the built-in shimming kit.  The E821 field has a better standard deviation, \SI{30}{ppm} versus \SI{40}{ppm}, and a similar peak-to-peak value for the average field. 
     \label{fig:results-shims-dipole-final}
 }
-\end{figure}
+\end{sidewaysfigure}
 
-\begin{figure}
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=1.0\linewidth]{fig/results-shims-multipoles-final}
 \caption{
     The plot shows the rough shimming multipoles after full optimization with the built-in shim kit.  The dominant sources of uncertainty appear as the colors with the most area in the plot, i.e., the normal and skew quadrupole terms. 
     \label{fig:results-shims-multipoles-final}
 }
-\end{figure}
+\end{sidewaysfigure}
 
 \subsection{Further Shimming}
 
 The implementation of the laminations pushed the peak-to-peak value of the dipole field to \SI{30}{ppm}, well below the target range.  The results are depicted in figure \ref{fig:results-laminations-dipole-final}.  The results for higher order field multipoles were similarly impressive.  The azimuthal variation is largely suppressed.  The plot in figure \ref{fig:results-laminations-multipoles-final} shows each multipole weighted by the E821 beam composition for that particular multipole.  A few of the multipoles have means that remain relatively large (a few ppm), but these do not appear in the figure.  The reason for this is that those multipoles, mostly skew sextupole, were suppressed in the distribution of muons in E821 and are expected to be similarly suppressed in E989.  The average value can still be adjusted by the active shimming mechanisms, the surface current coils.  The surface current coil system was not commissioned at the time rough shimming ended.
 
-\begin{figure}
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=1.0\linewidth]{fig/results-laminations-dipole-final}
 \caption{
     The final rough shimming dipole field for E989 in red compared with the PRD field plot for E821.  The horizontal bands indicate \SI{\pm 25}{ppm} around the central value which was target for E989.  The resulting dipole field beat the peak-to-peak target by almost a factor of two and E821 by a factor of three. 
     \label{fig:results-laminations-dipole-final}
 }
-\end{figure}
+\end{sidewaysfigure}
 
-\begin{figure}
+\begin{sidewaysfigure}
 \centering
 \includegraphics[width=1.0\linewidth]{fig/results-laminations-multipoles-final}
 \caption{The plot shows each multipole weighted by the E821 beam composition for that particular multipole.  A few of the multipoles have mean values that remain relatively large (a few ppm), but these do not appear in the figure.  The reason for this is that those multipoles, mostly skew sextupole, were suppressed in the distribution of muons in E821 and are expected to be similarly suppressed in E989. \label{fig:results-laminations-multipoles-final}}
-\end{figure}
+\end{sidewaysfigure}
 
 \begin{figure}
 \centering
