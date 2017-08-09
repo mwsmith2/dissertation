@@ -491,7 +491,8 @@ The design flexibility of the storage magnet fell short of the uniformity goals 
 
 David Kawall implemented the model for optimization using iron laminations.  The model treated the metal strips as thin, fully magnetized iron dipoles with three orders of magnetic images manifesting inside the pole piece.  The model split each pole into 41 azimuthal sections and 3 radial sections to give a lever on both higher field asymmetries and variations of the dipole field localized in azimuth.  
 
-Another concern arose about strong gradients from the lamination edges, since strong gradients could be a detriment to the fixed probe signals.  The solution was to design an azimuthal grated pattern known as a ``picket fence'' region.  Using azimuthal strips cut down on the size of gradients in the azimuthal direction which shorted the fixed probe FIDs. The final design is visible in figure \ref{fig:shim-lamination-image}.
+Another concern arose about strong gradients from the lamination edges, since strong gradients could be a detriment to the fixed probe signals.  The solution was to design an azimuthal grated pattern known as a ``picket fence'' region.  Using azimuthal strips cut down on the size of gradients in the azimuthal direction which shorted the fixed probe FIDs. The final design is visible in figure \ref{fig:shim-lamination-image}.  The picket fences successfully mitigated the detrimental effects of the iron foils as illustrated in figure \ref{fig:picket-fence-test}.
+
 
 \begin{figure}
 \centering
@@ -499,6 +500,16 @@ Another concern arose about strong gradients from the lamination edges, since st
 \caption{
     The image is an example of the lamination shims implemented as the final stage of rough shimming.  Each G10 lamination shell has iron foils at 3 radii and 41 azimuthal positions.  The exception is at the ``picket fence'' regions where the radial strips are replaced by longitudinal strips with a linear gradient.  The picket fence was design to mitigate detrimental magnetic field gradients in regions where the fixed pNMR probes reside.
     \label{fig:shim-lamination-image}
+}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\linewidth]{fig/picket-fence-test-durations}
+\includegraphics[width=0.9\linewidth]{fig/picket-fence-test-frequencies}
+\caption{
+    The setup for both plots shown above includes picket fence laminations deployed in two locations, \SI{110}{\degree} and \SI{113}{\degree}.  The three pNMR probes depicted rode on the top of the shimming cart in a location similar to fixed probe locations within the vacuum chamber.  The first plot shows how the FID duration increases from essentially no signal to a signal of \SI{\sim1}{\micro \second}.  The second plot illustrates how the frequency extraction from the fixed probe stabilizes over the picket fence regions.
+    \label{fig:picket-fence-test}
 }
 \end{figure}
 
