@@ -82,22 +82,22 @@ f(t) = e^{-t/T_1} \sin(\omega t - \phi_0)
 \end{equation}
 
 \begin{figure}
+\label{fig:fid-ideal-waveform}
 \centering
 \includegraphics[width=0.5\linewidth]{fig/fid-ideal-waveform}
 \caption{
     The figure shows an idealized FID waveform. Functionally, the waveform is a sinusoid multiplied with an exponential decay between at some initial time.  It represents the signal from a perfect $\pi/2$ to a perfect pNMR probe.
-    \label{fig:fid-ideal-waveform}
 }
 \end{figure}
 
 In a realistic situation, the FID signal is a summation of signals produced by protons precessing at different frequencies due to gradients in the magnetic field, and the signal can bear strong deviations from the ideal FID form.  Nevertheless, the ideal signal is a valid testing ground for frequency extraction algorithms.  Examples of measured FIDs are shown in figure \ref{fig:fid-measured-waveforms}.  The measured FIDs exhibit distortions from defects in electronics like the asymmetry of the first waveform and the spikes in the second waveform.  They also exhibit the effects of magnetic field gradients on the signal.  For instance, the second FID plot shows node-like behavior on the waveform which is indicative of an FID of a pNMR probe in magnetic field gradients.
 
 \begin{figure}
+\label{fig:fid-measured-waveforms}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/fid-measured-waveforms}
 \caption{
-    Two examples of measured FIDs are shown above. The image on left was measured with a test setup at CENPA (University of Washington), and the waveform on the right is an example from the E821 experiment fixed probe system.  The measured FIDs show distortions from defects in electronics like the asymmetry of the first waveform and the spikes in the second waveform.  They also exhibit the effects of magnetic field gradients on the signal.  For instance, the second FID plot shows node-like behavior on the waveform which is indicative of a gradient of FID frequencies beating against each other.
-    \label{fig:fid-measured-waveforms}
+    Two examples of measured FIDs are shown above. The image on left was measured with a test setup at CENPA (University of Washington), and the waveform on the right is an example from the E821 experiment fixed probe system, probe 1 from multiplexor 1 taken on August 1st 1998 \cite{jungmann-priv}.  The measured FIDs show distortions from imperfections in electronics like the asymmetry of the first waveform and the spikes in the second waveform.  They also exhibit the effects of magnetic field gradients on the signal.  For instance, the second FID plot shows node-like behavior on the waveform which is indicative of a gradient of FID frequencies beating against each other.
 }
 \end{figure}
 
@@ -130,11 +130,11 @@ The custom pNMR probes come in three different builds.  The standard probes whic
 The core design of the pNMR probes is the same as the design from the previous experiment. Figure \ref{fig:field-pnmr-probe-design} depicts the design and components of the probe.  Each probe consists of two induction coils, a Teflon backbone, a tunable capacitor, an aluminum shell, and a \SI{5}{\meter} RF cable with SMA connector.  The main induction coil is used to inject the $\pi/2$ pulse, and again to pick up the pNMR precession signal.  A second induction coil is used to match the \SI{50}{\ohm} impedance of the line.  The capacitor allows the probe resonance frequency to be tuned finely.  The aluminum shell provides the outer conductor of a cylindrical capacitor and shields against external effects.
 
 \begin{figure}
+\label{fig:field-pnmr-probe-design}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/field-pnmr-probe-design}
 \caption{
-    The E989 pNMR probe design.  In the center of the diagram, a cylindrical volume holds the petroleum jelly which contains protons to polarize.  The proton volume is surrounded by the serial inductor coil used to inject a the $\pi/2$ pulse and the pick up the FID signal.  The other inductor matches the impedance of the system, and the end of the probe contains a Teflon screw for fine tuning of the resonance.
-    \label{fig:field-pnmr-probe-design}
+    The E989 pNMR probe design.  In the center of the diagram, a cylindrical volume holds the petroleum jelly which contains protons to polarize.  The proton volume is surrounded by the serial inductor coil used to inject a the $\pi/2$ pulse and the pick up the FID signal.  The other inductor matches the impedance of the system, and the end of the probe contains a Teflon screw for fine tuning of the resonance. Figure reproduced from reference \cite{fertl-priv}.
 }
 \end{figure}
 
@@ -151,7 +151,9 @@ The standard pNMR probes can only give a proxy for the magnetic field, not a wel
 \centering
 \includegraphics[width=0.9\linewidth]{fig/field-e821-abs-probe}
 \includegraphics[width=0.9\linewidth]{fig/field-abs-probe}
-\caption{The top image is a design diagram for the E821 absolute calibration probe, and the bottom design diagram is for the new E989 calibration probe.  The E821 probe is still in use alongside the new Macor probe designed by UMass and an entirely different type of probe using $\mathrm{^3He}$ instead of water as a proton source.}
+\caption{
+    The top image is a design diagram for the E821 absolute calibration probe, and the bottom design diagram is for the new E989 calibration probe.  The E821 probe is still in use alongside the new Macor probe designed by UMass and an entirely different type of probe using $\mathrm{^3He}$ instead of water as a proton source.  The top left figure is reproduced from reference \cite{e821-prd}, the top right figure was reproduced from reference \cite{kawall-priv}, and the bottom figure was reproduced from \cite{flay-priv}.
+}
 \end{figure}
 
 \subsubsection{Plunging Probes}
@@ -162,7 +164,7 @@ The last species of pNMR probe is the so-called plunging probe. The probe is spe
 \label{fig:field-plunging-probe}
 \centering
 \includegraphics[width=0.7\linewidth]{fig/field-plunging-probe}
-\caption{A diagram of the plunging probe deployed in E989.  The probe is designed to work with motion system that allows the probe to be align with both the absolute and standard probes to determine the proper shifts needed to bring pNMR measurement from a frequency to an absolute magnetic field value.}
+\caption{A diagram of the plunging probe deployed in E989.  The probe is designed to work with motion system that allows the probe to be align with both the absolute and standard probes to determine the proper shifts needed to bring pNMR measurement from a frequency to an absolute magnetic field value. Figure reproduced from \cite{flay-priv}.}
 \end{figure}
 
 \begin{figure}
@@ -170,7 +172,7 @@ The last species of pNMR probe is the so-called plunging probe. The probe is spe
 \centering
 \includegraphics[height=14em]{fig/field-plunging-probe-translation-volume}
 \includegraphics[height=14em]{fig/field-plunging-probe-translation-stage}
-\caption{Images of some plunging probe system hardware.  The apparatus pictured on the left holds the translation stage used to align the plunging probes with other pNMR probes, and the image on the right shows the translation stage itself.}
+\caption{Images of some plunging probe system hardware.  The apparatus pictured on the left holds the translation stage used to align the plunging probes with other pNMR probes, and the image on the right shows the translation stage itself. Figure reproduced from reference \cite{flay-priv}.}
 \end{figure}
 
 \section{Magnetic Field Subsystems} \label{sec:field-subsystems}
@@ -183,7 +185,9 @@ The fixed probe system is a suite of stationary probes located above and below t
 \label{fig:fixed-probe-block-diagram}
 \centering
 \includegraphics[width=0.9\linewidth]{fig/fixed-probe-block-diagram}
-\caption{The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprises the NMR pulser design from the E821 experiments. The block diagram illustrates the measurement process and components of the system.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by a TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency standard.  The resulting signal feeds through a low-pass filter, and the filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and sampling depth of 16 bits.  The digitized waveform contains frequency information that represents the magnetic field.}
+\caption{
+    The pNMR probes signal requires a parallel system of controlled electronics equipment.  The E989 reprises the NMR pulser design from the E821 experiments. The block diagram illustrates the measurement process and components of the system.  In order to generate a pNMR signal, the first phase is generating a $\pi/2$ pulse to rotate the protonated volume.  The $\pi/2$ pulse is generated by a TTL input trigger which is tunable from \SIrange{4}{7}{\micro\second}.  After the $\pi/2$ pulse, the free induction decay signal is mixed down against a very stable, \SI{61.74}{\MHz} rubidium frequency standard.  The resulting signal feeds through a low-pass filter, and the filtered signal is fed into a waveform digitizer and recorded at a sampling rate of \SI{10}{\MHz} and sampling depth of 16 bits.  The digitized waveform contains frequency information that represents the magnetic field. Figure reproduced from reference \cite{e989-tdr}
+}
 \end{figure}
 
 The fixed probes are arranged in a very specific manner.  They are secured inside grooves cut into the walls of the 12 vacuum chambers that reside inside the storage magnet gap.  In E821, many of the pNMR probe grooves placed the active volume of the probe near pole and yoke boundaries where the magnetic field gradients were large.  Due to the large gradients, the FID signal from the probe was unusable, and the E989 researchers decided to fix the problem.  The grooves were extended \SI{5}{\cm} to shift the pNMR probes away from the magnetic field gradients and improve the FID signal.
@@ -191,13 +195,11 @@ The fixed probes are arranged in a very specific manner.  They are secured insid
 Each probe resides at one of three radii: \SI{7082}{\mm}, \SI{7112}{\mm}, or \SI{7142}. The probe arrangement in azimuth repeats over each vacuum chamber effectively following the yoke sections, so yoke B with vacuum chamber 2 is the same azimuthal pattern as yoke C.  The specific angles over the chambers are: \SI{3.72}{\degree}, \SI{6.64}{\degree}, \SI{12.53}{\degree}, \SI{17.53}{\degree}, \SI{22.53}{\degree}, \SI{26.89}{\degree}.  The one exception is yoke A/vacuum chamber 12 where the grooves for the FPS were not extended.  In that case the probes reside at azimuthal angles of: \SI{2.65}{\degree}, \SI{6.64}{\degree}, \SI{12.53}{\degree}, \SI{17.53}{\degree}, \SI{22.53}{\degree}, \SI{27.68}{\degree}.  The last detail in the probe arrangement is the number of probes.  Most vacuum chambers hold 30 probes numbering 3-2-3-2-3-2 at each azimuthal position (top and bottom), but three chambers have 36 probes opting for a 3-3-3-3-3-3 scheme at each position.  Figure \ref{fig:fixed-probe-arrangement} illustrates the arrangement of fixed probes.  Note that the azimuthal spacing and radial spacing is drawn more symmetric in the figure and not to scale.
 
 \begin{figure}
+\label{fig:fixed-probe-arrangement}
 \centering
 \includegraphics[height=15em]{fig/fixed-probe-ring-cross-section}
 \includegraphics[height=15em]{fig/fixed-probe-arrangement}
-\caption{
-    The left diagram shows the cross-sectional view of the storage ring with probe locations marked for the trolley and fixed probes.  The three probes above and belows the storage volume illustrate the arrangement of fixed probes.  The right diagram depicts the azimuthal arrangement of fixed probe in the storage ring. The probe arrangement shown is present both above and below the storage volume. Note that the FPS arrangement is not drawn to a realistic geometry.
-    \label{fig:fixed-probe-arrangement}
-}
+\caption{The left diagram shows the cross-sectional view of the storage ring with probe locations marked for the trolley and fixed probes.  The three probes above and belows the storage volume illustrate the arrangement of fixed probes.  The right diagram depicts the azimuthal arrangement of fixed probe in the storage ring. The probe arrangement shown is present both above and below the storage volume. Note that the FPS arrangement is not drawn to a realistic geometry.}
 \end{figure}
 
 \subsection{Trolley Probe System (TPS)}
@@ -208,7 +210,7 @@ The trolley measures the magnetic field in the muon storage volume.  It is a cyl
 \label{fig:field-trolley-probe-array}
 \centering
 \includegraphics[width=0.6\linewidth]{fig/field-trolley-probe-array}
-\caption{An image of the trolley module itself.  The trolley rides along a rail system inside the vacuum chambers.  It travels through the muon storage volume.}
+\caption{An image of the trolley module itself.  The trolley rides along a rail system inside the vacuum chambers.  It travels through the muon storage volume. }
 \end{figure}
 
 \subsection{Fluxgate System (FS)}
@@ -219,7 +221,7 @@ The Fluxgate System consists of four vector magnetometers.  The four devices are
 \label{fig:field-fluxgates}
 \includegraphics[height=15em]{fig/field-fluxgate-image}
 \includegraphics[height=15em]{fig/field-fluxgate-data}
-\caption{The left image is one of the fluxgate sensors.  The right image is an average of measurements of the vertical magnetic field over about an hour.  Similar structure was seen in both the fluxgate system and fixed probe system.}
+\caption{The left image is one of the fluxgate sensors.  The right image is an average of measurements of the vertical magnetic field over about an hour.  Similar structure was seen in both the fluxgate system and fixed probe system. Figures reproduced from reference \cite{tewsley-priv}.
 \end{figure}
 
 \subsection{Absolute Probe System (APS)}
@@ -247,7 +249,7 @@ The relative relationship between the absolute calibration probe proton frequenc
 \begin{figure}
 \label{fig:field-plunging-probe-diagram}
 \includegraphics[width=0.9\linewidth]{fig/field-plunging-probe-diagram}
-\caption{The diagram depicts how the plunging probe correlates pNMR frequencies with the trolley.  The plunging probe is inserted into the calibration volume, and translated to the location of each trolley probe.  The two probes measure the same field and compare frequencies to find the relative calibration correction.}
+\caption{The diagram depicts how the plunging probe correlates pNMR frequencies with the trolley.  The plunging probe is inserted into the calibration volume, and translated to the location of each trolley probe.  The two probes measure the same field and compare frequencies to find the relative calibration correction. Figure reproduced from reference \cite{kawall-priv}.}
 \end{figure}
 
 \section{Magnetic Field Reconstruction}
